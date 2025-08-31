@@ -1,6 +1,5 @@
-import { strictDateExtraction } from '../utils/dateStrict';
 import { Request, Response } from 'express';
-import Flight, { IFlight, FlightStatus } from '../models/Flight';
+import Flight from '../models/Flight';
 import { storageService } from '../services/storage.service';
 import { parseBoardingPassWithTesseract } from '../utils/boardingPassTesseract';
 import { parseWithGoogleVision } from '../utils/boardingPassGoogleVision';
@@ -224,11 +223,6 @@ export const uploadBoardingPass = async (req: Request, res: Response) => {
     // Calculate points
     flight.points = flight.calculatePoints();
 
-    // Check if the flight date has passed and mark as completed
-    const now = new Date();
-    if (flight.scheduledArrivalTime < now) {
-      flight.status = FlightStatus.COMPLETED;
-    }
 
     await flight.save();
 
@@ -286,11 +280,6 @@ export const manualFlightEntry = async (req: Request, res: Response) => {
     // Calculate points
     flight.points = flight.calculatePoints();
 
-    // Check if the flight date has passed and mark as completed
-    const now = new Date();
-    if (flight.scheduledArrivalTime < now) {
-      flight.status = FlightStatus.COMPLETED;
-    }
 
     await flight.save();
 
@@ -534,3 +523,4 @@ export const deleteFlight = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Failed to delete flight' });
   }
 };
+

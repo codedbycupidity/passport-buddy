@@ -3,7 +3,7 @@ import { Flight, FlightStats, flightService } from '../services/flight.service';
 import { useToast } from '../contexts/ToastContext';
 import { FlightEditModal } from '../components/flights/FlightEditModal';
 import { FlightManualEntry } from '../components/flights/FlightManualEntry';
-import { CameraIcon, EditIcon, PlusIcon, TrashIcon, UploadIcon } from '../components/ui/Icons';
+import { CameraIcon, CheckIcon, EditIcon, PlusIcon, TrashIcon, UndoIcon, UploadIcon } from '../components/ui/Icons';
 import '../assets/styles/Flights.css';
 
 export const Flights: React.FC = () => {
@@ -15,6 +15,10 @@ export const Flights: React.FC = () => {
   const [showManualEntry, setShowManualEntry] = useState(false);
   const [selectedTab, setSelectedTab] = useState<'upcoming' | 'completed'>('upcoming');
   const [editingFlight, setEditingFlight] = useState<Flight | null>(null);
+  const [completingFlights, setCompletingFlights] = useState<Set<string>>(new Set());
+  const [uncompletingFlights, setUncompletingFlights] = useState<Set<string>>(new Set());
+  const [confirmingComplete, setConfirmingComplete] = useState<Set<string>>(new Set());
+  const [confirmingUncomplete, setConfirmingUncomplete] = useState<Set<string>>(new Set());
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
 
@@ -101,6 +105,90 @@ export const Flights: React.FC = () => {
     } catch (error) {
       console.error('Error deleting flight:', error);
       showToast('Failed to delete flight', 'error');
+    }
+  };
+
+  const handleMarkCompleted = async (flightId: string) => {
+    if (confirmingComplete.has(flightId)) {
+      // Second click - execute the action
+      setConfirmingComplete(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(flightId);
+        return newSet;
+      });
+      
+      setCompletingFlights(prev => new Set(prev).add(flightId));
+
+      try {
+        await flightService.markFlightCompleted(flightId);
+        
+        // Update the flight in the local state
+        setFlights(flights.map(f => f._id === flightId ? { ...f, status: 'completed' } : f));
+        loadStats();
+      } catch (error) {
+        console.error('Error marking flight as completed:', error);
+        showToast('Failed to mark flight as completed', 'error');
+      } finally {
+        setCompletingFlights(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(flightId);
+          return newSet;
+        });
+      }
+    } else {
+      // First click - show confirmation state
+      setConfirmingComplete(prev => new Set(prev).add(flightId));
+      
+      // Auto-reset after 3 seconds
+      setTimeout(() => {
+        setConfirmingComplete(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(flightId);
+          return newSet;
+        });
+      }, 3000);
+    }
+  };
+
+  const handleMarkUncompleted = async (flightId: string) => {
+    if (confirmingUncomplete.has(flightId)) {
+      // Second click - execute the action
+      setConfirmingUncomplete(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(flightId);
+        return newSet;
+      });
+      
+      setUncompletingFlights(prev => new Set(prev).add(flightId));
+
+      try {
+        await flightService.markFlightUncompleted(flightId);
+        
+        // Update the flight in the local state
+        setFlights(flights.map(f => f._id === flightId ? { ...f, status: 'upcoming' } : f));
+        loadStats();
+      } catch (error) {
+        console.error('Error marking flight as upcoming:', error);
+        showToast('Failed to mark flight as upcoming', 'error');
+      } finally {
+        setUncompletingFlights(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(flightId);
+          return newSet;
+        });
+      }
+    } else {
+      // First click - show confirmation state
+      setConfirmingUncomplete(prev => new Set(prev).add(flightId));
+      
+      // Auto-reset after 2 seconds
+      setTimeout(() => {
+        setConfirmingUncomplete(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(flightId);
+          return newSet;
+        });
+      }, 2000);
     }
   };
 
@@ -206,6 +294,9 @@ export const Flights: React.FC = () => {
                   flight={flight}
                   onEdit={() => setEditingFlight(flight)}
                   onDelete={() => handleDeleteFlight(flight._id)}
+                  onMarkCompleted={() => handleMarkCompleted(flight._id)}
+                  isCompleting={completingFlights.has(flight._id)}
+                  isConfirmingComplete={confirmingComplete.has(flight._id)}
                 />
               ))}
             {selectedTab === 'completed' &&
@@ -215,6 +306,9 @@ export const Flights: React.FC = () => {
                   flight={flight}
                   onEdit={() => setEditingFlight(flight)}
                   onDelete={() => handleDeleteFlight(flight._id)}
+                  onMarkUncompleted={() => handleMarkUncompleted(flight._id)}
+                  isUncompleting={uncompletingFlights.has(flight._id)}
+                  isConfirmingUncomplete={confirmingUncomplete.has(flight._id)}
                 />
               ))}
             {((selectedTab === 'upcoming' && upcomingFlights.length === 0) ||
@@ -259,9 +353,15 @@ interface FlightCardProps {
   flight: Flight;
   onEdit: () => void;
   onDelete: () => void;
+  onMarkCompleted?: () => void;
+  isCompleting?: boolean;
+  isConfirmingComplete?: boolean;
+  onMarkUncompleted?: () => void;
+  isUncompleting?: boolean;
+  isConfirmingUncomplete?: boolean;
 }
 
-const FlightCard: React.FC<FlightCardProps> = ({ flight, onEdit, onDelete }) => {
+const FlightCard: React.FC<FlightCardProps> = ({ flight, onEdit, onDelete, onMarkCompleted, isCompleting, isConfirmingComplete, onMarkUncompleted, isUncompleting, isConfirmingUncomplete }) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -333,12 +433,50 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight, onEdit, onDelete }) => 
       </div>
 
       <div className='flight-actions'>
-        <button className='edit-btn' onClick={onEdit}>
-          <EditIcon className='icon' />
-        </button>
-        <button className='delete-btn' onClick={onDelete}>
-          <TrashIcon className='icon' />
-        </button>
+        {onMarkCompleted && (
+          <div className="button-tooltip-container">
+            <button 
+              className={`complete-btn ${isConfirmingComplete ? 'confirming' : ''}`}
+              onClick={onMarkCompleted}
+              disabled={isCompleting}
+            >
+              {isCompleting ? '...' : isConfirmingComplete ? '?' : <CheckIcon className='icon' />}
+            </button>
+            <div className="button-tooltip">
+              {isConfirmingComplete ? "Click again to confirm" : "Mark as completed"}
+            </div>
+          </div>
+        )}
+        {onMarkUncompleted && (
+          <div className="button-tooltip-container">
+            <button 
+              className={`uncomplete-btn ${isConfirmingUncomplete ? 'confirming' : ''}`}
+              onClick={onMarkUncompleted}
+              disabled={isUncompleting}
+            >
+              {isUncompleting ? '...' : isConfirmingUncomplete ? '?' : <UndoIcon className='icon' />}
+            </button>
+            <div className="button-tooltip">
+              {isConfirmingUncomplete ? "Click again to confirm" : "Mark as upcoming"}
+            </div>
+          </div>
+        )}
+        <div className="button-tooltip-container">
+          <button className='edit-btn' onClick={onEdit}>
+            <EditIcon className='icon' />
+          </button>
+          <div className="button-tooltip">
+            Edit flight
+          </div>
+        </div>
+        <div className="button-tooltip-container">
+          <button className='delete-btn' onClick={onDelete}>
+            <TrashIcon className='icon' />
+          </button>
+          <div className="button-tooltip">
+            Delete flight
+          </div>
+        </div>
       </div>
     </div>
   );

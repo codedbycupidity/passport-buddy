@@ -45,6 +45,7 @@ router.put('/:flightId', flightController.updateFlight);
 // Update flight status
 router.patch('/:flightId/status', flightController.updateFlightStatus);
 
+
 // Delete flight
 router.delete('/:flightId', flightController.deleteFlight);
 

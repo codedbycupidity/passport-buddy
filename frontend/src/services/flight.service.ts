@@ -119,6 +119,22 @@ export class FlightService {
     return makeRequest(`/api/v1/flights/${flightId}`, { method: 'DELETE' });
   }
 
+  async markFlightCompleted(flightId: string) {
+    return makeRequest(`/api/v1/flights/${flightId}/status`, { 
+      method: 'PATCH',
+      body: JSON.stringify({ status: 'completed' }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  async markFlightUncompleted(flightId: string) {
+    return makeRequest(`/api/v1/flights/${flightId}/status`, { 
+      method: 'PATCH',
+      body: JSON.stringify({ status: 'upcoming' }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
   async getFlightStats(userId?: string, year?: number): Promise<FlightStats> {
     let endpoint = '/api/v1/flights/stats';
     const params = new URLSearchParams();

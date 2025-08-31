@@ -58,6 +58,37 @@ export const EditIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
+export const CheckIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      d='M16.25 6.25L8.125 14.375L3.75 10'
+      stroke='currentColor'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);
+
+export const UndoIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      d='M3.5 10C3.5 6.41 6.41 3.5 10 3.5C13.59 3.5 16.5 6.41 16.5 10C16.5 13.59 13.59 16.5 10 16.5H8'
+      stroke='currentColor'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M5.5 13.5L8 16L5.5 18.5'
+      stroke='currentColor'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+);
+
 export const TrashIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
     <path d='M2 4H14' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
