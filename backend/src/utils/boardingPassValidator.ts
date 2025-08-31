@@ -1,4 +1,6 @@
 import { strictDateExtraction } from './dateStrict';
+import * as fs from 'fs';
+import * as path from 'path';
 const levenshtein = require('levenshtein');
 
 // IATA Airline codes database
@@ -205,119 +207,21 @@ const AIRLINE_CODES: Record<string, string> = {
   S5: 'Shuttle America',
 };
 
-// Common airports for validation
-const COMMON_AIRPORTS = new Set([
-  'JFK',
-  'LAX',
-  'ORD',
-  'ATL',
-  'DFW',
-  'SFO',
-  'MIA',
-  'SEA',
-  'BOS',
-  'EWR',
-  'LGA',
-  'DCA',
-  'IAD',
-  'PHX',
-  'LAS',
-  'MCO',
-  'DEN',
-  'DTW',
-  'MSP',
-  'SLC',
-  'BWI',
-  'MDW',
-  'DAL',
-  'HOU',
-  'BNA',
-  'AUS',
-  'PDX',
-  'SAN',
-  'TPA',
-  'FLL',
-  'LHR',
-  'CDG',
-  'FRA',
-  'AMS',
-  'MAD',
-  'BCN',
-  'FCO',
-  'MUC',
-  'ZRH',
-  'VIE',
-  'BRU',
-  'CPH',
-  'OSL',
-  'ARN',
-  'HEL',
-  'LIS',
-  'DUB',
-  'EDI',
-  'MAN',
-  'BHX',
-  'DXB',
-  'DOH',
-  'AUH',
-  'SIN',
-  'HKG',
-  'NRT',
-  'HND',
-  'ICN',
-  'PVG',
-  'PEK',
-  'CAN',
-  'BKK',
-  'KUL',
-  'CGK',
-  'MNL',
-  'DEL',
-  'BOM',
-  'BLR',
-  'SYD',
-  'MEL',
-  'AKL',
-  'BNE',
-  'PER',
-  'ADL',
-  'WLG',
-  'CHC',
-  'JNB',
-  'CPT',
-  'CAI',
-  'ADD',
-  'NBO',
-  'LOS',
-  'ACC',
-  'CMN',
-  'TUN',
-  'ALG',
-  'GRU',
-  'GIG',
-  'BSB',
-  'EZE',
-  'SCL',
-  'LIM',
-  'BOG',
-  'MEX',
-  'CUN',
-  'GDL',
-  'PTY',
-  'SJO',
-  'GUA',
-  'SAL',
-  'YYZ',
-  'YVR',
-  'YUL',
-  'YYC',
-  'YEG',
-  'YOW',
-  'YWG',
-  'YHZ',
-  'YQB',
-  'YXE',
-]);
+// Load airports dynamically from airports.json
+// Handle different path structures for Docker and local development
+const airportsPath = process.env.NODE_ENV === 'development' && fs.existsSync('/app/frontend/src/data/airports.json')
+  ? '/app/frontend/src/data/airports.json'
+  : path.join(__dirname, '../../../frontend/src/data/airports.json');
+const airportsData = JSON.parse(fs.readFileSync(airportsPath, 'utf-8'));
+
+// Build a set of valid IATA codes from airports.json
+const VALID_AIRPORTS = new Set<string>();
+for (const [, airport] of Object.entries(airportsData)) {
+  const airportInfo = airport as any;
+  if (airportInfo.iata && airportInfo.iata.length === 3) {
+    VALID_AIRPORTS.add(airportInfo.iata);
+  }
+}
 
 interface ConfidenceWord {
   word: string;
@@ -487,7 +391,7 @@ export function validateAirport(code: string): ValidationResult {
     return { valid: false, value: cleanCode };
   }
 
-  if (COMMON_AIRPORTS.has(cleanCode)) {
+  if (VALID_AIRPORTS.has(cleanCode)) {
     return {
       valid: true,
       value: cleanCode,
@@ -736,6 +640,6 @@ export function validateBoardingPass(ocrResult: OCRResult | string): BoardingPas
 // Export for testing
 export const testHelpers = {
   AIRLINE_CODES,
-  COMMON_AIRPORTS,
+  VALID_AIRPORTS,
   estimateConfidence,
 };

@@ -131,6 +131,15 @@ export async function parseBoardingPassWithTesseract(buffer: Buffer, mimeType: s
     }
     
     console.log('Extracted lines:', lines.length);
+    
+    // Log the full extracted text for debugging
+    console.log('\n========================================');
+    console.log('=== TESSERACT OCR - EXTRACTED TEXT ===');
+    console.log('========================================');
+    console.log(data.text);
+    console.log('========================================');
+    console.log('=== END OF TESSERACT EXTRACTED TEXT ===');
+    console.log('========================================\n');
 
     // Process lines
     const parsedData = processLines(lines, data.confidence);
@@ -188,24 +197,86 @@ function processLines(lines: any[], overallConfidence: number): ParsedLineData |
 
     // Check if this line contains the main route (both departure and arrival)
     // Look for patterns that indicate this is the route line
-    const possibleRouteIndicators = [
-      text.includes('HANEDA') && text.includes('OHARE'),
-      text.includes('HANEDA') && text.includes('CHICAGO'),
-      text.includes('TOKYO') && text.includes('CHICAGO'),
-      text.includes('TOKYO') && text.includes('OHARE'),
-      text.includes('TOKYO-HANEDA') && text.includes('CHICAGO-OHARE'),
-      (text.match(/[A-Z]{3,}-[A-Z]{3,}/g) || []).length >= 2,
-      // Check for two city/airport names separated by spaces, but exclude common non-route lines
-      text.split(/\s{5,}/).length >= 2 && 
-        text.length > 30 && 
-        !text.includes('EXPIRED') && 
-        !text.includes('GATE') && 
-        !text.includes('FLIGHT') &&
-        !text.includes('BOARDS') &&
-        !text.includes('SEAT')
+    // Dynamic route detection - check if text contains airport/city patterns from airports.json
+    let hasAirportPatterns = false;
+    let cityCount = 0;
+    let airportCodeCount = 0;
+    
+    // Count IATA codes in the line
+    const iataMatches = (text.match(/\b[A-Z]{3}\b/g) || []);
+    for (const code of iataMatches) {
+      // Check if it's a valid airport code
+      for (const [, airport] of Object.entries(airportsData)) {
+        const airportInfo = airport as any;
+        if (airportInfo.iata === code) {
+          airportCodeCount++;
+          break;
+        }
+      }
+    }
+    
+    // Count city names and airport name patterns
+    for (const [, airport] of Object.entries(airportsData)) {
+      const airportInfo = airport as any;
+      if (!airportInfo.city || !airportInfo.name) continue;
+      
+      const city = airportInfo.city.toUpperCase();
+      const airportName = airportInfo.name.toUpperCase();
+      
+      // Check for city names (including multi-word cities)
+      if (text.includes(city)) {
+        cityCount++;
+      }
+      
+      // Check for airport name patterns (INTERNATIONAL, INTL, etc.)
+      const airportWords = airportName.split(' ');
+      for (const word of airportWords) {
+        if (word.length > 4 && text.includes(word) && 
+            !['AIRPORT', 'FIELD', 'REGIONAL', 'MUNICIPAL', 'COUNTY'].includes(word)) {
+          hasAirportPatterns = true;
+          break;
+        }
+      }
+      
+      if (hasAirportPatterns && cityCount > 0) break;
+    }
+    
+    // First, exclude lines that are clearly NOT route lines
+    const excludePatterns = [
+      // Airline names with flight numbers
+      /^[A-Z]*DELTA|^DELTA|^ADELTA|^UNITED|^AMERICAN|^SOUTHWEST/,
+      // Lines with only flight info (no route)
+      /^(DL|UA|AA|WN|B6|AS|F9|NK)\d+/,
+      // Lines that contain mostly non-route elements
+      /\b(EXPIRED|GATE|FLIGHT|BOARDS|SEAT|TERMINAL|BAGGAGE|CHECK|TIME|DATE|AM|PM|ALL|CARRY|BAGS|CHECKED|BOARDING|CLOSES|DEPART|ARRIVAL|APPLE|WALLET|HOME)\b/
     ];
     
-    const isRouteLine = possibleRouteIndicators.some(indicator => indicator);
+    // If line matches any exclude pattern, it's not a route line
+    const isExcluded = excludePatterns.some(pattern => pattern.test(text));
+    
+    const possibleRouteIndicators = [
+      // Flight duration patterns with airport codes (BWI 06H 05M NONSTOP LAX)
+      /\b[A-Z]{3}\s+\d{2}H\s+\d{2}M.*\b[A-Z]{3}\b/g.test(text),
+      // Airport code patterns with "NONSTOP" (BWI NONSTOP LAX)
+      /\b[A-Z]{3}\s.*NONSTOP.*\b[A-Z]{3}\b/g.test(text),
+      // Direct airport-to-airport patterns (JFK - SFO, BWI LAX, etc.)
+      /\b[A-Z]{3}\s*[-–→]\s*[A-Z]{3}\b/g.test(text),
+      /\b[A-Z]{3}\s+[A-Z]{3}\b/g.test(text) && text.length < 50 && !/\b(ZONE|SEAT|GATE|TERMINAL)\b/.test(text),
+      // Multiple airport codes in one line
+      airportCodeCount >= 2,
+      // Multiple cities in one line  
+      cityCount >= 2,
+      // Airport name patterns with city names
+      hasAirportPatterns && cityCount >= 1,
+      // Check for airport/city name patterns with INTL, INTERNATIONAL, etc.
+      /\b[A-Z]{4,}\s+(INTL?|INTERNATIONAL)\b/g.test(text) && cityCount >= 1,
+      // Special pattern for "CITY INTL" followed by spaces and another city
+      /\b[A-Z]{3,}\s+INTL?\s+.*\s+[A-Z]{3,}/g.test(text) && !text.includes('FLIGHT'),
+      // Pattern for lines with cities separated by spaces (ORLANDO INTL ... LOS ANGELES)
+      cityCount >= 2 && text.split(/\s{2,}/).length >= 2 && text.length > 25
+    ];
+    
+    const isRouteLine = !isExcluded && possibleRouteIndicators.some(indicator => indicator);
     
     // Extract patterns from each line
     extractAirlines(text, data);
@@ -215,12 +286,16 @@ function processLines(lines: any[], overallConfidence: number): ParsedLineData |
     
     // Only extract airports from the route line to avoid confusion
     if (isRouteLine && !routeLineFound) {
-      console.log('Detected route line, extracting airports from:', text);
+      console.log('=== Route Line Detection ===');
+      console.log('Line:', text);
+      console.log('Airport code count:', airportCodeCount);
+      console.log('City count:', cityCount);
+      console.log('Has airport patterns:', hasAirportPatterns);
+      console.log('Is excluded:', isExcluded);
+      console.log('Extracting airports from this line');
+      console.log('===========================');
       extractAirports(text, data);
       routeLineFound = true;
-    } else if (!routeLineFound && data.airports.size < 2) {
-      // Fallback: extract airports from any line if we haven't found the route yet
-      extractAirports(text, data);
     }
     
     extractDates(text, data);
@@ -303,20 +378,248 @@ function extractConfirmationCodes(text: string, data: ExtractedData) {
 function extractAirports(text: string, data: ExtractedData) {
   const upperText = text.toUpperCase();
   
-  // First check for specific patterns that are definitely airports
-  // Handle TOKYO-HANEDA and CHICAGO-OHARE explicitly
-  if (upperText.includes('TOKYO-HANEDA') || upperText.includes('HANEDA')) {
-    data.airports.add('HND');
-  }
-  if (upperText.includes('CHICAGO-OHARE') || upperText.includes('OHARE')) {
-    data.airports.add('ORD');
+  console.log(`Debug: Looking for airports in text: "${upperText}"`);
+  
+  // PRIORITY 1: Look for valid 3-letter IATA codes first (context-aware)
+  const iataPattern = /\b([A-Z]{3})\b/g;
+  const potentialCodes = [...upperText.matchAll(iataPattern)].map(m => ({ code: m[1], index: m.index! }));
+  
+  // First, identify multi-word city patterns to exclude their parts from IATA detection
+  const multiWordCityPatterns = [];
+  for (const [, airport] of Object.entries(airportsData)) {
+    const airportInfo = airport as any;
+    if (!airportInfo.iata || !airportInfo.city) continue;
+    
+    const city = airportInfo.city.toUpperCase();
+    if (city.includes(' ') && upperText.includes(city)) {
+      const cityStart = upperText.indexOf(city);
+      const cityEnd = cityStart + city.length;
+      multiWordCityPatterns.push({ start: cityStart, end: cityEnd, city, iata: airportInfo.iata });
+    }
   }
   
-  // If we found both airports, we're done
+  // Validate each potential IATA code against airports.json, but skip if it's part of a multi-word city
+  for (const { code, index } of potentialCodes) {
+    // Skip codes that are clearly not airports (expanded list)
+    if (['THE', 'AND', 'FOR', 'ARE', 'NOT', 'ALL', 'CAN', 'HAS', 'HAD', 'WAS', 'BUT', 'OUR', 'OUT', 'DAY', 'YOU', 'YES', 'NEW', 'OLD', 'BIG', 'BAD', 'TOP', 'END', 'GET', 'SET', 'PUT', 'RUN', 'SEE', 'WIN', 'USE'].includes(code)) {
+      continue;
+    }
+    
+    // Skip if this IATA code is part of a multi-word city (e.g., "LOS" in "LOS ANGELES")
+    const isPartOfMultiWordCity = multiWordCityPatterns.some(pattern => 
+      index >= pattern.start && index + code.length <= pattern.end
+    );
+    
+    if (isPartOfMultiWordCity) {
+      console.log(`Skipping IATA code "${code}" as it's part of a multi-word city name`);
+      continue;
+    }
+    
+    // Check if this code exists in our airports data
+    for (const [, airport] of Object.entries(airportsData)) {
+      const airportInfo = airport as any;
+      if (airportInfo.iata === code) {
+        data.airports.add(code);
+        console.log(`Found valid IATA code: ${code} (${airportInfo.city})`);
+        if (data.airports.size >= 2) {
+          console.log('Found airports from IATA codes:', Array.from(data.airports));
+          return;
+        }
+        break;
+      }
+    }
+  }
+  
+  // Return early if we found 2 airports from IATA codes
   if (data.airports.size >= 2) {
-    console.log('Found airports from specific patterns:', Array.from(data.airports));
     return;
   }
+  
+  // Special handling for city-airport name combinations dynamically
+  for (const [, airport] of Object.entries(airportsData)) {
+    const airportInfo = airport as any;
+    if (!airportInfo.iata || !airportInfo.name || !airportInfo.city) continue;
+    
+    const city = airportInfo.city.toUpperCase();
+    const airportName = airportInfo.name.toUpperCase();
+    
+    // Look for patterns like "NYC-KENNEDY", "SAN-FRANCISCO", etc.
+    const cityParts = city.split(' ');
+    const airportParts = airportName.split(' ');
+    
+    for (const cityPart of cityParts) {
+      for (const airportPart of airportParts) {
+        if (cityPart.length > 2 && airportPart.length > 4) {
+          const pattern1 = `${cityPart}-${airportPart}`;
+          const pattern2 = `${cityPart} ${airportPart}`;
+          
+          if (upperText.includes(pattern1) || upperText.includes(pattern2)) {
+            console.log(`Found dynamic city-airport pattern "${pattern1}" -> ${airportInfo.iata}`);
+            data.airports.add(airportInfo.iata);
+            if (data.airports.size >= 2) {
+              console.log('Found airports from dynamic patterns:', Array.from(data.airports));
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // PRIORITY 2: Add airports from identified multi-word city patterns
+  for (const pattern of multiWordCityPatterns) {
+    console.log(`Found multi-word city "${pattern.city}" pattern, adding ${pattern.iata}`);
+    data.airports.add(pattern.iata);
+    if (data.airports.size >= 2) {
+      console.log('Found airports from multi-word city names:', Array.from(data.airports));
+      return;
+    }
+  }
+  
+  // PRIORITY 2.5: Check for single-word parts of cities that weren't caught by multi-word detection
+  // But only if they're not already part of a multi-word city we found
+  const singleWordCityPatterns = [];
+  for (const [, airport] of Object.entries(airportsData)) {
+    const airportInfo = airport as any;
+    if (!airportInfo.iata || !airportInfo.city) continue;
+    
+    const city = airportInfo.city.toUpperCase();
+    // Check if city has multiple words and if the first word appears in text
+    if (city.includes(' ')) {
+      const firstWord = city.split(' ')[0];
+      // Only match if it's a whole word, not part of another word
+      // Use word boundary check to avoid matching "EL" in "ADELTA"
+      const wordPattern = new RegExp(`\\b${firstWord}\\b`);
+      if (wordPattern.test(upperText) && !upperText.includes(city)) {
+        // Only add if it's not already covered by multi-word detection
+        // And only if the first word is substantial (not just "EL", "LA", etc.)
+        const alreadyCovered = multiWordCityPatterns.some(pattern => pattern.city === city);
+        if (!alreadyCovered && firstWord.length > 2) {
+          singleWordCityPatterns.push({ word: firstWord, iata: airportInfo.iata, city });
+        }
+      }
+    }
+  }
+  
+  // Add airports from single-word city patterns (like "ORLANDO" for "Orlando International")
+  for (const pattern of singleWordCityPatterns) {
+    console.log(`Found single-word city "${pattern.word}" from "${pattern.city}", adding ${pattern.iata}`);
+    data.airports.add(pattern.iata);
+    if (data.airports.size >= 2) {
+      console.log('Found airports from single-word city names:', Array.from(data.airports));
+      return;
+    }
+  }
+  
+  // PRIORITY 3: Build city-to-airport mapping and check single-word cities
+  const cityToAirports: Map<string, Array<{code: string, priority: number}>> = new Map();
+  
+  for (const [, airport] of Object.entries(airportsData)) {
+    const airportInfo = airport as any;
+    if (!airportInfo.iata || !airportInfo.city) continue;
+    
+    const city = airportInfo.city.toUpperCase();
+    if (!cityToAirports.has(city)) {
+      cityToAirports.set(city, []);
+    }
+    
+    // Prioritize international airports and major hubs
+    let priority = 0;
+    const name = (airportInfo.name || '').toUpperCase();
+    if (name.includes('INTERNATIONAL')) priority += 10;
+    if (name.includes('REGIONAL') || name.includes('MUNICIPAL')) priority -= 5;
+    
+    cityToAirports.get(city)?.push({
+      code: airportInfo.iata,
+      priority
+    });
+  }
+  
+  // Sort airports by priority for each city
+  for (const airports of cityToAirports.values()) {
+    airports.sort((a, b) => b.priority - a.priority);
+  }
+  
+  // Look for single-word city names
+  const words = upperText.split(/\s+/);
+  console.log('Looking for single-word cities in words:', words);
+  for (const word of words) {
+    // Skip INTL as it's not a city, it's part of airport names
+    if (word === 'INTL' || word === 'INTERNATIONAL') continue;
+    
+    if (cityToAirports.has(word)) {
+      const airports = cityToAirports.get(word);
+      if (airports && airports.length > 0) {
+        const bestAirport = airports[0].code;
+        data.airports.add(bestAirport);
+        console.log(`Found city "${word}" -> ${bestAirport} (priority: ${airports[0].priority})`);
+        if (data.airports.size >= 2) {
+          console.log('Found airports from city names:', Array.from(data.airports));
+          return;
+        }
+      }
+    }
+  }
+  
+  for (const [, airport] of Object.entries(airportsData)) {
+    const airportInfo = airport as any;
+    if (!airportInfo.iata || !airportInfo.name) continue;
+    
+    const airportName = airportInfo.name.toUpperCase();
+    const city = (airportInfo.city || '').toUpperCase();
+    
+    // Look for patterns like "NYC-KENNEDY", "KENNEDY", etc.
+    if (airportName.includes('KENNEDY') && (upperText.includes('KENNEDY') || upperText.includes('NYC-KENNEDY'))) {
+      // Prioritize JFK when NYC-KENNEDY is mentioned, or when it's in a major metropolitan context
+      if (airportInfo.iata === 'JFK' && (upperText.includes('NYC-KENNEDY') || upperText.includes('NEW YORK'))) {
+        data.airports.add(airportInfo.iata);
+        console.log(`Found NYC Kennedy pattern in "${airportName}" -> ${airportInfo.iata} (prioritized)`);
+        if (data.airports.size >= 2) {
+          console.log('Found airports from name patterns:', Array.from(data.airports));
+          return;
+        }
+      } else if (!upperText.includes('NYC-KENNEDY') && !upperText.includes('NEW YORK')) {
+        // Only consider other Kennedy airports if NYC context is not present
+        data.airports.add(airportInfo.iata);
+        console.log(`Found Kennedy pattern in "${airportName}" -> ${airportInfo.iata}`);
+        if (data.airports.size >= 2) {
+          console.log('Found airports from name patterns:', Array.from(data.airports));
+          return;
+        }
+      }
+    }
+    
+    // Look for city + abbreviated airport type patterns (ORLANDO INTL, ORLANDO INTERNATIONAL, etc.)
+    if (city && (airportName.includes('INTERNATIONAL') || airportName.includes('INTL'))) {
+      const cityIntlPattern = `${city} INT`;
+      const cityIntlPattern2 = `${city} INTL`;
+      const cityIntlPattern3 = `${city} INTERNATIONAL`;
+      
+      // Check if any pattern matches
+      if (upperText.includes(cityIntlPattern) || upperText.includes(cityIntlPattern2) || upperText.includes(cityIntlPattern3)) {
+        // Prioritize major international airports (MCO for Orlando, LAX for Los Angeles, etc.)
+        if (airportName.includes('ORLANDO INTERNATIONAL') && airportInfo.iata === 'MCO') {
+          data.airports.add(airportInfo.iata);
+          console.log(`Found ${city} International pattern -> ${airportInfo.iata} (Orlando International)`);
+          if (data.airports.size >= 2) {
+            console.log('Found airports from name patterns:', Array.from(data.airports));
+            return;
+          }
+        } else if (!airportName.includes('EXECUTIVE') && !airportName.includes('NORTH')) {
+          // Add other international airports but skip executive/small airports
+          data.airports.add(airportInfo.iata);
+          console.log(`Found ${city} International pattern -> ${airportInfo.iata}`);
+          if (data.airports.size >= 2) {
+            console.log('Found airports from name patterns:', Array.from(data.airports));
+            return;
+          }
+        }
+      }
+    }
+    
+  }
+  
+  console.log(`Debug: After all pattern matching, found ${data.airports.size} airports:`, Array.from(data.airports));
   
   // Build dynamic airport mappings from airports.json
   const airportNameMap: Record<string, string> = {};
@@ -405,7 +708,32 @@ function extractAirports(text: string, data: ExtractedData) {
   let foundFromNames = false;
   const foundAirports: string[] = [];
   
+  // Known airline names to exclude from airport matching
+  const airlineNames = [
+    'SPIRIT', 'UNITED', 'AMERICAN', 'DELTA', 'SOUTHWEST', 'JETBLUE', 'ALASKA',
+    'FRONTIER', 'HAWAIIAN', 'ALLEGIANT', 'SUN COUNTRY', 'BREEZE', 'AVELO',
+    'AIR CANADA', 'WESTJET', 'BRITISH AIRWAYS', 'LUFTHANSA', 'AIR FRANCE',
+    'KLM', 'EMIRATES', 'QATAR', 'SINGAPORE', 'CATHAY', 'ANA', 'JAL',
+    'VIRGIN', 'RYANAIR', 'EASYJET', 'VUELING', 'IBERIA', 'TAP', 'TURKISH'
+  ];
+  
   for (const [name, code] of sortedEntries) {
+    // Skip if this is an airline name
+    if (airlineNames.some(airline => name.includes(airline))) {
+      continue;
+    }
+    
+    // Skip single word matches that are too generic
+    if (name.length <= 6 && !name.includes('-') && !name.includes(' ')) {
+      // Only accept short names if they're actual IATA codes found in the text
+      // Escape special regex characters in the name
+      const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const iataPattern = new RegExp(`\\b${escapedName}\\b`);
+      if (!iataPattern.test(upperText)) {
+        continue;
+      }
+    }
+    
     // Check if this name exists in the text (considering hyphens and spaces as word boundaries)
     // Replace hyphens with spaces for matching
     const normalizedText = upperText.replace(/-/g, ' ');
@@ -414,9 +742,9 @@ function extractAirports(text: string, data: ExtractedData) {
     // Use word boundary check or check if surrounded by spaces/punctuation
     const regex = new RegExp(`(^|\\s|-)${normalizedName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|\\s|-)`);
     
-    if (regex.test(normalizedText) || upperText.includes(name)) {
+    if (regex.test(normalizedText)) {
       // Don't add if it's a common word that happens to be an airport
-      const commonWords = ['FLIGHT', 'GATE', 'SEAT', 'GROUP', 'BOARDS', 'PASSENGER', 'DELETE'];
+      const commonWords = ['FLIGHT', 'GATE', 'SEAT', 'GROUP', 'BOARDS', 'PASSENGER', 'DELETE', 'AIRLINES', 'AIRWAYS'];
       if (!commonWords.includes(name)) {
         console.log(`Found airport name "${name}" -> ${code}`);
         foundAirports.push(code);

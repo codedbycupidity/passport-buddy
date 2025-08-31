@@ -1,74 +1,30 @@
 import { strictDateExtraction } from './dateStrict';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Load airports dynamically from airports.json
+const airportsPath = process.env.NODE_ENV === 'development' && fs.existsSync('/app/frontend/src/data/airports.json')
+  ? '/app/frontend/src/data/airports.json'
+  : path.join(__dirname, '../../../frontend/src/data/airports.json');
+const airportsData = JSON.parse(fs.readFileSync(airportsPath, 'utf-8'));
+
 // Comprehensive aviation lexical analyzer with airport database
 export class AviationLexer {
-  // Complete IATA airport codes with city names
-  private static readonly AIRPORTS: Record<string, { city: string; state?: string; country: string }> = {
-    // Major US Hubs
-    ATL: { city: 'Atlanta', state: 'GA', country: 'USA' },
-    DFW: { city: 'Dallas', state: 'TX', country: 'USA' },
-    DEN: { city: 'Denver', state: 'CO', country: 'USA' },
-    ORD: { city: 'Chicago', state: 'IL', country: 'USA' },
-    LAX: { city: 'Los Angeles', state: 'CA', country: 'USA' },
-    JFK: { city: 'New York', state: 'NY', country: 'USA' },
-    LGA: { city: 'New York', state: 'NY', country: 'USA' },
-    EWR: { city: 'Newark', state: 'NJ', country: 'USA' },
-    SFO: { city: 'San Francisco', state: 'CA', country: 'USA' },
-    LAS: { city: 'Las Vegas', state: 'NV', country: 'USA' },
-    SEA: { city: 'Seattle', state: 'WA', country: 'USA' },
-    MCO: { city: 'Orlando', state: 'FL', country: 'USA' },
-    MIA: { city: 'Miami', state: 'FL', country: 'USA' },
-    CLT: { city: 'Charlotte', state: 'NC', country: 'USA' },
-    PHX: { city: 'Phoenix', state: 'AZ', country: 'USA' },
-    IAH: { city: 'Houston', state: 'TX', country: 'USA' },
-    BOS: { city: 'Boston', state: 'MA', country: 'USA' },
-    MSP: { city: 'Minneapolis', state: 'MN', country: 'USA' },
-    DTW: { city: 'Detroit', state: 'MI', country: 'USA' },
-    FLL: { city: 'Fort Lauderdale', state: 'FL', country: 'USA' },
-    PHL: { city: 'Philadelphia', state: 'PA', country: 'USA' },
-    SLC: { city: 'Salt Lake City', state: 'UT', country: 'USA' },
-    DCA: { city: 'Washington', state: 'DC', country: 'USA' },
-    IAD: { city: 'Washington', state: 'VA', country: 'USA' },
-    BWI: { city: 'Baltimore', state: 'MD', country: 'USA' },
-    SAN: { city: 'San Diego', state: 'CA', country: 'USA' },
-    TPA: { city: 'Tampa', state: 'FL', country: 'USA' },
-    AUS: { city: 'Austin', state: 'TX', country: 'USA' },
-    MDW: { city: 'Chicago', state: 'IL', country: 'USA' },
-    DAL: { city: 'Dallas', state: 'TX', country: 'USA' },
-    HOU: { city: 'Houston', state: 'TX', country: 'USA' },
-    OAK: { city: 'Oakland', state: 'CA', country: 'USA' },
-    SJC: { city: 'San Jose', state: 'CA', country: 'USA' },
-    SMF: { city: 'Sacramento', state: 'CA', country: 'USA' },
-    MSY: { city: 'New Orleans', state: 'LA', country: 'USA' },
-    RDU: { city: 'Raleigh', state: 'NC', country: 'USA' },
-    STL: { city: 'St. Louis', state: 'MO', country: 'USA' },
-    BNA: { city: 'Nashville', state: 'TN', country: 'USA' },
-    MCI: { city: 'Kansas City', state: 'MO', country: 'USA' },
-    PDX: { city: 'Portland', state: 'OR', country: 'USA' },
-    CLE: { city: 'Cleveland', state: 'OH', country: 'USA' },
-    IND: { city: 'Indianapolis', state: 'IN', country: 'USA' },
-    PIT: { city: 'Pittsburgh', state: 'PA', country: 'USA' },
-    CVG: { city: 'Cincinnati', state: 'OH', country: 'USA' },
-    CMH: { city: 'Columbus', state: 'OH', country: 'USA' },
-    SAT: { city: 'San Antonio', state: 'TX', country: 'USA' },
-    RSW: { city: 'Fort Myers', state: 'FL', country: 'USA' },
-    PBI: { city: 'West Palm Beach', state: 'FL', country: 'USA' },
-    JAX: { city: 'Jacksonville', state: 'FL', country: 'USA' },
-    MKE: { city: 'Milwaukee', state: 'WI', country: 'USA' },
-    OMA: { city: 'Omaha', state: 'NE', country: 'USA' },
-    RIC: { city: 'Richmond', state: 'VA', country: 'USA' },
-    BDL: { city: 'Hartford', state: 'CT', country: 'USA' },
-    BUF: { city: 'Buffalo', state: 'NY', country: 'USA' },
-    ABQ: { city: 'Albuquerque', state: 'NM', country: 'USA' },
-    ONT: { city: 'Ontario', state: 'CA', country: 'USA' },
-    BUR: { city: 'Burbank', state: 'CA', country: 'USA' },
-    SNA: { city: 'Santa Ana', state: 'CA', country: 'USA' },
-    LGB: { city: 'Long Beach', state: 'CA', country: 'USA' },
-    ANC: { city: 'Anchorage', state: 'AK', country: 'USA' },
-    HNL: { city: 'Honolulu', state: 'HI', country: 'USA' },
-    OGG: { city: 'Maui', state: 'HI', country: 'USA' },
-    KOA: { city: 'Kona', state: 'HI', country: 'USA' },
-    LIH: { city: 'Kauai', state: 'HI', country: 'USA' },
-  };
+  // Dynamic IATA airport codes loaded from airports.json
+  private static readonly AIRPORTS: Record<string, { city: string; state?: string; country: string }> = (() => {
+    const airports: Record<string, { city: string; state?: string; country: string }> = {};
+    for (const [, airport] of Object.entries(airportsData)) {
+      const airportInfo = airport as any;
+      if (airportInfo.iata && airportInfo.city && airportInfo.country) {
+        airports[airportInfo.iata] = {
+          city: airportInfo.city,
+          state: airportInfo.state || undefined,
+          country: airportInfo.country === 'US' ? 'USA' : airportInfo.country,
+        };
+      }
+    }
+    return airports;
+  })();
 
   // Airline codes and names
   private static readonly AIRLINES: Record<string, { name: string; code: string }> = {
@@ -360,15 +316,15 @@ export class AviationLexer {
       flightNumber: flightToken?.value || 'UNKNOWN',
       confirmationCode: confirmationToken?.value || 'UNKNOWN',
       origin: {
-        airportCode: context.origin?.value || 'ORD',
-        city: context.origin?.metadata?.city || 'Chicago',
-        country: context.origin?.metadata?.country || 'USA',
+        airportCode: context.origin?.value || 'UNKNOWN',
+        city: context.origin?.metadata?.city || 'Unknown',
+        country: context.origin?.metadata?.country || 'Unknown',
         gate: gateToken?.value,
       },
       destination: {
-        airportCode: context.destination?.value || 'JFK',
-        city: context.destination?.metadata?.city || 'New York',
-        country: context.destination?.metadata?.country || 'USA',
+        airportCode: context.destination?.value || 'UNKNOWN',
+        city: context.destination?.metadata?.city || 'Unknown',
+        country: context.destination?.metadata?.country || 'Unknown',
       },
       scheduledDepartureTime: this.buildDateTime(dateToken, departureTime),
       scheduledArrivalTime: this.buildDateTime(dateToken, arrivalTime || departureTime),

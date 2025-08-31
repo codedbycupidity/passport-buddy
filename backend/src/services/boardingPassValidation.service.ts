@@ -1,7 +1,7 @@
 import { safeStrictDateExtraction } from '../utils/dateStrict';
 import express, { Request, Response } from 'express';
 import { validateBoardingPass } from '../utils/boardingPassValidator';
-import { parseBoardingPassWithSimpletex } from '../utils/boardingPassSimpletex';
+import { parseBoardingPassWithTesseract } from '../utils/boardingPassTesseract';
 import multer from 'multer';
 
 const upload = multer({ storage: multer.memoryStorage() });
@@ -49,8 +49,8 @@ validationRouter.post('/upload', upload.single('boardingPass'), async (req: Requ
       });
     }
 
-    // Use SimpleTex OCR with validation
-    const result = await parseBoardingPassWithSimpletex(file.buffer, file.mimetype);
+    // Use Tesseract OCR with validation
+    const result = await parseBoardingPassWithTesseract(file.buffer, file.mimetype);
 
     if (!result) {
       return res.status(422).json({
@@ -88,8 +88,8 @@ validationRouter.post('/validate/image', upload.single('image'), async (req: Req
       return res.status(400).json({ error: 'No image provided' });
     }
 
-    // Use SimpleTex OCR with validation
-    const result = await parseBoardingPassWithSimpletex(file.buffer, file.mimetype);
+    // Use Tesseract OCR with validation
+    const result = await parseBoardingPassWithTesseract(file.buffer, file.mimetype);
 
     if (!result) {
       return res.status(422).json({

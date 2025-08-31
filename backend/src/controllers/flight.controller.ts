@@ -2,14 +2,39 @@ import { strictDateExtraction } from '../utils/dateStrict';
 import { Request, Response } from 'express';
 import Flight, { IFlight, FlightStatus } from '../models/Flight';
 import { storageService } from '../services/storage.service';
-import { parseBoardingPass } from '../utils/boardingPassParser';
-import { parseBoardingPassV2, convertToLegacyFormat } from '../utils/boardingPassParserV2';
-import { parseBoardingPassWithMathpix } from '../utils/boardingPassMathpix';
 import { parseBoardingPassWithTesseract } from '../utils/boardingPassTesseract';
-import { parseBoardingPassWithSimpletex } from '../utils/boardingPassSimpletex';
-import { parseBoardingPassWithSimpletexV2 } from '../utils/boardingPassSimpletexV2';
-import { parseBoardingPassWithSimpletexV3 } from '../utils/boardingPassSimpletexV3';
+import { parseWithGoogleVision } from '../utils/boardingPassGoogleVision';
 import { calculateFlightDistance } from '../utils/distanceCalculator';
+
+// Helper function to convert parser results to legacy format
+function convertToLegacyFormat(data: any): any {
+  if (!data) return null;
+  
+  // If it's already in legacy format, return as is
+  if (data.airline && data.flightNumber && data.origin && data.destination) {
+    return data;
+  }
+  
+  // Convert from other formats
+  return {
+    airline: data.airline || data.airlineCode || null,
+    flightNumber: data.flightNumber || null,
+    origin: data.origin || { airportCode: null, city: null, country: null },
+    destination: data.destination || { airportCode: null, city: null, country: null },
+    departureTime: data.departureTime || null,
+    arrivalTime: data.arrivalTime || null,
+    passengerName: data.passengerName || data.passenger?.name || null,
+    confirmationCode: data.confirmationCode || data.pnr || null,
+    boardingInfo: data.boardingInfo || {
+      gate: data.gate || null,
+      seat: data.seat || data.seatNumber || null,
+      zone: data.zone || data.boardingGroup || null,
+      boardingTime: data.boardingTime || null
+    },
+    scheduledDepartureTime: data.scheduledDepartureTime || data.departureTime || null,
+    scheduledArrivalTime: data.scheduledArrivalTime || data.arrivalTime || null
+  };
+}
 
 export const uploadBoardingPass = async (req: Request, res: Response) => {
   try {
@@ -37,75 +62,150 @@ export const uploadBoardingPass = async (req: Request, res: Response) => {
     );
     const boardingPassUrl = uploadResult.url;
 
-    // Parse boarding pass data - Try SimpleTex first
+    // Parse boarding pass data - Try Google Vision first, fallback to Tesseract
+    const parserResults: any[] = [];
+    let visionResult = null;
+    
+    // 1. Try Google Cloud Vision first
+    if (process.env.GOOGLE_CLOUD_VISION_CREDENTIALS) {
+      try {
+        visionResult = await parseWithGoogleVision(file.buffer);
+        if (visionResult) {
+          parserResults.push({ parser: 'Google Vision', data: visionResult, confidence: 0.95 });
+        }
+      } catch (error) {
+        console.log('Google Vision error:', error instanceof Error ? error.message : error);
+      }
+    }
+    
+    // 2. If Google Vision failed, run Tesseract as fallback
+    if (!visionResult) {
+      try {
+        const tesseractResult = await parseBoardingPassWithTesseract(file.buffer, file.mimetype);
+        if (tesseractResult) {
+          const tesseractData = convertToLegacyFormat(tesseractResult);
+          parserResults.push({ parser: 'Tesseract', data: tesseractData, confidence: 0.85 });
+        }
+      } catch (error) {
+        console.log('Tesseract error:', error instanceof Error ? error.message : error);
+      }
+    }
+    
+    // Log summary of what each parser found
+    console.log('\n========== PARSER RESULTS SUMMARY ==========');
+    parserResults.forEach(result => {
+      console.log(`\n${result.parser}:`);
+      if (result.data?.origin?.airportCode && result.data?.destination?.airportCode) {
+        console.log(`  Route: ${result.data.origin.airportCode} → ${result.data.destination.airportCode}`);
+      }
+      if (result.data?.flightNumber) {
+        console.log(`  Flight: ${result.data.airline || ''}${result.data.flightNumber}`);
+      }
+      if (result.data?.passengerName) {
+        console.log(`  Passenger: ${result.data.passengerName}`);
+      }
+      if (result.data?.boardingInfo?.gate) {
+        console.log(`  Gate: ${result.data.boardingInfo.gate}`);
+      }
+      if (result.data?.boardingInfo?.seat) {
+        console.log(`  Seat: ${result.data.boardingInfo.seat}`);
+      }
+      if (result.data?.boardingInfo?.zone) {
+        console.log(`  Zone: ${result.data.boardingInfo.zone}`);
+      }
+      if (result.data?.confirmationCode) {
+        console.log(`  Confirmation: ${result.data.confirmationCode}`);
+      }
+    });
+    
+    // Combine results from all parsers, prioritizing by confidence
     let parsedData = null;
-
-    // Try SimpleTex OCR API V3 first (with strict handling)
-    if (process.env.SIMPLETEX_API_KEY && process.env.SIMPLETEX_API_KEY !== 'your-simpletex-key-here' && process.env.SIMPLETEX_API_KEY.length > 10) {
-      console.log('Trying SimpleTex OCR API V3 (strict mode)...');
-      const v3Result = await parseBoardingPassWithSimpletexV3(file.buffer, file.mimetype);
-
-      if (v3Result.success && v3Result.data) {
-        console.log('SimpleTex OCR V3 succeeded with strict validation');
-        parsedData = v3Result.data;
-
-        // If manual entry required for some fields, include in response
-        if (v3Result.requiresManualEntry) {
-          parsedData.requiresManualEntry = v3Result.requiresManualEntry;
+    if (parserResults.length > 0) {
+      // Sort by confidence
+      parserResults.sort((a, b) => b.confidence - a.confidence);
+      
+      // Use highest confidence result as base
+      parsedData = { ...parserResults[0].data };
+      console.log(`\nUsing ${parserResults[0].parser} as base (confidence: ${parserResults[0].confidence})`);
+      
+      // Merge in missing fields from other parsers
+      for (let i = 1; i < parserResults.length; i++) {
+        const result = parserResults[i].data;
+        if (!result) continue;
+        
+        // Fill in missing airport codes
+        if ((!parsedData.origin?.airportCode || parsedData.origin?.airportCode === 'UNKNOWN') && result.origin?.airportCode && result.origin?.airportCode !== 'UNKNOWN') {
+          console.log(`  Adding origin ${result.origin.airportCode} from ${parserResults[i].parser}`);
+          parsedData.origin = result.origin;
         }
-      } else if (v3Result.errors) {
-        // V3 failed with specific errors
-        console.log('SimpleTex V3 validation failed:', v3Result.errors);
-
-        // Return structured error response
-        return res.status(422).json({
-          message: 'Boarding pass parsing incomplete',
-          errors: v3Result.errors,
-          requiresManualEntry: v3Result.requiresManualEntry,
-          partialData: v3Result.data,
-        });
-      } else {
-        // Fallback to V2
-        console.log('Trying SimpleTex OCR API V2...');
-        parsedData = await parseBoardingPassWithSimpletexV2(file.buffer, file.mimetype);
-        if (parsedData) {
-          console.log('SimpleTex OCR V2 succeeded');
+        if ((!parsedData.destination?.airportCode || parsedData.destination?.airportCode === 'UNKNOWN') && result.destination?.airportCode && result.destination?.airportCode !== 'UNKNOWN') {
+          console.log(`  Adding destination ${result.destination.airportCode} from ${parserResults[i].parser}`);
+          parsedData.destination = result.destination;
+        }
+        
+        // Fill in missing flight info
+        if (!parsedData.flightNumber && result.flightNumber) {
+          console.log(`  Adding flight number ${result.flightNumber} from ${parserResults[i].parser}`);
+          parsedData.flightNumber = result.flightNumber;
+        }
+        if (!parsedData.airline && result.airline) {
+          console.log(`  Adding airline ${result.airline} from ${parserResults[i].parser}`);
+          parsedData.airline = result.airline;
+        }
+        
+        // Fill in missing boarding info
+        if (!parsedData.boardingInfo) parsedData.boardingInfo = {};
+        if (!parsedData.boardingInfo.gate && result.boardingInfo?.gate) {
+          console.log(`  Adding gate ${result.boardingInfo.gate} from ${parserResults[i].parser}`);
+          parsedData.boardingInfo.gate = result.boardingInfo.gate;
+        }
+        if (!parsedData.boardingInfo.seat && result.boardingInfo?.seat) {
+          console.log(`  Adding seat ${result.boardingInfo.seat} from ${parserResults[i].parser}`);
+          parsedData.boardingInfo.seat = result.boardingInfo.seat;
+        }
+        if (!parsedData.boardingInfo.zone && result.boardingInfo?.zone) {
+          console.log(`  Adding zone ${result.boardingInfo.zone} from ${parserResults[i].parser}`);
+          parsedData.boardingInfo.zone = result.boardingInfo.zone;
+        }
+        
+        // Fill in missing times
+        if (!parsedData.departureTime && result.departureTime) {
+          console.log(`  Adding departure time from ${parserResults[i].parser}`);
+          parsedData.departureTime = result.departureTime;
+        }
+        if (!parsedData.arrivalTime && result.arrivalTime) {
+          console.log(`  Adding arrival time from ${parserResults[i].parser}`);
+          parsedData.arrivalTime = result.arrivalTime;
+        }
+        if (!parsedData.scheduledDepartureTime && result.scheduledDepartureTime) {
+          parsedData.scheduledDepartureTime = result.scheduledDepartureTime;
+        }
+        if (!parsedData.scheduledArrivalTime && result.scheduledArrivalTime) {
+          parsedData.scheduledArrivalTime = result.scheduledArrivalTime;
+        }
+        
+        // Fill in missing passenger info
+        if (!parsedData.passengerName && result.passengerName) {
+          console.log(`  Adding passenger name ${result.passengerName} from ${parserResults[i].parser}`);
+          parsedData.passengerName = result.passengerName;
+        }
+        if (!parsedData.confirmationCode && result.confirmationCode) {
+          console.log(`  Adding confirmation code ${result.confirmationCode} from ${parserResults[i].parser}`);
+          parsedData.confirmationCode = result.confirmationCode;
         }
       }
+      
+      console.log('\n========== FINAL COMBINED RESULT ==========');
+      console.log('Route:', parsedData.origin?.airportCode, '→', parsedData.destination?.airportCode);
+      console.log('Flight:', parsedData.airline, parsedData.flightNumber);
+      console.log('Passenger:', parsedData.passengerName);
+      console.log('Gate:', parsedData.boardingInfo?.gate);
+      console.log('Seat:', parsedData.boardingInfo?.seat);
+      console.log('Zone:', parsedData.boardingInfo?.zone);
+      console.log('Confirmation:', parsedData.confirmationCode);
+      console.log('==========================================\n');
     }
-
-    // Try enhanced Tesseract OCR if SimpleTex fails
-    if (!parsedData) {
-      console.log('Trying enhanced Tesseract OCR...');
-      const tesseractResult = await parseBoardingPassWithTesseract(file.buffer, file.mimetype);
-      if (tesseractResult) {
-        console.log('Tesseract OCR succeeded');
-        parsedData = convertToLegacyFormat(tesseractResult);
-      }
-    }
-
-    if (!parsedData && process.env.MATHPIX_APP_ID && process.env.MATHPIX_APP_KEY) {
-      console.log('Trying Mathpix OCR...');
-      const mathpixResult = await parseBoardingPassWithMathpix(file.buffer, file.mimetype);
-      if (mathpixResult) {
-        console.log('Mathpix OCR succeeded');
-        parsedData = convertToLegacyFormat(mathpixResult);
-      }
-    }
-
-    if (!parsedData) {
-      // Try V2 parser
-      const v2Result = await parseBoardingPassV2(file.buffer, file.mimetype);
-      if (v2Result) {
-        console.log('V2 Parser succeeded - Gate found:', v2Result.boardingInfo.gate);
-        parsedData = convertToLegacyFormat(v2Result);
-      } else {
-        // Fallback to old parser
-        console.log('V2 Parser failed, trying legacy parser');
-        parsedData = await parseBoardingPass(file.buffer, file.mimetype);
-      }
-    }
-
+    
     if (!parsedData) {
       return res.status(400).json({ message: 'Could not parse boarding pass data' });
     }

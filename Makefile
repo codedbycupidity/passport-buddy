@@ -125,7 +125,7 @@ logs: ## Show logs from all services
 
 .PHONY: logs-backend
 logs-backend: ## Show Backend logs only
-	docker-compose -f config/docker/docker-compose.dev.yml --env-file .env.dev logs -f backend
+	docker-compose logs -f backend
 
 .PHONY: logs-frontend
 logs-frontend: ## Show Frontend logs only

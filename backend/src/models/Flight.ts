@@ -159,12 +159,12 @@ const flightSchema = new Schema<IFlight>(
     // Time info
     scheduledDepartureTime: {
       type: Date,
-      required: true,
+      required: false,
       index: true,
     },
     scheduledArrivalTime: {
       type: Date,
-      required: true,
+      required: false,
     },
     actualDepartureTime: Date,
     actualArrivalTime: Date,
