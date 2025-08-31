@@ -1,0 +1,25 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY backend/package*.json ./
+
+# Install dependencies including dev dependencies
+RUN npm install
+
+# Install typescript and nodemon globally as fallback
+RUN npm install -g typescript nodemon ts-node
+
+# Copy source code
+COPY backend/ ./
+
+# Copy airports data from frontend
+COPY frontend/src/data/airports.json /app/frontend/src/data/airports.json
+
+# Create types directory and copy type declarations
+RUN mkdir -p /app/src/types
+COPY backend/src/types/airline-codes.d.ts /app/src/types/airline-codes.d.ts
+
+EXPOSE 3000
+CMD ["npm", "run", "dev"]

@@ -1,0 +1,104 @@
+digraph PassportBuddy {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Arial"];
+    edge [fontname="Arial"];
+    
+    // Frontend Layer
+    subgraph cluster_frontend {
+        label="Frontend Layer";
+        style=filled;
+        color=lightgrey;
+        
+        flutter [label="Flutter Mobile\n(iOS/Android)", fillcolor=lightblue];
+        react [label="React Frontend\n(TypeScript + Vite)", fillcolor=lightblue];
+        pwa [label="PWA\n(Progressive Web App)", fillcolor=lightblue];
+    }
+    
+    // API Gateway Layer
+    subgraph cluster_api {
+        label="API Gateway";
+        style=filled;
+        color=lightgrey;
+        
+        graphql [label="GraphQL API\n(Apollo Server)", fillcolor=lightgreen];
+        rest [label="REST API\n(Express.js)", fillcolor=lightgreen];
+        socketio [label="Socket.io\n(Real-time Events)", fillcolor=lightgreen];
+    }
+    
+    // Application Layer
+    subgraph cluster_backend {
+        label="Backend Services";
+        style=filled;
+        color=lightgrey;
+        
+        auth [label="Auth Service\n(JWT + Refresh)", fillcolor=lightyellow];
+        flight [label="Flight Service\n(OCR + Tracking)", fillcolor=lightyellow];
+        social [label="Social Service\n(Posts + Timeline)", fillcolor=lightyellow];
+        notification [label="Notification Service\n(Push + Email)", fillcolor=lightyellow];
+        media [label="Media Service\n(Upload + Processing)", fillcolor=lightyellow];
+    }
+    
+    // Data Layer
+    subgraph cluster_data {
+        label="Data Layer";
+        style=filled;
+        color=lightgrey;
+        
+        mongodb [label="MongoDB\n(Primary Database)", fillcolor=lightcoral];
+        redis [label="Redis\n(Cache + Sessions)", fillcolor=lightcoral];
+        s3 [label="DigitalOcean Spaces\n(Object Storage)", fillcolor=lightcoral];
+    }
+    
+    // External Services
+    subgraph cluster_external {
+        label="External Services";
+        style=filled;
+        color=lightgrey;
+        
+        ocr [label="OCR Services\n(Tesseract/Mathpix)", fillcolor=lavender];
+        email [label="Email Service\n(SMTP/Resend)", fillcolor=lavender];
+        maps [label="Maps API\n(Location Services)", fillcolor=lavender];
+        flightapi [label="Flight APIs\n(Status Tracking)", fillcolor=lavender];
+    }
+    
+    // Connections - Frontend to API
+    flutter -> graphql [label="Apollo Client"];
+    react -> graphql [label="Apollo Client"];
+    react -> rest [label="Axios/Fetch"];
+    pwa -> graphql;
+    flutter -> socketio [label="WebSocket"];
+    react -> socketio [label="WebSocket"];
+    
+    // API to Services
+    graphql -> auth;
+    graphql -> flight;
+    graphql -> social;
+    graphql -> notification;
+    graphql -> media;
+    
+    rest -> auth;
+    rest -> flight;
+    rest -> media;
+    
+    socketio -> notification;
+    socketio -> social;
+    
+    // Services to Data
+    auth -> mongodb;
+    auth -> redis;
+    flight -> mongodb;
+    social -> mongodb;
+    social -> redis;
+    notification -> mongodb;
+    media -> s3;
+    media -> mongodb;
+    
+    // Services to External
+    flight -> ocr;
+    flight -> flightapi;
+    notification -> email;
+    social -> maps;
+    
+    // Infrastructure Notes
+    infra [shape=note, label="Infrastructure:\n- Docker Containers\n- GitHub Actions CI/CD\n- Environment: Dev/Staging/Prod\n- Monitoring: Health Checks\n- Security: HTTPS, CORS, Rate Limiting", fillcolor=lightyellow];
+}

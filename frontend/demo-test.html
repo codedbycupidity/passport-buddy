@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Mode Isolation Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .test-button {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background: #7c3aed;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+        .result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .result.info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .demo-link {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #4b5563;
+            transition: all 0.2s;
+        }
+        .demo-link:hover {
+            background: #e5e7eb;
+            transform: translateY(-1px);
+        }
+        .demo-link.primary {
+            background: #8b5cf6;
+            color: white;
+        }
+        .demo-link.primary:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎭 Demo Mode Isolation Test</h1>
+    
+    <div class="test-card">
+        <div class="test-header">Quick Links</div>
+        <a href="http://localhost:3001" class="demo-link">Normal Mode (Dev/Prod)</a>
+        <a href="http://localhost:3001?demo=true" class="demo-link primary">Demo Mode</a>
+    </div>
+
+    <div class="test-card">
+        <div class="test-header">Test 1: Check Current Mode</div>
+        <button class="test-button" onclick="checkCurrentMode()">Check Mode</button>
+        <div id="mode-result" class="result info" style="display:none;"></div>
+    </div>
+
+    <div class="test-card">
+        <div class="test-header">Test 2: API Call Test</div>
+        <button class="test-button" onclick="testApiCall()">Test API Call</button>
+        <div id="api-result" class="result info" style="display:none;"></div>
+    </div>
+
+    <div class="test-card">
+        <div class="test-header">Test 3: Login Test</div>
+        <button class="test-button" onclick="testLogin('demo@passport-buddy.com', 'demo123')">Test Demo Login</button>
+        <button class="test-button" onclick="testLogin('test@example.com', 'password')">Test Random Login</button>
+        <div id="login-result" class="result info" style="display:none;"></div>
+    </div>
+
+    <script>
+        function showResult(elementId, content, type = 'info') {
+            const element = document.getElementById(elementId);
+            element.textContent = content;
+            element.className = `result ${type}`;
+            element.style.display = 'block';
+        }
+
+        function checkCurrentMode() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isDemoInUrl = urlParams.get('demo') === 'true';
+            const isDemoInStorage = localStorage.getItem('demoMode') === 'true';
+            
+            let result = `Current URL: ${window.location.href}\n`;
+            result += `Demo in URL: ${isDemoInUrl}\n`;
+            result += `Demo in localStorage: ${isDemoInStorage}\n`;
+            result += `\nExpected Behavior:\n`;
+            
+            if (isDemoInUrl) {
+                result += '✅ Demo mode should be ACTIVE\n';
+                result += '✅ API calls should be mocked by MSW\n';
+                result += '✅ Demo notification should appear';
+            } else {
+                result += '❌ Demo mode should be INACTIVE\n';
+                result += '❌ API calls should go to real backend\n';
+                result += '❌ No demo notification should appear';
+            }
+            
+            showResult('mode-result', result, isDemoInUrl ? 'success' : 'info');
+        }
+
+        async function testApiCall() {
+            try {
+                const response = await fetch('/api/auth/verify');
+                const headers = {};
+                response.headers.forEach((value, key) => {
+                    headers[key] = value;
+                });
+                
+                let result = `API Call to /api/auth/verify\n`;
+                result += `Status: ${response.status}\n`;
+                result += `Headers:\n${JSON.stringify(headers, null, 2)}\n\n`;
+                
+                if (headers['x-powered-by'] === 'msw') {
+                    result += '✅ Response is MOCKED by MSW (Demo Mode Active)';
+                    showResult('api-result', result, 'success');
+                } else {
+                    result += '❌ Response is from REAL backend (Demo Mode Inactive)';
+                    showResult('api-result', result, 'error');
+                }
+            } catch (error) {
+                showResult('api-result', `Error: ${error.message}\nThis likely means no backend is running (expected in normal mode)`, 'error');
+            }
+        }
+
+        async function testLogin(email, password) {
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                let result = `Login Test\n`;
+                result += `Email: ${email}\n`;
+                result += `Status: ${response.status}\n`;
+                result += `Response:\n${JSON.stringify(data, null, 2)}\n\n`;
+                
+                if (response.headers.get('x-powered-by') === 'msw') {
+                    result += '✅ Login handled by MSW (Demo Mode)';
+                    showResult('login-result', result, 'success');
+                } else {
+                    result += '❌ Login handled by real backend';
+                    showResult('login-result', result, response.ok ? 'success' : 'error');
+                }
+            } catch (error) {
+                showResult('login-result', `Error: ${error.message}\nThis likely means no backend is running`, 'error');
+            }
+        }
+
+        // Check mode on page load
+        window.onload = () => {
+            checkCurrentMode();
+        };
+    </script>
+</body>
+</html>
