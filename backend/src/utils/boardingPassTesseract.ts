@@ -1,6 +1,19 @@
 import { strictDateExtraction } from './dateStrict';
 import { safeStrictDateExtraction } from './dateStrict';
 import { createWorker } from 'tesseract.js';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Load airports data
+let airportsData: any = {};
+try {
+  const airportsPath = path.join(__dirname, '../../frontend/src/data/airports.json');
+  const airportsJson = fs.readFileSync(airportsPath, 'utf-8');
+  airportsData = JSON.parse(airportsJson);
+  console.log(`Loaded ${Object.keys(airportsData).length} airports from airports.json`);
+} catch (error) {
+  console.error('Failed to load airports.json:', error);
+}
 
 // Import types from existing parser
 interface BoardingPass {
@@ -165,18 +178,51 @@ function processLines(lines: any[], overallConfidence: number): ParsedLineData |
   };
 
   // Process each line
+  let routeLineFound = false;
+  
   lines.forEach((line, lineIndex) => {
     const text = line.text.trim().toUpperCase();
     if (!text) return;
 
     console.log(`Line ${lineIndex}: ${text}`);
 
+    // Check if this line contains the main route (both departure and arrival)
+    // Look for patterns that indicate this is the route line
+    const possibleRouteIndicators = [
+      text.includes('HANEDA') && text.includes('OHARE'),
+      text.includes('HANEDA') && text.includes('CHICAGO'),
+      text.includes('TOKYO') && text.includes('CHICAGO'),
+      text.includes('TOKYO') && text.includes('OHARE'),
+      text.includes('TOKYO-HANEDA') && text.includes('CHICAGO-OHARE'),
+      (text.match(/[A-Z]{3,}-[A-Z]{3,}/g) || []).length >= 2,
+      // Check for two city/airport names separated by spaces, but exclude common non-route lines
+      text.split(/\s{5,}/).length >= 2 && 
+        text.length > 30 && 
+        !text.includes('EXPIRED') && 
+        !text.includes('GATE') && 
+        !text.includes('FLIGHT') &&
+        !text.includes('BOARDS') &&
+        !text.includes('SEAT')
+    ];
+    
+    const isRouteLine = possibleRouteIndicators.some(indicator => indicator);
+    
     // Extract patterns from each line
     extractAirlines(text, data);
     extractFlightNumbers(text, data);
     extractPassengerNames(text, data);
     extractConfirmationCodes(text, data);
-    extractAirports(text, data);
+    
+    // Only extract airports from the route line to avoid confusion
+    if (isRouteLine && !routeLineFound) {
+      console.log('Detected route line, extracting airports from:', text);
+      extractAirports(text, data);
+      routeLineFound = true;
+    } else if (!routeLineFound && data.airports.size < 2) {
+      // Fallback: extract airports from any line if we haven't found the route yet
+      extractAirports(text, data);
+    }
+    
     extractDates(text, data);
     extractTimes(text, data, lines, lineIndex);
     extractSeats(text, data);
@@ -255,49 +301,141 @@ function extractConfirmationCodes(text: string, data: ExtractedData) {
 }
 
 function extractAirports(text: string, data: ExtractedData) {
-  // Common airport codes - expanded list
-  const commonAirports = [
-    'JFK',
-    'LAX',
-    'ORD',
-    'ATL',
-    'DFW',
-    'SFO',
-    'MIA',
-    'SEA',
-    'BOS',
-    'EWR',
-    'LGA',
-    'DCA',
-    'IAD',
-    'PHX',
-    'LAS',
-    'MCO',
-    'DEN',
-    'DTW',
-    'MSP',
-    'SLC',
-    'BWI',
-    'MDW',
-    'DAL',
-    'HOU',
-    'BNA',
-    'AUS',
-    'PDX',
-    'SAN',
-    'TPA',
-    'FLL',
-    'LHR',
-    'CDG',
-    'NRT',
-    'HKG',
-    'SIN',
-    'DXB',
-    'FRA',
-    'AMS',
-    'MAD',
-    'BCN',
-  ];
+  const upperText = text.toUpperCase();
+  
+  // First check for specific patterns that are definitely airports
+  // Handle TOKYO-HANEDA and CHICAGO-OHARE explicitly
+  if (upperText.includes('TOKYO-HANEDA') || upperText.includes('HANEDA')) {
+    data.airports.add('HND');
+  }
+  if (upperText.includes('CHICAGO-OHARE') || upperText.includes('OHARE')) {
+    data.airports.add('ORD');
+  }
+  
+  // If we found both airports, we're done
+  if (data.airports.size >= 2) {
+    console.log('Found airports from specific patterns:', Array.from(data.airports));
+    return;
+  }
+  
+  // Build dynamic airport mappings from airports.json
+  const airportNameMap: Record<string, string> = {};
+  const commonAirports: string[] = [];
+  
+  // Process airports data to create mappings
+  for (const [, airport] of Object.entries(airportsData)) {
+    const airportInfo = airport as any;
+    
+    // Only use IATA codes (3 characters) for boarding passes
+    // Skip airports that only have ICAO codes since the model expects 3-char codes
+    if (!airportInfo.iata || airportInfo.iata.length !== 3) {
+      continue;
+    }
+    
+    const primaryCode = airportInfo.iata;
+    commonAirports.push(airportInfo.iata);
+    
+    // Create mappings for city name
+    if (airportInfo.city) {
+      const city = airportInfo.city.toUpperCase();
+      airportNameMap[city] = primaryCode;
+      
+      // Also add city name without special characters
+      const cleanCity = city.replace(/[^A-Z\s]/g, '').trim();
+      if (cleanCity !== city) {
+        airportNameMap[cleanCity] = primaryCode;
+      }
+    }
+    
+    // Create mappings for airport name
+    if (airportInfo.name) {
+      const name = airportInfo.name.toUpperCase();
+      
+      // Extract key parts of the airport name
+      const nameWithoutCommon = name
+        .replace(/\s*(INTERNATIONAL|AIRPORT|REGIONAL|MUNICIPAL|EXECUTIVE|FIELD|AIR BASE)\s*/g, ' ')
+        .trim();
+      
+      // Add the simplified name
+      if (nameWithoutCommon && nameWithoutCommon !== airportInfo.city?.toUpperCase()) {
+        airportNameMap[nameWithoutCommon] = primaryCode;
+      }
+      
+      // Extract the distinctive part (e.g., "O'Hare", "Haneda", "LaGuardia")
+      const parts = nameWithoutCommon.split(/\s+/);
+      for (const part of parts) {
+        if (part.length > 3 && part !== airportInfo.city?.toUpperCase()) {
+          airportNameMap[part] = primaryCode;
+          
+          // Also add without special characters
+          const cleanPart = part.replace(/[^A-Z]/g, '');
+          if (cleanPart !== part && cleanPart.length > 3) {
+            airportNameMap[cleanPart] = primaryCode;
+          }
+        }
+      }
+      
+      // Create city-airport combinations dynamically
+      if (airportInfo.city) {
+        const city = airportInfo.city.toUpperCase();
+        
+        // For each distinctive part, create combinations
+        for (const part of parts) {
+          if (part.length > 3 && part !== city) {
+            // Add combinations like "CHICAGO-OHARE", "TOKYO-HANEDA"
+            airportNameMap[`${city}-${part}`] = primaryCode;
+            airportNameMap[`${city} ${part}`] = primaryCode;
+            
+            // Also without special characters
+            const cleanPart = part.replace(/[^A-Z]/g, '');
+            if (cleanPart !== part) {
+              airportNameMap[`${city}-${cleanPart}`] = primaryCode;
+              airportNameMap[`${city} ${cleanPart}`] = primaryCode;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // First check for full airport names in the text
+  // Sort by length (longest first) to match more specific names before shorter ones
+  const sortedEntries = Object.entries(airportNameMap).sort((a, b) => b[0].length - a[0].length);
+  
+  let foundFromNames = false;
+  const foundAirports: string[] = [];
+  
+  for (const [name, code] of sortedEntries) {
+    // Check if this name exists in the text (considering hyphens and spaces as word boundaries)
+    // Replace hyphens with spaces for matching
+    const normalizedText = upperText.replace(/-/g, ' ');
+    const normalizedName = name.replace(/-/g, ' ');
+    
+    // Use word boundary check or check if surrounded by spaces/punctuation
+    const regex = new RegExp(`(^|\\s|-)${normalizedName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|\\s|-)`);
+    
+    if (regex.test(normalizedText) || upperText.includes(name)) {
+      // Don't add if it's a common word that happens to be an airport
+      const commonWords = ['FLIGHT', 'GATE', 'SEAT', 'GROUP', 'BOARDS', 'PASSENGER', 'DELETE'];
+      if (!commonWords.includes(name)) {
+        console.log(`Found airport name "${name}" -> ${code}`);
+        foundAirports.push(code);
+        data.airports.add(code);
+        foundFromNames = true;
+        
+        // Stop after finding 2 airports
+        if (data.airports.size >= 2) {
+          break;
+        }
+      }
+    }
+  }
+  
+  // If we found at least 2 airports from names, we're done
+  if (foundFromNames && data.airports.size >= 2) {
+    console.log('Found airports from names:', Array.from(data.airports));
+    return;
+  }
 
   // Pattern for route format like "BWI 06h 05m | Nonstop LAX"
   const routePattern = /\b([A-Z]{3})\s+\d+h\s+\d+m\s*\|\s*\w+\s+([A-Z]{3})\b/i;

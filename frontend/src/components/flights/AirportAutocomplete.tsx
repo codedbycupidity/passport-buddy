@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import airportsData from '../../data/airports.json';
+import airportsDataRaw from '../../data/airports.json';
 
 interface Airport {
   code: string;
@@ -11,6 +11,17 @@ interface Airport {
   lat?: number;
   lng?: number;
 }
+
+// Convert the airports object to an array format expected by the component
+const airportsData: Airport[] = Object.entries(airportsDataRaw).map(([key, airport]: [string, any]) => ({
+  code: airport.iata || airport.icao || key,
+  name: airport.name || '',
+  city: airport.city || '',
+  country: airport.country || '',
+  state: airport.state || '',
+  lat: airport.lat,
+  lng: airport.lon
+})).filter(airport => airport.code && airport.city); // Filter out airports without codes or cities
 
 interface AirportAutocompleteProps {
   label: string;
@@ -37,7 +48,7 @@ const AirportAutocomplete: React.FC<AirportAutocompleteProps> = ({
   useEffect(() => {
     if (value) {
       // Find airport in local data
-      const airport = (airportsData as Airport[]).find(a => a.code === value);
+      const airport = airportsData.find(a => a.code === value);
       if (airport) {
         setQuery(`${airport.code} - ${airport.city}`);
       } else {
@@ -68,10 +79,9 @@ const AirportAutocomplete: React.FC<AirportAutocompleteProps> = ({
     if (!searchQuery || searchQuery.length < 2) return [];
 
     const query = searchQuery.toLowerCase();
-    const airports = airportsData as Airport[];
 
     // Search by code, name, or city
-    const results = airports.filter(
+    const results = airportsData.filter(
       airport =>
         airport.code.toLowerCase().includes(query) ||
         airport.name.toLowerCase().includes(query) ||

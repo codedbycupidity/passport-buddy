@@ -37,6 +37,48 @@ validationRouter.post('/validate/text', (req: Request, res: Response) => {
   }
 });
 
+// Upload endpoint (for frontend compatibility)
+validationRouter.post('/upload', upload.single('boardingPass'), async (req: Request, res: Response) => {
+  try {
+    const file = req.file;
+
+    if (!file) {
+      return res.status(400).json({ 
+        success: false,
+        error: 'No boarding pass image provided' 
+      });
+    }
+
+    // Use SimpleTex OCR with validation
+    const result = await parseBoardingPassWithSimpletex(file.buffer, file.mimetype);
+
+    if (!result) {
+      return res.status(422).json({
+        success: false,
+        error: 'Could not extract boarding pass data',
+        suggestions: [
+          'Ensure the image is clear and well-lit',
+          'Avoid glare and shadows',
+          'Keep the boarding pass flat',
+          'Capture the entire boarding pass',
+        ],
+      });
+    }
+
+    res.json({
+      success: true,
+      data: result,
+      processingTime: Date.now(),
+    });
+  } catch (error) {
+    console.error('Boarding pass upload error:', error);
+    res.status(500).json({ 
+      success: false,
+      error: 'Failed to process boarding pass' 
+    });
+  }
+});
+
 // Validation endpoint for images
 validationRouter.post('/validate/image', upload.single('image'), async (req: Request, res: Response) => {
   try {
