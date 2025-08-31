@@ -7,14 +7,11 @@ export function useFlightStats(userId?: string) {
   const [error, setError] = useState<string | null>(null);
 
   const fetchStats = async () => {
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
-
+    // For now, always fetch stats for authenticated user (don't pass userId)
+    // The backend has issues with userId parameter
     try {
       setLoading(true);
-      const data = await flightService.getFlightStats(userId);
+      const data = await flightService.getFlightStats();
       setStats(data);
       setError(null);
     } catch (err) {

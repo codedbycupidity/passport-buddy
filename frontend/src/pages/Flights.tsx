@@ -37,8 +37,8 @@ export const Flights: React.FC = () => {
 
   const loadStats = async () => {
     try {
-      const currentYear = new Date().getFullYear();
-      const statsData = await flightService.getFlightStats(currentYear);
+      // Temporarily remove year filter as it's causing issues
+      const statsData = await flightService.getFlightStats();
       setStats(statsData);
     } catch (error) {
       console.error('Error loading stats:', error);
@@ -161,19 +161,19 @@ export const Flights: React.FC = () => {
       {stats && (
         <div className='flight-stats'>
           <div className='stat-card'>
-            <div className='stat-value'>{stats.totalFlights}</div>
+            <div className='stat-value'>{stats.summary?.totalFlights || 0}</div>
             <div className='stat-label'>Total Flights</div>
           </div>
           <div className='stat-card'>
-            <div className='stat-value'>{stats.totalDistance.toLocaleString()}</div>
+            <div className='stat-value'>{(stats.summary?.totalDistance || 0).toLocaleString()}</div>
             <div className='stat-label'>Miles Traveled</div>
           </div>
           <div className='stat-card'>
-            <div className='stat-value'>{(stats.totalPoints || 0).toLocaleString()}</div>
+            <div className='stat-value'>{(stats.summary?.totalPoints || 0).toLocaleString()}</div>
             <div className='stat-label'>Points Earned</div>
           </div>
           <div className='stat-card'>
-            <div className='stat-value'>{stats.uniqueDestinations || 0}</div>
+            <div className='stat-value'>{stats.summary?.uniqueDestinations || 0}</div>
             <div className='stat-label'>Cities Visited</div>
           </div>
         </div>

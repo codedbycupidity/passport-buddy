@@ -230,17 +230,18 @@ router.post(
   '/login',
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     console.log('Login request body:', req.body);
-    const { email, username, password } = req.body;
+    const { email, username, emailOrUsername, password } = req.body;
 
-    // Allow login with either email or username
-    const loginField = email || username;
+    // Allow login with either email, username, or emailOrUsername field
+    const loginField = email || username || emailOrUsername;
 
     if (!loginField || !password) {
       return next(new AppError('Please provide email/username and password', 400));
     }
 
     // Check if loginField is email or username
-    const query = email ? { email: email.toLowerCase() } : { username: username.toLowerCase() };
+    const isEmail = loginField.includes('@');
+    const query = isEmail ? { email: loginField.toLowerCase() } : { username: loginField.toLowerCase() };
 
     const user = await User.findOne(query).select('+password +otp +otpExpires');
 

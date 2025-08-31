@@ -1,20 +1,48 @@
 import { safeStrictDateExtraction } from './dateStrict';
-// Cache for airport data to avoid repeated API calls
-const airportCache: Map<string, { lat: number; lng: number; city?: string; state?: string }> = new Map();
+import * as fs from 'fs';
+import * as path from 'path';
 
-// Pre-populate with some common airports for offline fallback
-const fallbackAirports: Record<string, { lat: number; lng: number }> = {
-  JFK: { lat: 40.6413, lng: -73.7781 },
-  LAX: { lat: 33.9425, lng: -118.4081 },
-  ORD: { lat: 41.9742, lng: -87.9073 },
-  DFW: { lat: 32.8975, lng: -97.0403 },
-  ATL: { lat: 33.6407, lng: -84.4277 },
-  SFO: { lat: 37.6213, lng: -122.379 },
-  MIA: { lat: 25.7959, lng: -80.287 },
-  SEA: { lat: 47.4502, lng: -122.3088 },
-  BOS: { lat: 42.3656, lng: -71.0096 },
-  LAS: { lat: 36.084, lng: -115.1537 },
-};
+// Cache for airport data to avoid repeated API calls
+const airportCache: Map<string, { lat: number; lng: number; city?: string; state?: string; country?: string }> = new Map();
+
+// Load airports data from JSON file
+let airportsData: any = {};
+try {
+  // Try backend location first (for Docker), then frontend location
+  let airportsPath = path.join(__dirname, '../data/airports.json');
+  if (!fs.existsSync(airportsPath)) {
+    airportsPath = path.join(__dirname, '../../../frontend/src/data/airports.json');
+  }
+  const airportsJson = fs.readFileSync(airportsPath, 'utf-8');
+  airportsData = JSON.parse(airportsJson);
+  console.log(`Loaded ${Object.keys(airportsData).length} airports for distance calculation`);
+  
+  // Pre-populate cache with all airports from the JSON
+  for (const [code, airport] of Object.entries(airportsData)) {
+    const airportInfo = airport as any;
+    if (airportInfo.lat && airportInfo.lon) {
+      airportCache.set(airportInfo.iata || code, {
+        lat: airportInfo.lat,
+        lng: airportInfo.lon,
+        city: airportInfo.city,
+        state: airportInfo.state,
+        country: airportInfo.country
+      });
+      // Also cache by ICAO code if available
+      if (airportInfo.icao && airportInfo.icao !== airportInfo.iata) {
+        airportCache.set(airportInfo.icao, {
+          lat: airportInfo.lat,
+          lng: airportInfo.lon,
+          city: airportInfo.city,
+          state: airportInfo.state,
+          country: airportInfo.country
+        });
+      }
+    }
+  }
+} catch (error) {
+  console.error('Failed to load airports.json for distance calculation:', error);
+}
 
 /**
  * Convert DMS (Degrees Minutes Seconds) to decimal degrees
@@ -45,7 +73,7 @@ function dmsToDecimal(dms: string): number {
  */
 async function fetchAirportData(
   airportCode: string
-): Promise<{ lat: number; lng: number; city?: string; state?: string } | null> {
+): Promise<{ lat: number; lng: number; city?: string; state?: string; country?: string } | null> {
   try {
     const response = await fetch(`https://api.aviationapi.com/v1/airports?apt=${airportCode}`);
     if (!response.ok) {
@@ -69,6 +97,7 @@ async function fetchAirportData(
       lng,
       city: data.city,
       state: data.state_full,
+      country: data.country || 'USA'
     };
   } catch (error) {
     console.error(`Error fetching airport data for ${airportCode}:`, error);
@@ -77,28 +106,23 @@ async function fetchAirportData(
 }
 
 /**
- * Get airport coordinates, using cache first, then API, then fallback
+ * Get airport coordinates, using cache first, then API as fallback
  */
 async function getAirportCoordinates(airportCode: string): Promise<{ lat: number; lng: number } | null> {
-  // Check cache first
+  // Check cache first (which includes all airports from airports.json)
   const cached = airportCache.get(airportCode);
   if (cached) {
     return cached;
   }
 
-  // Try to fetch from API
+  // Try to fetch from API as fallback
   const apiData = await fetchAirportData(airportCode);
   if (apiData) {
     airportCache.set(airportCode, apiData);
     return apiData;
   }
 
-  // Use fallback data if available
-  const fallback = fallbackAirports[airportCode];
-  if (fallback) {
-    return fallback;
-  }
-
+  console.warn(`Could not find coordinates for airport: ${airportCode}`);
   return null;
 }
 
@@ -182,52 +206,19 @@ function estimateDistance(origin: string, destination: string): number {
 export async function getAirportInfo(
   code: string
 ): Promise<{ city?: string; state?: string; country?: string; lat?: number; lng?: number } | null> {
-  // First check cache
+  // First check cache (which includes all airports from airports.json)
   const cached = airportCache.get(code);
   if (cached) {
-    return { ...cached, country: 'USA' }; // Most airports in our system are USA
+    return cached;
   }
 
-  // Try to fetch from API
+  // Try to fetch from API as fallback
   const apiData = await fetchAirportData(code);
   if (apiData) {
-    return { ...apiData, country: 'USA' };
+    airportCache.set(code, { ...apiData, country: apiData.country || 'USA' });
+    return { ...apiData, country: apiData.country || 'USA' };
   }
 
-  // Use fallback if available
-  const fallbackInfo: Record<string, { city: string; state?: string }> = {
-    JFK: { city: 'New York', state: 'New York' },
-    LAX: { city: 'Los Angeles', state: 'California' },
-    ORD: { city: 'Chicago', state: 'Illinois' },
-    DFW: { city: 'Dallas', state: 'Texas' },
-    ATL: { city: 'Atlanta', state: 'Georgia' },
-    SFO: { city: 'San Francisco', state: 'California' },
-    MIA: { city: 'Miami', state: 'Florida' },
-    SEA: { city: 'Seattle', state: 'Washington' },
-    BOS: { city: 'Boston', state: 'Massachusetts' },
-    LAS: { city: 'Las Vegas', state: 'Nevada' },
-    MCO: { city: 'Orlando', state: 'Florida' },
-    DEN: { city: 'Denver', state: 'Colorado' },
-    PHX: { city: 'Phoenix', state: 'Arizona' },
-    IAH: { city: 'Houston', state: 'Texas' },
-    MSP: { city: 'Minneapolis', state: 'Minnesota' },
-    DTW: { city: 'Detroit', state: 'Michigan' },
-    PHL: { city: 'Philadelphia', state: 'Pennsylvania' },
-    CLT: { city: 'Charlotte', state: 'North Carolina' },
-    EWR: { city: 'Newark', state: 'New Jersey' },
-    LGA: { city: 'New York', state: 'New York' },
-  };
-
-  const info = fallbackInfo[code];
-  const coords = fallbackAirports[code];
-
-  if (info || coords) {
-    return {
-      ...info,
-      ...coords,
-      country: 'USA',
-    };
-  }
-
+  console.warn(`Could not find airport info for: ${code}`);
   return null;
 }

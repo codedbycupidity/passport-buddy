@@ -266,6 +266,8 @@ export const getFlightStats = async (req: Request, res: Response) => {
           totalPoints: { $sum: '$points' },
           airlines: { $addToSet: '$airline' },
           destinations: { $addToSet: '$destination.city' },
+          originCountries: { $addToSet: '$origin.country' },
+          destCountries: { $addToSet: '$destination.country' },
         },
       },
       {
@@ -276,6 +278,11 @@ export const getFlightStats = async (req: Request, res: Response) => {
           totalPoints: 1,
           uniqueAirlines: { $size: '$airlines' },
           uniqueDestinations: { $size: '$destinations' },
+          uniqueCountries: { 
+            $size: { 
+              $setUnion: ['$originCountries', '$destCountries'] 
+            } 
+          },
           airlines: 1,
           destinations: 1,
         },
@@ -320,6 +327,7 @@ export const getFlightStats = async (req: Request, res: Response) => {
         totalPoints: 0,
         uniqueAirlines: 0,
         uniqueDestinations: 0,
+        uniqueCountries: 0,
       },
       flightsByMonth,
       topRoutes,

@@ -3,14 +3,39 @@ import { Flight } from '../../../shared/src';
 export type { Flight };
 
 export interface FlightStats {
-  totalFlights: number;
-  totalDistance: number;
-  totalFlightTime: number;
-  uniqueAirports: number;
-  uniqueCountries: number;
-  uniqueAirlines: number;
-  carbonEmissions: number;
-  averageFlightDistance: number;
+  summary?: {
+    totalFlights: number;
+    totalDistance: number;
+    totalPoints: number;
+    uniqueAirlines: number;
+    uniqueDestinations: number;
+    uniqueCountries?: number;
+    airlines?: string[];
+    destinations?: string[];
+  };
+  flightsByMonth?: Array<{
+    _id: number;
+    count: number;
+    distance: number;
+    points: number;
+  }>;
+  topRoutes?: Array<{
+    _id: {
+      origin: string;
+      destination: string;
+    };
+    count: number;
+    totalDistance: number;
+  }>;
+  // Legacy flat structure for backward compatibility
+  totalFlights?: number;
+  totalDistance?: number;
+  totalFlightTime?: number;
+  uniqueAirports?: number;
+  uniqueCountries?: number;
+  uniqueAirlines?: number;
+  carbonEmissions?: number;
+  averageFlightDistance?: number;
   totalPoints?: number;
   uniqueDestinations?: number;
   longestFlight?: Flight;
@@ -27,10 +52,6 @@ export interface FlightStats {
     name: string;
     flights: number;
   };
-  flightsByMonth: Array<{
-    month: string;
-    count: number;
-  }>;
 }
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
@@ -115,21 +136,29 @@ export class FlightService {
 
     const response = await makeRequest(endpoint);
 
-    // Map the backend response structure to our FlightStats interface
-    const summary = response.summary || {};
-
+    // Return the full backend response structure
     return {
-      totalFlights: summary.totalFlights || 0,
-      totalDistance: summary.totalDistance || 0,
-      totalPoints: summary.totalPoints || 0,
-      uniqueDestinations: summary.uniqueDestinations || 0,
-      uniqueAirlines: summary.uniqueAirlines || 0,
-      totalFlightTime: 0, // Not provided by backend
-      uniqueAirports: summary.uniqueDestinations || 0, // Using destinations as proxy
-      uniqueCountries: summary.uniqueDestinations || 0, // Using destinations as proxy
-      carbonEmissions: 0, // Not provided by backend
-      averageFlightDistance: summary.totalFlights > 0 ? Math.round(summary.totalDistance / summary.totalFlights) : 0,
+      summary: response.summary || {
+        totalFlights: 0,
+        totalDistance: 0,
+        totalPoints: 0,
+        uniqueAirlines: 0,
+        uniqueDestinations: 0,
+        uniqueCountries: 0
+      },
       flightsByMonth: response.flightsByMonth || [],
+      topRoutes: response.topRoutes || [],
+      // Also provide legacy flat structure for backward compatibility
+      totalFlights: response.summary?.totalFlights || 0,
+      totalDistance: response.summary?.totalDistance || 0,
+      totalPoints: response.summary?.totalPoints || 0,
+      uniqueDestinations: response.summary?.uniqueDestinations || 0,
+      uniqueAirlines: response.summary?.uniqueAirlines || 0,
+      totalFlightTime: 0, // Not provided by backend
+      uniqueAirports: response.summary?.uniqueDestinations || 0, // Using destinations as proxy
+      uniqueCountries: response.summary?.uniqueCountries || 0, // Now properly from backend
+      carbonEmissions: 0, // Not provided by backend
+      averageFlightDistance: response.summary?.totalFlights > 0 ? Math.round(response.summary.totalDistance / response.summary.totalFlights) : 0,
     };
   }
 

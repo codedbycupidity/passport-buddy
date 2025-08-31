@@ -41,6 +41,7 @@ export const FlightManualEntry: React.FC<FlightManualEntryProps> = ({ isOpen, on
         ...prev.origin,
         airportCode: airport.code,
         city: airport.city,
+        country: airport.country,
       },
     }));
   };
@@ -52,6 +53,7 @@ export const FlightManualEntry: React.FC<FlightManualEntryProps> = ({ isOpen, on
         ...prev.destination,
         airportCode: airport.code,
         city: airport.city,
+        country: airport.country,
       },
     }));
   };

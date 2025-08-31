@@ -46,7 +46,7 @@ export const Profile: React.FC = () => {
 
   const isOwnProfile = !username || username === currentUser?.username;
   const user = isOwnProfile ? currentUser : profileUser;
-  const { stats, loading: statsLoading } = useFlightStats(user?.id);
+  const { stats, loading: statsLoading } = useFlightStats(user?._id || user?.id);
   const {
     selectedImage,
     previewUrl,
