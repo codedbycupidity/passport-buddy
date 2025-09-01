@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './PostCard.css';
 import { postService } from '../../services/post.service';
 import { bookmarkService } from '../../services/bookmark.service';
-import { ConfirmDialog } from '../common/ConfirmDialog';
 import { VideoPlayer } from '../video/VideoPlayer';
 
 interface PostImage {
@@ -388,11 +387,50 @@ function PostCardComponent({
                 <circle cx='19' cy='12' r='2' fill='currentColor' />
               </svg>
             </button>
-            {showPostMenu && (
+            {showPostMenu && !showDeleteConfirm && (
               <div className='post-dropdown'>
                 <button className='post-dropdown-item' onClick={handleDeletePost}>
                   Delete Post
                 </button>
+              </div>
+            )}
+            {showDeleteConfirm && (
+              <div className='post-dropdown delete-confirm'>
+                <div style={{ padding: '8px 12px', fontSize: '0.875rem', color: '#dc2626', fontWeight: '500' }}>
+                  Delete this post?
+                </div>
+                <div style={{ display: 'flex', gap: '8px', padding: '0 12px 8px' }}>
+                  <button
+                    className='delete-confirm-btn danger'
+                    onClick={handleConfirmDelete}
+                    style={{
+                      padding: '4px 12px',
+                      fontSize: '0.75rem',
+                      backgroundColor: '#dc2626',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className='delete-confirm-btn'
+                    onClick={() => setShowDeleteConfirm(false)}
+                    style={{
+                      padding: '4px 12px',
+                      fontSize: '0.75rem',
+                      backgroundColor: 'transparent',
+                      color: '#6b7280',
+                      border: '1px solid #d1d5db',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -653,16 +691,6 @@ function PostCardComponent({
         </div>
       )}
 
-      <ConfirmDialog
-        isOpen={showDeleteConfirm}
-        title='Delete Post?'
-        message='This action cannot be undone. Are you sure you want to delete this post?'
-        confirmText='Delete'
-        cancelText='Cancel'
-        type='danger'
-        onConfirm={handleConfirmDelete}
-        onCancel={() => setShowDeleteConfirm(false)}
-      />
     </article>
   );
 }

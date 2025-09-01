@@ -178,7 +178,7 @@ export function Feed() {
                 return post;
               })
             );
-            showToast(result.message, 'success');
+            // Removed toast notification for likes
           }
         }
       } catch (error) {

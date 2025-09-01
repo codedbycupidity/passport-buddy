@@ -20,7 +20,7 @@ export const Profile: React.FC = () => {
   const { username } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user: currentUser, logout, updateUser } = useAuth();
+  const { user: currentUser, updateUser } = useAuth();
   const { showToast } = useToast();
   const apolloClient = useApolloClient();
   const [isUploading, setIsUploading] = useState(false);
@@ -329,9 +329,32 @@ export const Profile: React.FC = () => {
     );
   };
 
-  const handlePostDeleted = (postId: string) => {
-    setBookmarkedPosts(prev => prev.filter(post => post._id !== postId));
-    setUserPosts(prev => prev.filter(post => post._id !== postId));
+  const handlePostDeleted = async (postId: string) => {
+    try {
+      const token = localStorage.getItem('passport_buddy_token');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/posts/${postId}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token && { Authorization: `Bearer ${token}` }),
+        },
+      });
+
+      if (response.ok) {
+        showToast('Post deleted successfully', 'success');
+        // Remove from local state after successful backend deletion
+        setBookmarkedPosts(prev => prev.filter(post => post._id !== postId));
+        setUserPosts(prev => prev.filter(post => post._id !== postId));
+      } else {
+        showToast('Failed to delete post', 'error');
+      }
+    } catch (error) {
+      if (import.meta.env.DEV) {
+        console.error('Error deleting post:', error);
+      }
+      showToast('Failed to delete post', 'error');
+    }
   };
 
   const handleCommentAddedToPosts = (postId: string, comment: any) => {
@@ -1111,35 +1134,6 @@ export const Profile: React.FC = () => {
         </>
       )}
 
-      {/* Logout Button */}
-      {isOwnProfile && (
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <button
-            onClick={logout}
-            style={{
-              padding: '0.75rem 2rem',
-              backgroundColor: 'transparent',
-              color: '#dc3545',
-              border: '2px solid #dc3545',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              fontWeight: '500',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.backgroundColor = '#dc3545';
-              e.currentTarget.style.color = 'white';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = '#dc3545';
-            }}
-          >
-            Logout
-          </button>
-        </div>
-      )}
 
       {/* Block Confirmation Dialog */}
       <ConfirmDialog

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogOut } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useFlightStats } from '../../hooks/useFlightStats';
 import { TravelStats } from '../flights/TravelStats';
@@ -8,7 +9,7 @@ interface RightSidebarProps {
 }
 
 const RightSidebar: React.FC<RightSidebarProps> = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const { stats, loading } = useFlightStats();
 
   // Hide sidebar on smaller screens
@@ -74,6 +75,39 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
           {user?.fullName}
         </p>
       </div>
+
+      {/* Logout Button */}
+      <button
+        onClick={logout}
+        style={{
+          width: '100%',
+          padding: '0.75rem',
+          marginBottom: '1.5rem',
+          backgroundColor: 'transparent',
+          border: '1px solid var(--pb-light-periwinkle)',
+          borderRadius: '8px',
+          color: 'var(--pb-medium-purple)',
+          fontSize: '0.875rem',
+          fontWeight: '500',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+          transition: 'all 0.2s ease',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.backgroundColor = 'var(--pb-ultra-light)';
+          e.currentTarget.style.borderColor = 'var(--pb-medium-purple)';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.backgroundColor = 'transparent';
+          e.currentTarget.style.borderColor = 'var(--pb-light-periwinkle)';
+        }}
+      >
+        <LogOut size={16} />
+        Logout
+      </button>
 
       {/* Quick Stats */}
       <div

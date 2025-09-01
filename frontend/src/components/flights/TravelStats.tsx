@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Globe, Moon } from 'lucide-react';
 import { FlightStats } from '../../services/flight.service';
 
 interface TravelStatsProps {
@@ -39,8 +40,14 @@ export const TravelStats: React.FC<TravelStatsProps> = ({ stats, loading, compac
   }
 
   // Calculate derived stats
-  const flightHours = Math.round((stats.totalFlightTime || 0) / 60);
+  const flightHours = Math.round((stats.totalDistance || 0) / 550); // Calculate based on average flight speed of 550 mph
   const avgMilesPerFlight = stats.totalFlights > 0 ? Math.round((stats.totalDistance || 0) / stats.totalFlights) : 0;
+  
+  // Earth and Moon circumference comparisons
+  const EARTH_CIRCUMFERENCE = 24901; // miles at equator
+  const MOON_CIRCUMFERENCE = 6783; // miles at equator
+  const timesAroundEarth = ((stats.totalDistance || 0) / EARTH_CIRCUMFERENCE).toFixed(1);
+  const timesAroundMoon = ((stats.totalDistance || 0) / MOON_CIRCUMFERENCE).toFixed(1);
 
   // Determine travel level based on miles
   const getTravelLevel = (miles: number) => {
@@ -226,11 +233,18 @@ export const TravelStats: React.FC<TravelStatsProps> = ({ stats, loading, compac
             <span style={{ fontWeight: '500', fontSize: '0.875rem' }}>{avgMilesPerFlight.toLocaleString()}</span>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>Carbon Offset</span>
-            <span style={{ fontWeight: '500', fontSize: '0.875rem' }}>
-              {(stats.carbonEmissions || 0).toFixed(1)} tons
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ color: '#6b7280', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Globe size={16} /> Around Earth
             </span>
+            <span style={{ fontWeight: '500', fontSize: '0.875rem' }}>{timesAroundEarth}x</span>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ color: '#6b7280', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Moon size={16} /> Around Moon
+            </span>
+            <span style={{ fontWeight: '500', fontSize: '0.875rem' }}>{timesAroundMoon}x</span>
           </div>
         </div>
 
