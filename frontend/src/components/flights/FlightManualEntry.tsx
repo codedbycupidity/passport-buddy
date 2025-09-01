@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { flightService } from '../../services/flight.service';
 import AirportAutocomplete from './AirportAutocomplete';
+import AirlineAutocomplete from './AirlineAutocomplete';
 import './FlightEditModal.css';
 
 interface Airport {
@@ -122,31 +123,29 @@ export const FlightManualEntry: React.FC<FlightManualEntryProps> = ({ isOpen, on
 
         <div
           className='form-info'
-          style={{ padding: '10px', backgroundColor: '#f0f7ff', borderRadius: '4px', marginBottom: '16px' }}
+          style={{ 
+            padding: '12px 16px', 
+            backgroundColor: '#f0f7ff', 
+            borderRadius: '6px', 
+            marginBottom: '20px',
+            marginLeft: '0',
+            marginRight: '0'
+          }}
         >
-          <p style={{ margin: 0, fontSize: '14px', color: '#4a5568' }}>
+          <p style={{ margin: 0, fontSize: '14px', color: '#4a5568', textAlign: 'left' }}>
             One-way ticket entry - Required: Departure & Arrival airports, Date
           </p>
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className='form-grid'>
-            <div className='form-group'>
-              <label>Airline</label>
-              <select value={formData.airline} onChange={e => setFormData({ ...formData, airline: e.target.value })}>
-                <option value=''>Select Airline (optional)</option>
-                <option value='Delta'>Delta</option>
-                <option value='American'>American</option>
-                <option value='United'>United</option>
-                <option value='Southwest'>Southwest</option>
-                <option value='Spirit'>Spirit</option>
-                <option value='Frontier'>Frontier</option>
-                <option value='JetBlue'>JetBlue</option>
-                <option value='Alaska'>Alaska</option>
-                <option value='Hawaiian'>Hawaiian</option>
-                <option value='Other'>Other</option>
-              </select>
-            </div>
+            <AirlineAutocomplete
+              label='Airline'
+              value={formData.airline}
+              onChange={(airline) => setFormData({ ...formData, airline })}
+              placeholder='Type to search airlines (optional)'
+              required={false}
+            />
 
             <div className='form-group'>
               <label>Flight Number</label>

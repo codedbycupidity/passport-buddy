@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Flight } from '../../services/flight.service';
 import AirportAutocomplete from './AirportAutocomplete';
+import AirlineAutocomplete from './AirlineAutocomplete';
 import './FlightEditModal.css';
 
 interface Airport {
@@ -19,22 +20,21 @@ interface FlightEditModalProps {
 
 export const FlightEditModal: React.FC<FlightEditModalProps> = ({ flight, isOpen, onClose, onSave }) => {
   const [formData, setFormData] = useState({
-    airline: flight.airline || '',
-    flightNumber: flight.flightNumber || '',
-    confirmationCode: flight.confirmationCode || '',
+    airline: '',
+    flightNumber: '',
     origin: {
-      airportCode: flight.origin.airportCode,
-      city: flight.origin.city,
-      gate: flight.origin.gate || '',
+      airportCode: '',
+      city: '',
+      country: '',
     },
     destination: {
-      airportCode: flight.destination.airportCode,
-      city: flight.destination.city,
+      airportCode: '',
+      city: '',
+      country: '',
     },
-    scheduledDepartureTime: new Date(flight.scheduledDepartureTime).toISOString().slice(0, 16),
-    scheduledArrivalTime: new Date(flight.scheduledArrivalTime).toISOString().slice(0, 16),
-    seatNumber: flight.seatNumber || '',
-    status: flight.status,
+    scheduledDepartureTime: '',
+    seatNumber: '',
+    status: 'upcoming' as Flight['status'],
   });
   const [saving, setSaving] = useState(false);
 
@@ -43,33 +43,69 @@ export const FlightEditModal: React.FC<FlightEditModalProps> = ({ flight, isOpen
       setFormData({
         airline: flight.airline || '',
         flightNumber: flight.flightNumber || '',
-        confirmationCode: flight.confirmationCode || '',
         origin: {
-          airportCode: flight.origin.airportCode,
-          city: flight.origin.city,
-          gate: flight.origin.gate || '',
+          airportCode: flight.origin.airportCode || '',
+          city: flight.origin.city || '',
+          country: flight.origin.country || '',
         },
         destination: {
-          airportCode: flight.destination.airportCode,
-          city: flight.destination.city,
+          airportCode: flight.destination.airportCode || '',
+          city: flight.destination.city || '',
+          country: flight.destination.country || '',
         },
-        scheduledDepartureTime: new Date(flight.scheduledDepartureTime).toISOString().slice(0, 16),
-        scheduledArrivalTime: new Date(flight.scheduledArrivalTime).toISOString().slice(0, 16),
+        scheduledDepartureTime: flight.scheduledDepartureTime ? 
+          new Date(flight.scheduledDepartureTime).toISOString().split('T')[0] : '',
         seatNumber: flight.seatNumber || '',
-        status: flight.status,
+        status: flight.status || 'upcoming',
       });
     }
   }, [flight, isOpen]);
 
+  const handleOriginChange = (airport: Airport) => {
+    setFormData(prev => ({
+      ...prev,
+      origin: {
+        ...prev.origin,
+        airportCode: airport.code,
+        city: airport.city,
+        country: airport.country,
+      },
+    }));
+  };
+
+  const handleDestinationChange = (airport: Airport) => {
+    setFormData(prev => ({
+      ...prev,
+      destination: {
+        ...prev.destination,
+        airportCode: airport.code,
+        city: airport.city,
+        country: airport.country,
+      },
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // No validation required - all fields are optional for editing
     setSaving(true);
     try {
-      await onSave({
-        ...formData,
-        scheduledDepartureTime: new Date(formData.scheduledDepartureTime),
-        scheduledArrivalTime: new Date(formData.scheduledArrivalTime),
-      });
+      const updateData: any = {
+        origin: formData.origin,
+        destination: formData.destination,
+        status: formData.status,
+      };
+
+      // Add optional fields if they have values
+      if (formData.airline) updateData.airline = formData.airline;
+      if (formData.flightNumber) updateData.flightNumber = formData.flightNumber;
+      if (formData.seatNumber) updateData.seatNumber = formData.seatNumber;
+      if (formData.scheduledDepartureTime) {
+        updateData.scheduledDepartureTime = new Date(formData.scheduledDepartureTime);
+      }
+
+      await onSave(updateData);
       onClose();
     } catch (error) {
       console.error('Error saving flight:', error);
@@ -90,33 +126,31 @@ export const FlightEditModal: React.FC<FlightEditModalProps> = ({ flight, isOpen
           </button>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div
-            className='form-info'
-            style={{ padding: '10px', backgroundColor: '#f0f7ff', borderRadius: '4px', marginBottom: '16px' }}
-          >
-            <p style={{ margin: 0, fontSize: '14px', color: '#4a5568' }}>
-              Required: Departure & Arrival airports, Date. All other fields are optional.
-            </p>
-          </div>
+        <div
+          className='form-info'
+          style={{ 
+            padding: '12px 16px', 
+            backgroundColor: '#f0f7ff', 
+            borderRadius: '6px', 
+            marginBottom: '20px',
+            marginLeft: '0',
+            marginRight: '0'
+          }}
+        >
+          <p style={{ margin: 0, fontSize: '14px', color: '#4a5568', textAlign: 'left' }}>
+            Edit flight details - All fields are optional
+          </p>
+        </div>
 
+        <form onSubmit={handleSubmit}>
           <div className='form-grid'>
-            <div className='form-group'>
-              <label>Airline</label>
-              <select value={formData.airline} onChange={e => setFormData({ ...formData, airline: e.target.value })}>
-                <option value=''>Select airline (optional)</option>
-                <option value='Delta'>Delta</option>
-                <option value='American'>American</option>
-                <option value='United'>United</option>
-                <option value='Southwest'>Southwest</option>
-                <option value='Spirit'>Spirit</option>
-                <option value='Frontier'>Frontier</option>
-                <option value='JetBlue'>JetBlue</option>
-                <option value='Alaska'>Alaska</option>
-                <option value='Hawaiian'>Hawaiian</option>
-                <option value='Other'>Other</option>
-              </select>
-            </div>
+            <AirlineAutocomplete
+              label='Airline'
+              value={formData.airline}
+              onChange={(airline) => setFormData({ ...formData, airline })}
+              placeholder='Type to search airlines (optional)'
+              required={false}
+            />
 
             <div className='form-group'>
               <label>Flight Number</label>
@@ -128,71 +162,28 @@ export const FlightEditModal: React.FC<FlightEditModalProps> = ({ flight, isOpen
               />
             </div>
 
-            <div className='form-group'>
-              <label>Confirmation Code</label>
-              <input
-                type='text'
-                value={formData.confirmationCode}
-                onChange={e => setFormData({ ...formData, confirmationCode: e.target.value })}
-                placeholder='e.g., ABC123 (optional)'
-              />
-            </div>
-
             <AirportAutocomplete
               label='Departure Airport'
               value={formData.origin.airportCode}
-              onChange={(airport: Airport) =>
-                setFormData({
-                  ...formData,
-                  origin: { ...formData.origin, airportCode: airport.code, city: airport.city },
-                })
-              }
+              onChange={handleOriginChange}
               placeholder='Enter departure airport'
-              required={true}
+              required={false}
             />
 
             <AirportAutocomplete
               label='Arrival Airport'
               value={formData.destination.airportCode}
-              onChange={(airport: Airport) =>
-                setFormData({
-                  ...formData,
-                  destination: { ...formData.destination, airportCode: airport.code, city: airport.city },
-                })
-              }
+              onChange={handleDestinationChange}
               placeholder='Enter arrival airport'
-              required={true}
+              required={false}
             />
 
             <div className='form-group'>
-              <label>Gate</label>
+              <label>Flight Date</label>
               <input
-                type='text'
-                value={formData.origin.gate}
-                onChange={e => setFormData({ ...formData, origin: { ...formData.origin, gate: e.target.value } })}
-                placeholder='e.g., A12 (optional)'
-              />
-            </div>
-
-            <div className='form-group'>
-              <label>
-                Departure Time <span className='text-red-500'>*</span>
-              </label>
-              <input
-                type='datetime-local'
+                type='date'
                 value={formData.scheduledDepartureTime}
                 onChange={e => setFormData({ ...formData, scheduledDepartureTime: e.target.value })}
-                required
-              />
-            </div>
-
-            <div className='form-group'>
-              <label>Arrival Time</label>
-              <input
-                type='datetime-local'
-                value={formData.scheduledArrivalTime}
-                onChange={e => setFormData({ ...formData, scheduledArrivalTime: e.target.value })}
-                placeholder='Optional - will estimate if not provided'
               />
             </div>
 
@@ -204,19 +195,6 @@ export const FlightEditModal: React.FC<FlightEditModalProps> = ({ flight, isOpen
                 onChange={e => setFormData({ ...formData, seatNumber: e.target.value })}
                 placeholder='e.g., 12A'
               />
-            </div>
-
-            <div className='form-group'>
-              <label>Status</label>
-              <select
-                value={formData.status}
-                onChange={e => setFormData({ ...formData, status: e.target.value as any })}
-              >
-                <option value='upcoming'>Upcoming</option>
-                <option value='completed'>Completed</option>
-                <option value='cancelled'>Cancelled</option>
-                <option value='delayed'>Delayed</option>
-              </select>
             </div>
           </div>
 

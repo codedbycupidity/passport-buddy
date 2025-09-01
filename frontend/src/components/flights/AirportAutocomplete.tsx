@@ -42,6 +42,8 @@ const AirportAutocomplete: React.FC<AirportAutocompleteProps> = ({
   const [results, setResults] = useState<Airport[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [originalValue, setOriginalValue] = useState('');
+  const [hasFocused, setHasFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
 
@@ -50,12 +52,16 @@ const AirportAutocomplete: React.FC<AirportAutocompleteProps> = ({
       // Find airport in local data
       const airport = airportsData.find(a => a.code === value);
       if (airport) {
-        setQuery(`${airport.code} - ${airport.city}`);
+        const formatted = `${airport.code} - ${airport.city}`;
+        setQuery(formatted);
+        setOriginalValue(formatted);
       } else {
         setQuery(value);
+        setOriginalValue(value);
       }
     } else {
       setQuery('');
+      setOriginalValue('');
     }
   }, [value]);
 
@@ -146,7 +152,10 @@ const AirportAutocomplete: React.FC<AirportAutocompleteProps> = ({
   };
 
   const selectAirport = (airport: Airport) => {
-    setQuery(`${airport.code} - ${airport.city}`);
+    const formatted = `${airport.code} - ${airport.city}`;
+    setQuery(formatted);
+    setOriginalValue(formatted); // Update original value when new airport is selected
+    setHasFocused(false);
     onChange({
       code: airport.code,
       name: airport.name,
@@ -176,7 +185,23 @@ const AirportAutocomplete: React.FC<AirportAutocompleteProps> = ({
         value={query}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        onFocus={() => setShowSuggestions(results.length > 0)}
+        onFocus={() => {
+          // Clear the field when focused if it has the original value
+          if (query === originalValue && originalValue !== '') {
+            setQuery('');
+            setHasFocused(true);
+          }
+          setShowSuggestions(results.length > 0);
+        }}
+        onBlur={() => {
+          // Restore original value if user didn't type anything
+          setTimeout(() => {
+            if (query === '' && originalValue !== '' && hasFocused) {
+              setQuery(originalValue);
+              setHasFocused(false);
+            }
+          }, 200); // Small delay to allow click on suggestions
+        }}
         placeholder={placeholder}
         className='w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500'
         required={required}
