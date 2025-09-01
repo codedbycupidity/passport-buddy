@@ -239,9 +239,43 @@ export const Profile: React.FC = () => {
     }
   };
 
-  const handleAvatarClick = () => {
+  const handleAvatarClick = async () => {
     if (isOwnProfile) {
-      handleImageClick();
+      console.log('Avatar click - triggering file selection');
+      
+      // Try using the File System Access API first (like CreatePost does)
+      if ('showOpenFilePicker' in window) {
+        try {
+          const fileHandles = await (window as any).showOpenFilePicker({
+            types: [{
+              description: 'Images',
+              accept: { 
+                'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.webp']
+              }
+            }],
+            multiple: false
+          });
+          
+          if (fileHandles && fileHandles.length > 0) {
+            const file = await fileHandles[0].getFile();
+            // Create a synthetic event to pass to handleImageChange
+            const syntheticEvent = {
+              target: {
+                files: [file]
+              }
+            } as unknown as React.ChangeEvent<HTMLInputElement>;
+            
+            handleImageChange(syntheticEvent);
+          }
+        } catch (error) {
+          // User cancelled or error occurred, fall back to traditional input
+          console.log('File picker cancelled or errored, falling back to input click');
+          handleImageClick();
+        }
+      } else {
+        // Fallback for browsers that don't support File System Access API
+        handleImageClick();
+      }
     }
   };
 
@@ -598,7 +632,12 @@ export const Profile: React.FC = () => {
             </div>
             {isOwnProfile && !selectedImage && (
               <button
-                onClick={handleAvatarClick}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleAvatarClick();
+                }}
                 style={{
                   position: 'absolute',
                   bottom: -4,
@@ -614,6 +653,7 @@ export const Profile: React.FC = () => {
                   justifyContent: 'center',
                   cursor: 'pointer',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                  zIndex: 1,
                 }}
               >
                 <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>

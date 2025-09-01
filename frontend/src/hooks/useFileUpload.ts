@@ -21,7 +21,12 @@ export const useFileUpload = () => {
   };
 
   const handleImageClick = () => {
-    imageInputRef.current?.click();
+    console.log('handleImageClick called, ref:', imageInputRef.current);
+    if (imageInputRef.current) {
+      imageInputRef.current.click();
+    } else {
+      console.error('Image input ref is null');
+    }
   };
 
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
