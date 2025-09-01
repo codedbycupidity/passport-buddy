@@ -27,7 +27,7 @@ async function makeRequest(endpoint: string, options: RequestInit = {}) {
 export const userService = {
   async updateProfile(updates: any) {
     return makeRequest('/api/v1/users/profile', {
-      method: 'PUT',
+      method: 'PATCH',
       body: JSON.stringify(updates),
     });
   },

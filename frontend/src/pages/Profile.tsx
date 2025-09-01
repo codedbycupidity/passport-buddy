@@ -42,6 +42,15 @@ export const Profile: React.FC = () => {
   const [bookmarksLoading, setBookmarksLoading] = useState(false);
   const [userPosts, setUserPosts] = useState<any[]>([]);
   const [postsLoading, setPostsLoading] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editForm, setEditForm] = useState({
+    fullName: '',
+    bio: '',
+    location: '',
+    homeAirport: '',
+    passportCountry: ''
+  });
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
   const optionsMenuRef = useRef<HTMLDivElement>(null);
 
   const isOwnProfile = !username || username === currentUser?.username;
@@ -232,6 +241,35 @@ export const Profile: React.FC = () => {
   const handleAvatarClick = () => {
     if (isOwnProfile) {
       handleImageClick();
+    }
+  };
+
+  const handleEditProfile = () => {
+    setEditForm({
+      fullName: user?.fullName || '',
+      bio: user?.bio || '',
+      location: user?.location || '',
+      homeAirport: user?.homeAirport || '',
+      passportCountry: user?.passportCountry || ''
+    });
+    setShowEditModal(true);
+  };
+
+  const handleSaveProfile = async () => {
+    if (isSavingProfile) return;
+    
+    setIsSavingProfile(true);
+    try {
+      const response = await userService.updateProfile(editForm);
+      if (response.status === 'success') {
+        updateUser(editForm);
+        showToast('Profile updated successfully!', 'success');
+        setShowEditModal(false);
+      }
+    } catch (error) {
+      showToast('Failed to update profile', 'error');
+    } finally {
+      setIsSavingProfile(false);
     }
   };
 
@@ -587,13 +625,114 @@ export const Profile: React.FC = () => {
 
           {/* User Info */}
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', color: 'var(--pb-dark-purple)' }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.5rem', color: 'var(--pb-dark-purple)' }}>
               {user?.fullName}
             </h1>
+            
+            {/* Bio Display */}
+            {user?.bio && (
+              <p style={{ 
+                fontSize: '0.9rem', 
+                color: '#6b7280', 
+                marginBottom: '1rem',
+                maxWidth: '400px',
+                margin: '0 auto 1rem',
+                lineHeight: '1.4',
+                textAlign: 'center'
+              }}>
+                {user.bio}
+              </p>
+            )}
+
+            {/* Profile Details */}
+            {(user?.location || user?.homeAirport || user?.passportCountry) && (
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: '1rem',
+                marginBottom: '1rem',
+                maxWidth: '500px',
+                margin: '0 auto 1rem'
+              }}>
+                {user?.location && (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    backgroundColor: 'var(--pb-ultra-light)',
+                    padding: '0.5rem 0.75rem',
+                    borderRadius: '20px',
+                    fontSize: '0.875rem',
+                    color: 'var(--pb-dark-purple)'
+                  }}>
+                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                      <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/>
+                      <circle cx='12' cy='10' r='3'/>
+                    </svg>
+                    {user.location}
+                  </div>
+                )}
+                
+                {user?.homeAirport && (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    backgroundColor: 'var(--pb-ultra-light)',
+                    padding: '0.5rem 0.75rem',
+                    borderRadius: '20px',
+                    fontSize: '0.875rem',
+                    color: 'var(--pb-dark-purple)'
+                  }}>
+                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                      <path d='M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/>
+                    </svg>
+                    {user.homeAirport}
+                  </div>
+                )}
+                
+                {user?.passportCountry && (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    backgroundColor: 'var(--pb-ultra-light)',
+                    padding: '0.5rem 0.75rem',
+                    borderRadius: '20px',
+                    fontSize: '0.875rem',
+                    color: 'var(--pb-dark-purple)'
+                  }}>
+                    <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                      <rect x='3' y='4' width='18' height='16' rx='2'/>
+                      <path d='M7 8h10M7 12h10M7 16h4'/>
+                    </svg>
+                    {user.passportCountry}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Action Buttons */}
             <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', justifyContent: 'center' }}>
-              {!isOwnProfile && !isBlocked && (
+              {isOwnProfile ? (
+                <button
+                  onClick={handleEditProfile}
+                  style={{
+                    padding: '0.5rem 1.5rem',
+                    backgroundColor: 'var(--pb-light-periwinkle)',
+                    color: 'var(--pb-dark-purple)',
+                    border: 'none',
+                    borderRadius: '24px',
+                    fontSize: '0.875rem',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  Edit Profile
+                </button>
+              ) : !isBlocked && (
                 <button
                   onClick={handleFollowToggle}
                   disabled={isFollowLoading}
@@ -1136,6 +1275,236 @@ export const Profile: React.FC = () => {
         </>
       )}
 
+
+      {/* Edit Profile Modal */}
+      {showEditModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '1rem'
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '12px',
+            padding: '1.5rem',
+            width: '100%',
+            maxWidth: '500px',
+            maxHeight: '80vh',
+            overflowY: 'auto'
+          }}>
+            <h2 style={{
+              fontSize: '1.25rem',
+              fontWeight: '700',
+              color: 'var(--pb-dark-purple)',
+              marginBottom: '1.5rem'
+            }}>
+              Edit Profile
+            </h2>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  color: 'var(--pb-dark-purple)',
+                  marginBottom: '0.5rem'
+                }}>
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={editForm.fullName}
+                  onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid var(--pb-light-periwinkle)',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  color: 'var(--pb-dark-purple)',
+                  marginBottom: '0.5rem'
+                }}>
+                  Bio
+                </label>
+                <textarea
+                  value={editForm.bio}
+                  onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
+                  maxLength={150}
+                  placeholder="Tell us about yourself..."
+                  rows={3}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid var(--pb-light-periwinkle)',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    fontFamily: 'inherit',
+                    resize: 'vertical',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                />
+                <div style={{
+                  fontSize: '0.75rem',
+                  color: '#9ca3af',
+                  textAlign: 'right',
+                  marginTop: '0.25rem'
+                }}>
+                  {editForm.bio.length}/150
+                </div>
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  color: 'var(--pb-dark-purple)',
+                  marginBottom: '0.5rem'
+                }}>
+                  Location
+                </label>
+                <input
+                  type="text"
+                  value={editForm.location}
+                  onChange={(e) => setEditForm({ ...editForm, location: e.target.value })}
+                  placeholder="Where are you based?"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid var(--pb-light-periwinkle)',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  color: 'var(--pb-dark-purple)',
+                  marginBottom: '0.5rem'
+                }}>
+                  Home Airport
+                </label>
+                <input
+                  type="text"
+                  value={editForm.homeAirport}
+                  onChange={(e) => setEditForm({ ...editForm, homeAirport: e.target.value })}
+                  placeholder="e.g. JFK, LAX, LHR"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid var(--pb-light-periwinkle)',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  color: 'var(--pb-dark-purple)',
+                  marginBottom: '0.5rem'
+                }}>
+                  Passport Country
+                </label>
+                <input
+                  type="text"
+                  value={editForm.passportCountry}
+                  onChange={(e) => setEditForm({ ...editForm, passportCountry: e.target.value })}
+                  placeholder="e.g. United States, United Kingdom"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid var(--pb-light-periwinkle)',
+                    borderRadius: '8px',
+                    fontSize: '0.9rem',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                />
+              </div>
+            </div>
+
+            <div style={{
+              display: 'flex',
+              gap: '0.75rem',
+              justifyContent: 'flex-end',
+              marginTop: '2rem'
+            }}>
+              <button
+                onClick={() => setShowEditModal(false)}
+                disabled={isSavingProfile}
+                style={{
+                  padding: '0.75rem 1.5rem',
+                  backgroundColor: 'var(--pb-light-periwinkle)',
+                  color: 'var(--pb-dark-purple)',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  opacity: isSavingProfile ? 0.7 : 1
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveProfile}
+                disabled={isSavingProfile || editForm.bio.length > 150}
+                style={{
+                  padding: '0.75rem 1.5rem',
+                  backgroundColor: editForm.bio.length > 150 ? '#d1d5db' : 'var(--pb-medium-purple)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  cursor: editForm.bio.length > 150 ? 'not-allowed' : 'pointer',
+                  opacity: isSavingProfile ? 0.7 : 1
+                }}
+              >
+                {isSavingProfile ? 'Saving...' : 'Save Changes'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Block Confirmation Dialog */}
       <ConfirmDialog

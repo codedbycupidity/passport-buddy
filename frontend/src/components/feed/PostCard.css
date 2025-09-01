@@ -146,12 +146,9 @@
 
 .image-container {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   background: #000;
-  max-height: 614px;
-  overflow: hidden;
+  width: 100%;
   user-select: none;
 }
 
@@ -198,7 +195,7 @@
 .post-image {
   width: 100%;
   height: auto;
-  max-height: 614px;
+  display: block;
   object-fit: contain;
 }
 
