@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { correctImageOrientation } from '../utils/imageOrientation';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
@@ -23,7 +24,7 @@ export const useFileUpload = () => {
     imageInputRef.current?.click();
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const validationError = validateFile(file);
@@ -33,12 +34,24 @@ export const useFileUpload = () => {
       }
 
       setError(null);
-      setSelectedImage(file);
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
+      
+      try {
+        // Clean up previous preview URL
+        if (previewUrl) {
+          URL.revokeObjectURL(previewUrl);
+        }
+        
+        // Correct image orientation and create preview
+        const { file: correctedFile, url } = await correctImageOrientation(file);
+        setSelectedImage(correctedFile);
+        setPreviewUrl(url);
+      } catch (err) {
+        console.error('Error correcting image orientation:', err);
+        // Fallback to original file if correction fails
+        setSelectedImage(file);
+        const url = URL.createObjectURL(file);
+        setPreviewUrl(url);
       }
-      const url = URL.createObjectURL(file);
-      setPreviewUrl(url);
     }
   };
 

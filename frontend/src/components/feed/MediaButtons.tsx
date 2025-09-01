@@ -11,6 +11,7 @@ interface LocationResult {
 
 interface MediaButtonsProps {
   onImageClick: () => void;
+  onImageSelect?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onVideoClick: () => void;
   onLocationClick: (e: React.MouseEvent) => void;
   isLocationSearchOpen: boolean;
@@ -23,6 +24,7 @@ interface MediaButtonsProps {
 
 const MediaButtons: React.FC<MediaButtonsProps> = ({
   onImageClick,
+  onImageSelect,
   onVideoClick,
   onLocationClick,
   isLocationSearchOpen,

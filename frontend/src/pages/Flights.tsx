@@ -55,7 +55,10 @@ export const Flights: React.FC = () => {
 
     setUploadingPass(true);
     try {
-      const flight = await flightService.uploadBoardingPass(file);
+      // Import and apply image orientation correction for boarding pass images
+      const { correctImageOrientation } = await import('../utils/imageOrientation');
+      const correctedResult = await correctImageOrientation(file);
+      const flight = await flightService.uploadBoardingPass(correctedResult.file);
       setFlights([flight, ...flights]);
       showToast('Boarding pass uploaded successfully!', 'success');
       loadStats(); // Reload stats to update points

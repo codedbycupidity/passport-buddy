@@ -1,11 +1,14 @@
 import React from 'react';
+import { Crop, X } from 'lucide-react';
 
 interface MediaPreviewProps {
   previewUrl: string | null;
   selectedImage: File | null;
   selectedVideo: File | null;
   onRemoveMedia: () => void;
+  onCropImage?: () => void;
   isLoading?: boolean;
+  aspectRatio?: '1:1' | '4:5';
 }
 
 const MediaPreview: React.FC<MediaPreviewProps> = ({
@@ -13,8 +16,19 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
   selectedImage,
   selectedVideo,
   onRemoveMedia,
+  onCropImage,
   isLoading = false,
+  aspectRatio = '1:1',
 }) => {
+  console.log('🖼️ MediaPreview props:', {
+    hasPreviewUrl: !!previewUrl,
+    hasSelectedImage: !!selectedImage,
+    hasSelectedVideo: !!selectedVideo,
+    hasOnCropImage: !!onCropImage,
+    isLoading,
+    aspectRatio
+  });
+  
   if (!previewUrl) return null;
 
   return (
@@ -25,9 +39,11 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
           alt='Preview'
           style={{
             width: '100%',
+            maxWidth: '400px', // Max size constraint
             borderRadius: '0.5rem',
-            objectFit: 'cover',
-            maxHeight: '300px',
+            objectFit: 'cover', // Fill the container (crop if needed)
+            aspectRatio: aspectRatio === '4:5' ? '4 / 5' : '1 / 1', // Use dynamic aspect ratio
+            height: 'auto',
           }}
         />
       )}
@@ -43,40 +59,75 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
         />
       )}
       {!isLoading && (
-        <button
-          onClick={onRemoveMedia}
-          style={{
-            position: 'absolute',
-            top: '0.5rem',
-            right: '0.5rem',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            color: 'white',
-            borderRadius: '50%',
-            padding: '0.25rem',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'background-color 0.15s ease-in-out',
-          }}
-          onMouseEnter={e => {
-            (e.target as HTMLElement).style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-          }}
-          onMouseLeave={e => {
-            (e.target as HTMLElement).style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-          }}
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            style={{ height: '1.25rem', width: '1.25rem' }}
-            viewBox='0 0 20 20'
-            fill='currentColor'
+        <>
+          {/* Crop Button - only show for images */}
+          {onCropImage && selectedImage && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onCropImage();
+              }}
+              style={{
+                position: 'absolute',
+                top: '0.5rem',
+                right: '3.5rem',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                color: 'white',
+                borderRadius: '50%',
+                padding: '0.5rem',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background-color 0.15s ease-in-out',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onMouseEnter={e => {
+                (e.target as HTMLElement).style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+              }}
+              onMouseLeave={e => {
+                (e.target as HTMLElement).style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+              }}
+              title="Crop image"
+            >
+              <Crop size={16} />
+            </button>
+          )}
+          
+          {/* Remove Button */}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onRemoveMedia();
+            }}
+            style={{
+              position: 'absolute',
+              top: '0.5rem',
+              right: '0.5rem',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              color: 'white',
+              borderRadius: '50%',
+              padding: '0.5rem',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'background-color 0.15s ease-in-out',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onMouseEnter={e => {
+              (e.target as HTMLElement).style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            }}
+            onMouseLeave={e => {
+              (e.target as HTMLElement).style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            }}
+            title="Remove image"
           >
-            <path
-              fillRule='evenodd'
-              d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-              clipRule='evenodd'
-            />
-          </svg>
-        </button>
+            <X size={16} />
+          </button>
+        </>
       )}
     </div>
   );

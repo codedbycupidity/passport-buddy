@@ -46,12 +46,12 @@ abstract class StorageService {
   abstract delete(key: string): Promise<void>;
   abstract getUrl(key: string): string;
 
-  // Image size presets for social media
-  protected readonly IMAGE_SIZES = {
-    thumbnail: { width: 150, height: 150 },
-    small: { width: 300, height: 300 },
-    medium: { width: 600, height: 600 },
-    large: { width: 1200, height: 1200 },
+  // Image size presets for social media - preserve aspect ratio
+  protected readonly IMAGE_WIDTHS = {
+    thumbnail: 150,
+    small: 300, 
+    medium: 600,
+    large: 1200,
   };
 }
 
@@ -88,6 +88,18 @@ class LocalStorageService extends StorageService {
       // Generate multiple sizes for images
       const variants: any = {};
 
+      // Debug: Get original image dimensions
+      const originalImage = sharp(file.buffer!, { failOnError: false });
+      const { width: originalWidth, height: originalHeight } = await originalImage.metadata();
+      const originalRatio = originalWidth && originalHeight ? (originalWidth / originalHeight).toFixed(3) : 'unknown';
+      
+      console.log('🖼️ STORAGE: Processing image with original dimensions:', {
+        originalWidth,
+        originalHeight,
+        originalRatio,
+        fileSize: file.size
+      });
+
       // Original
       const originalFilename = `${baseFilename}_original${ext}`;
       const originalPath = path.join(this.uploadDir, folder, originalFilename);
@@ -95,16 +107,28 @@ class LocalStorageService extends StorageService {
       await fs.promises.writeFile(originalPath, file.buffer!);
       variants.original = `${this.baseUrl}/${folder}/${originalFilename}`;
 
-      // Generate variants
-      for (const [sizeName, dimensions] of Object.entries(this.IMAGE_SIZES)) {
+      // Generate variants - preserve aspect ratio
+      for (const [sizeName, targetWidth] of Object.entries(this.IMAGE_WIDTHS)) {
         try {
-          const resizedBuffer = await sharp(file.buffer!)
-            .resize(dimensions.width, dimensions.height, {
-              fit: 'cover',
-              position: 'center',
+          const resizedProcessor = sharp(file.buffer!, { failOnError: false })
+            .rotate(0) // Disable auto-rotation - keep original orientation  
+            .resize(targetWidth, null, {
+              fit: 'inside',
+              withoutEnlargement: true,
             })
-            .jpeg({ quality: 85, progressive: true })
-            .toBuffer();
+            .jpeg({ quality: 85, progressive: true });
+
+          const resizedBuffer = await resizedProcessor.toBuffer();
+          const { width: resizedWidth, height: resizedHeight } = await sharp(resizedBuffer).metadata();
+          const resizedRatio = resizedWidth && resizedHeight ? (resizedWidth / resizedHeight).toFixed(3) : 'unknown';
+          
+          console.log(`🔄 STORAGE: Created ${sizeName} variant:`, {
+            targetWidth,
+            actualWidth: resizedWidth,
+            actualHeight: resizedHeight,
+            actualRatio: resizedRatio,
+            preservedRatio: resizedRatio === originalRatio
+          });
 
           const variantFilename = `${baseFilename}_${sizeName}.jpg`;
           const variantPath = path.join(this.uploadDir, folder, variantFilename);
@@ -196,6 +220,18 @@ class DigitalOceanSpacesService extends StorageService {
       const variants: any = {};
       const uploadPromises = [];
 
+      // Debug: Get original image dimensions
+      const originalImage = sharp(file.buffer!, { failOnError: false });
+      const { width: originalWidth, height: originalHeight } = await originalImage.metadata();
+      const originalRatio = originalWidth && originalHeight ? (originalWidth / originalHeight).toFixed(3) : 'unknown';
+      
+      console.log('🌊 SPACES: Processing image with original dimensions:', {
+        originalWidth,
+        originalHeight,
+        originalRatio,
+        fileSize: file.size
+      });
+
       // Upload original
       const originalKey = `${baseKey}_original${ext}`;
       uploadPromises.push(
@@ -218,16 +254,31 @@ class DigitalOceanSpacesService extends StorageService {
           })
       );
 
-      // Generate and upload variants
-      for (const [sizeName, dimensions] of Object.entries(this.IMAGE_SIZES)) {
+      // Generate and upload variants - preserve aspect ratio
+      for (const [sizeName, targetWidth] of Object.entries(this.IMAGE_WIDTHS)) {
         uploadPromises.push(
-          sharp(file.buffer!)
-            .resize(dimensions.width, dimensions.height, {
-              fit: 'cover',
-              position: 'center',
+          sharp(file.buffer!, { failOnError: false })
+            .rotate(0) // Disable auto-rotation - keep original orientation
+            .resize(targetWidth, null, {
+              fit: 'inside',
+              withoutEnlargement: true,
             })
             .jpeg({ quality: 85, progressive: true })
             .toBuffer()
+            .then(async resizedBuffer => {
+              const { width: resizedWidth, height: resizedHeight } = await sharp(resizedBuffer).metadata();
+              const resizedRatio = resizedWidth && resizedHeight ? (resizedWidth / resizedHeight).toFixed(3) : 'unknown';
+              
+              console.log(`🔄 SPACES: Created ${sizeName} variant:`, {
+                targetWidth,
+                actualWidth: resizedWidth,
+                actualHeight: resizedHeight,
+                actualRatio: resizedRatio,
+                preservedRatio: resizedRatio === originalRatio
+              });
+              
+              return resizedBuffer;
+            })
             .then(resizedBuffer => {
               const variantKey = `${baseKey}_${sizeName}.jpg`;
               return this.s3Client
