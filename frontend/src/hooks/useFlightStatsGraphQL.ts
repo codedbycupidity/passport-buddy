@@ -1,7 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import { FlightStats } from '../services/flight.service';
 
-console.log('📁 useFlightStatsGraphQL module loaded!');
 
 // Simplified query to test basic functionality
 const GET_FLIGHT_STATS = gql`
@@ -22,14 +21,7 @@ interface UseFlightStatsGraphQLOptions {
 }
 
 export function useFlightStatsGraphQL(options: UseFlightStatsGraphQLOptions = {}) {
-  console.log('🚀 useFlightStatsGraphQL hook called with options:', options);
   const { userId, year } = options;
-  
-  // If no userId is provided, the GraphQL resolver will use the authenticated user from context
-  console.log('🚀 About to call useQuery with variables:', {
-    userId: userId || undefined,
-    year
-  });
 
   const { data, loading, error, refetch } = useQuery(GET_FLIGHT_STATS, {
     variables: {
@@ -39,23 +31,12 @@ export function useFlightStatsGraphQL(options: UseFlightStatsGraphQLOptions = {}
     errorPolicy: 'all',
     fetchPolicy: 'cache-and-network', // Get cached data first, then fetch fresh data
     onError: (error) => {
-      console.error('🔥 GraphQL Query Error:', error);
-    },
-    onCompleted: (data) => {
-      console.log('✅ GraphQL Query Completed:', data);
+      if (import.meta.env.DEV) {
+        console.error('GraphQL Query Error:', error);
+      }
     }
   });
 
-  // Add debugging
-  console.log('🔍 useFlightStatsGraphQL Debug:', {
-    userId,
-    year,
-    loading,
-    error: error?.message,
-    data,
-    hasFlightStats: !!data?.flightStats,
-    rawFlightStats: data?.flightStats
-  });
 
   // Transform the GraphQL response to match the existing FlightStats interface
   const transformedStats: FlightStats | null = data?.flightStats ? {
@@ -75,8 +56,6 @@ export function useFlightStatsGraphQL(options: UseFlightStatsGraphQLOptions = {}
     mostVisitedAirport: null,
     favoriteAirline: null,
   } : null;
-
-  console.log('🔍 transformedStats:', transformedStats);
 
   return {
     stats: transformedStats,

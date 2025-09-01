@@ -20,15 +20,6 @@ const MediaPreview: React.FC<MediaPreviewProps> = ({
   isLoading = false,
   aspectRatio = '1:1',
 }) => {
-  console.log('🖼️ MediaPreview props:', {
-    hasPreviewUrl: !!previewUrl,
-    hasSelectedImage: !!selectedImage,
-    hasSelectedVideo: !!selectedVideo,
-    hasOnCropImage: !!onCropImage,
-    isLoading,
-    aspectRatio
-  });
-  
   if (!previewUrl) return null;
 
   return (

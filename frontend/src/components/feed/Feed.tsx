@@ -54,16 +54,8 @@ export function Feed() {
 
       if (response.ok) {
         const result = await response.json();
-        console.log('🎭 FEED: Response received:', result);
-        console.log('🎭 FEED: result.status:', result.status);
-        console.log('🎭 FEED: result.data:', result.data);
-        console.log('🎭 FEED: result.data?.posts:', result.data?.posts);
-        
         if (result.status === 'success') {
           setPosts(result.data.posts);
-          console.log('🎭 FEED: Posts set to state:', result.data.posts.length, 'posts');
-        } else {
-          console.log('🎭 FEED: Status not success:', result.status);
         }
       }
     } catch (error) {

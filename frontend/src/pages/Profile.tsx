@@ -926,6 +926,7 @@ export const Profile: React.FC = () => {
               fontWeight: '600',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
+              outline: 'none',
             }}
           >
             Posts
@@ -943,6 +944,7 @@ export const Profile: React.FC = () => {
               fontWeight: '600',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
+              outline: 'none',
             }}
           >
             Friends
@@ -960,6 +962,7 @@ export const Profile: React.FC = () => {
               fontWeight: '600',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
+              outline: 'none',
             }}
           >
             Bookmarks

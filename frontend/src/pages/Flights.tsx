@@ -49,8 +49,7 @@ export const Flights: React.FC = () => {
     }
   };
 
-  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+  const handleFileUpload = async (file: File) => {
     if (!file) return;
 
     setUploadingPass(true);
@@ -213,10 +212,55 @@ export const Flights: React.FC = () => {
       <div className='flights-header'>
         <h1>My Flights</h1>
         <div className='flights-actions'>
-          <button className='camera-btn' onClick={() => cameraInputRef.current?.click()} disabled={uploadingPass}>
+          <button className='camera-btn' onClick={async () => {
+            if ('showOpenFilePicker' in window) {
+              try {
+                const [fileHandle] = await (window as any).showOpenFilePicker({
+                  types: [{
+                    description: 'Images',
+                    accept: {
+                      'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.webp']
+                    }
+                  }],
+                  multiple: false
+                });
+                const file = await fileHandle.getFile();
+                await handleFileUpload(file);
+              } catch (err) {
+                if ((err as Error).name !== 'AbortError') {
+                  console.error('Error selecting file:', err);
+                }
+              }
+            } else {
+              cameraInputRef.current?.click();
+            }
+          }} disabled={uploadingPass}>
             <CameraIcon className='icon' />
           </button>
-          <button className='upload-pass-btn' onClick={() => fileInputRef.current?.click()} disabled={uploadingPass}>
+          <button className='upload-pass-btn' onClick={async () => {
+            if ('showOpenFilePicker' in window) {
+              try {
+                const [fileHandle] = await (window as any).showOpenFilePicker({
+                  types: [{
+                    description: 'Images and PDFs',
+                    accept: {
+                      'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.webp'],
+                      'application/pdf': ['.pdf']
+                    }
+                  }],
+                  multiple: false
+                });
+                const file = await fileHandle.getFile();
+                await handleFileUpload(file);
+              } catch (err) {
+                if ((err as Error).name !== 'AbortError') {
+                  console.error('Error selecting file:', err);
+                }
+              }
+            } else {
+              fileInputRef.current?.click();
+            }
+          }} disabled={uploadingPass}>
             <UploadIcon className='icon' />
             {uploadingPass ? 'Uploading...' : 'Upload'}
           </button>
@@ -228,7 +272,10 @@ export const Flights: React.FC = () => {
             ref={fileInputRef}
             type='file'
             accept='image/*,.pdf'
-            onChange={handleFileUpload}
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) handleFileUpload(file);
+            }}
             style={{ display: 'none' }}
           />
           <input
@@ -236,7 +283,10 @@ export const Flights: React.FC = () => {
             type='file'
             accept='image/*'
             capture='environment'
-            onChange={handleFileUpload}
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) handleFileUpload(file);
+            }}
             style={{ display: 'none' }}
           />
         </div>

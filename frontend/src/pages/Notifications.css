@@ -131,7 +131,7 @@
   display: flex;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--pb-light-periwinkle);
   animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -222,7 +222,7 @@
   align-items: flex-start;
   gap: 0.75rem;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #9ca3af !important;
+  border-bottom: 1px solid var(--pb-light-periwinkle) !important;
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;

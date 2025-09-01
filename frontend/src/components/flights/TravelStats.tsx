@@ -13,16 +13,6 @@ interface TravelStatsProps {
 export const TravelStats: React.FC<TravelStatsProps> = ({ stats, loading, compact = false, showGoals = false }) => {
   const navigate = useNavigate();
 
-  // Add debugging
-  console.log('🔍 TravelStats component received:', {
-    stats,
-    loading,
-    compact,
-    showGoals,
-    hasStats: !!stats,
-    totalFlights: stats?.totalFlights,
-    totalDistance: stats?.totalDistance
-  });
   if (loading) {
     return (
       <div style={{ padding: '1rem' }}>
