@@ -22,13 +22,10 @@ function convertToLegacyFormat(data: any): any {
     destination: data.destination || { airportCode: null, city: null, country: null },
     departureTime: data.departureTime || null,
     arrivalTime: data.arrivalTime || null,
-    passengerName: data.passengerName || data.passenger?.name || null,
     confirmationCode: data.confirmationCode || data.pnr || null,
     boardingInfo: data.boardingInfo || {
       gate: data.gate || null,
-      seat: data.seat || data.seatNumber || null,
-      zone: data.zone || data.boardingGroup || null,
-      boardingTime: data.boardingTime || null
+      seat: data.seat || data.seatNumber || null
     },
     scheduledDepartureTime: data.scheduledDepartureTime || data.departureTime || null,
     scheduledArrivalTime: data.scheduledArrivalTime || data.arrivalTime || null
@@ -100,17 +97,11 @@ export const uploadBoardingPass = async (req: Request, res: Response) => {
       if (result.data?.flightNumber) {
         console.log(`  Flight: ${result.data.airline || ''}${result.data.flightNumber}`);
       }
-      if (result.data?.passengerName) {
-        console.log(`  Passenger: ${result.data.passengerName}`);
-      }
       if (result.data?.boardingInfo?.gate) {
         console.log(`  Gate: ${result.data.boardingInfo.gate}`);
       }
       if (result.data?.boardingInfo?.seat) {
         console.log(`  Seat: ${result.data.boardingInfo.seat}`);
-      }
-      if (result.data?.boardingInfo?.zone) {
-        console.log(`  Zone: ${result.data.boardingInfo.zone}`);
       }
       if (result.data?.confirmationCode) {
         console.log(`  Confirmation: ${result.data.confirmationCode}`);
@@ -162,10 +153,6 @@ export const uploadBoardingPass = async (req: Request, res: Response) => {
           console.log(`  Adding seat ${result.boardingInfo.seat} from ${parserResults[i].parser}`);
           parsedData.boardingInfo.seat = result.boardingInfo.seat;
         }
-        if (!parsedData.boardingInfo.zone && result.boardingInfo?.zone) {
-          console.log(`  Adding zone ${result.boardingInfo.zone} from ${parserResults[i].parser}`);
-          parsedData.boardingInfo.zone = result.boardingInfo.zone;
-        }
         
         // Fill in missing times
         if (!parsedData.departureTime && result.departureTime) {
@@ -183,11 +170,7 @@ export const uploadBoardingPass = async (req: Request, res: Response) => {
           parsedData.scheduledArrivalTime = result.scheduledArrivalTime;
         }
         
-        // Fill in missing passenger info
-        if (!parsedData.passengerName && result.passengerName) {
-          console.log(`  Adding passenger name ${result.passengerName} from ${parserResults[i].parser}`);
-          parsedData.passengerName = result.passengerName;
-        }
+        // Don't extract passenger info
         if (!parsedData.confirmationCode && result.confirmationCode) {
           console.log(`  Adding confirmation code ${result.confirmationCode} from ${parserResults[i].parser}`);
           parsedData.confirmationCode = result.confirmationCode;
@@ -197,10 +180,8 @@ export const uploadBoardingPass = async (req: Request, res: Response) => {
       console.log('\n========== FINAL COMBINED RESULT ==========');
       console.log('Route:', parsedData.origin?.airportCode, '→', parsedData.destination?.airportCode);
       console.log('Flight:', parsedData.airline, parsedData.flightNumber);
-      console.log('Passenger:', parsedData.passengerName);
       console.log('Gate:', parsedData.boardingInfo?.gate);
       console.log('Seat:', parsedData.boardingInfo?.seat);
-      console.log('Zone:', parsedData.boardingInfo?.zone);
       console.log('Confirmation:', parsedData.confirmationCode);
       console.log('==========================================\n');
     }
@@ -212,13 +193,27 @@ export const uploadBoardingPass = async (req: Request, res: Response) => {
     // Calculate distance between airports
     const distance = await calculateFlightDistance(parsedData.origin.airportCode, parsedData.destination.airportCode);
 
-    // Create flight record
-    const flight = new Flight({
+    // Map boarding info to correct fields
+    const flightData = {
       userId,
       ...parsedData,
+      airline: parsedData.airline || 'Unknown',  // Default to 'Unknown' if airline not detected
       distance,
       boardingPassUrl,
-    });
+      // Map seat from boardingInfo.seat to seatNumber
+      seatNumber: parsedData.boardingInfo?.seat || parsedData.seatNumber,
+      // Map gate to origin.gate
+      origin: {
+        ...parsedData.origin,
+        gate: parsedData.boardingInfo?.gate || parsedData.origin?.gate
+      },
+    };
+
+    // Remove boardingInfo since we've mapped its fields
+    delete flightData.boardingInfo;
+
+    // Create flight record
+    const flight = new Flight(flightData);
 
     // Calculate points
     flight.points = flight.calculatePoints();

@@ -96,7 +96,7 @@ export const FlightEditModal: React.FC<FlightEditModalProps> = ({ flight, isOpen
             style={{ padding: '10px', backgroundColor: '#f0f7ff', borderRadius: '4px', marginBottom: '16px' }}
           >
             <p style={{ margin: 0, fontSize: '14px', color: '#4a5568' }}>
-              ✈️ Required: Departure & Arrival airports, Date. All other fields are optional.
+              Required: Departure & Arrival airports, Date. All other fields are optional.
             </p>
           </div>
 

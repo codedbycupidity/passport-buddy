@@ -125,7 +125,7 @@ export const FlightManualEntry: React.FC<FlightManualEntryProps> = ({ isOpen, on
           style={{ padding: '10px', backgroundColor: '#f0f7ff', borderRadius: '4px', marginBottom: '16px' }}
         >
           <p style={{ margin: 0, fontSize: '14px', color: '#4a5568' }}>
-            ✈️ One-way ticket entry - Required: Departure & Arrival airports, Date
+            One-way ticket entry - Required: Departure & Arrival airports, Date
           </p>
         </div>
 

@@ -201,13 +201,6 @@ export const Flights: React.FC = () => {
     });
   };
 
-  const formatTime = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-    });
-  };
 
   const upcomingFlights = flights.filter(f => f.status === 'upcoming');
   const completedFlights = flights.filter(f => f.status === 'completed');
@@ -370,13 +363,6 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight, onEdit, onDelete, onMar
     });
   };
 
-  const formatTime = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-    });
-  };
 
   return (
     <div className='flight-card'>
@@ -392,7 +378,6 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight, onEdit, onDelete, onMar
         <div className='airport'>
           <div className='airport-code'>{flight.origin.airportCode}</div>
           <div className='airport-city'>{flight.origin.city}</div>
-          <div className='flight-time'>{formatTime(flight.scheduledDepartureTime)}</div>
         </div>
 
         <div className='flight-path'>
@@ -411,7 +396,6 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight, onEdit, onDelete, onMar
         <div className='airport'>
           <div className='airport-code'>{flight.destination.airportCode}</div>
           <div className='airport-city'>{flight.destination.city}</div>
-          <div className='flight-time'>{formatTime(flight.scheduledArrivalTime)}</div>
         </div>
       </div>
 

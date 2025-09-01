@@ -1,0 +1,7447 @@
+[
+  {
+    "name": "US Air Force",
+    "iata_code": null,
+    "icao_code": "RCH"
+  },
+  {
+    "name": "American Airlines",
+    "iata_code": "AA",
+    "icao_code": "AAL"
+  },
+  {
+    "name": "United Airlines",
+    "iata_code": "UA",
+    "icao_code": "UAL"
+  },
+  {
+    "name": "Delta Air Lines",
+    "iata_code": "DL",
+    "icao_code": "DAL"
+  },
+  {
+    "name": "Airbus",
+    "iata_code": null,
+    "icao_code": "AIB"
+  },
+  {
+    "name": "Southwest Airlines",
+    "iata_code": "WN",
+    "icao_code": "SWA"
+  },
+  {
+    "name": "FedEx",
+    "iata_code": "FX",
+    "icao_code": "FDX"
+  },
+  {
+    "name": "China Southern Airlines",
+    "iata_code": "CZ",
+    "icao_code": "CSN"
+  },
+  {
+    "name": "China Eastern Airlines",
+    "iata_code": "MU",
+    "icao_code": "CES"
+  },
+  {
+    "name": "Civil Air Patrol",
+    "iata_code": null,
+    "icao_code": "CAP"
+  },
+  {
+    "name": "NetJets",
+    "iata_code": "1I",
+    "icao_code": "EJA"
+  },
+  {
+    "name": "Air China",
+    "iata_code": "CA",
+    "icao_code": "CCA"
+  },
+  {
+    "name": "Ryanair",
+    "iata_code": "FR",
+    "icao_code": "RYR"
+  },
+  {
+    "name": "Boeing",
+    "iata_code": null,
+    "icao_code": "BOE"
+  },
+  {
+    "name": "Turkish Airlines",
+    "iata_code": "TK",
+    "icao_code": "THY"
+  },
+  {
+    "name": "easyJet",
+    "iata_code": "U2",
+    "icao_code": "EZY"
+  },
+  {
+    "name": "Lufthansa",
+    "iata_code": "LH",
+    "icao_code": "DLH"
+  },
+  {
+    "name": "Air Canada",
+    "iata_code": "AC",
+    "icao_code": "ACA"
+  },
+  {
+    "name": "IndiGo",
+    "iata_code": "6E",
+    "icao_code": "IGO"
+  },
+  {
+    "name": "Alaska Airlines",
+    "iata_code": "AS",
+    "icao_code": "ASA"
+  },
+  {
+    "name": "JetBlue Airways",
+    "iata_code": "B6",
+    "icao_code": "JBU"
+  },
+  {
+    "name": "British Airways",
+    "iata_code": "BA",
+    "icao_code": "BAW"
+  },
+  {
+    "name": "LATAM Airlines",
+    "iata_code": "LA",
+    "icao_code": "LAN"
+  },
+  {
+    "name": "UPS",
+    "iata_code": "5X",
+    "icao_code": "UPS"
+  },
+  {
+    "name": "Emirates",
+    "iata_code": "EK",
+    "icao_code": "UAE"
+  },
+  {
+    "name": "Qantas",
+    "iata_code": "QF",
+    "icao_code": "QFA"
+  },
+  {
+    "name": "Qatar Airways",
+    "iata_code": "QR",
+    "icao_code": "QTR"
+  },
+  {
+    "name": "Air France",
+    "iata_code": "AF",
+    "icao_code": "AFR"
+  },
+  {
+    "name": "All Nippon Airways",
+    "iata_code": "NH",
+    "icao_code": "ANA"
+  },
+  {
+    "name": "AirAsia",
+    "iata_code": "AK",
+    "icao_code": "AXM"
+  },
+  {
+    "name": "Hainan Airlines",
+    "iata_code": "HU",
+    "icao_code": "CHH"
+  },
+  {
+    "name": "Shenzhen Airlines",
+    "iata_code": "ZH",
+    "icao_code": "CSZ"
+  },
+  {
+    "name": "Flexjet",
+    "iata_code": null,
+    "icao_code": "LXJ"
+  },
+  {
+    "name": "DHL",
+    "iata_code": "D0",
+    "icao_code": "DHK"
+  },
+  {
+    "name": "Azul Linhas Aereas",
+    "iata_code": "AD",
+    "icao_code": "AZU"
+  },
+  {
+    "name": "Spirit Airlines",
+    "iata_code": "NK",
+    "icao_code": "NKS"
+  },
+  {
+    "name": "Sichuan Airlines",
+    "iata_code": "3U",
+    "icao_code": "CSC"
+  },
+  {
+    "name": "Xiamen Air",
+    "iata_code": "MF",
+    "icao_code": "CXA"
+  },
+  {
+    "name": "Cathay Pacific",
+    "iata_code": "CX",
+    "icao_code": "CPA"
+  },
+  {
+    "name": "Wizz Air",
+    "iata_code": "W6",
+    "icao_code": "WZZ"
+  },
+  {
+    "name": "Aeroflot",
+    "iata_code": "SU",
+    "icao_code": "AFL"
+  },
+  {
+    "name": "KLM",
+    "iata_code": "KL",
+    "icao_code": "KLM"
+  },
+  {
+    "name": "Korean Air",
+    "iata_code": "KE",
+    "icao_code": "KAL"
+  },
+  {
+    "name": "WestJet",
+    "iata_code": "WS",
+    "icao_code": "WJA"
+  },
+  {
+    "name": "PHI",
+    "iata_code": null,
+    "icao_code": "PHM"
+  },
+  {
+    "name": "Singapore Airlines",
+    "iata_code": "SQ",
+    "icao_code": "SIA"
+  },
+  {
+    "name": "Saudia",
+    "iata_code": "SV",
+    "icao_code": "SVA"
+  },
+  {
+    "name": "Aeromexico",
+    "iata_code": "AM",
+    "icao_code": "AMX"
+  },
+  {
+    "name": "Oxford Aviation Academy",
+    "iata_code": null,
+    "icao_code": "OXF"
+  },
+  {
+    "name": "Japan Airlines",
+    "iata_code": "JL",
+    "icao_code": "JAL"
+  },
+  {
+    "name": "Avianca",
+    "iata_code": "AV",
+    "icao_code": "AVA"
+  },
+  {
+    "name": "Shandong Airlines",
+    "iata_code": "SC",
+    "icao_code": "CDG"
+  },
+  {
+    "name": "GOL Linhas Aereas",
+    "iata_code": "G3",
+    "icao_code": "GLO"
+  },
+  {
+    "name": "Rossiya",
+    "iata_code": "FV",
+    "icao_code": "SDM"
+  },
+  {
+    "name": "SAS",
+    "iata_code": "SK",
+    "icao_code": "SAS"
+  },
+  {
+    "name": "Allegiant Air",
+    "iata_code": "G4",
+    "icao_code": "AAY"
+  },
+  {
+    "name": "Frontier",
+    "iata_code": "F9",
+    "icao_code": "FFT"
+  },
+  {
+    "name": "Vueling",
+    "iata_code": "VY",
+    "icao_code": "VLG"
+  },
+  {
+    "name": "Ameriflight",
+    "iata_code": "A8",
+    "icao_code": "AMF"
+  },
+  {
+    "name": "Ethiopian Airlines",
+    "iata_code": "ET",
+    "icao_code": "ETH"
+  },
+  {
+    "name": "Volaris",
+    "iata_code": "Y4",
+    "icao_code": "VOI"
+  },
+  {
+    "name": "Eurocopter Deutschland",
+    "iata_code": null,
+    "icao_code": "RDF"
+  },
+  {
+    "name": "Iberia",
+    "iata_code": "IB",
+    "icao_code": "IBE"
+  },
+  {
+    "name": "Spring Airlines",
+    "iata_code": "9C",
+    "icao_code": "CQH"
+  },
+  {
+    "name": "TUI fly",
+    "iata_code": "X3",
+    "icao_code": "TUI"
+  },
+  {
+    "name": "Lion Air",
+    "iata_code": "JT",
+    "icao_code": "LNI"
+  },
+  {
+    "name": "Air India",
+    "iata_code": "AI",
+    "icao_code": "AIC"
+  },
+  {
+    "name": "Pilatus Flugzeugbau",
+    "iata_code": null,
+    "icao_code": "PCH"
+  },
+  {
+    "name": "Pilatus Flugzeugwerke",
+    "iata_code": null,
+    "icao_code": "PCH"
+  },
+  {
+    "name": "NetJets Europe",
+    "iata_code": null,
+    "icao_code": "NJE"
+  },
+  {
+    "name": "Transavia",
+    "iata_code": "HV",
+    "icao_code": "TRA"
+  },
+  {
+    "name": "Jetstar",
+    "iata_code": "JQ",
+    "icao_code": "JST"
+  },
+  {
+    "name": "Air New Zealand",
+    "iata_code": "NZ",
+    "icao_code": "ANZ"
+  },
+  {
+    "name": "Eurowings",
+    "iata_code": "EW",
+    "icao_code": "EWG"
+  },
+  {
+    "name": "Cape Air",
+    "iata_code": "9K",
+    "icao_code": "KAP"
+  },
+  {
+    "name": "Jet2",
+    "iata_code": "LS",
+    "icao_code": "EXS"
+  },
+  {
+    "name": "S7 Airlines",
+    "iata_code": "S7",
+    "icao_code": "SBI"
+  },
+  {
+    "name": "Shanghai Airlines",
+    "iata_code": "FM",
+    "icao_code": "CSH"
+  },
+  {
+    "name": "TAP Air Portugal",
+    "iata_code": "TP",
+    "icao_code": "TAP"
+  },
+  {
+    "name": "VietJet Air",
+    "iata_code": "VJ",
+    "icao_code": "VJC"
+  },
+  {
+    "name": "Vietnam Airlines",
+    "iata_code": "VN",
+    "icao_code": "HVN"
+  },
+  {
+    "name": "ENAC Ecole Aviation Civile",
+    "iata_code": null,
+    "icao_code": "NAK"
+  },
+  {
+    "name": "Virgin Australia",
+    "iata_code": "VA",
+    "icao_code": "VOZ"
+  },
+  {
+    "name": "Wheels Up",
+    "iata_code": null,
+    "icao_code": "GAJ"
+  },
+  {
+    "name": "Pegasus Airlines",
+    "iata_code": "PC",
+    "icao_code": "PGT"
+  },
+  {
+    "name": "Batik Air",
+    "iata_code": "ID",
+    "icao_code": "BTK"
+  },
+  {
+    "name": "Royal Canadian Air Force",
+    "iata_code": null,
+    "icao_code": "CFC"
+  },
+  {
+    "name": "Embraer",
+    "iata_code": null,
+    "icao_code": "EMB"
+  },
+  {
+    "name": "Bristow Helicopters",
+    "iata_code": null,
+    "icao_code": "BHL"
+  },
+  {
+    "name": "Capital Airlines",
+    "iata_code": "JD",
+    "icao_code": "CBJ"
+  },
+  {
+    "name": "China Airlines",
+    "iata_code": "CI",
+    "icao_code": "CAL"
+  },
+  {
+    "name": "Jet Linx Aviation",
+    "iata_code": "JL",
+    "icao_code": "JTL"
+  },
+  {
+    "name": "Etihad Airways",
+    "iata_code": "EY",
+    "icao_code": "ETD"
+  },
+  {
+    "name": "EVA Air",
+    "iata_code": "BR",
+    "icao_code": "EVA"
+  },
+  {
+    "name": "VistaJet",
+    "iata_code": null,
+    "icao_code": "VJT"
+  },
+  {
+    "name": "Juneyao Air",
+    "iata_code": "HO",
+    "icao_code": "DKH"
+  },
+  {
+    "name": "Swiss",
+    "iata_code": "LX",
+    "icao_code": "SWR"
+  },
+  {
+    "name": "Copa Airlines",
+    "iata_code": "CM",
+    "icao_code": "CMP"
+  },
+  {
+    "name": "flyExclusive",
+    "iata_code": null,
+    "icao_code": "JRE"
+  },
+  {
+    "name": "Tianjin Airlines",
+    "iata_code": "GS",
+    "icao_code": "GCR"
+  },
+  {
+    "name": "CHC Helicopter",
+    "iata_code": null,
+    "icao_code": "HMB"
+  },
+  {
+    "name": "Finnair",
+    "iata_code": "AY",
+    "icao_code": "FIN"
+  },
+  {
+    "name": "FlyDubai",
+    "iata_code": "FZ",
+    "icao_code": "FDB"
+  },
+  {
+    "name": "Aerolineas Argentinas",
+    "iata_code": "AR",
+    "icao_code": "ARG"
+  },
+  {
+    "name": "Asiana Airlines",
+    "iata_code": "OZ",
+    "icao_code": "AAR"
+  },
+  {
+    "name": "SF Airlines",
+    "iata_code": "O3",
+    "icao_code": "CSS"
+  },
+  {
+    "name": "Philippine Airlines",
+    "iata_code": "PR",
+    "icao_code": "PAL"
+  },
+  {
+    "name": "JSX",
+    "iata_code": "XE",
+    "icao_code": "JSX"
+  },
+  {
+    "name": "Norwegian",
+    "iata_code": null,
+    "icao_code": "NAX"
+  },
+  {
+    "name": "Garuda Indonesia",
+    "iata_code": "GA",
+    "icao_code": "GIA"
+  },
+  {
+    "name": "LOT",
+    "iata_code": "LO",
+    "icao_code": "LOT"
+  },
+  {
+    "name": "Malaysia Airlines",
+    "iata_code": "MH",
+    "icao_code": "MAS"
+  },
+  {
+    "name": "Alpine Air Express",
+    "iata_code": "5A",
+    "icao_code": "AIP"
+  },
+  {
+    "name": "Aer Lingus",
+    "iata_code": "EI",
+    "icao_code": "EIN"
+  },
+  {
+    "name": "VivaAerobus",
+    "iata_code": "VB",
+    "icao_code": "VIV"
+  },
+  {
+    "name": "Wings Air",
+    "iata_code": "IW",
+    "icao_code": "WON"
+  },
+  {
+    "name": "Cebu Pacific",
+    "iata_code": "5J",
+    "icao_code": "CEB"
+  },
+  {
+    "name": "EgyptAir",
+    "iata_code": "MS",
+    "icao_code": "MSR"
+  },
+  {
+    "name": "ITA Airways",
+    "iata_code": "AZ",
+    "icao_code": "ITY"
+  },
+  {
+    "name": "ATR",
+    "iata_code": null,
+    "icao_code": "EVX"
+  },
+  {
+    "name": "Delta Private Jets",
+    "iata_code": null,
+    "icao_code": "DPJ"
+  },
+  {
+    "name": "Chengdu Airlines",
+    "iata_code": "EU",
+    "icao_code": "UEA"
+  },
+  {
+    "name": "Loong Air",
+    "iata_code": "GJ",
+    "icao_code": "CDC"
+  },
+  {
+    "name": "UTair",
+    "iata_code": "UT",
+    "icao_code": "UTA"
+  },
+  {
+    "name": "Conair",
+    "iata_code": null,
+    "icao_code": "FGD"
+  },
+  {
+    "name": "Aeronaves TSM",
+    "iata_code": null,
+    "icao_code": "VTM"
+  },
+  {
+    "name": "Air Arabia",
+    "iata_code": "G9",
+    "icao_code": "ABY"
+  },
+  {
+    "name": "SpiceJet",
+    "iata_code": "SG",
+    "icao_code": "SEJ"
+  },
+  {
+    "name": "China Express Airlines",
+    "iata_code": "G5",
+    "icao_code": "HXA"
+  },
+  {
+    "name": "Scoot",
+    "iata_code": "TR",
+    "icao_code": "TGW"
+  },
+  {
+    "name": "Trans Maldivian Airways",
+    "iata_code": null,
+    "icao_code": "TMW"
+  },
+  {
+    "name": "Airlink",
+    "iata_code": "4Z",
+    "icao_code": "LNK"
+  },
+  {
+    "name": "Austrian Airlines",
+    "iata_code": "OS",
+    "icao_code": "AUA"
+  },
+  {
+    "name": "Executive Jet Management",
+    "iata_code": null,
+    "icao_code": "EJM"
+  },
+  {
+    "name": "Rex",
+    "iata_code": "ZL",
+    "icao_code": "RXA"
+  },
+  {
+    "name": "Rossiya - Special Flight Squadron",
+    "iata_code": null,
+    "icao_code": "RSD"
+  },
+  {
+    "name": "ASL Airlines",
+    "iata_code": null,
+    "icao_code": "ABR"
+  },
+  {
+    "name": "Hawaiian Airlines",
+    "iata_code": "HA",
+    "icao_code": "HAL"
+  },
+  {
+    "name": "Mountain Aviation",
+    "iata_code": null,
+    "icao_code": "FTH"
+  },
+  {
+    "name": "Vistara",
+    "iata_code": "UK",
+    "icao_code": "VTI"
+  },
+  {
+    "name": "Aegean Airlines",
+    "iata_code": "A3",
+    "icao_code": "AEE"
+  },
+  {
+    "name": "Atlas Air",
+    "iata_code": "5Y",
+    "icao_code": "GTI"
+  },
+  {
+    "name": "Canlink Aviation",
+    "iata_code": null,
+    "icao_code": "MFC"
+  },
+  {
+    "name": "Go First",
+    "iata_code": "G8",
+    "icao_code": "GOW"
+  },
+  {
+    "name": "Citilink",
+    "iata_code": "QG",
+    "icao_code": "CTV"
+  },
+  {
+    "name": "Air Algerie",
+    "iata_code": "AH",
+    "icao_code": "DAH"
+  },
+  {
+    "name": "Lucky Air",
+    "iata_code": "8L",
+    "icao_code": "LKE"
+  },
+  {
+    "name": "PlaneSense",
+    "iata_code": null,
+    "icao_code": "CNS"
+  },
+  {
+    "name": "Air Europa",
+    "iata_code": "UX",
+    "icao_code": "AEA"
+  },
+  {
+    "name": "Oman Air",
+    "iata_code": "WY",
+    "icao_code": "OMA"
+  },
+  {
+    "name": "China United Airlines",
+    "iata_code": "KN",
+    "icao_code": "CUA"
+  },
+  {
+    "name": "Thai Airways",
+    "iata_code": "TG",
+    "icao_code": "THA"
+  },
+  {
+    "name": "DRF Luftrettung",
+    "iata_code": "1I",
+    "icao_code": "AMB"
+  },
+  {
+    "name": "Omni Taxi Aereo",
+    "iata_code": null,
+    "icao_code": "OMI"
+  },
+  {
+    "name": "Ural Airlines",
+    "iata_code": "U6",
+    "icao_code": "SVR"
+  },
+  {
+    "name": "AirShare",
+    "iata_code": null,
+    "icao_code": "XSR"
+  },
+  {
+    "name": "Alliance Airlines",
+    "iata_code": "QQ",
+    "icao_code": "UTY"
+  },
+  {
+    "name": "Babcock MCS Onshore",
+    "iata_code": null,
+    "icao_code": "RHD"
+  },
+  {
+    "name": "Buffalo Airways",
+    "iata_code": "J0",
+    "icao_code": "BFL"
+  },
+  {
+    "name": "SkyWest Airlines",
+    "iata_code": "OO",
+    "icao_code": "SKW"
+  },
+  {
+    "name": "SunExpress",
+    "iata_code": "XQ",
+    "icao_code": "SXS"
+  },
+  {
+    "name": "Xo",
+    "iata_code": null,
+    "icao_code": "XOJ"
+  },
+  {
+    "name": "Condor",
+    "iata_code": "DE",
+    "icao_code": "CFG"
+  },
+  {
+    "name": "Royal Air Maroc",
+    "iata_code": "AT",
+    "icao_code": "RAM"
+  },
+  {
+    "name": "Super Air Jet",
+    "iata_code": "IU",
+    "icao_code": "SJV"
+  },
+  {
+    "name": "Flynas",
+    "iata_code": "XY",
+    "icao_code": "KNE"
+  },
+  {
+    "name": "Skyborne Airline Academy",
+    "iata_code": null,
+    "icao_code": "SFY"
+  },
+  {
+    "name": "Germany - Air Ambulance",
+    "iata_code": null,
+    "icao_code": "CHX"
+  },
+  {
+    "name": "Air Hamburg",
+    "iata_code": null,
+    "icao_code": "AHO"
+  },
+  {
+    "name": "Air Spray",
+    "iata_code": null,
+    "icao_code": "ASB"
+  },
+  {
+    "name": "Global Jet Luxembourg",
+    "iata_code": null,
+    "icao_code": "SVW"
+  },
+  {
+    "name": "Loganair",
+    "iata_code": "LM",
+    "icao_code": "LOG"
+  },
+  {
+    "name": "Southern Airways Express",
+    "iata_code": "9X",
+    "icao_code": "FDY"
+  },
+  {
+    "name": "Wideroe",
+    "iata_code": "WF",
+    "icao_code": "WIF"
+  },
+  {
+    "name": "Babcock MCS Italia",
+    "iata_code": null,
+    "icao_code": "ELH"
+  },
+  {
+    "name": "El Al",
+    "iata_code": "LY",
+    "icao_code": "ELY"
+  },
+  {
+    "name": "Jet Edge",
+    "iata_code": null,
+    "icao_code": "EDG"
+  },
+  {
+    "name": "SmartLynx",
+    "iata_code": "6Y",
+    "icao_code": "ART"
+  },
+  {
+    "name": "Sun Country Airlines",
+    "iata_code": "SY",
+    "icao_code": "SCX"
+  },
+  {
+    "name": "Bombardier",
+    "iata_code": null,
+    "icao_code": "BBA"
+  },
+  {
+    "name": "Bemidji Airlines",
+    "iata_code": "CH",
+    "icao_code": "BMJ"
+  },
+  {
+    "name": "Brussels Airlines",
+    "iata_code": "SN",
+    "icao_code": "BEL"
+  },
+  {
+    "name": "Gazpromavia",
+    "iata_code": "4G",
+    "icao_code": "GZP"
+  },
+  {
+    "name": "Icelandair",
+    "iata_code": "FI",
+    "icao_code": "ICE"
+  },
+  {
+    "name": "Pobeda",
+    "iata_code": "DP",
+    "icao_code": "PBD"
+  },
+  {
+    "name": "Swiftair",
+    "iata_code": "WT",
+    "icao_code": "SWT"
+  },
+  {
+    "name": "United Kingdom - Air Ambulance",
+    "iata_code": null,
+    "icao_code": "HLE"
+  },
+  {
+    "name": "Volotea",
+    "iata_code": "V7",
+    "icao_code": "VOE"
+  },
+  {
+    "name": "Air Canada Rouge",
+    "iata_code": "RV",
+    "icao_code": "ROU"
+  },
+  {
+    "name": "Canada - Department of Transport",
+    "iata_code": null,
+    "icao_code": "TGO"
+  },
+  {
+    "name": "Mahan Air",
+    "iata_code": "W5",
+    "icao_code": "IRM"
+  },
+  {
+    "name": "Virgin Atlantic",
+    "iata_code": "VS",
+    "icao_code": "VIR"
+  },
+  {
+    "name": "Air Baltic",
+    "iata_code": "BT",
+    "icao_code": "BTI"
+  },
+  {
+    "name": "Iraqi Airways",
+    "iata_code": "IA",
+    "icao_code": "IAW"
+  },
+  {
+    "name": "Smartwings",
+    "iata_code": "QS",
+    "icao_code": "TVS"
+  },
+  {
+    "name": "Babcock MCS Espana",
+    "iata_code": null,
+    "icao_code": "INR"
+  },
+  {
+    "name": "Bering Air",
+    "iata_code": "8E",
+    "icao_code": "BRG"
+  },
+  {
+    "name": "Jeju Air",
+    "iata_code": "7C",
+    "icao_code": "JJA"
+  },
+  {
+    "name": "North Star Aviation",
+    "iata_code": null,
+    "icao_code": "MVK"
+  },
+  {
+    "name": "Tibet Airlines",
+    "iata_code": "TV",
+    "icao_code": "TBA"
+  },
+  {
+    "name": "United Nations",
+    "iata_code": null,
+    "icao_code": "UNO"
+  },
+  {
+    "name": "Uzbekistan Airways",
+    "iata_code": "HY",
+    "icao_code": "UZB"
+  },
+  {
+    "name": "Voyageur Airways",
+    "iata_code": "VC",
+    "icao_code": "VAL"
+  },
+  {
+    "name": "West Air",
+    "iata_code": "PN",
+    "icao_code": "CHB"
+  },
+  {
+    "name": "Corendon Airlines",
+    "iata_code": "XC",
+    "icao_code": "CAI"
+  },
+  {
+    "name": "FlySafair",
+    "iata_code": "FA",
+    "icao_code": "SFR"
+  },
+  {
+    "name": "Gulf Air",
+    "iata_code": "GF",
+    "icao_code": "GFA"
+  },
+  {
+    "name": "Jetfly Aviation",
+    "iata_code": null,
+    "icao_code": "JFA"
+  },
+  {
+    "name": "Porter Airlines",
+    "iata_code": "P3",
+    "icao_code": "POE"
+  },
+  {
+    "name": "Sunwing Airlines",
+    "iata_code": "WG",
+    "icao_code": "SWG"
+  },
+  {
+    "name": "Kenn Borek Air",
+    "iata_code": "4K",
+    "icao_code": "KBA"
+  },
+  {
+    "name": "Norsk Luftambulanse",
+    "iata_code": null,
+    "icao_code": "DOC"
+  },
+  {
+    "name": "Polish Medical Air Rescue",
+    "iata_code": null,
+    "icao_code": "LPR"
+  },
+  {
+    "name": "Ravenair",
+    "iata_code": null,
+    "icao_code": "RVR"
+  },
+  {
+    "name": "Kenmore Air",
+    "iata_code": "M5",
+    "icao_code": "KEN"
+  },
+  {
+    "name": "Kunming Airlines",
+    "iata_code": "KY",
+    "icao_code": "KNA"
+  },
+  {
+    "name": "Peach",
+    "iata_code": "MM",
+    "icao_code": "APJ"
+  },
+  {
+    "name": "Phoenix Air",
+    "iata_code": "PH",
+    "icao_code": "GRB"
+  },
+  {
+    "name": "Air Cargo Carriers",
+    "iata_code": "2Q",
+    "icao_code": "SNC"
+  },
+  {
+    "name": "Royal Air Freight",
+    "iata_code": null,
+    "icao_code": "RAX"
+  },
+  {
+    "name": "Binter Canarias",
+    "iata_code": "NT",
+    "icao_code": "IBB"
+  },
+  {
+    "name": "Canadian North",
+    "iata_code": "5T",
+    "icao_code": "AKT"
+  },
+  {
+    "name": "China Postal Airlines",
+    "iata_code": "CF",
+    "icao_code": "CYZ"
+  },
+  {
+    "name": "Chongqing Airlines",
+    "iata_code": "OQ",
+    "icao_code": "CQN"
+  },
+  {
+    "name": "Kenya Airways",
+    "iata_code": "KQ",
+    "icao_code": "KQA"
+  },
+  {
+    "name": "Kuwait Airways",
+    "iata_code": "KU",
+    "icao_code": "KAC"
+  },
+  {
+    "name": "Qingdao Airlines",
+    "iata_code": "QW",
+    "icao_code": "QDA"
+  },
+  {
+    "name": "West Atlantic",
+    "iata_code": null,
+    "icao_code": "NPT"
+  },
+  {
+    "name": "Air Inuit",
+    "iata_code": "3H",
+    "icao_code": "AIE"
+  },
+  {
+    "name": "Air Peace",
+    "iata_code": "P4",
+    "icao_code": "APK"
+  },
+  {
+    "name": "Air Transat",
+    "iata_code": "TS",
+    "icao_code": "TSC"
+  },
+  {
+    "name": "European Flight Academy",
+    "iata_code": null,
+    "icao_code": "PTO"
+  },
+  {
+    "name": "Air Astana",
+    "iata_code": "KC",
+    "icao_code": "KZR"
+  },
+  {
+    "name": "Bamboo Airways",
+    "iata_code": "QH",
+    "icao_code": "BAV"
+  },
+  {
+    "name": "Cargojet Airways",
+    "iata_code": "W8",
+    "icao_code": "CJT"
+  },
+  {
+    "name": "Flight options",
+    "iata_code": null,
+    "icao_code": "OPT"
+  },
+  {
+    "name": "Hong Kong Airlines",
+    "iata_code": "HX",
+    "icao_code": "CRK"
+  },
+  {
+    "name": "iAero Airways",
+    "iata_code": "WQ",
+    "icao_code": "SWQ"
+  },
+  {
+    "name": "Offshore Helicopter Services",
+    "iata_code": null,
+    "icao_code": "BND"
+  },
+  {
+    "name": "Pakistan International Airlines",
+    "iata_code": "PK",
+    "icao_code": "PIA"
+  },
+  {
+    "name": "Red Wings",
+    "iata_code": "WZ",
+    "icao_code": "RWZ"
+  },
+  {
+    "name": "T'way Air",
+    "iata_code": "TW",
+    "icao_code": "TWB"
+  },
+  {
+    "name": "AirSprint",
+    "iata_code": null,
+    "icao_code": "ASP"
+  },
+  {
+    "name": "Avion Express",
+    "iata_code": "X9",
+    "icao_code": "NVD"
+  },
+  {
+    "name": "Cargolux",
+    "iata_code": "CV",
+    "icao_code": "CLX"
+  },
+  {
+    "name": "Freight Runners Express",
+    "iata_code": null,
+    "icao_code": "FRG"
+  },
+  {
+    "name": "Iran Air",
+    "iata_code": "IR",
+    "icao_code": "IRA"
+  },
+  {
+    "name": "RiseAir",
+    "iata_code": "4T",
+    "icao_code": "WEW"
+  },
+  {
+    "name": "Skymark Airlines",
+    "iata_code": "BC",
+    "icao_code": "SKY"
+  },
+  {
+    "name": "Air Cairo",
+    "iata_code": "SM",
+    "icao_code": "MSC"
+  },
+  {
+    "name": "Bangkok Airways",
+    "iata_code": "PG",
+    "icao_code": "BKP"
+  },
+  {
+    "name": "Hebei Airlines",
+    "iata_code": "NS",
+    "icao_code": "HBH"
+  },
+  {
+    "name": "Lauda Europe",
+    "iata_code": "LW",
+    "icao_code": "LDA"
+  },
+  {
+    "name": "Reach Air Medical Services",
+    "iata_code": null,
+    "icao_code": "REH"
+  },
+  {
+    "name": "Red Wing Aviation",
+    "iata_code": null,
+    "icao_code": "LAK"
+  },
+  {
+    "name": "Yamal Airlines",
+    "iata_code": "YC",
+    "icao_code": "LLM"
+  },
+  {
+    "name": "Air India Express",
+    "iata_code": "IX",
+    "icao_code": "AXB"
+  },
+  {
+    "name": "AirNet",
+    "iata_code": null,
+    "icao_code": "USC"
+  },
+  {
+    "name": "Breeze Airways",
+    "iata_code": "MX",
+    "icao_code": "MXY"
+  },
+  {
+    "name": "Central Mountain Air",
+    "iata_code": "9M",
+    "icao_code": "GLR"
+  },
+  {
+    "name": "Kalitta Air",
+    "iata_code": "K4",
+    "icao_code": "CKS"
+  },
+  {
+    "name": "Noordzee Helikopters Vlaanderen",
+    "iata_code": null,
+    "icao_code": "NHX"
+  },
+  {
+    "name": "Nordwind Airlines",
+    "iata_code": "N4",
+    "icao_code": "NWS"
+  },
+  {
+    "name": "SCAT",
+    "iata_code": "DV",
+    "icao_code": "VSV"
+  },
+  {
+    "name": "Sky Airline",
+    "iata_code": "H2",
+    "icao_code": "SKU"
+  },
+  {
+    "name": "USA Jet Airlines",
+    "iata_code": null,
+    "icao_code": "JUS"
+  },
+  {
+    "name": "Air Niugini",
+    "iata_code": "PX",
+    "icao_code": "ANG"
+  },
+  {
+    "name": "Emirates Flight Training Academy",
+    "iata_code": null,
+    "icao_code": "EFC"
+  },
+  {
+    "name": "Enter Air",
+    "iata_code": "E4",
+    "icao_code": "ENT"
+  },
+  {
+    "name": "Fly 7",
+    "iata_code": null,
+    "icao_code": "FSF"
+  },
+  {
+    "name": "Flyadeal",
+    "iata_code": "F3",
+    "icao_code": "FAD"
+  },
+  {
+    "name": "Gestair",
+    "iata_code": null,
+    "icao_code": "GES"
+  },
+  {
+    "name": "Jin Air",
+    "iata_code": "LJ",
+    "icao_code": "JNA"
+  },
+  {
+    "name": "Royal Jordanian",
+    "iata_code": "RJ",
+    "icao_code": "RJA"
+  },
+  {
+    "name": "SAF Helicopteres",
+    "iata_code": null,
+    "icao_code": "SHP"
+  },
+  {
+    "name": "Tunisair",
+    "iata_code": "TU",
+    "icao_code": "TAR"
+  },
+  {
+    "name": "9 Air",
+    "iata_code": "AQ",
+    "icao_code": "JYH"
+  },
+  {
+    "name": "Azerbaijan Airlines",
+    "iata_code": "J2",
+    "icao_code": "AHY"
+  },
+  {
+    "name": "Donghai Airlines",
+    "iata_code": "DZ",
+    "icao_code": "EPA"
+  },
+  {
+    "name": "Gama Aviation",
+    "iata_code": null,
+    "icao_code": "GMA"
+  },
+  {
+    "name": "Hong Kong Express",
+    "iata_code": "UO",
+    "icao_code": "HKE"
+  },
+  {
+    "name": "Maldivian",
+    "iata_code": "Q2",
+    "icao_code": "DQA"
+  },
+  {
+    "name": "Martinaire",
+    "iata_code": null,
+    "icao_code": "MRA"
+  },
+  {
+    "name": "Okay Airways",
+    "iata_code": "BK",
+    "icao_code": "OKA"
+  },
+  {
+    "name": "Quest Diagnostics",
+    "iata_code": null,
+    "icao_code": "LBQ"
+  },
+  {
+    "name": "Sevenair",
+    "iata_code": null,
+    "icao_code": "RVP"
+  },
+  {
+    "name": "Boliviana de Aviacion",
+    "iata_code": "OB",
+    "icao_code": "BOV"
+  },
+  {
+    "name": "Central Air Southwest",
+    "iata_code": null,
+    "icao_code": "CTL"
+  },
+  {
+    "name": "Contour Aviation",
+    "iata_code": "LF",
+    "icao_code": "VTE"
+  },
+  {
+    "name": "Flight Training Europe",
+    "iata_code": null,
+    "icao_code": "AYR"
+  },
+  {
+    "name": "Iberia Express",
+    "iata_code": "I2",
+    "icao_code": "IBS"
+  },
+  {
+    "name": "MEA",
+    "iata_code": "ME",
+    "icao_code": "MEA"
+  },
+  {
+    "name": "SriLankan Airlines",
+    "iata_code": "UL",
+    "icao_code": "ALK"
+  },
+  {
+    "name": "Air Busan",
+    "iata_code": "BX",
+    "icao_code": "ABL"
+  },
+  {
+    "name": "AirAsia X",
+    "iata_code": "D7",
+    "icao_code": "XAX"
+  },
+  {
+    "name": "AirSERBIA",
+    "iata_code": "JU",
+    "icao_code": "ASL"
+  },
+  {
+    "name": "Boutique Air",
+    "iata_code": "4B",
+    "icao_code": "BTQ"
+  },
+  {
+    "name": "DAT",
+    "iata_code": "DX",
+    "icao_code": "DTR"
+  },
+  {
+    "name": "JetSMART",
+    "iata_code": "JA",
+    "icao_code": "JAT"
+  },
+  {
+    "name": "Kalitta Charters",
+    "iata_code": "K9",
+    "icao_code": "KFS"
+  },
+  {
+    "name": "Tradewind Aviation",
+    "iata_code": "TJ",
+    "icao_code": "GPD"
+  },
+  {
+    "name": "Air-Glaciers",
+    "iata_code": null,
+    "icao_code": "AGV"
+  },
+  {
+    "name": "Flair Airlines",
+    "iata_code": "F8",
+    "icao_code": "FLE"
+  },
+  {
+    "name": "Luxaviation Belgium",
+    "iata_code": null,
+    "icao_code": "AAB"
+  },
+  {
+    "name": "Mesa Airlines",
+    "iata_code": "YV",
+    "icao_code": "ASH"
+  },
+  {
+    "name": "Ruili Airlines",
+    "iata_code": "DR",
+    "icao_code": "RLH"
+  },
+  {
+    "name": "Russia - Ministry of Emergency Situations (MChS)",
+    "iata_code": null,
+    "icao_code": "SUM"
+  },
+  {
+    "name": "SKY express",
+    "iata_code": "GQ",
+    "icao_code": "SEH"
+  },
+  {
+    "name": "Tarom",
+    "iata_code": "RO",
+    "icao_code": "ROT"
+  },
+  {
+    "name": "United States - US Forest Service",
+    "iata_code": null,
+    "icao_code": "XCN"
+  },
+  {
+    "name": "Air Macau",
+    "iata_code": "NX",
+    "icao_code": "AMU"
+  },
+  {
+    "name": "Alliance Air",
+    "iata_code": "9I",
+    "icao_code": "LLR"
+  },
+  {
+    "name": "Azur Air",
+    "iata_code": "ZF",
+    "icao_code": "AZV"
+  },
+  {
+    "name": "Biman Bangladesh Airlines",
+    "iata_code": "BG",
+    "icao_code": "BBC"
+  },
+  {
+    "name": "Castle Aviation",
+    "iata_code": null,
+    "icao_code": "CSJ"
+  },
+  {
+    "name": "EasyFly",
+    "iata_code": "VE",
+    "icao_code": "EFY"
+  },
+  {
+    "name": "Eurowings Discover",
+    "iata_code": "4Y",
+    "icao_code": "OCN"
+  },
+  {
+    "name": "FAI rent-a-jet",
+    "iata_code": null,
+    "icao_code": "IFA"
+  },
+  {
+    "name": "IFL Group",
+    "iata_code": null,
+    "icao_code": "IFL"
+  },
+  {
+    "name": "Maersk Air Cargo",
+    "iata_code": "DJ",
+    "icao_code": "SRR"
+  },
+  {
+    "name": "Searca",
+    "iata_code": null,
+    "icao_code": "SRC"
+  },
+  {
+    "name": "Silverhawk Aviation",
+    "iata_code": null,
+    "icao_code": "SLH"
+  },
+  {
+    "name": "Sunwest Aviation",
+    "iata_code": null,
+    "icao_code": "CNK"
+  },
+  {
+    "name": "Wasaya Airways",
+    "iata_code": "WP",
+    "icao_code": "WSG"
+  },
+  {
+    "name": "2Excel Aviation",
+    "iata_code": null,
+    "icao_code": "BRO"
+  },
+  {
+    "name": "Berry Aviation",
+    "iata_code": null,
+    "icao_code": "BYA"
+  },
+  {
+    "name": "CemAir",
+    "iata_code": "5Z",
+    "icao_code": "KEM"
+  },
+  {
+    "name": "Deer Jet",
+    "iata_code": null,
+    "icao_code": "DER"
+  },
+  {
+    "name": "Fiji Airways",
+    "iata_code": "FJ",
+    "icao_code": "FJI"
+  },
+  {
+    "name": "GlobeAir",
+    "iata_code": null,
+    "icao_code": "GAC"
+  },
+  {
+    "name": "GX Airlines",
+    "iata_code": "GX",
+    "icao_code": "CBG"
+  },
+  {
+    "name": "Key Lime Air",
+    "iata_code": "KG",
+    "icao_code": "LYM"
+  },
+  {
+    "name": "Pilot Flight Academy",
+    "iata_code": null,
+    "icao_code": "PIP"
+  },
+  {
+    "name": "Solairus Aviation",
+    "iata_code": null,
+    "icao_code": "TWY"
+  },
+  {
+    "name": "Ukraine International Airlines",
+    "iata_code": "PS",
+    "icao_code": "AUI"
+  },
+  {
+    "name": "Western Global Airlines",
+    "iata_code": "KD",
+    "icao_code": "WGN"
+  },
+  {
+    "name": "Aerolineas Ejecutivas",
+    "iata_code": null,
+    "icao_code": "LET"
+  },
+  {
+    "name": "Alaska Central Express",
+    "iata_code": "KO",
+    "icao_code": "AER"
+  },
+  {
+    "name": "Arik Air",
+    "iata_code": "W3",
+    "icao_code": "ARA"
+  },
+  {
+    "name": "Bighorn Airways",
+    "iata_code": null,
+    "icao_code": "BHR"
+  },
+  {
+    "name": "Calstar",
+    "iata_code": null,
+    "icao_code": "CMD"
+  },
+  {
+    "name": "Conviasa",
+    "iata_code": "V0",
+    "icao_code": "VCV"
+  },
+  {
+    "name": "Gouvernement du Quebec",
+    "iata_code": null,
+    "icao_code": "QUE"
+  },
+  {
+    "name": "Luxair",
+    "iata_code": "LG",
+    "icao_code": "LGL"
+  },
+  {
+    "name": "Ornge Air",
+    "iata_code": null,
+    "icao_code": "PUL"
+  },
+  {
+    "name": "Pascan Aviation",
+    "iata_code": "P6",
+    "icao_code": "PSC"
+  },
+  {
+    "name": "Ryan Air (USA)",
+    "iata_code": "7S",
+    "icao_code": "RYA"
+  },
+  {
+    "name": "Thai Smile",
+    "iata_code": "WE",
+    "icao_code": "THD"
+  },
+  {
+    "name": "Turkmenistan Airlines",
+    "iata_code": "T5",
+    "icao_code": "TUA"
+  },
+  {
+    "name": "VeriJet",
+    "iata_code": null,
+    "icao_code": "WSP"
+  },
+  {
+    "name": "Wiggins Airways",
+    "iata_code": null,
+    "icao_code": "WIG"
+  },
+  {
+    "name": "Air Dolomiti",
+    "iata_code": "EN",
+    "icao_code": "DLA"
+  },
+  {
+    "name": "Akasa Air",
+    "iata_code": "QP",
+    "icao_code": "AKJ"
+  },
+  {
+    "name": "Alkan Air",
+    "iata_code": null,
+    "icao_code": "AKN"
+  },
+  {
+    "name": "Aurora",
+    "iata_code": "HZ",
+    "icao_code": "SHU"
+  },
+  {
+    "name": "Azimuth",
+    "iata_code": "A4",
+    "icao_code": "AZO"
+  },
+  {
+    "name": "Iran Aseman Airlines",
+    "iata_code": "EP",
+    "icao_code": "IRC"
+  },
+  {
+    "name": "Jazeera Airways",
+    "iata_code": "J9",
+    "icao_code": "JZR"
+  },
+  {
+    "name": "Luxwing",
+    "iata_code": "BN",
+    "icao_code": "LWG"
+  },
+  {
+    "name": "North Cariboo Air",
+    "iata_code": null,
+    "icao_code": "NCB"
+  },
+  {
+    "name": "Pacific Coastal Airlines",
+    "iata_code": "8P",
+    "icao_code": "PCO"
+  },
+  {
+    "name": "REGA Swiss Air-Ambulance",
+    "iata_code": null,
+    "icao_code": "RGA"
+  },
+  {
+    "name": "Sky Quest",
+    "iata_code": null,
+    "icao_code": "ERY"
+  },
+  {
+    "name": "SprintAir",
+    "iata_code": "P8",
+    "icao_code": "SRN"
+  },
+  {
+    "name": "Starlux",
+    "iata_code": "JX",
+    "icao_code": "SJX"
+  },
+  {
+    "name": "Summit Air",
+    "iata_code": null,
+    "icao_code": "SUT"
+  },
+  {
+    "name": "Summit Aviation",
+    "iata_code": null,
+    "icao_code": "YEL"
+  },
+  {
+    "name": "TAAG Angola Airlines",
+    "iata_code": "DT",
+    "icao_code": "DTA"
+  },
+  {
+    "name": "TAG Aviation",
+    "iata_code": null,
+    "icao_code": "VIP"
+  },
+  {
+    "name": "Toll Aviation",
+    "iata_code": null,
+    "icao_code": "TFX"
+  },
+  {
+    "name": "US-Bangla Airlines",
+    "iata_code": "BS",
+    "icao_code": "UBG"
+  },
+  {
+    "name": "Zimex Aviation",
+    "iata_code": "XM",
+    "icao_code": "IMX"
+  },
+  {
+    "name": "Air Creebec",
+    "iata_code": "YN",
+    "icao_code": "CRQ"
+  },
+  {
+    "name": "Amelia",
+    "iata_code": "8R",
+    "icao_code": "AIA"
+  },
+  {
+    "name": "Colorful GuiZhou Airlines",
+    "iata_code": "GY",
+    "icao_code": "CGZ"
+  },
+  {
+    "name": "EagleMed",
+    "iata_code": null,
+    "icao_code": "EMD"
+  },
+  {
+    "name": "Eastern Airlines",
+    "iata_code": "2D",
+    "icao_code": "EAL"
+  },
+  {
+    "name": "European Air Charter",
+    "iata_code": "H6",
+    "icao_code": "BUC"
+  },
+  {
+    "name": "Everts Air Alaska",
+    "iata_code": "5V",
+    "icao_code": "VTS"
+  },
+  {
+    "name": "Helitrans",
+    "iata_code": null,
+    "icao_code": "HDR"
+  },
+  {
+    "name": "Japan Transocean Air",
+    "iata_code": "NU",
+    "icao_code": "JTA"
+  },
+  {
+    "name": "Manta Air",
+    "iata_code": "NR",
+    "icao_code": "MAV"
+  },
+  {
+    "name": "North-Wright Airways",
+    "iata_code": "HW",
+    "icao_code": "NWL"
+  },
+  {
+    "name": "PAL Airlines",
+    "iata_code": "PB",
+    "icao_code": "PVL"
+  },
+  {
+    "name": "Qatar Executive",
+    "iata_code": "QE",
+    "icao_code": "QQE"
+  },
+  {
+    "name": "SAAB Aircraft",
+    "iata_code": null,
+    "icao_code": "SCT"
+  },
+  {
+    "name": "Valljet",
+    "iata_code": null,
+    "icao_code": "VLJ"
+  },
+  {
+    "name": "Wright Air Service",
+    "iata_code": "8V",
+    "icao_code": "WRF"
+  },
+  {
+    "name": "ABX Air",
+    "iata_code": "GB",
+    "icao_code": "ABX"
+  },
+  {
+    "name": "Advanced Air",
+    "iata_code": "AN",
+    "icao_code": "WSN"
+  },
+  {
+    "name": "ATA Airlines",
+    "iata_code": "I3",
+    "icao_code": "TBZ"
+  },
+  {
+    "name": "Caribbean Airlines",
+    "iata_code": "BW",
+    "icao_code": "BWA"
+  },
+  {
+    "name": "Carson Air",
+    "iata_code": null,
+    "icao_code": "CRN"
+  },
+  {
+    "name": "Chartright Air",
+    "iata_code": null,
+    "icao_code": "HRT"
+  },
+  {
+    "name": "China Cargo Airlines",
+    "iata_code": "CK",
+    "icao_code": "CKK"
+  },
+  {
+    "name": "Encore Air Cargo",
+    "iata_code": null,
+    "icao_code": "DKT"
+  },
+  {
+    "name": "Excellent Air",
+    "iata_code": null,
+    "icao_code": "ECA"
+  },
+  {
+    "name": "FR Aviation",
+    "iata_code": null,
+    "icao_code": "FRA"
+  },
+  {
+    "name": "Hinterland Aviation",
+    "iata_code": "OI",
+    "icao_code": "HND"
+  },
+  {
+    "name": "InterCaribbean Airways",
+    "iata_code": "JY",
+    "icao_code": "IWY"
+  },
+  {
+    "name": "LATAM Cargo",
+    "iata_code": "UC",
+    "icao_code": "LCO"
+  },
+  {
+    "name": "Neos",
+    "iata_code": "NO",
+    "icao_code": "NOS"
+  },
+  {
+    "name": "Pacific Coast Jet",
+    "iata_code": null,
+    "icao_code": "PXT"
+  },
+  {
+    "name": "SkyCare",
+    "iata_code": null,
+    "icao_code": "PHX"
+  },
+  {
+    "name": "South African Airways",
+    "iata_code": "SA",
+    "icao_code": "SAA"
+  },
+  {
+    "name": "Suburban Air Freight",
+    "iata_code": null,
+    "icao_code": "SUB"
+  },
+  {
+    "name": "Air China Cargo",
+    "iata_code": null,
+    "icao_code": "CAO"
+  },
+  {
+    "name": "AirBridgeCargo Airlines",
+    "iata_code": "RU",
+    "icao_code": "ABW"
+  },
+  {
+    "name": "Airlink",
+    "iata_code": null,
+    "icao_code": "JAR"
+  },
+  {
+    "name": "Avelo Airlines",
+    "iata_code": "XP",
+    "icao_code": "VXP"
+  },
+  {
+    "name": "Buddha Air",
+    "iata_code": "U4",
+    "icao_code": "BHA"
+  },
+  {
+    "name": "CareFlight",
+    "iata_code": null,
+    "icao_code": "CFH"
+  },
+  {
+    "name": "Edelweiss Air",
+    "iata_code": "WK",
+    "icao_code": "EDW"
+  },
+  {
+    "name": "Fuji Dream Airlines",
+    "iata_code": "JH",
+    "icao_code": "FDA"
+  },
+  {
+    "name": "Fuzhou Airlines",
+    "iata_code": "FU",
+    "icao_code": "FZA"
+  },
+  {
+    "name": "Gesellschaft Fur Flugzieldarstellung",
+    "iata_code": null,
+    "icao_code": "GFD"
+  },
+  {
+    "name": "GTA Air",
+    "iata_code": null,
+    "icao_code": "GTX"
+  },
+  {
+    "name": "Helvetic Airways",
+    "iata_code": "2L",
+    "icao_code": "OAW"
+  },
+  {
+    "name": "Krasavia",
+    "iata_code": "KV",
+    "icao_code": "SSJ"
+  },
+  {
+    "name": "Magnicharters",
+    "iata_code": "UJ",
+    "icao_code": "GMT"
+  },
+  {
+    "name": "MASwings",
+    "iata_code": "MY",
+    "icao_code": "MWG"
+  },
+  {
+    "name": "National Jet Express",
+    "iata_code": "NC",
+    "icao_code": "JTE"
+  },
+  {
+    "name": "Nok Air",
+    "iata_code": "DD",
+    "icao_code": "NOK"
+  },
+  {
+    "name": "OSM Aviation Academy",
+    "iata_code": null,
+    "icao_code": "SCQ"
+  },
+  {
+    "name": "QinetiQ",
+    "iata_code": null,
+    "icao_code": "EIS"
+  },
+  {
+    "name": "QinetiQ / Empire Test Pilots School",
+    "iata_code": null,
+    "icao_code": "ETP"
+  },
+  {
+    "name": "Redding Aero Enterprises",
+    "iata_code": null,
+    "icao_code": "BXR"
+  },
+  {
+    "name": "Solenta Aviation",
+    "iata_code": null,
+    "icao_code": "SET"
+  },
+  {
+    "name": "Swoop",
+    "iata_code": "WO",
+    "icao_code": "WSW"
+  },
+  {
+    "name": "Thrive",
+    "iata_code": null,
+    "icao_code": "TIV"
+  },
+  {
+    "name": "Volga-Dnepr Airlines",
+    "iata_code": "VI",
+    "icao_code": "VDA"
+  },
+  {
+    "name": "Zagros Airlines",
+    "iata_code": "ZO",
+    "icao_code": "IZG"
+  },
+  {
+    "name": "Air Do",
+    "iata_code": "HD",
+    "icao_code": "ADO"
+  },
+  {
+    "name": "Air Travel",
+    "iata_code": "A6",
+    "icao_code": "OTC"
+  },
+  {
+    "name": "Air X Charter",
+    "iata_code": "AX",
+    "icao_code": "AXY"
+  },
+  {
+    "name": "Aircompany RusJet",
+    "iata_code": null,
+    "icao_code": "RSJ"
+  },
+  {
+    "name": "Amerijet International",
+    "iata_code": "M6",
+    "icao_code": "AJT"
+  },
+  {
+    "name": "Aviation Advisor",
+    "iata_code": null,
+    "icao_code": "LKF"
+  },
+  {
+    "name": "BRA",
+    "iata_code": "TF",
+    "icao_code": "BRX"
+  },
+  {
+    "name": "Fltplan",
+    "iata_code": null,
+    "icao_code": "DCM"
+  },
+  {
+    "name": "Grant Aviation",
+    "iata_code": "GV",
+    "icao_code": "GUN"
+  },
+  {
+    "name": "Helijet International",
+    "iata_code": null,
+    "icao_code": "JBA"
+  },
+  {
+    "name": "Jiangxi Air",
+    "iata_code": "RY",
+    "icao_code": "CJX"
+  },
+  {
+    "name": "Kalitta Charters II",
+    "iata_code": "K5",
+    "icao_code": "KII"
+  },
+  {
+    "name": "Nam Air",
+    "iata_code": "IN",
+    "icao_code": "LKN"
+  },
+  {
+    "name": "OTT Airlines",
+    "iata_code": "JF",
+    "icao_code": "OTT"
+  },
+  {
+    "name": "Paccair",
+    "iata_code": null,
+    "icao_code": "WIS"
+  },
+  {
+    "name": "Qeshm Airlines",
+    "iata_code": "QB",
+    "icao_code": "QSM"
+  },
+  {
+    "name": "Royal Brunei Airlines",
+    "iata_code": "BI",
+    "icao_code": "RBA"
+  },
+  {
+    "name": "RWL German Flight Academy",
+    "iata_code": null,
+    "icao_code": "RWL"
+  },
+  {
+    "name": "SkyLink Express",
+    "iata_code": null,
+    "icao_code": "SLQ"
+  },
+  {
+    "name": "Suparna Airlines",
+    "iata_code": "Y8",
+    "icao_code": "YZR"
+  },
+  {
+    "name": "Susi Air",
+    "iata_code": null,
+    "icao_code": "SQS"
+  },
+  {
+    "name": "Thai Lion Air",
+    "iata_code": "SL",
+    "icao_code": "TLM"
+  },
+  {
+    "name": "Tigerair Taiwan",
+    "iata_code": "IT",
+    "icao_code": "TTW"
+  },
+  {
+    "name": "UNI Air",
+    "iata_code": "B7",
+    "icao_code": "UIA"
+  },
+  {
+    "name": "Urumqi Airlines",
+    "iata_code": "UQ",
+    "icao_code": "CUH"
+  },
+  {
+    "name": "Volato",
+    "iata_code": null,
+    "icao_code": "TMB"
+  },
+  {
+    "name": "Aerotec",
+    "iata_code": null,
+    "icao_code": "AEP"
+  },
+  {
+    "name": "Air Charter Scotland",
+    "iata_code": null,
+    "icao_code": "EDC"
+  },
+  {
+    "name": "Air Chathams",
+    "iata_code": "3C",
+    "icao_code": "CVA"
+  },
+  {
+    "name": "Air Corsica",
+    "iata_code": "XK",
+    "icao_code": "CCM"
+  },
+  {
+    "name": "Air Greenland",
+    "iata_code": "GL",
+    "icao_code": "GRL"
+  },
+  {
+    "name": "Air Nunavut",
+    "iata_code": null,
+    "icao_code": "BFF"
+  },
+  {
+    "name": "Eastern Airways",
+    "iata_code": "T3",
+    "icao_code": "EZE"
+  },
+  {
+    "name": "Elitavia Malta",
+    "iata_code": "MA",
+    "icao_code": "EAU"
+  },
+  {
+    "name": "Heli Holland",
+    "iata_code": null,
+    "icao_code": "HHE"
+  },
+  {
+    "name": "HTM Helicopter Travel Munich",
+    "iata_code": null,
+    "icao_code": "HTM"
+  },
+  {
+    "name": "Hyperion Aviation",
+    "iata_code": null,
+    "icao_code": "HYP"
+  },
+  {
+    "name": "IBC Airways",
+    "iata_code": "II",
+    "icao_code": "CSQ"
+  },
+  {
+    "name": "Jet Story",
+    "iata_code": null,
+    "icao_code": "JDI"
+  },
+  {
+    "name": "JetNetherlands",
+    "iata_code": null,
+    "icao_code": "JNL"
+  },
+  {
+    "name": "Northern Jet Management",
+    "iata_code": null,
+    "icao_code": "NJM"
+  },
+  {
+    "name": "Nyxair",
+    "iata_code": "OJ",
+    "icao_code": "NYX"
+  },
+  {
+    "name": "OK Aviation Group",
+    "iata_code": null,
+    "icao_code": "NTF"
+  },
+  {
+    "name": "Olympic Air",
+    "iata_code": "OA",
+    "icao_code": "OAL"
+  },
+  {
+    "name": "Pacific Airlines",
+    "iata_code": "BL",
+    "icao_code": "PIC"
+  },
+  {
+    "name": "Sideral Linhas Aereas",
+    "iata_code": null,
+    "icao_code": "SID"
+  },
+  {
+    "name": "Silver Air",
+    "iata_code": null,
+    "icao_code": "SIS"
+  },
+  {
+    "name": "Solaseed Air",
+    "iata_code": "6J",
+    "icao_code": "SNJ"
+  },
+  {
+    "name": "Thunder Airlines",
+    "iata_code": null,
+    "icao_code": "THU"
+  },
+  {
+    "name": "Ventura",
+    "iata_code": null,
+    "icao_code": "VNT"
+  },
+  {
+    "name": "West Coast Charters",
+    "iata_code": null,
+    "icao_code": "WCC"
+  },
+  {
+    "name": "Western Aircraft",
+    "iata_code": "ST",
+    "icao_code": "STT"
+  },
+  {
+    "name": "YTO Cargo Airlines",
+    "iata_code": "YG",
+    "icao_code": "HYT"
+  },
+  {
+    "name": "AeroLogic",
+    "iata_code": "3S",
+    "icao_code": "BOX"
+  },
+  {
+    "name": "Air Changan",
+    "iata_code": "9H",
+    "icao_code": "CGN"
+  },
+  {
+    "name": "Air Charity Network",
+    "iata_code": null,
+    "icao_code": "NGF"
+  },
+  {
+    "name": "Air Flamenco",
+    "iata_code": "F4",
+    "icao_code": "WAF"
+  },
+  {
+    "name": "Air Tanzania",
+    "iata_code": "TC",
+    "icao_code": "ATC"
+  },
+  {
+    "name": "AMC Aviation",
+    "iata_code": null,
+    "icao_code": "AMQ"
+  },
+  {
+    "name": "Asky Airlines",
+    "iata_code": "KP",
+    "icao_code": "SKK"
+  },
+  {
+    "name": "Atlas Air Service",
+    "iata_code": null,
+    "icao_code": "ATL"
+  },
+  {
+    "name": "Auric Air",
+    "iata_code": "UI",
+    "icao_code": "AUK"
+  },
+  {
+    "name": "Babcock Scandinavian AirAmbulance",
+    "iata_code": null,
+    "icao_code": "DFL"
+  },
+  {
+    "name": "Belavia",
+    "iata_code": "B2",
+    "icao_code": "BRU"
+  },
+  {
+    "name": "Bluebird Nordic",
+    "iata_code": "BO",
+    "icao_code": "BBD"
+  },
+  {
+    "name": "CITIC Offshore Helicopter",
+    "iata_code": null,
+    "icao_code": "CHC"
+  },
+  {
+    "name": "Croatia Airlines",
+    "iata_code": "OU",
+    "icao_code": "CTN"
+  },
+  {
+    "name": "Dalian Airlines",
+    "iata_code": null,
+    "icao_code": "CCD"
+  },
+  {
+    "name": "Firefly",
+    "iata_code": "FY",
+    "icao_code": "FFM"
+  },
+  {
+    "name": "Flexflight",
+    "iata_code": "W2",
+    "icao_code": "FXT"
+  },
+  {
+    "name": "Flightpath Charter Airways",
+    "iata_code": null,
+    "icao_code": "KNT"
+  },
+  {
+    "name": "Fly Across",
+    "iata_code": null,
+    "icao_code": "ACW"
+  },
+  {
+    "name": "FlySchool",
+    "iata_code": null,
+    "icao_code": "FSM"
+  },
+  {
+    "name": "Freebird Airlines",
+    "iata_code": "FH",
+    "icao_code": "FHY"
+  },
+  {
+    "name": "Global X",
+    "iata_code": "G6",
+    "icao_code": "GXA"
+  },
+  {
+    "name": "Iran Airtour",
+    "iata_code": "B9",
+    "icao_code": "IRB"
+  },
+  {
+    "name": "Jet Aviation Business Jets",
+    "iata_code": "PP",
+    "icao_code": "PJS"
+  },
+  {
+    "name": "JetStream",
+    "iata_code": null,
+    "icao_code": "JSH"
+  },
+  {
+    "name": "L.J. Aviation",
+    "iata_code": null,
+    "icao_code": "LJY"
+  },
+  {
+    "name": "Lufthansa Cargo",
+    "iata_code": null,
+    "icao_code": "GEC"
+  },
+  {
+    "name": "Northwestern Air",
+    "iata_code": "J3",
+    "icao_code": "PLR"
+  },
+  {
+    "name": "Pel-Air",
+    "iata_code": null,
+    "icao_code": "PFY"
+  },
+  {
+    "name": "Petroleum Air Service",
+    "iata_code": "UF",
+    "icao_code": "PER"
+  },
+  {
+    "name": "Pionair Australia",
+    "iata_code": null,
+    "icao_code": "SFZ"
+  },
+  {
+    "name": "Rusline",
+    "iata_code": "7R",
+    "icao_code": "RLU"
+  },
+  {
+    "name": "RwandAir",
+    "iata_code": "WB",
+    "icao_code": "RWD"
+  },
+  {
+    "name": "Satena",
+    "iata_code": "9R",
+    "icao_code": "NSE"
+  },
+  {
+    "name": "Silk Way West Airlines",
+    "iata_code": "7L",
+    "icao_code": "AZG"
+  },
+  {
+    "name": "Smartavia",
+    "iata_code": "5N",
+    "icao_code": "AUL"
+  },
+  {
+    "name": "Specialist Aviation Services",
+    "iata_code": null,
+    "icao_code": "PLC"
+  },
+  {
+    "name": "Sunclass Airlines",
+    "iata_code": "DK",
+    "icao_code": "VKG"
+  },
+  {
+    "name": "Swift Copters",
+    "iata_code": null,
+    "icao_code": "WFC"
+  },
+  {
+    "name": "Tassili Airlines",
+    "iata_code": "SF",
+    "icao_code": "DTH"
+  },
+  {
+    "name": "Titan Airways",
+    "iata_code": "ZT",
+    "icao_code": "AWC"
+  },
+  {
+    "name": "Transair",
+    "iata_code": "R9",
+    "icao_code": "MUI"
+  },
+  {
+    "name": "Twin Jet",
+    "iata_code": "T7",
+    "icao_code": "TJT"
+  },
+  {
+    "name": "VoePass Linhas Aereas",
+    "iata_code": "2Z",
+    "icao_code": "PTB"
+  },
+  {
+    "name": "Windrose Airlines",
+    "iata_code": "7W",
+    "icao_code": "WRC"
+  },
+  {
+    "name": "Yakutia Airlines",
+    "iata_code": "R3",
+    "icao_code": "SYL"
+  },
+  {
+    "name": "Aero Asahi Corporation",
+    "iata_code": null,
+    "icao_code": "AKF"
+  },
+  {
+    "name": "Aero-Beta Flight Training",
+    "iata_code": null,
+    "icao_code": "ABA"
+  },
+  {
+    "name": "Air Alliance",
+    "iata_code": null,
+    "icao_code": "AYY"
+  },
+  {
+    "name": "Air Caraibes",
+    "iata_code": "TX",
+    "icao_code": "FWI"
+  },
+  {
+    "name": "Air Liaison",
+    "iata_code": "DU",
+    "icao_code": "LSJ"
+  },
+  {
+    "name": "Air Transport International",
+    "iata_code": "8C",
+    "icao_code": "ATN"
+  },
+  {
+    "name": "AirBlue",
+    "iata_code": "PA",
+    "icao_code": "ABQ"
+  },
+  {
+    "name": "Ameristar",
+    "iata_code": "7Z",
+    "icao_code": "AJI"
+  },
+  {
+    "name": "Avcon Jet",
+    "iata_code": null,
+    "icao_code": "AOJ"
+  },
+  {
+    "name": "Aztec Airways",
+    "iata_code": "AJ",
+    "icao_code": "AZY"
+  },
+  {
+    "name": "Babcock Scandinavian AirAmbulance",
+    "iata_code": null,
+    "icao_code": "BNO"
+  },
+  {
+    "name": "Bioflight",
+    "iata_code": null,
+    "icao_code": "BIO"
+  },
+  {
+    "name": "Cargo Air",
+    "iata_code": null,
+    "icao_code": "CGF"
+  },
+  {
+    "name": "Elifriulia",
+    "iata_code": null,
+    "icao_code": "EFG"
+  },
+  {
+    "name": "Flybondi",
+    "iata_code": "FO",
+    "icao_code": "FBZ"
+  },
+  {
+    "name": "Hi Fly",
+    "iata_code": "5K",
+    "icao_code": "HFY"
+  },
+  {
+    "name": "IrAero",
+    "iata_code": "IO",
+    "icao_code": "IAE"
+  },
+  {
+    "name": "Italfly",
+    "iata_code": null,
+    "icao_code": "ITL"
+  },
+  {
+    "name": "Karun Airlines",
+    "iata_code": null,
+    "icao_code": "KRU"
+  },
+  {
+    "name": "Luxaviation UK",
+    "iata_code": null,
+    "icao_code": "LNX"
+  },
+  {
+    "name": "Lynden Air Cargo",
+    "iata_code": "L2",
+    "icao_code": "LYC"
+  },
+  {
+    "name": "Max Aviation",
+    "iata_code": null,
+    "icao_code": "MAX"
+  },
+  {
+    "name": "Med-Trans",
+    "iata_code": null,
+    "icao_code": "MEK"
+  },
+  {
+    "name": "MHS Aviation",
+    "iata_code": "M2",
+    "icao_code": "MHV"
+  },
+  {
+    "name": "Propair",
+    "iata_code": null,
+    "icao_code": "PRO"
+  },
+  {
+    "name": "Rectimo Air Transports",
+    "iata_code": null,
+    "icao_code": "RTO"
+  },
+  {
+    "name": "SaxonAir",
+    "iata_code": null,
+    "icao_code": "SXN"
+  },
+  {
+    "name": "Silver Airways",
+    "iata_code": "3M",
+    "icao_code": "SIL"
+  },
+  {
+    "name": "SkyUp Airlines",
+    "iata_code": "PQ",
+    "icao_code": "SQP"
+  },
+  {
+    "name": "Spartan College of Aeronautics and Technology",
+    "iata_code": null,
+    "icao_code": "SCU"
+  },
+  {
+    "name": "Sun-Air",
+    "iata_code": "EZ",
+    "icao_code": "SUS"
+  },
+  {
+    "name": "Sunair Aviation",
+    "iata_code": "ZU",
+    "icao_code": "SAV"
+  },
+  {
+    "name": "Tarco Aviation",
+    "iata_code": "3T",
+    "icao_code": "TQQ"
+  },
+  {
+    "name": "Trans Guyana Airways",
+    "iata_code": null,
+    "icao_code": "TGY"
+  },
+  {
+    "name": "Air Antilles",
+    "iata_code": "3S",
+    "icao_code": "GUY"
+  },
+  {
+    "name": "Air Central",
+    "iata_code": "GI",
+    "icao_code": "LHA"
+  },
+  {
+    "name": "Air Guilin",
+    "iata_code": "GT",
+    "icao_code": "CGH"
+  },
+  {
+    "name": "Airpac Airlines",
+    "iata_code": null,
+    "icao_code": "APC"
+  },
+  {
+    "name": "Amapola Flyg",
+    "iata_code": "HP",
+    "icao_code": "APF"
+  },
+  {
+    "name": "ATI Jet",
+    "iata_code": null,
+    "icao_code": "CYO"
+  },
+  {
+    "name": "Badr Airlines",
+    "iata_code": "J4",
+    "icao_code": "BDR"
+  },
+  {
+    "name": "Catreus",
+    "iata_code": null,
+    "icao_code": "VCG"
+  },
+  {
+    "name": "Chalair Aviation",
+    "iata_code": "CE",
+    "icao_code": "CLG"
+  },
+  {
+    "name": "Chrono Aviation",
+    "iata_code": "MB",
+    "icao_code": "NDL"
+  },
+  {
+    "name": "Coulson Aviation",
+    "iata_code": null,
+    "icao_code": "CUL"
+  },
+  {
+    "name": "DC Aviation",
+    "iata_code": null,
+    "icao_code": "DCS"
+  },
+  {
+    "name": "E+S Air",
+    "iata_code": null,
+    "icao_code": "CAH"
+  },
+  {
+    "name": "European Flyers",
+    "iata_code": null,
+    "icao_code": "FYS"
+  },
+  {
+    "name": "Grand Canyon Airlines",
+    "iata_code": "YR",
+    "icao_code": "CVU"
+  },
+  {
+    "name": "Greybird Aviation",
+    "iata_code": null,
+    "icao_code": "GAG"
+  },
+  {
+    "name": "Helistar",
+    "iata_code": null,
+    "icao_code": "HTS"
+  },
+  {
+    "name": "Japan Air Commuter",
+    "iata_code": "3X",
+    "icao_code": "JAC"
+  },
+  {
+    "name": "Jettime",
+    "iata_code": null,
+    "icao_code": "JTD"
+  },
+  {
+    "name": "Jiangxi Express Commuter Aviation",
+    "iata_code": null,
+    "icao_code": "KXA"
+  },
+  {
+    "name": "Labcorp",
+    "iata_code": null,
+    "icao_code": "SKQ"
+  },
+  {
+    "name": "Lao Airlines",
+    "iata_code": "QV",
+    "icao_code": "LAO"
+  },
+  {
+    "name": "Myanmar Airways International",
+    "iata_code": "8M",
+    "icao_code": "MMA"
+  },
+  {
+    "name": "Nolinor Aviation",
+    "iata_code": "N5",
+    "icao_code": "NRL"
+  },
+  {
+    "name": "Norse Atlantic Airways",
+    "iata_code": "N0",
+    "icao_code": "NBT"
+  },
+  {
+    "name": "Oyonnair",
+    "iata_code": null,
+    "icao_code": "OYO"
+  },
+  {
+    "name": "Pelita Air",
+    "iata_code": "IP",
+    "icao_code": "PAS"
+  },
+  {
+    "name": "PNG Air",
+    "iata_code": "CG",
+    "icao_code": "TOK"
+  },
+  {
+    "name": "Private Wings",
+    "iata_code": "8W",
+    "icao_code": "PWF"
+  },
+  {
+    "name": "ProAir Aviation",
+    "iata_code": null,
+    "icao_code": "PAV"
+  },
+  {
+    "name": "Ravn Alaska",
+    "iata_code": "7H",
+    "icao_code": "RVF"
+  },
+  {
+    "name": "Safarilink Aviation",
+    "iata_code": "F2",
+    "icao_code": "XLK"
+  },
+  {
+    "name": "SalamAir",
+    "iata_code": "OV",
+    "icao_code": "OMS"
+  },
+  {
+    "name": "Sierra West Airlines",
+    "iata_code": null,
+    "icao_code": "PKW"
+  },
+  {
+    "name": "Sloane Helicopters",
+    "iata_code": null,
+    "icao_code": "SLN"
+  },
+  {
+    "name": "Starflyer",
+    "iata_code": "7G",
+    "icao_code": "SFJ"
+  },
+  {
+    "name": "Sylt Air",
+    "iata_code": "7E",
+    "icao_code": "AWU"
+  },
+  {
+    "name": "Ultimate Air Shuttle",
+    "iata_code": "UE",
+    "icao_code": "UJC"
+  },
+  {
+    "name": "Air Koryo",
+    "iata_code": "JS",
+    "icao_code": "KOR"
+  },
+  {
+    "name": "Air Mauritius",
+    "iata_code": "MK",
+    "icao_code": "MAU"
+  },
+  {
+    "name": "Airbus Transport International",
+    "iata_code": "4Y",
+    "icao_code": "BGA"
+  },
+  {
+    "name": "Airfast Indonesia",
+    "iata_code": null,
+    "icao_code": "AFE"
+  },
+  {
+    "name": "Airnorth",
+    "iata_code": "TL",
+    "icao_code": "ANO"
+  },
+  {
+    "name": "Airwork",
+    "iata_code": null,
+    "icao_code": "AWK"
+  },
+  {
+    "name": "Azur Air Ukraine",
+    "iata_code": "QU",
+    "icao_code": "UTN"
+  },
+  {
+    "name": "CanWest Air",
+    "iata_code": null,
+    "icao_code": "CWA"
+  },
+  {
+    "name": "Caspian Airlines",
+    "iata_code": "RV",
+    "icao_code": "CPN"
+  },
+  {
+    "name": "Central Airlines",
+    "iata_code": "I9",
+    "icao_code": "HLF"
+  },
+  {
+    "name": "Centreline",
+    "iata_code": null,
+    "icao_code": "CLF"
+  },
+  {
+    "name": "Dreamline Aviation",
+    "iata_code": null,
+    "icao_code": "DLX"
+  },
+  {
+    "name": "Elitaliana",
+    "iata_code": null,
+    "icao_code": "ELA"
+  },
+  {
+    "name": "Exxaero",
+    "iata_code": null,
+    "icao_code": "XRO"
+  },
+  {
+    "name": "Hop-A-Jet",
+    "iata_code": null,
+    "icao_code": "HPJ"
+  },
+  {
+    "name": "Ibex Airlines",
+    "iata_code": "FW",
+    "icao_code": "IBX"
+  },
+  {
+    "name": "Jordan Aviation",
+    "iata_code": "R5",
+    "icao_code": "JAV"
+  },
+  {
+    "name": "Kam Air",
+    "iata_code": "RQ",
+    "icao_code": "KMF"
+  },
+  {
+    "name": "Kamaka Air",
+    "iata_code": null,
+    "icao_code": "KMK"
+  },
+  {
+    "name": "Kish Air",
+    "iata_code": null,
+    "icao_code": "KIS"
+  },
+  {
+    "name": "Max Air",
+    "iata_code": "VM",
+    "icao_code": "NGL"
+  },
+  {
+    "name": "Myanmar National Airlines",
+    "iata_code": "UB",
+    "icao_code": "UBA"
+  },
+  {
+    "name": "National Airlines",
+    "iata_code": "N8",
+    "icao_code": "NCR"
+  },
+  {
+    "name": "NHC Northern Helicopter",
+    "iata_code": null,
+    "icao_code": "NHC"
+  },
+  {
+    "name": "Northern Air Cargo",
+    "iata_code": "NC",
+    "icao_code": "NAC"
+  },
+  {
+    "name": "Nouvelair Tunisie",
+    "iata_code": "BJ",
+    "icao_code": "LBT"
+  },
+  {
+    "name": "Pegasus Elite Aviation",
+    "iata_code": null,
+    "icao_code": "PEG"
+  },
+  {
+    "name": "Petropavlovsk-Kamchatsky Air",
+    "iata_code": null,
+    "icao_code": "PTK"
+  },
+  {
+    "name": "RVL Aviation",
+    "iata_code": null,
+    "icao_code": "REV"
+  },
+  {
+    "name": "Sansa",
+    "iata_code": null,
+    "icao_code": "LRS"
+  },
+  {
+    "name": "Sansa",
+    "iata_code": null,
+    "icao_code": "LRS"
+  },
+  {
+    "name": "Sky Helicopteros",
+    "iata_code": null,
+    "icao_code": "HSY"
+  },
+  {
+    "name": "Skytrans",
+    "iata_code": "QN",
+    "icao_code": "SKP"
+  },
+  {
+    "name": "Star Peru",
+    "iata_code": "2I",
+    "icao_code": "SRU"
+  },
+  {
+    "name": "Swiss Flight Services",
+    "iata_code": null,
+    "icao_code": "SFS"
+  },
+  {
+    "name": "Trigana Air",
+    "iata_code": "IL",
+    "icao_code": "TGN"
+  },
+  {
+    "name": "TUM AeroCarga",
+    "iata_code": "T2",
+    "icao_code": "MCS"
+  },
+  {
+    "name": "Vieques Air Link",
+    "iata_code": "V4",
+    "icao_code": "VES"
+  },
+  {
+    "name": "Volare Aviation",
+    "iata_code": null,
+    "icao_code": "VLZ"
+  },
+  {
+    "name": "World Atlantic Airlines",
+    "iata_code": "WL",
+    "icao_code": "WAL"
+  },
+  {
+    "name": "ZYB Lily Jet",
+    "iata_code": null,
+    "icao_code": "MZT"
+  },
+  {
+    "name": "Abakan Air",
+    "iata_code": "S5",
+    "icao_code": "NKP"
+  },
+  {
+    "name": "Abu Dhabi Aviation",
+    "iata_code": null,
+    "icao_code": "BAR"
+  },
+  {
+    "name": "Aeropartner",
+    "iata_code": null,
+    "icao_code": "DFC"
+  },
+  {
+    "name": "Aerovias DAP",
+    "iata_code": "V5",
+    "icao_code": "DAP"
+  },
+  {
+    "name": "Afriqiyah Airways",
+    "iata_code": "8U",
+    "icao_code": "AAW"
+  },
+  {
+    "name": "Air Alsie",
+    "iata_code": "6I",
+    "icao_code": "MMD"
+  },
+  {
+    "name": "Air Austral",
+    "iata_code": "UU",
+    "icao_code": "REU"
+  },
+  {
+    "name": "Air Belgium",
+    "iata_code": "KF",
+    "icao_code": "ABB"
+  },
+  {
+    "name": "Air Borealis",
+    "iata_code": null,
+    "icao_code": "LBR"
+  },
+  {
+    "name": "Air China Inner Mongolia",
+    "iata_code": null,
+    "icao_code": "CNM"
+  },
+  {
+    "name": "Air Cote d'Ivoire",
+    "iata_code": "HF",
+    "icao_code": "VRE"
+  },
+  {
+    "name": "Air North",
+    "iata_code": "4N",
+    "icao_code": "ANT"
+  },
+  {
+    "name": "Air Senegal",
+    "iata_code": "HC",
+    "icao_code": "SZN"
+  },
+  {
+    "name": "Air Tahiti",
+    "iata_code": "VT",
+    "icao_code": "VTA"
+  },
+  {
+    "name": "Alidaunia",
+    "iata_code": "D4",
+    "icao_code": "LID"
+  },
+  {
+    "name": "Aliserio",
+    "iata_code": null,
+    "icao_code": "TJD"
+  },
+  {
+    "name": "American Jet International",
+    "iata_code": null,
+    "icao_code": "SCM"
+  },
+  {
+    "name": "Arcus Air",
+    "iata_code": null,
+    "icao_code": "AZE"
+  },
+  {
+    "name": "Astonjet",
+    "iata_code": null,
+    "icao_code": "ASJ"
+  },
+  {
+    "name": "Atran",
+    "iata_code": "V8",
+    "icao_code": "VAS"
+  },
+  {
+    "name": "Bahamasair",
+    "iata_code": "UP",
+    "icao_code": "BHS"
+  },
+  {
+    "name": "Business Aviation Asia",
+    "iata_code": "UN",
+    "icao_code": "UNA"
+  },
+  {
+    "name": "Corsair",
+    "iata_code": "SS",
+    "icao_code": "CRL"
+  },
+  {
+    "name": "Cubana",
+    "iata_code": "CU",
+    "icao_code": "CUB"
+  },
+  {
+    "name": "Dassault Falcon Service",
+    "iata_code": null,
+    "icao_code": "DSO"
+  },
+  {
+    "name": "Elite Airways",
+    "iata_code": "7Q",
+    "icao_code": "MNU"
+  },
+  {
+    "name": "European Cargo",
+    "iata_code": null,
+    "icao_code": "URO"
+  },
+  {
+    "name": "Flexjet Operations Malta",
+    "iata_code": null,
+    "icao_code": "FJO"
+  },
+  {
+    "name": "Fly Baghdad",
+    "iata_code": "IF",
+    "icao_code": "FBA"
+  },
+  {
+    "name": "FlyEgypt",
+    "iata_code": "FT",
+    "icao_code": "FEG"
+  },
+  {
+    "name": "German Airways",
+    "iata_code": "ZQ",
+    "icao_code": "GER"
+  },
+  {
+    "name": "Jet It",
+    "iata_code": null,
+    "icao_code": "JIT"
+  },
+  {
+    "name": "Laser Airlines",
+    "iata_code": "QL",
+    "icao_code": "LER"
+  },
+  {
+    "name": "Lift",
+    "iata_code": "GE",
+    "icao_code": "GBB"
+  },
+  {
+    "name": "Mandarin Airlines",
+    "iata_code": "AE",
+    "icao_code": "MDA"
+  },
+  {
+    "name": "MNG Airlines",
+    "iata_code": "MB",
+    "icao_code": "MNB"
+  },
+  {
+    "name": "Motor Sich Airlines",
+    "iata_code": "M9",
+    "icao_code": "MSI"
+  },
+  {
+    "name": "Mountain Flyers",
+    "iata_code": null,
+    "icao_code": "MFB"
+  },
+  {
+    "name": "Nordic Unmanned",
+    "iata_code": null,
+    "icao_code": "NOU"
+  },
+  {
+    "name": "NordStar",
+    "iata_code": "Y7",
+    "icao_code": "TYA"
+  },
+  {
+    "name": "North-West Air Company",
+    "iata_code": "0E",
+    "icao_code": "NWC"
+  },
+  {
+    "name": "Northern Air",
+    "iata_code": null,
+    "icao_code": "NLI"
+  },
+  {
+    "name": "Northway Aviation",
+    "iata_code": null,
+    "icao_code": "NAL"
+  },
+  {
+    "name": "Patria Pilot Training",
+    "iata_code": null,
+    "icao_code": "PPT"
+  },
+  {
+    "name": "Perimeter Aviation",
+    "iata_code": "YP",
+    "icao_code": "PAG"
+  },
+  {
+    "name": "Play",
+    "iata_code": "OG",
+    "icao_code": "FPY"
+  },
+  {
+    "name": "Private Jets",
+    "iata_code": null,
+    "icao_code": "OKC"
+  },
+  {
+    "name": "Sounds Air",
+    "iata_code": "S8",
+    "icao_code": "SDA"
+  },
+  {
+    "name": "Sundair",
+    "iata_code": "SR",
+    "icao_code": "SDR"
+  },
+  {
+    "name": "Surf Air",
+    "iata_code": null,
+    "icao_code": "URF"
+  },
+  {
+    "name": "Time Air",
+    "iata_code": null,
+    "icao_code": "TIE"
+  },
+  {
+    "name": "Union Aviation",
+    "iata_code": null,
+    "icao_code": "UAG"
+  },
+  {
+    "name": "VW Air Service",
+    "iata_code": null,
+    "icao_code": "BTX"
+  },
+  {
+    "name": "Wamos Air",
+    "iata_code": "EB",
+    "icao_code": "PLM"
+  },
+  {
+    "name": "Wingo",
+    "iata_code": "P5",
+    "icao_code": "RPB"
+  },
+  {
+    "name": "Aero Charter",
+    "iata_code": null,
+    "icao_code": "GLT"
+  },
+  {
+    "name": "Africa World Airlines",
+    "iata_code": "AW",
+    "icao_code": "AFW"
+  },
+  {
+    "name": "Air Century",
+    "iata_code": "Y2",
+    "icao_code": "CEY"
+  },
+  {
+    "name": "Air Sunshine",
+    "iata_code": null,
+    "icao_code": "RSI"
+  },
+  {
+    "name": "Air Tindi",
+    "iata_code": "8T",
+    "icao_code": "TIN"
+  },
+  {
+    "name": "Airlec Air Espace",
+    "iata_code": null,
+    "icao_code": "ARL"
+  },
+  {
+    "name": "Armenian Airlines",
+    "iata_code": "JI",
+    "icao_code": "AAG"
+  },
+  {
+    "name": "Astral Aviation",
+    "iata_code": "8V",
+    "icao_code": "ACP"
+  },
+  {
+    "name": "Aviastar-TU",
+    "iata_code": "4B",
+    "icao_code": "TUP"
+  },
+  {
+    "name": "Aviation Horizons",
+    "iata_code": "ZS",
+    "icao_code": "HZS"
+  },
+  {
+    "name": "Azores Airlines",
+    "iata_code": "S4",
+    "icao_code": "RZO"
+  },
+  {
+    "name": "Bul Air",
+    "iata_code": "LB",
+    "icao_code": "BVL"
+  },
+  {
+    "name": "Bulgaria Air",
+    "iata_code": "FB",
+    "icao_code": "LZB"
+  },
+  {
+    "name": "Buzz",
+    "iata_code": "RR",
+    "icao_code": "RYS"
+  },
+  {
+    "name": "Eagle Creek Aviation",
+    "iata_code": null,
+    "icao_code": "EGC"
+  },
+  {
+    "name": "Fast Air",
+    "iata_code": null,
+    "icao_code": "PBR"
+  },
+  {
+    "name": "Flight Calibration Services",
+    "iata_code": null,
+    "icao_code": "VOR"
+  },
+  {
+    "name": "Grafair",
+    "iata_code": null,
+    "icao_code": "GFM"
+  },
+  {
+    "name": "Heron Aviation",
+    "iata_code": null,
+    "icao_code": "HRN"
+  },
+  {
+    "name": "International Jet Management",
+    "iata_code": null,
+    "icao_code": "IJM"
+  },
+  {
+    "name": "Jambojet",
+    "iata_code": "JM",
+    "icao_code": "JMA"
+  },
+  {
+    "name": "Jet Logistics",
+    "iata_code": null,
+    "icao_code": "JLG"
+  },
+  {
+    "name": "Libyan Airlines",
+    "iata_code": "LN",
+    "icao_code": "LAA"
+  },
+  {
+    "name": "Midwest Aviation",
+    "iata_code": null,
+    "icao_code": "DZR"
+  },
+  {
+    "name": "Midwest Aviation Division",
+    "iata_code": null,
+    "icao_code": "MWT"
+  },
+  {
+    "name": "My Indo Airlines",
+    "iata_code": "2Y",
+    "icao_code": "MYU"
+  },
+  {
+    "name": "National Airways Corporation",
+    "iata_code": null,
+    "icao_code": "NTN"
+  },
+  {
+    "name": "New England Airlines",
+    "iata_code": "EJ",
+    "icao_code": "NEA"
+  },
+  {
+    "name": "Nippon Cargo Airlines",
+    "iata_code": "KZ",
+    "icao_code": "NCA"
+  },
+  {
+    "name": "North Flying",
+    "iata_code": null,
+    "icao_code": "NFA"
+  },
+  {
+    "name": "Panorama Aviation",
+    "iata_code": null,
+    "icao_code": "PNO"
+  },
+  {
+    "name": "Rubystar",
+    "iata_code": null,
+    "icao_code": "RSB"
+  },
+  {
+    "name": "SA Red Cross Air Mercy Service",
+    "iata_code": null,
+    "icao_code": "AMD"
+  },
+  {
+    "name": "Sawyer Aviation",
+    "iata_code": null,
+    "icao_code": "SJA"
+  },
+  {
+    "name": "Secure Air Charter",
+    "iata_code": null,
+    "icao_code": "JCM"
+  },
+  {
+    "name": "Sepehran Airlines",
+    "iata_code": "IS",
+    "icao_code": "SHI"
+  },
+  {
+    "name": "Severstal Aircompany",
+    "iata_code": "D2",
+    "icao_code": "SSF"
+  },
+  {
+    "name": "Shree Airlines",
+    "iata_code": "N9",
+    "icao_code": "SHA"
+  },
+  {
+    "name": "Silverstone Air Services",
+    "iata_code": null,
+    "icao_code": "SLR"
+  },
+  {
+    "name": "Skybus",
+    "iata_code": null,
+    "icao_code": "IOS"
+  },
+  {
+    "name": "Skyward Express",
+    "iata_code": "OW",
+    "icao_code": "SEW"
+  },
+  {
+    "name": "Somon Air",
+    "iata_code": "SZ",
+    "icao_code": "SMR"
+  },
+  {
+    "name": "Sparfell Luftfahrt",
+    "iata_code": null,
+    "icao_code": "LDX"
+  },
+  {
+    "name": "Spring Japan",
+    "iata_code": "IJ",
+    "icao_code": "SJO"
+  },
+  {
+    "name": "Star Air Cargo",
+    "iata_code": null,
+    "icao_code": "BRH"
+  },
+  {
+    "name": "Star Work Sky",
+    "iata_code": null,
+    "icao_code": "SWP"
+  },
+  {
+    "name": "Syrian Air",
+    "iata_code": "RB",
+    "icao_code": "SYR"
+  },
+  {
+    "name": "UVT Aero",
+    "iata_code": "RT",
+    "icao_code": "UVT"
+  },
+  {
+    "name": "Western Air Express",
+    "iata_code": null,
+    "icao_code": "WAE"
+  },
+  {
+    "name": "Zenflight",
+    "iata_code": null,
+    "icao_code": "XEN"
+  },
+  {
+    "name": "Aero",
+    "iata_code": "N2",
+    "icao_code": "NIG"
+  },
+  {
+    "name": "Air Malta",
+    "iata_code": "KM",
+    "icao_code": "AMC"
+  },
+  {
+    "name": "Air Seychelles",
+    "iata_code": "HM",
+    "icao_code": "SEY"
+  },
+  {
+    "name": "Aircraft Management Group",
+    "iata_code": null,
+    "icao_code": "RVJ"
+  },
+  {
+    "name": "Airhub Airlines",
+    "iata_code": "RE",
+    "icao_code": "GJM"
+  },
+  {
+    "name": "AirSmart",
+    "iata_code": null,
+    "icao_code": "XSM"
+  },
+  {
+    "name": "Airwing",
+    "iata_code": null,
+    "icao_code": "NWG"
+  },
+  {
+    "name": "AIS Airlines",
+    "iata_code": null,
+    "icao_code": "PNX"
+  },
+  {
+    "name": "American Air Charter",
+    "iata_code": null,
+    "icao_code": "GTW"
+  },
+  {
+    "name": "Antonov Airlines",
+    "iata_code": null,
+    "icao_code": "ADB"
+  },
+  {
+    "name": "ASG Business Aviation",
+    "iata_code": null,
+    "icao_code": "ESW"
+  },
+  {
+    "name": "Aurigny Air Services",
+    "iata_code": "GR",
+    "icao_code": "AUR"
+  },
+  {
+    "name": "Azman Air",
+    "iata_code": "ZQ",
+    "icao_code": "AZM"
+  },
+  {
+    "name": "Beijing Airlines",
+    "iata_code": null,
+    "icao_code": "BJN"
+  },
+  {
+    "name": "Bluebird Aviation",
+    "iata_code": null,
+    "icao_code": "BBZ"
+  },
+  {
+    "name": "Caicos Express Airways",
+    "iata_code": "9Q",
+    "icao_code": "CXE"
+  },
+  {
+    "name": "Cambodia Angkor Air",
+    "iata_code": "K6",
+    "icao_code": "KHV"
+  },
+  {
+    "name": "Cavok Air",
+    "iata_code": null,
+    "icao_code": "CVK"
+  },
+  {
+    "name": "Cayman Airways",
+    "iata_code": "KX",
+    "icao_code": "CAY"
+  },
+  {
+    "name": "Coastal Aviation",
+    "iata_code": "CQ",
+    "icao_code": "CSV"
+  },
+  {
+    "name": "Dana Air",
+    "iata_code": "9J",
+    "icao_code": "DAN"
+  },
+  {
+    "name": "Dexter Air Taxi",
+    "iata_code": null,
+    "icao_code": "DXT"
+  },
+  {
+    "name": "EJM Europe",
+    "iata_code": null,
+    "icao_code": "JME"
+  },
+  {
+    "name": "European Flight Service",
+    "iata_code": null,
+    "icao_code": "EUW"
+  },
+  {
+    "name": "Execujet Scandinavia",
+    "iata_code": null,
+    "icao_code": "VMP"
+  },
+  {
+    "name": "Flexjet Europe",
+    "iata_code": null,
+    "icao_code": "FLJ"
+  },
+  {
+    "name": "FlyOne",
+    "iata_code": "5F",
+    "icao_code": "FIA"
+  },
+  {
+    "name": "Global Air Charters",
+    "iata_code": null,
+    "icao_code": "GJE"
+  },
+  {
+    "name": "Guna Airlines",
+    "iata_code": null,
+    "icao_code": "GUA"
+  },
+  {
+    "name": "Heli Service International",
+    "iata_code": null,
+    "icao_code": "HSO"
+  },
+  {
+    "name": "Héli-Union",
+    "iata_code": null,
+    "icao_code": "HLU"
+  },
+  {
+    "name": "Heston Airlines",
+    "iata_code": "HN",
+    "icao_code": "HST"
+  },
+  {
+    "name": "Jonair",
+    "iata_code": null,
+    "icao_code": "JON"
+  },
+  {
+    "name": "KlasJet",
+    "iata_code": null,
+    "icao_code": "KLJ"
+  },
+  {
+    "name": "KN Helicopters",
+    "iata_code": null,
+    "icao_code": "SHW"
+  },
+  {
+    "name": "Kosmos Airlines",
+    "iata_code": null,
+    "icao_code": "KSM"
+  },
+  {
+    "name": "Legends Airways",
+    "iata_code": null,
+    "icao_code": "DVY"
+  },
+  {
+    "name": "Lunds Universitet",
+    "iata_code": null,
+    "icao_code": "UNY"
+  },
+  {
+    "name": "Meraj Airlines",
+    "iata_code": null,
+    "icao_code": "MRJ"
+  },
+  {
+    "name": "Meridian Air Company",
+    "iata_code": null,
+    "icao_code": "MMM"
+  },
+  {
+    "name": "MIAT Mongolian Airlines",
+    "iata_code": "OM",
+    "icao_code": "MGL"
+  },
+  {
+    "name": "Nile Air",
+    "iata_code": "NP",
+    "icao_code": "NIA"
+  },
+  {
+    "name": "Novoair",
+    "iata_code": "VQ",
+    "icao_code": "NVQ"
+  },
+  {
+    "name": "Omni Air Transport",
+    "iata_code": null,
+    "icao_code": "DRL"
+  },
+  {
+    "name": "Pegas Fly",
+    "iata_code": "EO",
+    "icao_code": "KAR"
+  },
+  {
+    "name": "Plus Ultra",
+    "iata_code": "PU",
+    "icao_code": "PUE"
+  },
+  {
+    "name": "Poste Air Cargo",
+    "iata_code": "M4",
+    "icao_code": "MSA"
+  },
+  {
+    "name": "Precision Air",
+    "iata_code": "PW",
+    "icao_code": "PRF"
+  },
+  {
+    "name": "Priester Aviation",
+    "iata_code": null,
+    "icao_code": "PWA"
+  },
+  {
+    "name": "Quick Air Jet Charter",
+    "iata_code": null,
+    "icao_code": "QAJ"
+  },
+  {
+    "name": "Royalair Philippines",
+    "iata_code": "RW",
+    "icao_code": "RYL"
+  },
+  {
+    "name": "SATA Air Acores",
+    "iata_code": "SP",
+    "icao_code": "SAT"
+  },
+  {
+    "name": "Scanwings",
+    "iata_code": null,
+    "icao_code": "ABF"
+  },
+  {
+    "name": "Serene Air",
+    "iata_code": "ER",
+    "icao_code": "SEP"
+  },
+  {
+    "name": "Silver Cloud Air",
+    "iata_code": null,
+    "icao_code": "SCR"
+  },
+  {
+    "name": "SKYhigh Dominicana",
+    "iata_code": "DO",
+    "icao_code": "SHH"
+  },
+  {
+    "name": "Star Wings",
+    "iata_code": null,
+    "icao_code": "STQ"
+  },
+  {
+    "name": "Starlink Aviation",
+    "iata_code": "Q4",
+    "icao_code": "TLK"
+  },
+  {
+    "name": "Starlite Aviation",
+    "iata_code": null,
+    "icao_code": "TRL"
+  },
+  {
+    "name": "Sweden - Swedish Maritime Administration",
+    "iata_code": null,
+    "icao_code": "HMF"
+  },
+  {
+    "name": "Tyrol Air Ambulance",
+    "iata_code": null,
+    "icao_code": "TYW"
+  },
+  {
+    "name": "Voluxis",
+    "iata_code": null,
+    "icao_code": "VXS"
+  },
+  {
+    "name": "Wiking Helikopter Service",
+    "iata_code": null,
+    "icao_code": "WHS"
+  },
+  {
+    "name": "Woodgate Aviation",
+    "iata_code": null,
+    "icao_code": "CWY"
+  },
+  {
+    "name": "748 Air Services",
+    "iata_code": "FE",
+    "icao_code": "IHO"
+  },
+  {
+    "name": "AerCaribe",
+    "iata_code": "JK",
+    "icao_code": "ACL"
+  },
+  {
+    "name": "Aero",
+    "iata_code": "TD",
+    "icao_code": "BLK"
+  },
+  {
+    "name": "Aeroservicios de la Costa",
+    "iata_code": null,
+    "icao_code": "TAA"
+  },
+  {
+    "name": "Aerotranscargo",
+    "iata_code": "F5",
+    "icao_code": "ATG"
+  },
+  {
+    "name": "Air Care Alliance",
+    "iata_code": null,
+    "icao_code": "CMF"
+  },
+  {
+    "name": "Air KBZ",
+    "iata_code": "K7",
+    "icao_code": "KBZ"
+  },
+  {
+    "name": "Air Libya",
+    "iata_code": "7I",
+    "icao_code": "TLR"
+  },
+  {
+    "name": "Air Seoul",
+    "iata_code": "RS",
+    "icao_code": "ASV"
+  },
+  {
+    "name": "Aircalin",
+    "iata_code": "SB",
+    "icao_code": "ACI"
+  },
+  {
+    "name": "Airkenya Express",
+    "iata_code": "P2",
+    "icao_code": "XAK"
+  },
+  {
+    "name": "Airlift",
+    "iata_code": null,
+    "icao_code": "ALI"
+  },
+  {
+    "name": "AlbaStar",
+    "iata_code": "AP",
+    "icao_code": "LAV"
+  },
+  {
+    "name": "AlMasria Universal Airlines",
+    "iata_code": "UJ",
+    "icao_code": "LMU"
+  },
+  {
+    "name": "Aloha Air Cargo",
+    "iata_code": "KH",
+    "icao_code": "AAH"
+  },
+  {
+    "name": "Atlantic Airways",
+    "iata_code": "RC",
+    "icao_code": "FLI"
+  },
+  {
+    "name": "Avia Traffic",
+    "iata_code": "YK",
+    "icao_code": "AVJ"
+  },
+  {
+    "name": "Avianca Cargo",
+    "iata_code": "QT",
+    "icao_code": "TPA"
+  },
+  {
+    "name": "Avionord",
+    "iata_code": null,
+    "icao_code": "VND"
+  },
+  {
+    "name": "Baker Aviation",
+    "iata_code": null,
+    "icao_code": "KOW"
+  },
+  {
+    "name": "BankAir",
+    "iata_code": null,
+    "icao_code": "BKA"
+  },
+  {
+    "name": "Bestfly Aruba",
+    "iata_code": null,
+    "icao_code": "BFY"
+  },
+  {
+    "name": "Blue Dart Aviation",
+    "iata_code": "BZ",
+    "icao_code": "BDA"
+  },
+  {
+    "name": "Bonza",
+    "iata_code": "AB",
+    "icao_code": "BNZ"
+  },
+  {
+    "name": "CAA",
+    "iata_code": "BU",
+    "icao_code": "REB"
+  },
+  {
+    "name": "Cambodia Airways",
+    "iata_code": "KR",
+    "icao_code": "KME"
+  },
+  {
+    "name": "CanaryFly",
+    "iata_code": "PM",
+    "icao_code": "CNF"
+  },
+  {
+    "name": "Canavia",
+    "iata_code": null,
+    "icao_code": "CNA"
+  },
+  {
+    "name": "Chrono Jet",
+    "iata_code": "MB",
+    "icao_code": "MBK"
+  },
+  {
+    "name": "CMA CGM AirCargo",
+    "iata_code": "2C",
+    "icao_code": "CMA"
+  },
+  {
+    "name": "Comlux Aviation",
+    "iata_code": null,
+    "icao_code": "CLA"
+  },
+  {
+    "name": "Divi Divi Air",
+    "iata_code": "3R",
+    "icao_code": "DVR"
+  },
+  {
+    "name": "Elilombarda",
+    "iata_code": null,
+    "icao_code": "EOA"
+  },
+  {
+    "name": "Elitellina",
+    "iata_code": null,
+    "icao_code": "FGS"
+  },
+  {
+    "name": "Emperor Aviation",
+    "iata_code": null,
+    "icao_code": "EMM"
+  },
+  {
+    "name": "Epsilon Aviation",
+    "iata_code": null,
+    "icao_code": "GRV"
+  },
+  {
+    "name": "Estafeta",
+    "iata_code": "E7",
+    "icao_code": "ESF"
+  },
+  {
+    "name": "Execujet Middle East",
+    "iata_code": null,
+    "icao_code": "EJO"
+  },
+  {
+    "name": "Fastjet",
+    "iata_code": "FN",
+    "icao_code": "FJW"
+  },
+  {
+    "name": "Fly Tyrol",
+    "iata_code": null,
+    "icao_code": "FTY"
+  },
+  {
+    "name": "FlyGTA Airlines",
+    "iata_code": "SX",
+    "icao_code": "TOR"
+  },
+  {
+    "name": "French Bee",
+    "iata_code": "BF",
+    "icao_code": "FBU"
+  },
+  {
+    "name": "Helicol",
+    "iata_code": null,
+    "icao_code": "HEL"
+  },
+  {
+    "name": "Hera Flight",
+    "iata_code": null,
+    "icao_code": "HER"
+  },
+  {
+    "name": "HiSky",
+    "iata_code": "H7",
+    "icao_code": "HYM"
+  },
+  {
+    "name": "IAS Medical",
+    "iata_code": null,
+    "icao_code": "MDI"
+  },
+  {
+    "name": "Intel Air Shuttle",
+    "iata_code": null,
+    "icao_code": "HGT"
+  },
+  {
+    "name": "Israir Airlines",
+    "iata_code": "6H",
+    "icao_code": "ISR"
+  },
+  {
+    "name": "JetRight",
+    "iata_code": null,
+    "icao_code": "JRT"
+  },
+  {
+    "name": "Jetways Airlines",
+    "iata_code": "WU",
+    "icao_code": "JWX"
+  },
+  {
+    "name": "LAS Cargo",
+    "iata_code": "4L",
+    "icao_code": "LAU"
+  },
+  {
+    "name": "Liebherr Aerospace",
+    "iata_code": null,
+    "icao_code": "LHB"
+  },
+  {
+    "name": "Luxembourg Air Ambulance",
+    "iata_code": null,
+    "icao_code": "LRQ"
+  },
+  {
+    "name": "Lynx Air",
+    "iata_code": "Y9",
+    "icao_code": "DAT"
+  },
+  {
+    "name": "Malta Air",
+    "iata_code": null,
+    "icao_code": "MAY"
+  },
+  {
+    "name": "mas",
+    "iata_code": "M7",
+    "icao_code": "MAA"
+  },
+  {
+    "name": "Maya Island Air",
+    "iata_code": "2M",
+    "icao_code": "MYD"
+  },
+  {
+    "name": "Midamerica Jet",
+    "iata_code": null,
+    "icao_code": "MJR"
+  },
+  {
+    "name": "Monacair",
+    "iata_code": "QM",
+    "icao_code": "MCR"
+  },
+  {
+    "name": "NovaJet",
+    "iata_code": null,
+    "icao_code": "NOJ"
+  },
+  {
+    "name": "Nxt Jet",
+    "iata_code": null,
+    "icao_code": "KPO"
+  },
+  {
+    "name": "PADAviation",
+    "iata_code": null,
+    "icao_code": "PVD"
+  },
+  {
+    "name": "Pittsburgh Jet Center",
+    "iata_code": null,
+    "icao_code": "PJC"
+  },
+  {
+    "name": "Presidential Aviation",
+    "iata_code": null,
+    "icao_code": "PRD"
+  },
+  {
+    "name": "Priority Air Charter",
+    "iata_code": null,
+    "icao_code": "PRY"
+  },
+  {
+    "name": "Proflight Zambia",
+    "iata_code": "P0",
+    "icao_code": "PFZ"
+  },
+  {
+    "name": "RAF-Avia",
+    "iata_code": "MT",
+    "icao_code": "MTL"
+  },
+  {
+    "name": "Redstar Aviation",
+    "iata_code": null,
+    "icao_code": "RHH"
+  },
+  {
+    "name": "Regency Air",
+    "iata_code": null,
+    "icao_code": "RGY"
+  },
+  {
+    "name": "Reliant Air",
+    "iata_code": null,
+    "icao_code": "RLI"
+  },
+  {
+    "name": "Richland Aviation",
+    "iata_code": null,
+    "icao_code": "RCA"
+  },
+  {
+    "name": "Salzburg Jet Aviation",
+    "iata_code": null,
+    "icao_code": "MOZ"
+  },
+  {
+    "name": "Silk Way Airlines",
+    "iata_code": "ZP",
+    "icao_code": "AZQ"
+  },
+  {
+    "name": "Smart Jet",
+    "iata_code": null,
+    "icao_code": "SAH"
+  },
+  {
+    "name": "Southwind Airlines",
+    "iata_code": "2S",
+    "icao_code": "STW"
+  },
+  {
+    "name": "SpiritJets",
+    "iata_code": null,
+    "icao_code": "SJJ"
+  },
+  {
+    "name": "Sriwijaya Air",
+    "iata_code": "SJ",
+    "icao_code": "SJY"
+  },
+  {
+    "name": "St Barth Commuter",
+    "iata_code": "PV",
+    "icao_code": "SBU"
+  },
+  {
+    "name": "Svenskt Ambulansflyg",
+    "iata_code": null,
+    "icao_code": "SWE"
+  },
+  {
+    "name": "Taban Airlines",
+    "iata_code": null,
+    "icao_code": "TBN"
+  },
+  {
+    "name": "TAG Aviation Malta",
+    "iata_code": null,
+    "icao_code": "TEU"
+  },
+  {
+    "name": "Tailwind Air",
+    "iata_code": "TQ",
+    "icao_code": "PGN"
+  },
+  {
+    "name": "TAR Aerolineas",
+    "iata_code": "YQ",
+    "icao_code": "LCT"
+  },
+  {
+    "name": "The Little Jet Company",
+    "iata_code": null,
+    "icao_code": "LJC"
+  },
+  {
+    "name": "Tianjin Air Cargo",
+    "iata_code": "HT",
+    "icao_code": "CTJ"
+  },
+  {
+    "name": "Tyrolean Jets & Services",
+    "iata_code": null,
+    "icao_code": "TJS"
+  },
+  {
+    "name": "Uganda Airlines",
+    "iata_code": "UR",
+    "icao_code": "UGD"
+  },
+  {
+    "name": "Ultra Air",
+    "iata_code": "U0",
+    "icao_code": "ULS"
+  },
+  {
+    "name": "Valair",
+    "iata_code": null,
+    "icao_code": "VVV"
+  },
+  {
+    "name": "Warbelows Air Ventures",
+    "iata_code": "4W",
+    "icao_code": "WAV"
+  },
+  {
+    "name": "Western Air",
+    "iata_code": "WU",
+    "icao_code": "WST"
+  },
+  {
+    "name": "Aero Nomad Airlines",
+    "iata_code": "KA",
+    "icao_code": "ANK"
+  },
+  {
+    "name": "Aero Sotravia",
+    "iata_code": null,
+    "icao_code": "ASR"
+  },
+  {
+    "name": "Aeroitalia",
+    "iata_code": "XZ",
+    "icao_code": "AEZ"
+  },
+  {
+    "name": "Aerosucre",
+    "iata_code": null,
+    "icao_code": "KRE"
+  },
+  {
+    "name": "AeroUnion",
+    "iata_code": "6R",
+    "icao_code": "TNO"
+  },
+  {
+    "name": "Air Atlanta Icelandic",
+    "iata_code": "CC",
+    "icao_code": "ABD"
+  },
+  {
+    "name": "Air Corporate",
+    "iata_code": null,
+    "icao_code": "CPV"
+  },
+  {
+    "name": "Air Incheon",
+    "iata_code": "KJ",
+    "icao_code": "AIH"
+  },
+  {
+    "name": "Air Loyaute",
+    "iata_code": null,
+    "icao_code": "RLY"
+  },
+  {
+    "name": "Air Transport Europe",
+    "iata_code": null,
+    "icao_code": "EAT"
+  },
+  {
+    "name": "AirACT",
+    "iata_code": "9T",
+    "icao_code": "RUN"
+  },
+  {
+    "name": "Airest",
+    "iata_code": null,
+    "icao_code": "AEG"
+  },
+  {
+    "name": "AirExplore",
+    "iata_code": "ED",
+    "icao_code": "AXE"
+  },
+  {
+    "name": "AirGO Private Airline",
+    "iata_code": null,
+    "icao_code": "XGO"
+  },
+  {
+    "name": "AirSF Flight Services",
+    "iata_code": null,
+    "icao_code": "XSN"
+  },
+  {
+    "name": "AirSial",
+    "iata_code": "PF",
+    "icao_code": "SIF"
+  },
+  {
+    "name": "Alrosa",
+    "iata_code": "6R",
+    "icao_code": "DRU"
+  },
+  {
+    "name": "Andes Lineas Aereas",
+    "iata_code": null,
+    "icao_code": "ANS"
+  },
+  {
+    "name": "Anguilla Air Services",
+    "iata_code": "Q3",
+    "icao_code": "AXL"
+  },
+  {
+    "name": "Arajet",
+    "iata_code": "DM",
+    "icao_code": "DWI"
+  },
+  {
+    "name": "Arkia Israeli Airlines",
+    "iata_code": "IZ",
+    "icao_code": "AIZ"
+  },
+  {
+    "name": "Asia Pacific Airlines",
+    "iata_code": "P9",
+    "icao_code": "MGE"
+  },
+  {
+    "name": "Avcenter",
+    "iata_code": null,
+    "icao_code": "TTE"
+  },
+  {
+    "name": "Baden Aircraft Operations",
+    "iata_code": null,
+    "icao_code": "BAO"
+  },
+  {
+    "name": "BAe Systems",
+    "iata_code": null,
+    "icao_code": "BAE"
+  },
+  {
+    "name": "BAe Systems Marine",
+    "iata_code": null,
+    "icao_code": "VSB"
+  },
+  {
+    "name": "Bel Air Aviation",
+    "iata_code": null,
+    "icao_code": "BBX"
+  },
+  {
+    "name": "Bestfly Cabo Verde",
+    "iata_code": "3B",
+    "icao_code": "BCV"
+  },
+  {
+    "name": "Blue Islands",
+    "iata_code": "SI",
+    "icao_code": "BCI"
+  },
+  {
+    "name": "Blue Square Aviation",
+    "iata_code": null,
+    "icao_code": "BSG"
+  },
+  {
+    "name": "British International Helicopters",
+    "iata_code": null,
+    "icao_code": "BRT"
+  },
+  {
+    "name": "Calafia Airlines",
+    "iata_code": "A7",
+    "icao_code": "CFV"
+  },
+  {
+    "name": "Calm Air",
+    "iata_code": "MO",
+    "icao_code": "CAV"
+  },
+  {
+    "name": "Ceiba Intercontinental",
+    "iata_code": "C2",
+    "icao_code": "CEL"
+  },
+  {
+    "name": "Connect Airlines",
+    "iata_code": "MW",
+    "icao_code": "WZM"
+  },
+  {
+    "name": "Cygnus Air",
+    "iata_code": null,
+    "icao_code": "RGN"
+  },
+  {
+    "name": "DEA Aviation",
+    "iata_code": null,
+    "icao_code": "WKT"
+  },
+  {
+    "name": "Desert Jet",
+    "iata_code": null,
+    "icao_code": "DJR"
+  },
+  {
+    "name": "Druk Air",
+    "iata_code": "KB",
+    "icao_code": "DRK"
+  },
+  {
+    "name": "EgyptAir Cargo",
+    "iata_code": null,
+    "icao_code": "MSX"
+  },
+  {
+    "name": "EuroAtlantic Airways",
+    "iata_code": "YU",
+    "icao_code": "MMZ"
+  },
+  {
+    "name": "Fenix Air Charter",
+    "iata_code": null,
+    "icao_code": "FNX"
+  },
+  {
+    "name": "FlyPelican",
+    "iata_code": "FP",
+    "icao_code": "FRE"
+  },
+  {
+    "name": "Freedom Airline Express",
+    "iata_code": "4F",
+    "icao_code": "FDT"
+  },
+  {
+    "name": "GainJet",
+    "iata_code": null,
+    "icao_code": "GNJ"
+  },
+  {
+    "name": "Genghis Khan Airlines",
+    "iata_code": "9D",
+    "icao_code": "NMG"
+  },
+  {
+    "name": "Georgian Airways",
+    "iata_code": "A9",
+    "icao_code": "TGZ"
+  },
+  {
+    "name": "Hong Kong Air Cargo",
+    "iata_code": "RH",
+    "icao_code": "HKC"
+  },
+  {
+    "name": "Hummingbird Aviation",
+    "iata_code": null,
+    "icao_code": "ETI"
+  },
+  {
+    "name": "I-Fly",
+    "iata_code": "F7",
+    "icao_code": "RSY"
+  },
+  {
+    "name": "Iberojet",
+    "iata_code": "E9",
+    "icao_code": "EVE"
+  },
+  {
+    "name": "Izhavia",
+    "iata_code": "I8",
+    "icao_code": "IZA"
+  },
+  {
+    "name": "Jet Aviation Flight Services",
+    "iata_code": null,
+    "icao_code": "JAS"
+  },
+  {
+    "name": "Jet Express",
+    "iata_code": null,
+    "icao_code": "RFE"
+  },
+  {
+    "name": "Jetcall",
+    "iata_code": null,
+    "icao_code": "JCL"
+  },
+  {
+    "name": "Jetkontor",
+    "iata_code": null,
+    "icao_code": "JKH"
+  },
+  {
+    "name": "Jhonlin Air Transport",
+    "iata_code": null,
+    "icao_code": "JLB"
+  },
+  {
+    "name": "JoyAir",
+    "iata_code": "JR",
+    "icao_code": "JOY"
+  },
+  {
+    "name": "Kelowna Flightcraft Air",
+    "iata_code": "FK",
+    "icao_code": "KFA"
+  },
+  {
+    "name": "Lanmei Airlines",
+    "iata_code": "LQ",
+    "icao_code": "MKR"
+  },
+  {
+    "name": "Leader",
+    "iata_code": null,
+    "icao_code": "LSA"
+  },
+  {
+    "name": "Lipican Aer",
+    "iata_code": null,
+    "icao_code": "LIP"
+  },
+  {
+    "name": "LongJiang Airlines",
+    "iata_code": "LT",
+    "icao_code": "SNG"
+  },
+  {
+    "name": "Lufttransport",
+    "iata_code": null,
+    "icao_code": "LTR"
+  },
+  {
+    "name": "Makers Air",
+    "iata_code": null,
+    "icao_code": "WMA"
+  },
+  {
+    "name": "Mavi Gök Airlines",
+    "iata_code": "4M",
+    "icao_code": "MGH"
+  },
+  {
+    "name": "MYAirline",
+    "iata_code": "Z9",
+    "icao_code": "MYM"
+  },
+  {
+    "name": "Nauru Airlines",
+    "iata_code": "ON",
+    "icao_code": "RON"
+  },
+  {
+    "name": "Nepal Airlines",
+    "iata_code": "RA",
+    "icao_code": "RNA"
+  },
+  {
+    "name": "Norlandair",
+    "iata_code": null,
+    "icao_code": "FNA"
+  },
+  {
+    "name": "Northeastern Aviation Corporation",
+    "iata_code": null,
+    "icao_code": "NEW"
+  },
+  {
+    "name": "Northern Thunderbird Air",
+    "iata_code": null,
+    "icao_code": "NTA"
+  },
+  {
+    "name": "Panaviatic",
+    "iata_code": null,
+    "icao_code": "VPC"
+  },
+  {
+    "name": "PassionAir",
+    "iata_code": "OP",
+    "icao_code": "DIG"
+  },
+  {
+    "name": "Planemaster Services",
+    "iata_code": null,
+    "icao_code": "PMS"
+  },
+  {
+    "name": "Polar Air Cargo",
+    "iata_code": "PO",
+    "icao_code": "PAC"
+  },
+  {
+    "name": "Privaira",
+    "iata_code": null,
+    "icao_code": "PVO"
+  },
+  {
+    "name": "Qazaq Air",
+    "iata_code": "IQ",
+    "icao_code": "QAZ"
+  },
+  {
+    "name": "Raya Airways",
+    "iata_code": "TH",
+    "icao_code": "RMY"
+  },
+  {
+    "name": "Rennia Aviation",
+    "iata_code": null,
+    "icao_code": "RNI"
+  },
+  {
+    "name": "Sky Cana",
+    "iata_code": "RD",
+    "icao_code": "SNA"
+  },
+  {
+    "name": "Slam Lavori Aerei",
+    "iata_code": null,
+    "icao_code": "SLJ"
+  },
+  {
+    "name": "Smart Aviation",
+    "iata_code": null,
+    "icao_code": "SME"
+  },
+  {
+    "name": "Star Air",
+    "iata_code": "S5",
+    "icao_code": "SDG"
+  },
+  {
+    "name": "Sterling Aviation",
+    "iata_code": null,
+    "icao_code": "NSH"
+  },
+  {
+    "name": "SVG Air",
+    "iata_code": null,
+    "icao_code": "SVD"
+  },
+  {
+    "name": "Tailwind Airlines",
+    "iata_code": "TI",
+    "icao_code": "TWI"
+  },
+  {
+    "name": "Talon Air",
+    "iata_code": null,
+    "icao_code": "TFF"
+  },
+  {
+    "name": "Toyo Aviation",
+    "iata_code": null,
+    "icao_code": "TOY"
+  },
+  {
+    "name": "Transaviabaltika",
+    "iata_code": null,
+    "icao_code": "KTB"
+  },
+  {
+    "name": "Transaviaexport Airlines",
+    "iata_code": null,
+    "icao_code": "TXC"
+  },
+  {
+    "name": "TransNusa",
+    "iata_code": "8B",
+    "icao_code": "TNU"
+  },
+  {
+    "name": "Tus Airways",
+    "iata_code": "U8",
+    "icao_code": "CYF"
+  },
+  {
+    "name": "Varesh Airlines",
+    "iata_code": null,
+    "icao_code": "VRH"
+  },
+  {
+    "name": "Vasco",
+    "iata_code": "0V",
+    "icao_code": "VFC"
+  },
+  {
+    "name": "Westair Aviation",
+    "iata_code": "WV",
+    "icao_code": "WAA"
+  },
+  {
+    "name": "Windrose Air Jetcharter",
+    "iata_code": null,
+    "icao_code": "QGA"
+  },
+  {
+    "name": "Yemenia",
+    "iata_code": "IY",
+    "icao_code": "IYE"
+  },
+  {
+    "name": "Yeti Airlines",
+    "iata_code": "YT",
+    "icao_code": "NYT"
+  },
+  {
+    "name": "Zenith Aviation",
+    "iata_code": null,
+    "icao_code": "BZE"
+  },
+  {
+    "name": "ZIPAIR",
+    "iata_code": "ZG",
+    "icao_code": "TZP"
+  },
+  {
+    "name": "Aero Mongolia",
+    "iata_code": "M0",
+    "icao_code": "MNG"
+  },
+  {
+    "name": "Aero-Dienst",
+    "iata_code": null,
+    "icao_code": "ADN"
+  },
+  {
+    "name": "Aerostan",
+    "iata_code": null,
+    "icao_code": "BSC"
+  },
+  {
+    "name": "Aerovis Airlines",
+    "iata_code": null,
+    "icao_code": "VIZ"
+  },
+  {
+    "name": "Air Burkina",
+    "iata_code": "2J",
+    "icao_code": "VBW"
+  },
+  {
+    "name": "Air Caledonie",
+    "iata_code": "TY",
+    "icao_code": "TPC"
+  },
+  {
+    "name": "Air Horizont",
+    "iata_code": "HT",
+    "icao_code": "HAT"
+  },
+  {
+    "name": "Air Madagascar",
+    "iata_code": "MD",
+    "icao_code": "MDG"
+  },
+  {
+    "name": "Air Moldova",
+    "iata_code": "9U",
+    "icao_code": "MLD"
+  },
+  {
+    "name": "Air Rarotonga",
+    "iata_code": "GZ",
+    "icao_code": "RAR"
+  },
+  {
+    "name": "Air Tahiti Nui",
+    "iata_code": "TN",
+    "icao_code": "THT"
+  },
+  {
+    "name": "Air Thanlwin",
+    "iata_code": "ST",
+    "icao_code": "RTL"
+  },
+  {
+    "name": "Air Urga",
+    "iata_code": "3N",
+    "icao_code": "URG"
+  },
+  {
+    "name": "Air-Taxi Europe",
+    "iata_code": null,
+    "icao_code": "TWG"
+  },
+  {
+    "name": "AirSWIFT",
+    "iata_code": "T6",
+    "icao_code": "ATX"
+  },
+  {
+    "name": "AirTanker",
+    "iata_code": "9L",
+    "icao_code": "TOW"
+  },
+  {
+    "name": "ALK Airlines",
+    "iata_code": null,
+    "icao_code": "VBB"
+  },
+  {
+    "name": "Allied Air",
+    "iata_code": "4W",
+    "icao_code": "AJK"
+  },
+  {
+    "name": "ALS",
+    "iata_code": null,
+    "icao_code": "ALW"
+  },
+  {
+    "name": "Amas",
+    "iata_code": "Z8",
+    "icao_code": "AZN"
+  },
+  {
+    "name": "AMC Airlines",
+    "iata_code": null,
+    "icao_code": "AMV"
+  },
+  {
+    "name": "Anap Jets",
+    "iata_code": null,
+    "icao_code": "AJP"
+  },
+  {
+    "name": "Arc en Ciel",
+    "iata_code": null,
+    "icao_code": "JMS"
+  },
+  {
+    "name": "Ariana Afghan Airlines",
+    "iata_code": "FG",
+    "icao_code": "AFG"
+  },
+  {
+    "name": "Arkhangelsk Airlines",
+    "iata_code": null,
+    "icao_code": "OAO"
+  },
+  {
+    "name": "Asia Cargo Airlines",
+    "iata_code": "GM",
+    "icao_code": "TMG"
+  },
+  {
+    "name": "Asian Express General Aviation Wuxi",
+    "iata_code": null,
+    "icao_code": "WUA"
+  },
+  {
+    "name": "Auckland Rescue Helicopter",
+    "iata_code": null,
+    "icao_code": "WPR"
+  },
+  {
+    "name": "Avcon Jet Malta",
+    "iata_code": null,
+    "icao_code": "VCJ"
+  },
+  {
+    "name": "Aviacon Zitotrans",
+    "iata_code": "ZR",
+    "icao_code": "AZS"
+  },
+  {
+    "name": "Avior Airlines",
+    "iata_code": "9V",
+    "icao_code": "ROI"
+  },
+  {
+    "name": "Bar XH Air",
+    "iata_code": null,
+    "icao_code": "BXH"
+  },
+  {
+    "name": "Berniq Airways",
+    "iata_code": "NB",
+    "icao_code": "BNL"
+  },
+  {
+    "name": "BH Air",
+    "iata_code": "8H",
+    "icao_code": "BGH"
+  },
+  {
+    "name": "Bookajet",
+    "iata_code": null,
+    "icao_code": "BOO"
+  },
+  {
+    "name": "Business Wings",
+    "iata_code": null,
+    "icao_code": "JMP"
+  },
+  {
+    "name": "Capital Air Ambulance",
+    "iata_code": null,
+    "icao_code": "EGL"
+  },
+  {
+    "name": "Chair Airlines",
+    "iata_code": "GM",
+    "icao_code": "GSW"
+  },
+  {
+    "name": "Challenge Airlines",
+    "iata_code": "X7",
+    "icao_code": "CHG"
+  },
+  {
+    "name": "Charter Jets",
+    "iata_code": null,
+    "icao_code": "LTC"
+  },
+  {
+    "name": "China Southern Cargo",
+    "iata_code": null,
+    "icao_code": "CSG"
+  },
+  {
+    "name": "Clipper Jet",
+    "iata_code": null,
+    "icao_code": "ORO"
+  },
+  {
+    "name": "Compass Cargo Airlines",
+    "iata_code": "HQ",
+    "icao_code": "ADZ"
+  },
+  {
+    "name": "Cronos Airlines",
+    "iata_code": "C8",
+    "icao_code": "CRA"
+  },
+  {
+    "name": "Diamond Sky",
+    "iata_code": null,
+    "icao_code": "DMS"
+  },
+  {
+    "name": "Dornier Aviation Nigeria Aiep",
+    "iata_code": "DO",
+    "icao_code": "DAV"
+  },
+  {
+    "name": "DragonFly Executive",
+    "iata_code": null,
+    "icao_code": "CBM"
+  },
+  {
+    "name": "Eagle Air Iceland",
+    "iata_code": null,
+    "icao_code": "FEI"
+  },
+  {
+    "name": "East Coast Jets",
+    "iata_code": null,
+    "icao_code": "ECJ"
+  },
+  {
+    "name": "EATIS",
+    "iata_code": null,
+    "icao_code": "SRK"
+  },
+  {
+    "name": "EcoJet",
+    "iata_code": "8J",
+    "icao_code": "ECO"
+  },
+  {
+    "name": "Electra Airways",
+    "iata_code": null,
+    "icao_code": "EAF"
+  },
+  {
+    "name": "Euro Link",
+    "iata_code": null,
+    "icao_code": "EUL"
+  },
+  {
+    "name": "EZ Air",
+    "iata_code": "7Z",
+    "icao_code": "EZR"
+  },
+  {
+    "name": "Flightline",
+    "iata_code": null,
+    "icao_code": "FTL"
+  },
+  {
+    "name": "Fly Gangwon",
+    "iata_code": "4V",
+    "icao_code": "FGW"
+  },
+  {
+    "name": "Fly Sky Airlines",
+    "iata_code": null,
+    "icao_code": "FSU"
+  },
+  {
+    "name": "Fly-Coop Air Service",
+    "iata_code": null,
+    "icao_code": "FCA"
+  },
+  {
+    "name": "Fly2Sky",
+    "iata_code": "F6",
+    "icao_code": "VAW"
+  },
+  {
+    "name": "Fly540",
+    "iata_code": "5H",
+    "icao_code": "FFV"
+  },
+  {
+    "name": "FlyMe",
+    "iata_code": "VP",
+    "icao_code": "VQI"
+  },
+  {
+    "name": "GetJet Airlines",
+    "iata_code": "GW",
+    "icao_code": "GJT"
+  },
+  {
+    "name": "Goldeck Flug",
+    "iata_code": null,
+    "icao_code": "GDK"
+  },
+  {
+    "name": "Harmony Jets",
+    "iata_code": null,
+    "icao_code": "HMJ"
+  },
+  {
+    "name": "Heli Air Services",
+    "iata_code": null,
+    "icao_code": "HLR"
+  },
+  {
+    "name": "Helistar",
+    "iata_code": null,
+    "icao_code": "HSR"
+  },
+  {
+    "name": "HELITY Copter Airlines",
+    "iata_code": null,
+    "icao_code": "HTY"
+  },
+  {
+    "name": "Himalaya Airlines",
+    "iata_code": "H9",
+    "icao_code": "HIM"
+  },
+  {
+    "name": "Ibom Air",
+    "iata_code": "QI",
+    "icao_code": "IAN"
+  },
+  {
+    "name": "Iraq Gate Company",
+    "iata_code": null,
+    "icao_code": "IGC"
+  },
+  {
+    "name": "iXAir",
+    "iata_code": null,
+    "icao_code": "IXR"
+  },
+  {
+    "name": "JC Airlines",
+    "iata_code": "QD",
+    "icao_code": "JCC"
+  },
+  {
+    "name": "Jet Executive",
+    "iata_code": null,
+    "icao_code": "JEI"
+  },
+  {
+    "name": "K-Mile Air",
+    "iata_code": "8K",
+    "icao_code": "KMI"
+  },
+  {
+    "name": "KaiserAir",
+    "iata_code": null,
+    "icao_code": "KAI"
+  },
+  {
+    "name": "Kargo Xpress",
+    "iata_code": "WW",
+    "icao_code": "KXP"
+  },
+  {
+    "name": "Legend Airlines",
+    "iata_code": null,
+    "icao_code": "LAL"
+  },
+  {
+    "name": "Libyan Wings",
+    "iata_code": "YL",
+    "icao_code": "LWA"
+  },
+  {
+    "name": "Mali Air",
+    "iata_code": null,
+    "icao_code": "MAE"
+  },
+  {
+    "name": "Marathon Airlines",
+    "iata_code": "O8",
+    "icao_code": "MTO"
+  },
+  {
+    "name": "Maxair",
+    "iata_code": null,
+    "icao_code": "NTW"
+  },
+  {
+    "name": "McNeely Charter Services",
+    "iata_code": null,
+    "icao_code": "MDS"
+  },
+  {
+    "name": "Meridian",
+    "iata_code": null,
+    "icao_code": "MEM"
+  },
+  {
+    "name": "Moçambique Expresso",
+    "iata_code": null,
+    "icao_code": "MXE"
+  },
+  {
+    "name": "Modern Logistics",
+    "iata_code": "WD",
+    "icao_code": "MWM"
+  },
+  {
+    "name": "Multiflight",
+    "iata_code": null,
+    "icao_code": "MFT"
+  },
+  {
+    "name": "MY Jet Xpress Airlines",
+    "iata_code": "N7",
+    "icao_code": "NEP"
+  },
+  {
+    "name": "Naljets Limited",
+    "iata_code": null,
+    "icao_code": "APX"
+  },
+  {
+    "name": "Netjets UK",
+    "iata_code": null,
+    "icao_code": "NJU"
+  },
+  {
+    "name": "North-Western Cargo International Airlines",
+    "iata_code": "CO",
+    "icao_code": "CNW"
+  },
+  {
+    "name": "Origin Air",
+    "iata_code": "OG",
+    "icao_code": "OGN"
+  },
+  {
+    "name": "PixAir Survey",
+    "iata_code": null,
+    "icao_code": "PXR"
+  },
+  {
+    "name": "Polar Airlines",
+    "iata_code": "PI",
+    "icao_code": "RKA"
+  },
+  {
+    "name": "Prime Aviation.",
+    "iata_code": null,
+    "icao_code": "PKZ"
+  },
+  {
+    "name": "Prince Aviation",
+    "iata_code": null,
+    "icao_code": "PNC"
+  },
+  {
+    "name": "Privilege Style",
+    "iata_code": "P6",
+    "icao_code": "PVG"
+  },
+  {
+    "name": "QA Aviation",
+    "iata_code": null,
+    "icao_code": "QAV"
+  },
+  {
+    "name": "Qanot Sharq",
+    "iata_code": "HH",
+    "icao_code": "QNT"
+  },
+  {
+    "name": "Qingdao Jiutian International Flight Academy",
+    "iata_code": null,
+    "icao_code": "QJT"
+  },
+  {
+    "name": "Republic Airways",
+    "iata_code": "YX",
+    "icao_code": "RPA"
+  },
+  {
+    "name": "Richmor Aviation",
+    "iata_code": null,
+    "icao_code": "RJC"
+  },
+  {
+    "name": "Saha Airlines",
+    "iata_code": null,
+    "icao_code": "IRZ"
+  },
+  {
+    "name": "SkyAlps",
+    "iata_code": "BQ",
+    "icao_code": "SWU"
+  },
+  {
+    "name": "Smartline",
+    "iata_code": null,
+    "icao_code": "SMG"
+  },
+  {
+    "name": "Solomon Airlines",
+    "iata_code": "IE",
+    "icao_code": "SOL"
+  },
+  {
+    "name": "St Barth Executive",
+    "iata_code": null,
+    "icao_code": "STB"
+  },
+  {
+    "name": "Terra Avia",
+    "iata_code": "T8",
+    "icao_code": "TVR"
+  },
+  {
+    "name": "Trade Air",
+    "iata_code": "C3",
+    "icao_code": "TDR"
+  },
+  {
+    "name": "Trans Air Congo",
+    "iata_code": "Q8",
+    "icao_code": "TSG"
+  },
+  {
+    "name": "Tropic Air",
+    "iata_code": "9N",
+    "icao_code": "TOS"
+  },
+  {
+    "name": "Tsaradia",
+    "iata_code": "TZ",
+    "icao_code": "TDS"
+  },
+  {
+    "name": "Universal Air",
+    "iata_code": null,
+    "icao_code": "UVL"
+  },
+  {
+    "name": "Van Air Europe",
+    "iata_code": "V9",
+    "icao_code": "VAA"
+  },
+  {
+    "name": "Voyage Air",
+    "iata_code": null,
+    "icao_code": "VRG"
+  },
+  {
+    "name": "Winair",
+    "iata_code": "WM",
+    "icao_code": "WIA"
+  },
+  {
+    "name": "21 Air",
+    "iata_code": "2I",
+    "icao_code": "CSB"
+  },
+  {
+    "name": "Acass Ireland",
+    "iata_code": null,
+    "icao_code": "SON"
+  },
+  {
+    "name": "Aeroregional",
+    "iata_code": null,
+    "icao_code": "RER"
+  },
+  {
+    "name": "Aerotours",
+    "iata_code": null,
+    "icao_code": "ATU"
+  },
+  {
+    "name": "Africa Charter Airline",
+    "iata_code": null,
+    "icao_code": "FSK"
+  },
+  {
+    "name": "Afrijet",
+    "iata_code": "J7",
+    "icao_code": "ABS"
+  },
+  {
+    "name": "Air Anka",
+    "iata_code": "TZ",
+    "icao_code": "TAH"
+  },
+  {
+    "name": "Air Astra",
+    "iata_code": "2A",
+    "icao_code": "AWA"
+  },
+  {
+    "name": "Air Bohemia",
+    "iata_code": null,
+    "icao_code": "BOH"
+  },
+  {
+    "name": "Air Botswana",
+    "iata_code": "BP",
+    "icao_code": "BOT"
+  },
+  {
+    "name": "Air Class",
+    "iata_code": null,
+    "icao_code": "QCL"
+  },
+  {
+    "name": "Air Montenegro",
+    "iata_code": null,
+    "icao_code": "MNE"
+  },
+  {
+    "name": "Air Nostrum",
+    "iata_code": "YW",
+    "icao_code": "ANE"
+  },
+  {
+    "name": "Air Panama",
+    "iata_code": "7P",
+    "icao_code": "PST"
+  },
+  {
+    "name": "Air Premia",
+    "iata_code": "YP",
+    "icao_code": "APZ"
+  },
+  {
+    "name": "Air Wisconsin",
+    "iata_code": "ZW",
+    "icao_code": "AWI"
+  },
+  {
+    "name": "Air Zimbabwe",
+    "iata_code": "UM",
+    "icao_code": "AZW"
+  },
+  {
+    "name": "Airstream",
+    "iata_code": null,
+    "icao_code": "AQS"
+  },
+  {
+    "name": "Albawings",
+    "iata_code": "2B",
+    "icao_code": "AWT"
+  },
+  {
+    "name": "Armenia Airways",
+    "iata_code": "6A",
+    "icao_code": "AMW"
+  },
+  {
+    "name": "Aruba Airlines",
+    "iata_code": "AG",
+    "icao_code": "ARU"
+  },
+  {
+    "name": "Aviostart",
+    "iata_code": null,
+    "icao_code": "VSR"
+  },
+  {
+    "name": "BinAir",
+    "iata_code": null,
+    "icao_code": "BID"
+  },
+  {
+    "name": "Bluebird Airways",
+    "iata_code": "BZ",
+    "icao_code": "BBG"
+  },
+  {
+    "name": "Boutique Aviation",
+    "iata_code": null,
+    "icao_code": "BQA"
+  },
+  {
+    "name": "Budapest Aircraft Service",
+    "iata_code": "RP",
+    "icao_code": "BPS"
+  },
+  {
+    "name": "BySky",
+    "iata_code": null,
+    "icao_code": "BYS"
+  },
+  {
+    "name": "Capital City Air Carriers",
+    "iata_code": null,
+    "icao_code": "CCQ"
+  },
+  {
+    "name": "Carpatair",
+    "iata_code": "V3",
+    "icao_code": "KRP"
+  },
+  {
+    "name": "Chabahar Airlines",
+    "iata_code": null,
+    "icao_code": "IRU"
+  },
+  {
+    "name": "Cham Wings Airlines",
+    "iata_code": "6Q",
+    "icao_code": "SAW"
+  },
+  {
+    "name": "Cityjet",
+    "iata_code": "WX",
+    "icao_code": "BCY"
+  },
+  {
+    "name": "Cobham Flight Inspection",
+    "iata_code": null,
+    "icao_code": "CLB"
+  },
+  {
+    "name": "Congo Airways",
+    "iata_code": "8Z",
+    "icao_code": "CGA"
+  },
+  {
+    "name": "Constanta Airline",
+    "iata_code": null,
+    "icao_code": "UZA"
+  },
+  {
+    "name": "Copenhagen Airtaxi",
+    "iata_code": null,
+    "icao_code": "CAT"
+  },
+  {
+    "name": "Corporate Air",
+    "iata_code": null,
+    "icao_code": "MLN"
+  },
+  {
+    "name": "Eastar Jet",
+    "iata_code": "ZE",
+    "icao_code": "ESR"
+  },
+  {
+    "name": "Eclair Aviation",
+    "iata_code": null,
+    "icao_code": "ECC"
+  },
+  {
+    "name": "EGT Jet",
+    "iata_code": null,
+    "icao_code": "EGT"
+  },
+  {
+    "name": "Eliossola",
+    "iata_code": null,
+    "icao_code": "EOS"
+  },
+  {
+    "name": "Empire Aviation",
+    "iata_code": null,
+    "icao_code": "MJE"
+  },
+  {
+    "name": "Equair",
+    "iata_code": "HN",
+    "icao_code": "EQX"
+  },
+  {
+    "name": "Estelar",
+    "iata_code": "ES",
+    "icao_code": "ETR"
+  },
+  {
+    "name": "ETF Airways",
+    "iata_code": "LI",
+    "icao_code": "EZZ"
+  },
+  {
+    "name": "Euro-Asia Air",
+    "iata_code": "5B",
+    "icao_code": "EAK"
+  },
+  {
+    "name": "Executive Airlink",
+    "iata_code": null,
+    "icao_code": "ENK"
+  },
+  {
+    "name": "Express Air Cargo",
+    "iata_code": "7A",
+    "icao_code": "XRC"
+  },
+  {
+    "name": "Eznis Airways",
+    "iata_code": "MG",
+    "icao_code": "EZA"
+  },
+  {
+    "name": "FinnHEMS",
+    "iata_code": null,
+    "icao_code": "FIH"
+  },
+  {
+    "name": "FitsAir",
+    "iata_code": "8D",
+    "icao_code": "EXV"
+  },
+  {
+    "name": "Fly AllWays",
+    "iata_code": "8W",
+    "icao_code": "EDR"
+  },
+  {
+    "name": "Fly Jinnah",
+    "iata_code": "9P",
+    "icao_code": "FJL"
+  },
+  {
+    "name": "FlyBig",
+    "iata_code": "S9",
+    "icao_code": "FLG"
+  },
+  {
+    "name": "Fort Aero",
+    "iata_code": null,
+    "icao_code": "FRX"
+  },
+  {
+    "name": "Galistair Infinite Aviation",
+    "iata_code": "GT",
+    "icao_code": "GTR"
+  },
+  {
+    "name": "Geo Sky Airline",
+    "iata_code": "D4",
+    "icao_code": "GEL"
+  },
+  {
+    "name": "Georgian Airlines",
+    "iata_code": "GH",
+    "icao_code": "IGT"
+  },
+  {
+    "name": "Global Air Transport",
+    "iata_code": "5S",
+    "icao_code": "GAK"
+  },
+  {
+    "name": "Global Airways",
+    "iata_code": null,
+    "icao_code": "GBL"
+  },
+  {
+    "name": "Global Jet Austria",
+    "iata_code": null,
+    "icao_code": "GLJ"
+  },
+  {
+    "name": "Grand China Air",
+    "iata_code": "CN",
+    "icao_code": "GDC"
+  },
+  {
+    "name": "Greater Bay Airlines",
+    "iata_code": "HB",
+    "icao_code": "HGB"
+  },
+  {
+    "name": "Green Africa Airways",
+    "iata_code": "Q9",
+    "icao_code": "GWG"
+  },
+  {
+    "name": "Gulf Wings",
+    "iata_code": null,
+    "icao_code": "GWC"
+  },
+  {
+    "name": "GullivAir",
+    "iata_code": "G2",
+    "icao_code": "GBG"
+  },
+  {
+    "name": "Hahn Air",
+    "iata_code": "HR",
+    "icao_code": "HHN"
+  },
+  {
+    "name": "Heli Air Monaco",
+    "iata_code": "YO",
+    "icao_code": "MCM"
+  },
+  {
+    "name": "Hello Jets",
+    "iata_code": "H3",
+    "icao_code": "HLJ"
+  },
+  {
+    "name": "Hi Air",
+    "iata_code": "4H",
+    "icao_code": "HGG"
+  },
+  {
+    "name": "Hibernian Airlines",
+    "iata_code": "HG",
+    "icao_code": "HBN"
+  },
+  {
+    "name": "Hokkaido Air System",
+    "iata_code": null,
+    "icao_code": "NTH"
+  },
+  {
+    "name": "Hunnu Air",
+    "iata_code": "MR",
+    "icao_code": "MML"
+  },
+  {
+    "name": "Hydro Quebec",
+    "iata_code": "0Q",
+    "icao_code": "HYD"
+  },
+  {
+    "name": "ImperialJet",
+    "iata_code": null,
+    "icao_code": "JTI"
+  },
+  {
+    "name": "Jet Fly Airline",
+    "iata_code": null,
+    "icao_code": "JFL"
+  },
+  {
+    "name": "Jetsuite Air",
+    "iata_code": null,
+    "icao_code": "RSP"
+  },
+  {
+    "name": "Jiangsu Jingdong Cargo Airlines",
+    "iata_code": "JG",
+    "icao_code": "JDL"
+  },
+  {
+    "name": "Jivair",
+    "iata_code": null,
+    "icao_code": "JIV"
+  },
+  {
+    "name": "Jonika",
+    "iata_code": null,
+    "icao_code": "JNK"
+  },
+  {
+    "name": "Kudlik Aviation",
+    "iata_code": null,
+    "icao_code": "KUK"
+  },
+  {
+    "name": "La Costena",
+    "iata_code": null,
+    "icao_code": "NIS"
+  },
+  {
+    "name": "LAM",
+    "iata_code": "TM",
+    "icao_code": "LAM"
+  },
+  {
+    "name": "LIAT",
+    "iata_code": "LI",
+    "icao_code": "LIA"
+  },
+  {
+    "name": "Mann Yadanarpon Airlines",
+    "iata_code": "7Y",
+    "icao_code": "MYP"
+  },
+  {
+    "name": "Mauritania Airlines International",
+    "iata_code": "L6",
+    "icao_code": "MAI"
+  },
+  {
+    "name": "Medavia",
+    "iata_code": null,
+    "icao_code": "MDM"
+  },
+  {
+    "name": "My Jet Saver",
+    "iata_code": null,
+    "icao_code": "MJS"
+  },
+  {
+    "name": "Nesma Airlines",
+    "iata_code": "NE",
+    "icao_code": "NMA"
+  },
+  {
+    "name": "Nordica",
+    "iata_code": "ND",
+    "icao_code": "NDA"
+  },
+  {
+    "name": "Ortac",
+    "iata_code": null,
+    "icao_code": "ORT"
+  },
+  {
+    "name": "Oscar Jet",
+    "iata_code": null,
+    "icao_code": "OSJ"
+  },
+  {
+    "name": "Overland Airways",
+    "iata_code": "OF",
+    "icao_code": "OLA"
+  },
+  {
+    "name": "Pan Europeenne Air Service",
+    "iata_code": null,
+    "icao_code": "PEA"
+  },
+  {
+    "name": "Paranair",
+    "iata_code": "ZP",
+    "icao_code": "AZP"
+  },
+  {
+    "name": "Performance Air",
+    "iata_code": null,
+    "icao_code": "PRZ"
+  },
+  {
+    "name": "Pineapple Air",
+    "iata_code": null,
+    "icao_code": "PNP"
+  },
+  {
+    "name": "Platoon Aviation",
+    "iata_code": null,
+    "icao_code": "PTN"
+  },
+  {
+    "name": "Pratt and Whitney",
+    "iata_code": null,
+    "icao_code": "PWC"
+  },
+  {
+    "name": "Red Air",
+    "iata_code": "L5",
+    "icao_code": "REA"
+  },
+  {
+    "name": "Renegade Air",
+    "iata_code": null,
+    "icao_code": "RNG"
+  },
+  {
+    "name": "RGA-Black Stone Airlines",
+    "iata_code": null,
+    "icao_code": "RGM"
+  },
+  {
+    "name": "Rimbun Air",
+    "iata_code": "RI",
+    "icao_code": "OEY"
+  },
+  {
+    "name": "RUS Aviation",
+    "iata_code": "R4",
+    "icao_code": "RLB"
+  },
+  {
+    "name": "Rutaca Airlines",
+    "iata_code": "5R",
+    "icao_code": "RUC"
+  },
+  {
+    "name": "Sahel Aviation Service",
+    "iata_code": null,
+    "icao_code": "SAO"
+  },
+  {
+    "name": "San Marino Executive Aviation",
+    "iata_code": null,
+    "icao_code": "SMF"
+  },
+  {
+    "name": "Sardinian Sky Service",
+    "iata_code": null,
+    "icao_code": "SSR"
+  },
+  {
+    "name": "Saurya Airlines",
+    "iata_code": null,
+    "icao_code": "SAU"
+  },
+  {
+    "name": "Servizi Aerei",
+    "iata_code": null,
+    "icao_code": "SNM"
+  },
+  {
+    "name": "Silesia Air",
+    "iata_code": null,
+    "icao_code": "SUA"
+  },
+  {
+    "name": "Sirio",
+    "iata_code": null,
+    "icao_code": "SIO"
+  },
+  {
+    "name": "Sky Angkor Airlines",
+    "iata_code": "ZA",
+    "icao_code": "SWM"
+  },
+  {
+    "name": "Sky Bus",
+    "iata_code": null,
+    "icao_code": "HVY"
+  },
+  {
+    "name": "Sky KG Airlines",
+    "iata_code": null,
+    "icao_code": "KGK"
+  },
+  {
+    "name": "Skyway Enterprises",
+    "iata_code": null,
+    "icao_code": "SKZ"
+  },
+  {
+    "name": "Sparfell France",
+    "iata_code": null,
+    "icao_code": "MIM"
+  },
+  {
+    "name": "SR Jet",
+    "iata_code": null,
+    "icao_code": "QSR"
+  },
+  {
+    "name": "STAjets",
+    "iata_code": null,
+    "icao_code": "KFB"
+  },
+  {
+    "name": "Sundt Air",
+    "iata_code": null,
+    "icao_code": "AKK"
+  },
+  {
+    "name": "Sunlight Air",
+    "iata_code": "2R",
+    "icao_code": "RLB"
+  },
+  {
+    "name": "Swiss Air-Ambulance",
+    "iata_code": null,
+    "icao_code": "SAZ"
+  },
+  {
+    "name": "Tez Jet Airlines",
+    "iata_code": null,
+    "icao_code": "TEZ"
+  },
+  {
+    "name": "Thalair",
+    "iata_code": null,
+    "icao_code": "TLJ"
+  },
+  {
+    "name": "Total Linhas Aereas",
+    "iata_code": "L1",
+    "icao_code": "TTL"
+  },
+  {
+    "name": "Trans Island Airways",
+    "iata_code": null,
+    "icao_code": "GGT"
+  },
+  {
+    "name": "Transair",
+    "iata_code": "R2",
+    "icao_code": "GTS"
+  },
+  {
+    "name": "Turpial Airlines",
+    "iata_code": "T9",
+    "icao_code": "VTU"
+  },
+  {
+    "name": "ULS Airlines Cargo",
+    "iata_code": "GO",
+    "icao_code": "KZU"
+  },
+  {
+    "name": "Uni-Fly",
+    "iata_code": null,
+    "icao_code": "UNC"
+  },
+  {
+    "name": "Venezolana",
+    "iata_code": null,
+    "icao_code": "VNE"
+  },
+  {
+    "name": "Via Air",
+    "iata_code": null,
+    "icao_code": "VID"
+  },
+  {
+    "name": "Vietravel Airlines",
+    "iata_code": "VU",
+    "icao_code": "VAG"
+  },
+  {
+    "name": "Vision Air International",
+    "iata_code": null,
+    "icao_code": "VIS"
+  },
+  {
+    "name": "White",
+    "iata_code": "WI",
+    "icao_code": "WHT"
+  },
+  {
+    "name": "World Cargo Airlines",
+    "iata_code": "3G",
+    "icao_code": "WCM"
+  },
+  {
+    "name": "World2Fly",
+    "iata_code": "2W",
+    "icao_code": "WFL"
+  },
+  {
+    "name": "Worldwide Jet Charter",
+    "iata_code": null,
+    "icao_code": "WWI"
+  },
+  {
+    "name": "Xfly",
+    "iata_code": "EE",
+    "icao_code": "EST"
+  },
+  {
+    "name": "YanAir",
+    "iata_code": "YE",
+    "icao_code": "ANR"
+  },
+  {
+    "name": "Zetavia",
+    "iata_code": "ZK",
+    "icao_code": "ZAV"
+  },
+  {
+    "name": "25only Aviation",
+    "iata_code": "4Q",
+    "icao_code": "ONY"
+  },
+  {
+    "name": "Aero Charter and Transport",
+    "iata_code": null,
+    "icao_code": "CTA"
+  },
+  {
+    "name": "Aero K",
+    "iata_code": "RF",
+    "icao_code": "EOK"
+  },
+  {
+    "name": "Aerosul Linhas Aereas",
+    "iata_code": null,
+    "icao_code": "ASO"
+  },
+  {
+    "name": "African Express Airways",
+    "iata_code": "XU",
+    "icao_code": "AXK"
+  },
+  {
+    "name": "Air 1st Aviation",
+    "iata_code": null,
+    "icao_code": "RUF"
+  },
+  {
+    "name": "Air Albania",
+    "iata_code": "ZB",
+    "icao_code": "ABN"
+  },
+  {
+    "name": "Air Bucharest",
+    "iata_code": null,
+    "icao_code": "BUR"
+  },
+  {
+    "name": "Air Choice One",
+    "iata_code": "3E",
+    "icao_code": "ACO"
+  },
+  {
+    "name": "Air Connect",
+    "iata_code": "KS",
+    "icao_code": "KON"
+  },
+  {
+    "name": "Air Georgia",
+    "iata_code": "DC",
+    "icao_code": "AGF"
+  },
+  {
+    "name": "Air Key West",
+    "iata_code": null,
+    "icao_code": "KWX"
+  },
+  {
+    "name": "Air Kiribati",
+    "iata_code": "IK",
+    "icao_code": "AKL"
+  },
+  {
+    "name": "Air Mediterranean",
+    "iata_code": "MV",
+    "icao_code": "MAR"
+  },
+  {
+    "name": "Air Moana",
+    "iata_code": "NM",
+    "icao_code": "NTR"
+  },
+  {
+    "name": "Air Saint-Pierre",
+    "iata_code": "PJ",
+    "icao_code": "SPM"
+  },
+  {
+    "name": "Air Vanuatu",
+    "iata_code": "NF",
+    "icao_code": "AVN"
+  },
+  {
+    "name": "Air Volta",
+    "iata_code": null,
+    "icao_code": "VLB"
+  },
+  {
+    "name": "Aircompany Armenia",
+    "iata_code": "RM",
+    "icao_code": "NGT"
+  },
+  {
+    "name": "AirConnect",
+    "iata_code": "KS",
+    "icao_code": "KON"
+  },
+  {
+    "name": "AirTraffic",
+    "iata_code": null,
+    "icao_code": "ATY"
+  },
+  {
+    "name": "Alante Air Charter",
+    "iata_code": null,
+    "icao_code": "SVL"
+  },
+  {
+    "name": "Alexandria Airlines",
+    "iata_code": "DQ",
+    "icao_code": "KHH"
+  },
+  {
+    "name": "Alfa Airlines",
+    "iata_code": "5E",
+    "icao_code": "AAJ"
+  },
+  {
+    "name": "AlisCargo Airlines",
+    "iata_code": "CP",
+    "icao_code": "LSI"
+  },
+  {
+    "name": "Alkan Air",
+    "iata_code": null,
+    "icao_code": "ALN"
+  },
+  {
+    "name": "Alphaland Aviation",
+    "iata_code": null,
+    "icao_code": "BIC"
+  },
+  {
+    "name": "Alpine Flightservice",
+    "iata_code": null,
+    "icao_code": "FSE"
+  },
+  {
+    "name": "Altagna",
+    "iata_code": null,
+    "icao_code": "AGH"
+  },
+  {
+    "name": "Angara Airlines",
+    "iata_code": "2G",
+    "icao_code": "AGU"
+  },
+  {
+    "name": "Animawings",
+    "iata_code": "A2",
+    "icao_code": "AWG"
+  },
+  {
+    "name": "Asta Linhas Aereas",
+    "iata_code": "0A",
+    "icao_code": "SUL"
+  },
+  {
+    "name": "Bairline",
+    "iata_code": null,
+    "icao_code": "BRJ"
+  },
+  {
+    "name": "Bassaka Air",
+    "iata_code": "5B",
+    "icao_code": "BSX"
+  },
+  {
+    "name": "Berjaya Air",
+    "iata_code": "J8",
+    "icao_code": "BVT"
+  },
+  {
+    "name": "Bhutan Airlines",
+    "iata_code": "B3",
+    "icao_code": "BTN"
+  },
+  {
+    "name": "Blue Air",
+    "iata_code": "0B",
+    "icao_code": "BLA"
+  },
+  {
+    "name": "Bravo Airways",
+    "iata_code": null,
+    "icao_code": "BAY"
+  },
+  {
+    "name": "Bromma Air Maintenance",
+    "iata_code": null,
+    "icao_code": "CFL"
+  },
+  {
+    "name": "Buraq Air",
+    "iata_code": "UZ",
+    "icao_code": "BRQ"
+  },
+  {
+    "name": "Cabo Verde Airlines",
+    "iata_code": "VR",
+    "icao_code": "TCV"
+  },
+  {
+    "name": "Camair-Co",
+    "iata_code": "QC",
+    "icao_code": "CRC"
+  },
+  {
+    "name": "Camex Airlines",
+    "iata_code": "Z7",
+    "icao_code": "CMS"
+  },
+  {
+    "name": "Cardig Air",
+    "iata_code": null,
+    "icao_code": "CAD"
+  },
+  {
+    "name": "Compagnia Aeronautica Italiana",
+    "iata_code": null,
+    "icao_code": "CPI"
+  },
+  {
+    "name": "Conquest Air",
+    "iata_code": "C4",
+    "icao_code": "QAI"
+  },
+  {
+    "name": "Cyprus Airways",
+    "iata_code": "CY",
+    "icao_code": "CYP"
+  },
+  {
+    "name": "Dan Air",
+    "iata_code": "DN",
+    "icao_code": "JOC"
+  },
+  {
+    "name": "Dubai Air Wing",
+    "iata_code": null,
+    "icao_code": "DUB"
+  },
+  {
+    "name": "EWA Air",
+    "iata_code": "ZD",
+    "icao_code": "EWR"
+  },
+  {
+    "name": "Execuflight",
+    "iata_code": null,
+    "icao_code": "EFT"
+  },
+  {
+    "name": "Executive Jet Charter",
+    "iata_code": null,
+    "icao_code": "EXJ"
+  },
+  {
+    "name": "Feuerwehr-Flugdienst Niedersachsen",
+    "iata_code": null,
+    "icao_code": "FFD"
+  },
+  {
+    "name": "Flight Calibration Services",
+    "iata_code": null,
+    "icao_code": "FCK"
+  },
+  {
+    "name": "FlightExec",
+    "iata_code": null,
+    "icao_code": "FEX"
+  },
+  {
+    "name": "Flightworks",
+    "iata_code": null,
+    "icao_code": "FWK"
+  },
+  {
+    "name": "Fly Jordan",
+    "iata_code": "F0",
+    "icao_code": "FJR"
+  },
+  {
+    "name": "Fly Oya",
+    "iata_code": "YI",
+    "icao_code": "OYA"
+  },
+  {
+    "name": "Fly Sky Airlines",
+    "iata_code": null,
+    "icao_code": "FSQ"
+  },
+  {
+    "name": "FlyArna",
+    "iata_code": "G6",
+    "icao_code": "ACY"
+  },
+  {
+    "name": "Genex",
+    "iata_code": null,
+    "icao_code": "GNX"
+  },
+  {
+    "name": "Ghadames Air Transport",
+    "iata_code": "NJ",
+    "icao_code": "GMS"
+  },
+  {
+    "name": "Global Aviation",
+    "iata_code": null,
+    "icao_code": "MSS"
+  },
+  {
+    "name": "GP Aviation",
+    "iata_code": "IV",
+    "icao_code": "GPX"
+  },
+  {
+    "name": "Hai Au Aviation",
+    "iata_code": null,
+    "icao_code": "HAI"
+  },
+  {
+    "name": "ICS-Aero",
+    "iata_code": null,
+    "icao_code": "ICF"
+  },
+  {
+    "name": "IndiaOne Air",
+    "iata_code": "I7",
+    "icao_code": "IOA"
+  },
+  {
+    "name": "International Committee of the Red Cross",
+    "iata_code": null,
+    "icao_code": "RED"
+  },
+  {
+    "name": "Jasmin Airways",
+    "iata_code": "JO",
+    "icao_code": "JAW"
+  },
+  {
+    "name": "Jetair Caribbean",
+    "iata_code": "4J",
+    "icao_code": "JRC"
+  },
+  {
+    "name": "Jetbee Czech",
+    "iata_code": null,
+    "icao_code": "JBC"
+  },
+  {
+    "name": "Jetlines",
+    "iata_code": "AU",
+    "icao_code": "CJL"
+  },
+  {
+    "name": "jetlines",
+    "iata_code": "AU",
+    "icao_code": "CJL"
+  },
+  {
+    "name": "JS Aviation",
+    "iata_code": null,
+    "icao_code": "JSM"
+  },
+  {
+    "name": "Jung Sky",
+    "iata_code": null,
+    "icao_code": "JSY"
+  },
+  {
+    "name": "La Compagnie",
+    "iata_code": "B0",
+    "icao_code": "DJT"
+  },
+  {
+    "name": "Lao Skyway",
+    "iata_code": "LK",
+    "icao_code": "LLL"
+  },
+  {
+    "name": "LEAV Aviation",
+    "iata_code": "KK",
+    "icao_code": "NGN"
+  },
+  {
+    "name": "Longtail Aviation",
+    "iata_code": "6T",
+    "icao_code": "LGT"
+  },
+  {
+    "name": "Lumiwings",
+    "iata_code": "L9",
+    "icao_code": "LWI"
+  },
+  {
+    "name": "Luxaviation E.A",
+    "iata_code": null,
+    "icao_code": "LMJ"
+  },
+  {
+    "name": "Luxaviation Germany",
+    "iata_code": null,
+    "icao_code": "LXG"
+  },
+  {
+    "name": "Malawian Airlines",
+    "iata_code": "3W",
+    "icao_code": "MWI"
+  },
+  {
+    "name": "Maleth-Aero",
+    "iata_code": "DB",
+    "icao_code": "MLT"
+  },
+  {
+    "name": "Miami Air International",
+    "iata_code": "LL",
+    "icao_code": "BSK"
+  },
+  {
+    "name": "MyWay Airlines",
+    "iata_code": "MJ",
+    "icao_code": "MYW"
+  },
+  {
+    "name": "Nicholas Air",
+    "iata_code": null,
+    "icao_code": "JTZ"
+  },
+  {
+    "name": "Novair",
+    "iata_code": "N9",
+    "icao_code": "NVR"
+  },
+  {
+    "name": "Omni Aviation",
+    "iata_code": null,
+    "icao_code": "OAV"
+  },
+  {
+    "name": "Oriental Air Bridge",
+    "iata_code": "OC",
+    "icao_code": "ORC"
+  },
+  {
+    "name": "PAL Aerospace",
+    "iata_code": null,
+    "icao_code": "SPR"
+  },
+  {
+    "name": "Pivot Airlines",
+    "iata_code": "ZX",
+    "icao_code": "GGN"
+  },
+  {
+    "name": "Qatar - Amiri Flight",
+    "iata_code": null,
+    "icao_code": "QAF"
+  },
+  {
+    "name": "Real Tonga Airline",
+    "iata_code": null,
+    "icao_code": "RLT"
+  },
+  {
+    "name": "ROMCargo Airlines",
+    "iata_code": "NJ",
+    "icao_code": "RCR"
+  },
+  {
+    "name": "Rotana Jet",
+    "iata_code": "RG",
+    "icao_code": "RJD"
+  },
+  {
+    "name": "Samoa Airways",
+    "iata_code": "OL",
+    "icao_code": "PAO"
+  },
+  {
+    "name": "Shirak Avia",
+    "iata_code": "5G",
+    "icao_code": "SHS"
+  },
+  {
+    "name": "Sierra Pacific Airlines",
+    "iata_code": "SI",
+    "icao_code": "SPA"
+  },
+  {
+    "name": "Silver Air",
+    "iata_code": null,
+    "icao_code": "SLD"
+  },
+  {
+    "name": "SKS Airways",
+    "iata_code": "KI",
+    "icao_code": "SJB"
+  },
+  {
+    "name": "Sky Lease Cargo",
+    "iata_code": "GG",
+    "icao_code": "KYE"
+  },
+  {
+    "name": "Sky Mali",
+    "iata_code": "ML",
+    "icao_code": "FML"
+  },
+  {
+    "name": "Sky Prime Aviation",
+    "iata_code": null,
+    "icao_code": "SPD"
+  },
+  {
+    "name": "SkyJet Airlines",
+    "iata_code": "M8",
+    "icao_code": "MSJ"
+  },
+  {
+    "name": "Skyservice Business Aviation",
+    "iata_code": null,
+    "icao_code": "SYB"
+  },
+  {
+    "name": "Skytaxi",
+    "iata_code": "TE",
+    "icao_code": "IGA"
+  },
+  {
+    "name": "Southern Air Charter",
+    "iata_code": "PL",
+    "icao_code": "SOA"
+  },
+  {
+    "name": "Southern Cross International",
+    "iata_code": null,
+    "icao_code": "SXI"
+  },
+  {
+    "name": "Star East Airlines",
+    "iata_code": "4R",
+    "icao_code": "SEK"
+  },
+  {
+    "name": "Sudan Airways",
+    "iata_code": "SD",
+    "icao_code": "SUD"
+  },
+  {
+    "name": "Sunkar Air",
+    "iata_code": null,
+    "icao_code": "BBK"
+  },
+  {
+    "name": "Sunrise Airways",
+    "iata_code": "S6",
+    "icao_code": "KSZ"
+  },
+  {
+    "name": "Syphax Airlines",
+    "iata_code": "Y3",
+    "icao_code": "SYA"
+  },
+  {
+    "name": "TAG Aviation Asia",
+    "iata_code": null,
+    "icao_code": "TBJ"
+  },
+  {
+    "name": "TagAirlines",
+    "iata_code": "5U",
+    "icao_code": "TGU"
+  },
+  {
+    "name": "Tanana Air Service",
+    "iata_code": "Z3",
+    "icao_code": "TNR"
+  },
+  {
+    "name": "Texel Air",
+    "iata_code": null,
+    "icao_code": "XLR"
+  },
+  {
+    "name": "Travel Management Company",
+    "iata_code": null,
+    "icao_code": "TMC"
+  },
+  {
+    "name": "Tunisair Express",
+    "iata_code": "UG",
+    "icao_code": "TUX"
+  },
+  {
+    "name": "UK Royal / VIP Flights",
+    "iata_code": null,
+    "icao_code": "KRF"
+  },
+  {
+    "name": "Ukraine Air Alliance",
+    "iata_code": null,
+    "icao_code": "UKL"
+  },
+  {
+    "name": "United Eagle",
+    "iata_code": null,
+    "icao_code": "UEE"
+  },
+  {
+    "name": "UR Airlines",
+    "iata_code": "UD",
+    "icao_code": "UBD"
+  },
+  {
+    "name": "ValueJet",
+    "iata_code": "VK",
+    "icao_code": "FVJ"
+  },
+  {
+    "name": "ABS Jets",
+    "iata_code": null,
+    "icao_code": "ABP"
+  },
+  {
+    "name": "Aerolineas Sosa",
+    "iata_code": "P4",
+    "icao_code": "NSO"
+  },
+  {
+    "name": "Aerro Direkt",
+    "iata_code": "4D",
+    "icao_code": "DIR"
+  },
+  {
+    "name": "Africa Airlines",
+    "iata_code": null,
+    "icao_code": "AAT"
+  },
+  {
+    "name": "Air Falcon",
+    "iata_code": "FS",
+    "icao_code": "FPK"
+  },
+  {
+    "name": "Air Manas",
+    "iata_code": "ZM",
+    "icao_code": "MBB"
+  },
+  {
+    "name": "Air Mountain",
+    "iata_code": null,
+    "icao_code": "AMT"
+  },
+  {
+    "name": "Air Taxi & Charter International",
+    "iata_code": null,
+    "icao_code": "IBJ"
+  },
+  {
+    "name": "AirPink",
+    "iata_code": null,
+    "icao_code": "PNK"
+  },
+  {
+    "name": "Airtask",
+    "iata_code": null,
+    "icao_code": "DCT"
+  },
+  {
+    "name": "Albatros Airlines",
+    "iata_code": "G0",
+    "icao_code": "GAL"
+  },
+  {
+    "name": "Albinati Aeronautics",
+    "iata_code": null,
+    "icao_code": "LUC"
+  },
+  {
+    "name": "Amakusa Airlines",
+    "iata_code": "MZ",
+    "icao_code": "AHX"
+  },
+  {
+    "name": "Anda Air",
+    "iata_code": "DM",
+    "icao_code": "SSV"
+  },
+  {
+    "name": "Anderson Air",
+    "iata_code": null,
+    "icao_code": "ADS"
+  },
+  {
+    "name": "APG Airlines",
+    "iata_code": "GP",
+    "icao_code": "RIV"
+  },
+  {
+    "name": "Asia Sky Lines",
+    "iata_code": null,
+    "icao_code": "LIC"
+  },
+  {
+    "name": "Av8Jet",
+    "iata_code": null,
+    "icao_code": "AJO"
+  },
+  {
+    "name": "Avanti Air",
+    "iata_code": null,
+    "icao_code": "ATV"
+  },
+  {
+    "name": "Avcon Jet San Marino",
+    "iata_code": null,
+    "icao_code": "VAJ"
+  },
+  {
+    "name": "Aviastar",
+    "iata_code": null,
+    "icao_code": "VIT"
+  },
+  {
+    "name": "Babcock MCS Portugal",
+    "iata_code": null,
+    "icao_code": "BBO"
+  },
+  {
+    "name": "Brilliant Jet",
+    "iata_code": null,
+    "icao_code": "TXJ"
+  },
+  {
+    "name": "Bulgaria - Government",
+    "iata_code": null,
+    "icao_code": "BGF"
+  },
+  {
+    "name": "Canadian Airways Congo",
+    "iata_code": null,
+    "icao_code": "TWC"
+  },
+  {
+    "name": "CargoLogicAir",
+    "iata_code": "P3",
+    "icao_code": "CLU"
+  },
+  {
+    "name": "Challenge Air Cargo",
+    "iata_code": "X6",
+    "icao_code": "CHZ"
+  },
+  {
+    "name": "Comlux Aruba",
+    "iata_code": "CS",
+    "icao_code": "CXB"
+  },
+  {
+    "name": "Cristalux",
+    "iata_code": "7Z",
+    "icao_code": "AUZ"
+  },
+  {
+    "name": "Cristalux",
+    "iata_code": "Z7",
+    "icao_code": "AUZ"
+  },
+  {
+    "name": "CSI Aviation",
+    "iata_code": null,
+    "icao_code": "CSI"
+  },
+  {
+    "name": "Czech Airlines",
+    "iata_code": "OK",
+    "icao_code": "CSA"
+  },
+  {
+    "name": "Daallo Airlines",
+    "iata_code": "D3",
+    "icao_code": "DAO"
+  },
+  {
+    "name": "Deer Jet Beijing",
+    "iata_code": null,
+    "icao_code": "BDJ"
+  },
+  {
+    "name": "Dena Airways",
+    "iata_code": "D9",
+    "icao_code": "DAI"
+  },
+  {
+    "name": "E-Aviation",
+    "iata_code": null,
+    "icao_code": "EFD"
+  },
+  {
+    "name": "E-Cargo Airlines",
+    "iata_code": "RF",
+    "icao_code": "ERF"
+  },
+  {
+    "name": "Easy Charter",
+    "iata_code": "RD",
+    "icao_code": "LOL"
+  },
+  {
+    "name": "Empyreal Jet",
+    "iata_code": null,
+    "icao_code": "RLJ"
+  },
+  {
+    "name": "Envoy Air",
+    "iata_code": "MQ",
+    "icao_code": "ENY"
+  },
+  {
+    "name": "ExpressJet Airlines",
+    "iata_code": "XE",
+    "icao_code": "BTA"
+  },
+  {
+    "name": "Finistair",
+    "iata_code": null,
+    "icao_code": "FTR"
+  },
+  {
+    "name": "Fleet Air International",
+    "iata_code": null,
+    "icao_code": "FRF"
+  },
+  {
+    "name": "Flightlink",
+    "iata_code": "YS",
+    "icao_code": "FLZ"
+  },
+  {
+    "name": "Florida Air Cargo",
+    "iata_code": null,
+    "icao_code": "FAS"
+  },
+  {
+    "name": "Fly Angola",
+    "iata_code": "EQ",
+    "icao_code": "FLA"
+  },
+  {
+    "name": "Fly Pro",
+    "iata_code": "FP",
+    "icao_code": "PVV"
+  },
+  {
+    "name": "Fly SAX",
+    "iata_code": null,
+    "icao_code": "EXZ"
+  },
+  {
+    "name": "FlyMontserrat",
+    "iata_code": "5M",
+    "icao_code": "MNT"
+  },
+  {
+    "name": "General Atomic AeroTech Systems",
+    "iata_code": null,
+    "icao_code": "DOR"
+  },
+  {
+    "name": "Gestair Aviation Malta",
+    "iata_code": null,
+    "icao_code": "GSM"
+  },
+  {
+    "name": "Hala Air",
+    "iata_code": "HG",
+    "icao_code": "HTP"
+  },
+  {
+    "name": "Hans Airways",
+    "iata_code": null,
+    "icao_code": "GKS"
+  },
+  {
+    "name": "Icar Air",
+    "iata_code": null,
+    "icao_code": "RAC"
+  },
+  {
+    "name": "InterJet West",
+    "iata_code": "K8",
+    "icao_code": "IJW"
+  },
+  {
+    "name": "JC Bamford Excavators",
+    "iata_code": null,
+    "icao_code": "JCB"
+  },
+  {
+    "name": "Jet Airways",
+    "iata_code": "9W",
+    "icao_code": "JAI"
+  },
+  {
+    "name": "Jinxiang Airlines",
+    "iata_code": null,
+    "icao_code": "JXX"
+  },
+  {
+    "name": "Jump Air",
+    "iata_code": null,
+    "icao_code": "JUP"
+  },
+  {
+    "name": "Keewatin Air",
+    "iata_code": "FK",
+    "icao_code": "KEW"
+  },
+  {
+    "name": "KhabAvia",
+    "iata_code": null,
+    "icao_code": "KHF"
+  },
+  {
+    "name": "Legacy Airways",
+    "iata_code": null,
+    "icao_code": "LGF"
+  },
+  {
+    "name": "Lydd Air",
+    "iata_code": null,
+    "icao_code": "LYD"
+  },
+  {
+    "name": "MAE Aircraft Management",
+    "iata_code": "MA",
+    "icao_code": "MEN"
+  },
+  {
+    "name": "Malta MedAir",
+    "iata_code": "MT",
+    "icao_code": "MMO"
+  },
+  {
+    "name": "Manasik Aviation",
+    "iata_code": "XN",
+    "icao_code": "MNM"
+  },
+  {
+    "name": "Map Linhas Aereas",
+    "iata_code": "7M",
+    "icao_code": "PAM"
+  },
+  {
+    "name": "Martinair Holland",
+    "iata_code": "MP",
+    "icao_code": "MPH"
+  },
+  {
+    "name": "Mel Air",
+    "iata_code": "5M",
+    "icao_code": "MDO"
+  },
+  {
+    "name": "My Freighter",
+    "iata_code": "C6",
+    "icao_code": "MFX"
+  },
+  {
+    "name": "NHV Helicopters",
+    "iata_code": null,
+    "icao_code": "NHZ"
+  },
+  {
+    "name": "Nomad Aviation",
+    "iata_code": null,
+    "icao_code": "NUM"
+  },
+  {
+    "name": "North Central",
+    "iata_code": null,
+    "icao_code": "NCJ"
+  },
+  {
+    "name": "Nova Airways",
+    "iata_code": null,
+    "icao_code": "NOV"
+  },
+  {
+    "name": "Novair",
+    "iata_code": "NG",
+    "icao_code": "NAI"
+  },
+  {
+    "name": "Omni Air International",
+    "iata_code": "OY",
+    "icao_code": "OAE"
+  },
+  {
+    "name": "One Air",
+    "iata_code": null,
+    "icao_code": "HGO"
+  },
+  {
+    "name": "Panellenic Airlines",
+    "iata_code": null,
+    "icao_code": "RJB"
+  },
+  {
+    "name": "Panorama Airways",
+    "iata_code": "5P",
+    "icao_code": "UZP"
+  },
+  {
+    "name": "People's",
+    "iata_code": "PE",
+    "icao_code": "PEV"
+  },
+  {
+    "name": "Pradhaan Air Express",
+    "iata_code": "6P",
+    "icao_code": "PRX"
+  },
+  {
+    "name": "Premier Private Jets",
+    "iata_code": null,
+    "icao_code": "MVP"
+  },
+  {
+    "name": "Quikjet Cargo Airlines",
+    "iata_code": "QO",
+    "icao_code": "FQA"
+  },
+  {
+    "name": "Red Sea Airlines",
+    "iata_code": null,
+    "icao_code": "RSX"
+  },
+  {
+    "name": "SEair International",
+    "iata_code": "XO",
+    "icao_code": "SGD"
+  },
+  {
+    "name": "Shuttle America",
+    "iata_code": "S5",
+    "icao_code": "TCF"
+  },
+  {
+    "name": "Sino Jet",
+    "iata_code": null,
+    "icao_code": "SJM"
+  },
+  {
+    "name": "Sirius Aero",
+    "iata_code": "SA",
+    "icao_code": "CIG"
+  },
+  {
+    "name": "Sky Vision Airlines",
+    "iata_code": null,
+    "icao_code": "SVI"
+  },
+  {
+    "name": "Skyside",
+    "iata_code": null,
+    "icao_code": "SKV"
+  },
+  {
+    "name": "Solinair",
+    "iata_code": "ZS",
+    "icao_code": "SOP"
+  },
+  {
+    "name": "Sterling Airways",
+    "iata_code": "VC",
+    "icao_code": "SRY"
+  },
+  {
+    "name": "Sundt Air",
+    "iata_code": null,
+    "icao_code": "MDT"
+  },
+  {
+    "name": "Surinam Airways",
+    "iata_code": "PY",
+    "icao_code": "SLM"
+  },
+  {
+    "name": "SXM Airways",
+    "iata_code": null,
+    "icao_code": "SXM"
+  },
+  {
+    "name": "TAB Cargo",
+    "iata_code": "2L",
+    "icao_code": "BOL"
+  },
+  {
+    "name": "Tatra JET",
+    "iata_code": null,
+    "icao_code": "TTJ"
+  },
+  {
+    "name": "Tbilisi Airways",
+    "iata_code": "TD",
+    "icao_code": "TBC"
+  },
+  {
+    "name": "TUI Airlines Belgium",
+    "iata_code": "TB",
+    "icao_code": "JAF"
+  },
+  {
+    "name": "Uniworld Air Cargo",
+    "iata_code": "U7",
+    "icao_code": "UCG"
+  },
+  {
+    "name": "Valletta Airlines",
+    "iata_code": null,
+    "icao_code": "HOT"
+  },
+  {
+    "name": "Zambia Airways",
+    "iata_code": "ZN",
+    "icao_code": "AZB"
+  },
+  {
+    "name": "Zil Air",
+    "iata_code": null,
+    "icao_code": "SYZ"
+  }
+]

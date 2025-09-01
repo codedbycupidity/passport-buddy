@@ -7,7 +7,7 @@ import * as path from 'path';
 // Load airports data
 let airportsData: any = {};
 try {
-  const airportsPath = path.join(__dirname, '../../frontend/src/data/airports.json');
+  const airportsPath = path.join(__dirname, '../data/airports.json');
   const airportsJson = fs.readFileSync(airportsPath, 'utf-8');
   airportsData = JSON.parse(airportsJson);
   console.log(`Loaded ${Object.keys(airportsData).length} airports from airports.json`);

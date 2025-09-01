@@ -742,7 +742,7 @@ build-mobile:
 	@cd $(MOBILE_DIR) && flutter build apk --debug
 
 ## 🚀 Development
-dev:
+dev-all:
 	@echo "$(BLUE)🚀 Starting all development servers...$(RESET)"
 	@$(MAKE) -j4 dev-shared dev-backend dev-frontend dev-mobile
 

@@ -1,11 +1,37 @@
 import * as vision from '@google-cloud/vision';
 import * as fs from 'fs';
 import * as path from 'path';
-const airlineCodes = require('airline-codes');
+
+// Load airlines data dynamically and index by IATA code
+let airlinesData: any[] = [];
+const airlinesByIATA: any = {};
+const airlinesByICAO: any = {};
 
 // Load airports data dynamically and index by IATA code
 let airportsData: any = {};
-let airportsByIATA: any = {};
+const airportsByIATA: any = {};
+// Load airlines data
+try {
+  const airlinesPath = path.join(__dirname, '../data/airlines.json');
+  const airlinesJson = fs.readFileSync(airlinesPath, 'utf-8');
+  airlinesData = JSON.parse(airlinesJson);
+  
+  // Create IATA and ICAO indexed lookups for airlines
+  for (const airline of airlinesData) {
+    if (airline.iata_code) {
+      airlinesByIATA[airline.iata_code] = airline;
+    }
+    if (airline.icao_code) {
+      airlinesByICAO[airline.icao_code] = airline;
+    }
+  }
+  
+  console.log(`Loaded ${airlinesData.length} airlines, ${Object.keys(airlinesByIATA).length} with IATA codes`);
+} catch (error) {
+  console.error('Failed to load airlines.json:', error);
+}
+
+// Load airports data
 try {
   const airportsPath = path.join(__dirname, '../data/airports.json');
   const airportsJson = fs.readFileSync(airportsPath, 'utf-8');
@@ -42,13 +68,10 @@ interface BoardingPassData {
   };
   departureTime: string | null;
   arrivalTime: string | null;
-  passengerName: string | null;
   confirmationCode: string | null;
   boardingInfo: {
     gate: string | null;
     seat: string | null;
-    zone: string | null;
-    boardingTime: string | null;
   };
   scheduledDepartureTime: Date | null;
   scheduledArrivalTime: Date | null;
@@ -177,25 +200,16 @@ function parseDocumentText(text: string): BoardingPassData | null {
     },
     departureTime: null,
     arrivalTime: null,
-    passengerName: null,
     confirmationCode: null,
     boardingInfo: {
       gate: null,
-      seat: null,
-      zone: null,
-      boardingTime: null
+      seat: null
     },
     scheduledDepartureTime: null,
     scheduledArrivalTime: null
   };
   
-  // Extract passenger name (usually one of the first prominent lines)
-  const namePattern = /^([A-Z]+[,\s]+[A-Z]+(?:\s+[A-Z]+)?)/m;
-  const nameMatch = upperText.match(namePattern);
-  if (nameMatch) {
-    data.passengerName = nameMatch[1].replace(/,/g, ' ').trim();
-    console.log('Found passenger name:', data.passengerName);
-  }
+  // Don't extract passenger name
   
   // Extract flight number
   const flightPatterns = [
@@ -343,21 +357,9 @@ function parseDocumentText(text: string): BoardingPassData | null {
     }
   }
   
-  // Extract zone
-  const zonePattern = /ZONE\s+(\d+|[A-Z])/i;
-  const zoneMatch = upperText.match(zonePattern);
-  if (zoneMatch) {
-    data.boardingInfo.zone = zoneMatch[1];
-    console.log('Found zone:', data.boardingInfo.zone);
-  }
+  // Don't extract zone
   
-  // Extract times
-  const timePattern = /\b(\d{1,2}:\d{2}\s*(?:AM|PM)?)\b/gi;
-  const times = upperText.match(timePattern) || [];
-  if (times.length > 0) {
-    data.boardingInfo.boardingTime = times[0] || null;
-    console.log('Found boarding time:', data.boardingInfo.boardingTime);
-  }
+  // Don't extract times - causes issues with date parsing
   
   // Extract confirmation code (6 character alphanumeric)
   const confirmationPattern = /\b[A-Z0-9]{6}\b/g;
@@ -389,7 +391,19 @@ function parseExtractedText(text: string): BoardingPassData | null {
 }
 
 function getAirlineName(code: string): string | null {
-  // Use airline-codes package to get airline name dynamically
-  const airline = airlineCodes.findWhere({ iata: code });
-  return airline ? airline.name : code;
+  // First try IATA code lookup
+  const upperCode = code.toUpperCase();
+  const airline = airlinesByIATA[upperCode];
+  if (airline) {
+    return airline.name;
+  }
+  
+  // Try ICAO code as fallback (3-letter codes)
+  const icaoAirline = airlinesByICAO[upperCode];
+  if (icaoAirline) {
+    return icaoAirline.name;
+  }
+  
+  // Return null if no match found (will show as "Unknown" in UI)
+  return null;
 }
