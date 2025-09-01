@@ -1,11 +1,11 @@
 import React from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { useFlightStats } from '../hooks/useFlightStats';
+import { useFlightStatsGraphQL } from '../hooks/useFlightStatsGraphQL';
 import { TravelStats } from '../components/flights/TravelStats';
 
 export const Statistics: React.FC = () => {
   const { user } = useAuth();
-  const { stats, loading } = useFlightStats();
+  const { stats, loading } = useFlightStatsGraphQL();
 
   return (
     <div

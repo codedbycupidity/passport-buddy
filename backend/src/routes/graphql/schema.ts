@@ -61,11 +61,74 @@ export default buildSchema(`
         user: User
     }
 
+    type FlightStatsSummary {
+        totalFlights: Int!
+        totalDistance: Int!
+        totalPoints: Int!
+        uniqueAirlines: Int!
+        uniqueDestinations: Int!
+        uniqueCountries: Int!
+        airlines: [String!]!
+        destinations: [String!]!
+    }
+
+    type FlightsByMonth {
+        _id: Int!
+        count: Int!
+        distance: Int!
+        points: Int!
+    }
+
+    type TopRoute {
+        _id: TopRouteId!
+        count: Int!
+        totalDistance: Int!
+    }
+
+    type TopRouteId {
+        origin: String!
+        destination: String!
+    }
+
+    type MostVisitedAirport {
+        code: String!
+        name: String!
+        city: String!
+        country: String!
+        visits: Int!
+    }
+
+    type FavoriteAirline {
+        code: String!
+        name: String!
+        flights: Int!
+    }
+
+    type FlightStats {
+        summary: FlightStatsSummary
+        flightsByMonth: [FlightsByMonth!]!
+        topRoutes: [TopRoute!]!
+        # Legacy flat structure for backward compatibility
+        totalFlights: Int
+        totalDistance: Int
+        totalFlightTime: Int
+        uniqueAirports: Int
+        uniqueCountries: Int
+        uniqueAirlines: Int
+        carbonEmissions: Int
+        averageFlightDistance: Int
+        totalPoints: Int
+        uniqueDestinations: Int
+        mostVisitedAirport: MostVisitedAirport
+        favoriteAirline: FavoriteAirline
+    }
+
     type RootQuery {
         posts: [Post!]!
         user(userId: ID): User
         me: User
         verifyAuth: AuthVerification!
+        flightStats(userId: ID, year: Int): FlightStats
     }
 
     type RootMutation {

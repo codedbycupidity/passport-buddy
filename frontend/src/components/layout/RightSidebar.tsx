@@ -1,7 +1,7 @@
 import React from 'react';
 import { LogOut } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { useFlightStats } from '../../hooks/useFlightStats';
+import { useFlightStatsGraphQL } from '../../hooks/useFlightStatsGraphQL';
 import { TravelStats } from '../flights/TravelStats';
 
 interface RightSidebarProps {
@@ -10,7 +10,7 @@ interface RightSidebarProps {
 
 const RightSidebar: React.FC<RightSidebarProps> = () => {
   const { user, logout } = useAuth();
-  const { stats, loading } = useFlightStats();
+  const { stats, loading } = useFlightStatsGraphQL();
 
   // Hide sidebar on smaller screens
   if (typeof window !== 'undefined' && window.innerWidth < 1024) {

@@ -9,7 +9,7 @@ import { ConfirmDialog } from '../components/common/ConfirmDialog';
 import { useApolloClient } from '@apollo/client';
 import { GetPostsDocument } from '../gql/generated';
 import { TravelStats } from '../components/flights/TravelStats';
-import { useFlightStats } from '../hooks/useFlightStats';
+import { useFlightStatsGraphQL } from '../hooks/useFlightStatsGraphQL';
 import { PostCard } from '../components/feed/PostCard';
 import { postService } from '../services/post.service';
 import '../components/feed/Feed.css';
@@ -46,7 +46,9 @@ export const Profile: React.FC = () => {
 
   const isOwnProfile = !username || username === currentUser?.username;
   const user = isOwnProfile ? currentUser : profileUser;
-  const { stats, loading: statsLoading } = useFlightStats(user?._id || user?.id);
+  const { stats, loading: statsLoading } = useFlightStatsGraphQL({ 
+    userId: user?._id || user?.id 
+  });
   const {
     selectedImage,
     previewUrl,

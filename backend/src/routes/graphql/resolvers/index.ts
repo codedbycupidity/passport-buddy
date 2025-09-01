@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { AuthenticationError } from 'apollo-server-express';
 import Post, { IPost } from '../../../models/Post';
 import User from '../../../models/User';
+import Flight from '../../../models/Flight';
 // TODO: Replace with shared module import when available
 // import { createPostSchema } from '@my-app/shared';
 import { z, ZodError } from 'zod';
@@ -172,6 +173,132 @@ export default {
           message: 'Authentication verification failed',
           user: null,
         };
+      }
+    },
+    flightStats: async (_: any, { userId, year }: { userId?: string; year?: number }, context: any) => {
+      try {
+        console.log('🔍 GRAPHQL_FLIGHT_STATS: Request received', {
+          providedUserId: userId,
+          contextUserId: context.userId,
+          hasContext: !!context,
+          year
+        });
+
+        // Allow fetching stats for a specific user or default to authenticated user
+        const targetUserId = userId || context.userId;
+
+        console.log('🔍 GRAPHQL_FLIGHT_STATS: Target user ID', targetUserId);
+
+        if (!targetUserId) {
+          console.log('❌ GRAPHQL_FLIGHT_STATS: No user ID available');
+          throw new AuthenticationError('User ID required');
+        }
+
+        // Convert string to ObjectId for MongoDB query
+        const matchQuery: any = { userId: new mongoose.Types.ObjectId(targetUserId) };
+
+        if (year) {
+          const startDate = new Date(`${year}-01-01`);
+          const endDate = new Date(`${year}-12-31`);
+          matchQuery.scheduledDepartureTime = { $gte: startDate, $lte: endDate };
+        }
+
+        const stats = await Flight.aggregate([
+          { $match: matchQuery },
+          {
+            $group: {
+              _id: null,
+              totalFlights: { $sum: 1 },
+              totalDistance: { $sum: '$distance' },
+              totalPoints: { $sum: '$points' },
+              airlines: { $addToSet: '$airline' },
+              destinations: { $addToSet: '$destination.city' },
+              originCountries: { $addToSet: '$origin.country' },
+              destCountries: { $addToSet: '$destination.country' },
+            },
+          },
+          {
+            $project: {
+              _id: 0,
+              totalFlights: 1,
+              totalDistance: 1,
+              totalPoints: 1,
+              uniqueAirlines: { $size: '$airlines' },
+              uniqueDestinations: { $size: '$destinations' },
+              uniqueCountries: {
+                $size: {
+                  $setUnion: ['$originCountries', '$destCountries'],
+                },
+              },
+              airlines: 1,
+              destinations: 1,
+            },
+          },
+        ]);
+
+        // Get flights by month
+        const flightsByMonth = await Flight.aggregate([
+          { $match: matchQuery },
+          {
+            $group: {
+              _id: { $month: '$scheduledDepartureTime' },
+              count: { $sum: 1 },
+              distance: { $sum: '$distance' },
+              points: { $sum: '$points' },
+            },
+          },
+          { $sort: { _id: 1 } },
+        ]);
+
+        // Get top routes
+        const topRoutes = await Flight.aggregate([
+          { $match: matchQuery },
+          {
+            $group: {
+              _id: {
+                origin: '$origin.code',
+                destination: '$destination.code',
+              },
+              count: { $sum: 1 },
+              totalDistance: { $sum: '$distance' },
+            },
+          },
+          { $sort: { count: -1 } },
+          { $limit: 10 },
+        ]);
+
+        const summary = stats[0] || {
+          totalFlights: 0,
+          totalDistance: 0,
+          totalPoints: 0,
+          uniqueAirlines: 0,
+          uniqueDestinations: 0,
+          uniqueCountries: 0,
+          airlines: [],
+          destinations: [],
+        };
+        
+        return {
+          summary,
+          flightsByMonth,
+          topRoutes,
+          // Legacy flat structure for backward compatibility
+          totalFlights: summary.totalFlights,
+          totalDistance: summary.totalDistance,
+          totalPoints: summary.totalPoints,
+          uniqueDestinations: summary.uniqueDestinations,
+          uniqueAirlines: summary.uniqueAirlines,
+          totalFlightTime: 0, // Not calculated yet
+          uniqueAirports: summary.uniqueDestinations, // Using destinations as proxy
+          uniqueCountries: summary.uniqueCountries,
+          carbonEmissions: 0, // Not calculated yet
+          averageFlightDistance: summary.totalFlights > 0 ? Math.round(summary.totalDistance / summary.totalFlights) : 0,
+          mostVisitedAirport: null, // TODO: Implement if needed
+          favoriteAirline: null, // TODO: Implement if needed
+        };
+      } catch (err) {
+        console.error('Error fetching flight stats:', err);
+        throw err;
       }
     },
   },
