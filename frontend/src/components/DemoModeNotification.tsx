@@ -28,7 +28,7 @@ export const DemoModeNotification: React.FC = () => {
             width: '60px',
             height: '60px',
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)',
+            background: 'linear-gradient(135deg, var(--pb-medium-purple) 0%, var(--pb-dark-purple) 100%)',
             color: 'white',
             display: 'flex',
             alignItems: 'center',
@@ -150,7 +150,7 @@ export const DemoModeNotification: React.FC = () => {
                 style={{
                   flex: 1,
                   padding: '8px 12px',
-                  background: '#8b5cf6',
+                  background: 'var(--pb-medium-purple)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '8px',
@@ -163,7 +163,7 @@ export const DemoModeNotification: React.FC = () => {
                   e.currentTarget.style.background = '#7c3aed';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#8b5cf6';
+                  e.currentTarget.style.background = 'var(--pb-medium-purple)';
                 }}
               >
                 Copy Email

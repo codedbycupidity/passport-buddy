@@ -65,7 +65,7 @@ export const TravelStats: React.FC<TravelStatsProps> = ({ stats, loading, compac
     if (miles >= 100000) return { level: 'Elite Explorer', color: '#FFD700' };
     if (miles >= 50000) return { level: 'World Traveler', color: '#C0C0C0' };
     if (miles >= 25000) return { level: 'Frequent Flyer', color: '#CD7F32' };
-    if (miles >= 10000) return { level: 'Explorer', color: '#8b5cf6' };
+    if (miles >= 10000) return { level: 'Explorer', color: 'var(--pb-medium-purple)' };
     return { level: 'Wanderer', color: '#6b7280' };
   };
 

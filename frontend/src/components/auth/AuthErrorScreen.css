@@ -73,7 +73,7 @@
 }
 
 .auth-error-retry {
-  background: #8b5cf6;
+  background: var(--pb-dark-purple);
   color: white;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .auth-error-support-link {
-  color: #8b5cf6;
+  color: var(--pb-dark-purple);
   text-decoration: none;
   font-weight: 500;
 }

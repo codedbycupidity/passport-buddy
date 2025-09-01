@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: calc(100vh - 60px);
-  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+  background: linear-gradient(135deg, var(--pb-background) 0%, var(--pb-ultra-light) 50%, var(--pb-light-periwinkle) 100%);
   color: var(--pb-dark-purple);
   position: relative;
   overflow: hidden;
@@ -23,7 +23,7 @@
   font-size: 1.875rem;
   font-weight: 600;
   margin: 0;
-  color: var(--pb-dark-purple);
+  color: #1f2937;
 }
 
 .earth-stats {
@@ -39,13 +39,13 @@
   display: block;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #a78bfa; /* Lighter purple */
+  color: var(--pb-dark-purple);
 }
 
 .earth-stats .stat-label {
   display: block;
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: var(--pb-dark-purple);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-top: 0.25rem;
@@ -97,14 +97,14 @@
 }
 
 .flight-item:hover {
-  background: var(--pb-light-purple);
-  border-color: var(--pb-medium-purple);
+  background: var(--pb-ultra-light);
+  border-color: var(--pb-dark-purple);
   transform: translateX(-4px);
   box-shadow: 0 2px 8px rgba(139, 92, 246, 0.15);
 }
 
 .flight-item.selected {
-  background: var(--pb-light-purple);
+  background: var(--pb-ultra-light);
   border-color: var(--pb-dark-purple);
   box-shadow: 0 2px 12px rgba(139, 92, 246, 0.2);
 }
@@ -118,7 +118,7 @@
 
 .flight-details {
   font-size: 0.75rem;
-  color: var(--pb-medium-purple);
+  color: var(--pb-dark-purple);
 }
 
 /* Custom scrollbar */
@@ -132,17 +132,17 @@
 }
 
 .flight-list::-webkit-scrollbar-thumb {
-  background: var(--pb-light-purple);
+  background: var(--pb-ultra-light);
   border-radius: 3px;
 }
 
 .flight-list::-webkit-scrollbar-thumb:hover {
-  background: var(--pb-medium-purple);
+  background: var(--pb-dark-purple);
 }
 
 /* Loading state */
 .flight-list p {
-  color: var(--pb-medium-purple);
+  color: var(--pb-dark-purple);
   font-size: 0.875rem;
 }
 

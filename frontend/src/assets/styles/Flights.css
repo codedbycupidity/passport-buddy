@@ -14,7 +14,7 @@
 .flights-header h1 {
   font-size: 1.875rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #1f2937;
 }
 
 .flights-actions {
@@ -38,7 +38,7 @@
 }
 
 .camera-btn {
-  background-color: #8b5cf6;
+  background-color: var(--pb-dark-purple);
   color: white;
   padding: 0.5rem;
   width: 36px;
@@ -47,17 +47,17 @@
 }
 
 .camera-btn:hover:not(:disabled) {
-  background-color: #7c3aed;
+  background-color: var(--pb-light-purple);
   transform: translateY(-1px);
 }
 
 .upload-pass-btn {
-  background-color: #8b5cf6;
+  background-color: var(--pb-dark-purple);
   color: white;
 }
 
 .upload-pass-btn:hover:not(:disabled) {
-  background-color: #7c3aed;
+  background-color: var(--pb-light-purple);
   transform: translateY(-1px);
 }
 
@@ -68,7 +68,7 @@
 
 .manual-entry-btn {
   background-color: #f3f4f6;
-  color: #4b5563;
+  color: var(--pb-dark-purple);
 }
 
 .manual-entry-btn:hover {
@@ -100,7 +100,7 @@
 .stat-value {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #8b5cf6;
+  color: var(--pb-medium-purple);
   margin-bottom: 0.25rem;
 }
 
@@ -135,7 +135,7 @@
 }
 
 .tab.active {
-  color: #8b5cf6;
+  color: var(--pb-dark-purple);
 }
 
 .tab.active::after {
@@ -145,7 +145,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #8b5cf6;
+  background-color: var(--pb-dark-purple);
 }
 
 /* Flight List */
@@ -158,24 +158,24 @@
 .loading {
   text-align: center;
   padding: 3rem;
-  color: #9ca3af;
+  color: var(--pb-dark-purple);
   font-size: 0.875rem;
 }
 
 .no-flights {
   text-align: center;
   padding: 3rem;
-  color: #9ca3af;
+  color: var(--pb-dark-purple);
   background-color: #fafafa;
   border-radius: 20px;
   font-size: 0.875rem;
-  border: 1px solid #f3f4f6;
+  border: 1px solid #e5e7eb;
 }
 
 /* Flight Card */
 .flight-card {
   background: #ffffff;
-  border: 1px solid #f3f4f6;
+  border: 1px solid #e5e7eb;
   border-radius: 20px;
   padding: 1.5rem;
   margin-bottom: 0.75rem;
@@ -209,7 +209,7 @@
 }
 
 .flight-number {
-  color: #9ca3af;
+  color: #6b7280;
   font-size: 0.813rem;
   font-weight: 500;
 }
@@ -235,7 +235,7 @@
 .airport-code {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--pb-dark-purple);
   margin-bottom: 0.125rem;
 }
 
@@ -247,7 +247,7 @@
 
 .flight-time {
   font-size: 0.875rem;
-  color: #4b5563;
+  color: #374151;
   font-weight: 500;
 }
 
@@ -275,7 +275,7 @@
   z-index: 1;
   background: white;
   padding: 0 0.5rem;
-  color: #8b5cf6;
+  color: var(--pb-medium-purple);
   width: 20px;
   height: 20px;
 }
@@ -324,7 +324,7 @@
   border: none;
   border-radius: 8px;
   background-color: #f3f4f6;
-  color: #6b7280;
+  color: var(--pb-dark-purple);
   cursor: pointer;
   transition: all 0.2s;
   width: 28px;
@@ -336,7 +336,7 @@
 
 .edit-btn:hover {
   background-color: #e5e7eb;
-  color: #8b5cf6;
+  color: var(--pb-dark-purple);
 }
 
 .delete-btn:hover {
@@ -383,7 +383,7 @@
 
 .complete-btn:disabled:hover {
   background-color: #f3f4f6;
-  color: #6b7280;
+  color: var(--pb-dark-purple);
 }
 
 .uncomplete-btn:disabled {
@@ -393,7 +393,7 @@
 
 .uncomplete-btn:disabled:hover {
   background-color: #f3f4f6;
-  color: #6b7280;
+  color: var(--pb-dark-purple);
 }
 
 .flights-actions .icon,

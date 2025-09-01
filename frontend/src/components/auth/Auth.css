@@ -27,7 +27,7 @@
   font-weight: normal;
   text-align: center;
   margin: 0 0 24px 0;
-  background: linear-gradient(135deg, var(--pb-dark-purple) 0%, var(--pb-medium-purple) 50%, var(--pb-periwinkle) 100%);
+  background: linear-gradient(135deg, var(--pb-dark-purple) 0%, var(--pb-dark-purple) 50%, var(--pb-periwinkle) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -59,12 +59,12 @@
 
 .auth-form input:focus {
   outline: none;
-  border-color: var(--pb-medium-purple);
+  border-color: var(--pb-dark-purple);
   background: var(--pb-white);
 }
 
 .auth-form input::placeholder {
-  color: var(--pb-light-purple);
+  color: var(--pb-dark-purple);
 }
 
 /* Error Message */
@@ -79,7 +79,7 @@
 .auth-button {
   width: 100%;
   padding: 12px;
-  background: var(--pb-medium-purple);
+  background: var(--pb-dark-purple);
   color: white;
   border: none;
   border-radius: 8px;
@@ -126,7 +126,7 @@
   position: relative;
   background: var(--pb-white);
   padding: 0 16px;
-  color: var(--pb-light-purple);
+  color: var(--pb-dark-purple);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -143,7 +143,7 @@
 .auth-link {
   background: none;
   border: none;
-  color: var(--pb-medium-purple);
+  color: var(--pb-dark-purple);
   font-weight: 600;
   cursor: pointer;
   padding: 0;
@@ -164,7 +164,7 @@
 .auth-text-link {
   background: none;
   border: none;
-  color: var(--pb-medium-purple);
+  color: var(--pb-dark-purple);
   font-size: 0.875rem;
   cursor: pointer;
   padding: 0;

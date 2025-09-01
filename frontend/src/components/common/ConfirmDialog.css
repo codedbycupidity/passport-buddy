@@ -66,14 +66,14 @@
 .confirm-dialog-title {
   font-size: 18px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--pb-dark-purple);
   margin: 0 0 8px 0;
   text-align: center;
 }
 
 .confirm-dialog-message {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--pb-dark-purple);
   margin: 0 0 24px 0;
   text-align: center;
   line-height: 1.5;
@@ -98,7 +98,7 @@
 
 .confirm-dialog-button-cancel {
   background: #f3f4f6;
-  color: #374151;
+  color: var(--pb-dark-purple);
 }
 
 .confirm-dialog-button-cancel:hover {

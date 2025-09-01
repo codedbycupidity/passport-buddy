@@ -22,7 +22,7 @@
   width: 28px;
   height: 28px;
   border: 2px solid var(--pb-light-periwinkle);
-  border-top-color: var(--pb-medium-purple);
+  border-top-color: var(--pb-dark-purple);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -45,7 +45,7 @@
 }
 
 .feed-error button {
-  background: var(--pb-medium-purple);
+  background: var(--pb-dark-purple);
   color: white;
   border: none;
   padding: 8px 20px;

@@ -1,0 +1,241 @@
+/* Accessibility Improvements for Passport Buddy */
+
+/* 1. Focus Indicators - WCAG 2.4.7 */
+*:focus {
+  outline: 2px solid rgba(93, 74, 122, 0.5);
+  outline-offset: 2px;
+}
+
+/* Subtle focus for navigation icons */
+.nav-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(93, 74, 122, 0.2);
+  border-radius: 8px;
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid rgba(93, 74, 122, 0.4);
+  outline-offset: 1px;
+}
+
+/* Remove default browser outline */
+a:focus-visible {
+  outline: 2px solid rgba(93, 74, 122, 0.4);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 2. Skip to Content Link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #3d2b5c;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* 3. Screen Reader Only Class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* 4. High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  * {
+    border-color: currentColor !important;
+  }
+  
+  button,
+  .button {
+    border: 2px solid currentColor !important;
+  }
+}
+
+/* 5. Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 6. Touch Target Size - WCAG 2.5.5 */
+button,
+a,
+input[type="checkbox"],
+input[type="radio"],
+.clickable {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* 7. Improved Link Styling */
+a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* 8. Form Field Labels */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* 9. Error States */
+.error,
+[aria-invalid="true"] {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+/* 10. Loading States */
+[aria-busy="true"] {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+/* 11. Disabled States */
+[disabled],
+[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
+/* 12. Color Contrast Improvements */
+.text-light {
+  color: #374151; /* Darker gray for better contrast */
+}
+
+.text-muted {
+  color: #4b5563; /* Medium gray with good contrast */
+}
+
+/* 13. Keyboard Navigation Indicators */
+.keyboard-navigating *:focus {
+  outline: 3px solid #5d4a7a !important;
+  outline-offset: 2px !important;
+}
+
+/* 14. Icon Buttons - Add Text Labels */
+.icon-button {
+  position: relative;
+}
+
+.icon-button .tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  margin-bottom: 4px;
+}
+
+.icon-button:hover .tooltip,
+.icon-button:focus .tooltip {
+  opacity: 1;
+}
+
+/* 15. Table Accessibility */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 16. Card Focus */
+.card:focus-within {
+  box-shadow: 0 0 0 3px rgba(93, 74, 122, 0.2);
+  outline: 2px solid #5d4a7a;
+}
+
+/* 17. Modal Focus Trap */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.modal:focus {
+  outline: none;
+}
+
+/* 18. Improved Contrast for Placeholders */
+::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+/* 19. Selection Colors */
+::selection {
+  background-color: #5d4a7a;
+  color: white;
+}
+
+/* 20. Print Styles */
+@media print {
+  .no-print,
+  nav,
+  .navigation,
+  .sidebar {
+    display: none !important;
+  }
+  
+  main {
+    width: 100% !important;
+  }
+}

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Passport Buddy Purple Theme
-  static const Color darkPurple = Color(0xFF7B6BA6);
-  static const Color mediumPurple = Color(0xFFB8B3E9);
-  static const Color lightPurple = Color(0xFFD4D1F5);
-  static const Color periwinkle = Color(0xFFB8B3E9);
+  // Passport Buddy Purple Theme - Updated for accessibility
+  static const Color darkPurple = Color(0xFF3D2B5C);  // Deep purple for high contrast text
+  static const Color mediumPurple = Color(0xFF5D4A7A); // Medium purple for buttons/accents
+  static const Color lightPurple = Color(0xFF7B6BA6);  // Lighter purple for hover states
+  static const Color periwinkle = Color(0xFF6B5B95);   // Darker periwinkle for better contrast
   static const Color lightPeriwinkle = Color(0xFFE8E6FA);
   static const Color ultraLight = Color(0xFFF5F4FD);
   static const Color background = Color(0xFFFAFAFF);
@@ -76,7 +76,7 @@ class AppTheme {
       cardTheme: const CardThemeData(
         color: AppColors.white,
         elevation: 2,
-        shadowColor: Color(0x1AB8B3E9), // AppColors.mediumPurple with 0.1 opacity
+        shadowColor: Color(0x1A3D2B5C), // AppColors.darkPurple with 0.1 opacity
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(12)),
           side: BorderSide(color: AppColors.lightPeriwinkle, width: 1),

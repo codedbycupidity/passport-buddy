@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useFileUpload } from '../hooks/useFileUpload';
 import { useToast } from '../contexts/ToastContext';
+import { X } from 'lucide-react';
 import { userService } from '../services/user.service';
 import { bookmarkService } from '../services/bookmark.service';
 import { ConfirmDialog } from '../components/common/ConfirmDialog';
@@ -429,7 +430,7 @@ export const Profile: React.FC = () => {
             style={{
               width: '40px',
               height: '40px',
-              border: '3px solid var(--pb-light-periwinkle)',
+              border: '3px solid var(--pb-dark-purple)',
               borderTop: '3px solid var(--pb-medium-purple)',
               borderRadius: '50%',
               animation: 'spin 1s linear infinite',
@@ -459,7 +460,7 @@ export const Profile: React.FC = () => {
             style={{
               width: '40px',
               height: '40px',
-              border: '3px solid var(--pb-light-periwinkle)',
+              border: '3px solid var(--pb-dark-purple)',
               borderTop: '3px solid var(--pb-medium-purple)',
               borderRadius: '50%',
               animation: 'spin 1s linear infinite',
@@ -500,7 +501,7 @@ export const Profile: React.FC = () => {
                 style={{
                   padding: '0.5rem',
                   backgroundColor: 'transparent',
-                  color: '#6b7280',
+                  color: 'var(--pb-dark-purple)',
                   border: 'none',
                   borderRadius: '50%',
                   cursor: 'pointer',
@@ -524,7 +525,7 @@ export const Profile: React.FC = () => {
                     right: '0',
                     marginTop: '0.5rem',
                     backgroundColor: 'white',
-                    border: '1px solid #e5e7eb',
+                    border: '1px solid var(--pb-dark-purple)',
                     borderRadius: '8px',
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                     minWidth: '150px',
@@ -544,7 +545,7 @@ export const Profile: React.FC = () => {
                       width: '100%',
                       padding: '0.75rem 1rem',
                       backgroundColor: 'transparent',
-                      color: isBlocked ? '#374151' : '#dc2626',
+                      color: isBlocked ? 'var(--pb-dark-purple)' : '#dc2626',
                       border: 'none',
                       textAlign: 'left',
                       cursor: 'pointer',
@@ -575,7 +576,7 @@ export const Profile: React.FC = () => {
                 width: '80px',
                 height: '80px',
                 borderRadius: '50%',
-                backgroundColor: 'var(--pb-light-periwinkle)',
+                backgroundColor: 'var(--pb-dark-purple)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -588,9 +589,9 @@ export const Profile: React.FC = () => {
               onClick={handleAvatarClick}
             >
               {previewUrl ? (
-                <img src={previewUrl} alt='Preview' style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={previewUrl} alt='Avatar preview' style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : user?.avatar ? (
-                <img src={user.avatar} alt='Profile' style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={user.avatar} alt={`${user.username}'s avatar`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
                 user?.username?.charAt(0)?.toUpperCase() || 'U'
               )}
@@ -625,15 +626,23 @@ export const Profile: React.FC = () => {
 
           {/* User Info */}
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.5rem', color: 'var(--pb-dark-purple)' }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.25rem', color: 'var(--pb-dark-purple)' }}>
               {user?.fullName}
             </h1>
+            <p style={{ 
+              fontSize: '1rem', 
+              color: '#6b7280', 
+              marginBottom: '0.75rem',
+              fontWeight: '500'
+            }}>
+              @{user?.username}
+            </p>
             
             {/* Bio Display */}
             {user?.bio && (
               <p style={{ 
                 fontSize: '0.9rem', 
-                color: '#6b7280', 
+                color: 'var(--pb-dark-purple)', 
                 marginBottom: '1rem',
                 maxWidth: '400px',
                 margin: '0 auto 1rem',
@@ -660,11 +669,11 @@ export const Profile: React.FC = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    backgroundColor: 'var(--pb-ultra-light)',
+                    backgroundColor: '#f3f4f6',
                     padding: '0.5rem 0.75rem',
                     borderRadius: '20px',
                     fontSize: '0.875rem',
-                    color: 'var(--pb-dark-purple)'
+                    color: '#1f2937'
                   }}>
                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                       <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/>
@@ -679,11 +688,11 @@ export const Profile: React.FC = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    backgroundColor: 'var(--pb-ultra-light)',
+                    backgroundColor: '#f3f4f6',
                     padding: '0.5rem 0.75rem',
                     borderRadius: '20px',
                     fontSize: '0.875rem',
-                    color: 'var(--pb-dark-purple)'
+                    color: '#1f2937'
                   }}>
                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                       <path d='M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/>
@@ -697,11 +706,11 @@ export const Profile: React.FC = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    backgroundColor: 'var(--pb-ultra-light)',
+                    backgroundColor: '#f3f4f6',
                     padding: '0.5rem 0.75rem',
                     borderRadius: '20px',
                     fontSize: '0.875rem',
-                    color: 'var(--pb-dark-purple)'
+                    color: '#1f2937'
                   }}>
                     <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                       <rect x='3' y='4' width='18' height='16' rx='2'/>
@@ -720,14 +729,20 @@ export const Profile: React.FC = () => {
                   onClick={handleEditProfile}
                   style={{
                     padding: '0.5rem 1.5rem',
-                    backgroundColor: 'var(--pb-light-periwinkle)',
-                    color: 'var(--pb-dark-purple)',
+                    backgroundColor: 'var(--pb-dark-purple)',
+                    color: 'white',
                     border: 'none',
                     borderRadius: '24px',
                     fontSize: '0.875rem',
                     fontWeight: '600',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.backgroundColor = 'var(--pb-medium-purple)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
                   }}
                 >
                   Edit Profile
@@ -738,9 +753,9 @@ export const Profile: React.FC = () => {
                   disabled={isFollowLoading}
                   style={{
                     padding: '0.5rem 1.5rem',
-                    backgroundColor: isFollowing ? 'transparent' : 'var(--pb-medium-purple)',
-                    color: isFollowing ? 'var(--pb-medium-purple)' : 'white',
-                    border: isFollowing ? '2px solid var(--pb-medium-purple)' : 'none',
+                    backgroundColor: isFollowing ? 'transparent' : 'var(--pb-dark-purple)',
+                    color: isFollowing ? 'var(--pb-dark-purple)' : 'white',
+                    border: isFollowing ? '2px solid var(--pb-dark-purple)' : 'none',
                     borderRadius: '24px',
                     fontSize: '0.875rem',
                     fontWeight: '600',
@@ -756,8 +771,8 @@ export const Profile: React.FC = () => {
                 onClick={() => setShowStatsPanel(!showStatsPanel)}
                 style={{
                   padding: '0.5rem 1rem',
-                  backgroundColor: 'var(--pb-light-periwinkle)',
-                  color: 'var(--pb-dark-purple)',
+                  backgroundColor: 'var(--pb-dark-purple)',
+                  color: 'white',
                   border: 'none',
                   borderRadius: '24px',
                   fontSize: '0.875rem',
@@ -767,6 +782,12 @@ export const Profile: React.FC = () => {
                   alignItems: 'center',
                   gap: '0.5rem',
                   transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.backgroundColor = 'var(--pb-medium-purple)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
                 }}
               >
                 <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
@@ -798,7 +819,7 @@ export const Profile: React.FC = () => {
                   justifyContent: 'center',
                   marginTop: '1rem',
                   paddingTop: '1rem',
-                  borderTop: '1px solid var(--pb-light-periwinkle)',
+                  borderTop: '1px solid var(--pb-dark-purple)',
                 }}
               >
                 <button
@@ -820,8 +841,8 @@ export const Profile: React.FC = () => {
                   onClick={removeImage}
                   style={{
                     padding: '0.5rem 1.5rem',
-                    backgroundColor: 'var(--pb-light-periwinkle)',
-                    color: 'var(--pb-dark-purple)',
+                    backgroundColor: '#f3f4f6',
+                    color: '#1f2937',
                     border: 'none',
                     borderRadius: '4px',
                     fontSize: '0.875rem',
@@ -849,7 +870,7 @@ export const Profile: React.FC = () => {
         <div
           style={{
             display: 'flex',
-            borderBottom: '1px solid var(--pb-light-periwinkle)',
+            borderBottom: '1px solid var(--pb-dark-purple)',
           }}
         >
           <button
@@ -860,7 +881,7 @@ export const Profile: React.FC = () => {
               backgroundColor: 'transparent',
               border: 'none',
               borderBottom: activeTab === 'posts' ? '3px solid var(--pb-medium-purple)' : '3px solid transparent',
-              color: activeTab === 'posts' ? 'var(--pb-dark-purple)' : '#6b7280',
+              color: activeTab === 'posts' ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)',
               fontSize: '0.9375rem',
               fontWeight: '600',
               cursor: 'pointer',
@@ -877,7 +898,7 @@ export const Profile: React.FC = () => {
               backgroundColor: 'transparent',
               border: 'none',
               borderBottom: activeTab === 'friends' ? '3px solid var(--pb-medium-purple)' : '3px solid transparent',
-              color: activeTab === 'friends' ? 'var(--pb-dark-purple)' : '#6b7280',
+              color: activeTab === 'friends' ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)',
               fontSize: '0.9375rem',
               fontWeight: '600',
               cursor: 'pointer',
@@ -894,7 +915,7 @@ export const Profile: React.FC = () => {
               backgroundColor: 'transparent',
               border: 'none',
               borderBottom: activeTab === 'bookmarks' ? '3px solid var(--pb-medium-purple)' : '3px solid transparent',
-              color: activeTab === 'bookmarks' ? 'var(--pb-dark-purple)' : '#6b7280',
+              color: activeTab === 'bookmarks' ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)',
               fontSize: '0.9375rem',
               fontWeight: '600',
               cursor: 'pointer',
@@ -915,7 +936,7 @@ export const Profile: React.FC = () => {
                     style={{
                       width: '40px',
                       height: '40px',
-                      border: '3px solid var(--pb-light-periwinkle)',
+                      border: '3px solid var(--pb-dark-purple)',
                       borderTop: '3px solid var(--pb-medium-purple)',
                       borderRadius: '50%',
                       animation: 'spin 1s linear infinite',
@@ -972,8 +993,9 @@ export const Profile: React.FC = () => {
                   style={{
                     textAlign: 'center',
                     padding: '1rem',
-                    backgroundColor: 'var(--pb-ultra-light)',
+                    backgroundColor: '#f9fafb',
                     borderRadius: '8px',
+                    border: '1px solid #e5e7eb',
                   }}
                 >
                   <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--pb-dark-purple)' }}>
@@ -985,8 +1007,9 @@ export const Profile: React.FC = () => {
                   style={{
                     textAlign: 'center',
                     padding: '1rem',
-                    backgroundColor: 'var(--pb-ultra-light)',
+                    backgroundColor: '#f9fafb',
                     borderRadius: '8px',
+                    border: '1px solid #e5e7eb',
                   }}
                 >
                   <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--pb-dark-purple)' }}>
@@ -1004,7 +1027,7 @@ export const Profile: React.FC = () => {
                       fontSize: '1rem',
                       fontWeight: '600',
                       marginBottom: '1rem',
-                      color: 'var(--pb-dark-purple)',
+                      color: '#1f2937',
                     }}
                   >
                     Following
@@ -1023,13 +1046,13 @@ export const Profile: React.FC = () => {
                           transition: 'background-color 0.2s ease',
                         }}
                         onClick={() => navigate(`/profile/${user.username}`)}
-                        onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--pb-ultra-light)')}
+                        onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f3f4f6')}
                         onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
                       >
                         {user.avatar ? (
                           <img
                             src={user.avatar}
-                            alt={user.username}
+                            alt={`${user.username}'s avatar`}
                             style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
                           />
                         ) : (
@@ -1069,7 +1092,7 @@ export const Profile: React.FC = () => {
                       fontSize: '1rem',
                       fontWeight: '600',
                       marginBottom: '1rem',
-                      color: 'var(--pb-dark-purple)',
+                      color: '#1f2937',
                     }}
                   >
                     Followers
@@ -1088,13 +1111,13 @@ export const Profile: React.FC = () => {
                           transition: 'background-color 0.2s ease',
                         }}
                         onClick={() => navigate(`/profile/${user.username}`)}
-                        onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--pb-ultra-light)')}
+                        onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f3f4f6')}
                         onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
                       >
                         {user.avatar ? (
                           <img
                             src={user.avatar}
-                            alt={user.username}
+                            alt={`${user.username}'s avatar`}
                             style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
                           />
                         ) : (
@@ -1143,7 +1166,7 @@ export const Profile: React.FC = () => {
                     style={{
                       width: '40px',
                       height: '40px',
-                      border: '3px solid var(--pb-light-periwinkle)',
+                      border: '3px solid var(--pb-dark-purple)',
                       borderTop: '3px solid var(--pb-medium-purple)',
                       borderRadius: '50%',
                       animation: 'spin 1s linear infinite',
@@ -1221,7 +1244,7 @@ export const Profile: React.FC = () => {
             <div
               style={{
                 padding: '1rem 1.5rem',
-                borderBottom: '1px solid #e5e7eb',
+                borderBottom: '1px solid var(--pb-dark-purple)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -1242,29 +1265,30 @@ export const Profile: React.FC = () => {
               </h2>
               <button
                 onClick={() => setShowStatsPanel(false)}
+                aria-label="Close travel statistics"
                 style={{
                   width: '32px',
                   height: '32px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--pb-ultra-light)',
-                  border: 'none',
+                  borderRadius: '8px',
+                  backgroundColor: 'transparent',
+                  border: '1px solid #e5e7eb',
                   cursor: 'pointer',
-                  color: 'var(--pb-medium-purple)',
+                  color: '#6b7280',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   transition: 'all 0.2s ease',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = 'var(--pb-light-periwinkle)';
+                  e.currentTarget.style.backgroundColor = '#f3f4f6';
+                  e.currentTarget.style.borderColor = '#d1d5db';
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = 'var(--pb-ultra-light)';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.borderColor = '#e5e7eb';
                 }}
               >
-                <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
-                  <path d='M15 9l-6 6M9 9l6 6' strokeLinecap='round' strokeLinejoin='round' />
-                </svg>
+                <X size={18} />
               </button>
             </div>
 
@@ -1327,13 +1351,13 @@ export const Profile: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    border: '2px solid var(--pb-light-periwinkle)',
+                    border: '1px solid #d1d5db',
                     borderRadius: '8px',
                     fontSize: '0.9rem',
                     outline: 'none'
                   }}
                   onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                  onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                 />
               </div>
 
@@ -1356,7 +1380,7 @@ export const Profile: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    border: '2px solid var(--pb-light-periwinkle)',
+                    border: '1px solid #d1d5db',
                     borderRadius: '8px',
                     fontSize: '0.9rem',
                     fontFamily: 'inherit',
@@ -1364,11 +1388,11 @@ export const Profile: React.FC = () => {
                     outline: 'none'
                   }}
                   onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                  onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                 />
                 <div style={{
                   fontSize: '0.75rem',
-                  color: '#9ca3af',
+                  color: 'var(--pb-dark-purple)',
                   textAlign: 'right',
                   marginTop: '0.25rem'
                 }}>
@@ -1394,13 +1418,13 @@ export const Profile: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    border: '2px solid var(--pb-light-periwinkle)',
+                    border: '1px solid #d1d5db',
                     borderRadius: '8px',
                     fontSize: '0.9rem',
                     outline: 'none'
                   }}
                   onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                  onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                 />
               </div>
 
@@ -1422,13 +1446,13 @@ export const Profile: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    border: '2px solid var(--pb-light-periwinkle)',
+                    border: '1px solid #d1d5db',
                     borderRadius: '8px',
                     fontSize: '0.9rem',
                     outline: 'none'
                   }}
                   onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                  onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                 />
               </div>
 
@@ -1450,13 +1474,13 @@ export const Profile: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    border: '2px solid var(--pb-light-periwinkle)',
+                    border: '1px solid #d1d5db',
                     borderRadius: '8px',
                     fontSize: '0.9rem',
                     outline: 'none'
                   }}
                   onFocus={(e) => e.target.style.borderColor = 'var(--pb-medium-purple)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--pb-light-periwinkle)'}
+                  onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
                 />
               </div>
             </div>
@@ -1472,7 +1496,7 @@ export const Profile: React.FC = () => {
                 disabled={isSavingProfile}
                 style={{
                   padding: '0.75rem 1.5rem',
-                  backgroundColor: 'var(--pb-light-periwinkle)',
+                  backgroundColor: 'var(--pb-ultra-light)',
                   color: 'var(--pb-dark-purple)',
                   border: 'none',
                   borderRadius: '8px',
@@ -1489,7 +1513,7 @@ export const Profile: React.FC = () => {
                 disabled={isSavingProfile || editForm.bio.length > 150}
                 style={{
                   padding: '0.75rem 1.5rem',
-                  backgroundColor: editForm.bio.length > 150 ? '#d1d5db' : 'var(--pb-medium-purple)',
+                  backgroundColor: editForm.bio.length > 150 ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '8px',
@@ -1547,7 +1571,7 @@ export const Profile: React.FC = () => {
           /* Custom scrollbar for stats panel */
           .stats-panel-scroll {
             scrollbar-width: thin;
-            scrollbar-color: var(--pb-light-periwinkle) transparent;
+            scrollbar-color: var(--pb-dark-purple) transparent;
           }
           
           .stats-panel-scroll::-webkit-scrollbar {
@@ -1559,7 +1583,7 @@ export const Profile: React.FC = () => {
           }
           
           .stats-panel-scroll::-webkit-scrollbar-thumb {
-            background-color: var(--pb-light-periwinkle);
+            background-color: var(--pb-dark-purple);
             border-radius: 3px;
             transition: background-color 0.2s ease;
           }

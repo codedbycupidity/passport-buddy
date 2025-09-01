@@ -49,7 +49,7 @@ const LocationExplorer: React.FC<LocationExplorerProps> = () => {
         width: '280px',
         padding: '1.25rem',
         backgroundColor: 'var(--pb-white)',
-        borderLeft: '1px solid var(--pb-light-periwinkle)',
+        borderLeft: '1px solid var(--pb-dark-purple)',
         minHeight: '100vh',
         position: 'sticky',
         top: '80px',
@@ -64,7 +64,7 @@ const LocationExplorer: React.FC<LocationExplorerProps> = () => {
             width: '50px',
             height: '50px',
             borderRadius: '50%',
-            backgroundColor: 'var(--pb-light-periwinkle)',
+            backgroundColor: 'var(--pb-dark-purple)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -124,9 +124,9 @@ const LocationExplorer: React.FC<LocationExplorerProps> = () => {
               alignItems: 'center',
               gap: '0.5rem',
               padding: '0.5rem',
-              backgroundColor: 'var(--pb-ultra-light)',
+              backgroundColor: 'var(--pb-dark-purple)',
               borderRadius: '8px',
-              border: '1px solid var(--pb-light-periwinkle)',
+              border: '1px solid var(--pb-dark-purple)',
             }}
           >
             <svg
@@ -177,9 +177,9 @@ const LocationExplorer: React.FC<LocationExplorerProps> = () => {
             style={{
               marginBottom: '0.75rem',
               padding: '0.75rem',
-              backgroundColor: 'var(--pb-ultra-light)',
+              backgroundColor: 'var(--pb-dark-purple)',
               borderRadius: '8px',
-              border: '1px solid var(--pb-light-periwinkle)',
+              border: '1px solid var(--pb-dark-purple)',
               cursor: 'pointer',
               transition: 'background-color 0.2s ease',
             }}
@@ -187,7 +187,7 @@ const LocationExplorer: React.FC<LocationExplorerProps> = () => {
               e.currentTarget.style.backgroundColor = '#f0f0ff';
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.backgroundColor = 'var(--pb-ultra-light)';
+              e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -210,11 +210,11 @@ const LocationExplorer: React.FC<LocationExplorerProps> = () => {
       {/* Quick Stats */}
       <div
         style={{
-          backgroundColor: 'var(--pb-ultra-light)',
+          backgroundColor: 'var(--pb-dark-purple)',
           borderRadius: '12px',
           padding: '1rem',
           marginBottom: '2rem',
-          border: '1px solid var(--pb-light-periwinkle)',
+          border: '1px solid var(--pb-dark-purple)',
         }}
       >
         <h4

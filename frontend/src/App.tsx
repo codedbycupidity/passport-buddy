@@ -52,7 +52,7 @@ const AppContent: React.FC = () => {
                   style={{
                     width: '40px',
                     height: '40px',
-                    border: '3px solid var(--pb-light-periwinkle)',
+                    border: '3px solid var(--pb-dark-purple)',
                     borderTop: '3px solid var(--pb-medium-purple)',
                     borderRadius: '50%',
                     animation: 'spin 1s linear infinite',

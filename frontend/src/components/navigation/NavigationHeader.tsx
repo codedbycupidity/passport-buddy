@@ -37,7 +37,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: isActive(path) ? 'var(--pb-dark-purple)' : 'var(--pb-medium-purple)',
+    color: isActive(path) ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)',
     textDecoration: 'none',
     transform: 'scale(1)',
   });
@@ -153,6 +153,8 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
         }
       `}</style>
       <header
+        role="banner"
+        aria-label="Main navigation"
         style={{
           backgroundColor: 'var(--pb-white)',
           borderBottom: '1px solid var(--pb-border)',
@@ -172,7 +174,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
             padding: '0 0.75rem',
           }}
         >
-          <Link to='/' style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Link to='/' aria-label="Passport Buddy Home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--pb-dark-purple)', margin: 0 }}>
               Passport Buddy
             </h1>
@@ -199,19 +201,23 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
                 padding: '0.5rem 1rem',
                 backgroundColor: 'var(--pb-ultra-light)',
                 borderRadius: '20px',
-                border: '1px solid var(--pb-light-periwinkle)',
+                border: '1px solid var(--pb-periwinkle)',
                 minWidth: '240px',
                 fontSize: '0.875rem',
                 transition: 'all 0.2s ease',
               }}
             >
-              <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+              <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                 <circle cx='11' cy='11' r='8' />
                 <path d='m21 21-4.35-4.35' />
               </svg>
               <input
                 type='text'
                 placeholder='Search users...'
+                aria-label='Search users'
+                aria-autocomplete='list'
+                aria-expanded={showDropdown}
+                aria-controls='search-results'
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -230,6 +236,9 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
             {/* Search Results Dropdown */}
             {showDropdown && searchResults.length > 0 && (
               <div
+                id='search-results'
+                role='listbox'
+                aria-label='Search results'
                 style={{
                   position: 'absolute',
                   top: '100%',
@@ -239,7 +248,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
                   backgroundColor: 'white',
                   borderRadius: '12px',
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                  border: '1px solid var(--pb-light-periwinkle)',
+                  border: '1px solid var(--pb-periwinkle)',
                   maxHeight: '300px',
                   overflowY: 'auto',
                   zIndex: 1000,
@@ -255,7 +264,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
                       gap: '0.75rem',
                       padding: '0.75rem 1rem',
                       cursor: 'pointer',
-                      backgroundColor: selectedIndex === index ? 'var(--pb-ultra-light)' : 'transparent',
+                      backgroundColor: selectedIndex === index ? '#f3f4f6' : 'transparent',
                       transition: 'background-color 0.15s ease',
                     }}
                     onMouseEnter={() => setSelectedIndex(index)}
@@ -278,7 +287,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
                           width: '32px',
                           height: '32px',
                           borderRadius: '50%',
-                          backgroundColor: 'var(--pb-medium-purple)',
+                          backgroundColor: 'var(--pb-dark-purple)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -295,7 +304,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
                         @{user.username}
                       </div>
                       {user.fullName && (
-                        <div style={{ fontSize: '0.75rem', color: 'var(--pb-medium-purple)' }}>{user.fullName}</div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--pb-dark-purple)' }}>{user.fullName}</div>
                       )}
                     </div>
                   </div>
@@ -304,13 +313,15 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
             )}
           </div>
 
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+          <nav role='navigation' aria-label='Primary navigation' style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
             <Link
               to='/'
+              aria-label='Home'
+              aria-current={isActive('/') ? 'page' : undefined}
               className={`nav-link ${isActive('/') ? 'active' : ''}`}
-              style={{ color: isActive('/') ? 'var(--pb-dark-purple)' : 'var(--pb-medium-purple)' }}
+              style={{ color: isActive('/') ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)' }}
             >
-              <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+              <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                 <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' />
                 <polyline points='9 22 9 12 15 12 15 22' />
               </svg>
@@ -318,10 +329,12 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
 
             <Link
               to='/flights'
+              aria-label='Flights'
+              aria-current={isActive('/flights') ? 'page' : undefined}
               className={`nav-link ${isActive('/flights') ? 'active' : ''}`}
-              style={{ color: isActive('/flights') ? 'var(--pb-dark-purple)' : 'var(--pb-medium-purple)' }}
+              style={{ color: isActive('/flights') ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)' }}
             >
-              <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+              <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                 <rect x='3' y='6' width='18' height='12' rx='2' />
                 <line x1='9' y1='6' x2='9' y2='18' />
                 <line x1='6' y1='10' x2='6' y2='10.01' />
@@ -333,10 +346,12 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
 
             <Link
               to='/earth'
+              aria-label='Earth View'
+              aria-current={isActive('/earth') ? 'page' : undefined}
               className={`nav-link ${isActive('/earth') ? 'active' : ''}`}
-              style={{ color: isActive('/earth') ? 'var(--pb-dark-purple)' : 'var(--pb-medium-purple)' }}
+              style={{ color: isActive('/earth') ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)' }}
             >
-              <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+              <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                 <circle cx='12' cy='12' r='10' />
                 <line x1='2' y1='12' x2='22' y2='12' />
                 <path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z' />
@@ -345,13 +360,15 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
 
             <Link
               to='/notifications'
+              aria-label={`Notifications${unreadCount > 0 ? ` (${unreadCount} unread)` : ''}`}
+              aria-current={isActive('/notifications') ? 'page' : undefined}
               className={`nav-link ${isActive('/notifications') ? 'active' : ''}`}
               style={{
                 position: 'relative',
-                color: isActive('/notifications') ? 'var(--pb-dark-purple)' : 'var(--pb-medium-purple)',
+                color: isActive('/notifications') ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)',
               }}
             >
-              <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+              <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                 <path d='M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9' />
                 <path d='M13.73 21a2 2 0 0 1-3.46 0' />
               </svg>
@@ -373,10 +390,12 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
 
             <Link
               to='/profile'
+              aria-label='Profile'
+              aria-current={isActive('/profile') ? 'page' : undefined}
               className={`nav-link ${isActive('/profile') ? 'active' : ''}`}
-              style={{ color: isActive('/profile') ? 'var(--pb-dark-purple)' : 'var(--pb-medium-purple)' }}
+              style={{ color: isActive('/profile') ? 'var(--pb-dark-purple)' : 'var(--pb-dark-purple)' }}
             >
-              <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+              <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                 <path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' />
                 <circle cx='12' cy='7' r='4' />
               </svg>
@@ -384,8 +403,8 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
 
             {/* Hamburger Menu for Sidebar */}
             {onToggleSidebar && (
-              <button onClick={onToggleSidebar} className='nav-link' style={{ color: 'var(--pb-medium-purple)' }}>
-                <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+              <button onClick={onToggleSidebar} className='nav-link' style={{ color: 'var(--pb-dark-purple)' }}>
+                <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
                   <line x1='3' y1='6' x2='21' y2='6' />
                   <line x1='3' y1='12' x2='21' y2='12' />
                   <line x1='3' y1='18' x2='21' y2='18' />

@@ -12,24 +12,24 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Passport Buddy Purple Theme */
-  --pb-dark-purple: #7b6ba6; /* Using the lighter purple as "dark" */
-  --pb-medium-purple: #b8b3e9; /* Beautiful periwinkle as main */
-  --pb-light-purple: #d4d1f5; /* Light periwinkle */
-  --pb-periwinkle: #b8b3e9;
-  --pb-light-periwinkle: #e8e6fa;
-  --pb-ultra-light: #f5f4fd;
-  --pb-background: #fafaff;
-  --pb-white: #ffffff;
+  /* Passport Buddy Dark Purple Theme - Improved Accessibility */
+  --pb-dark-purple: #3d2b5c; /* Deep purple for high contrast text */
+  --pb-medium-purple: #5d4a7a; /* Medium purple for buttons/accents */
+  --pb-light-purple: #7b6ba6; /* Lighter purple for hover states */
+  --pb-periwinkle: #6b5b95; /* Darker periwinkle for better contrast */
+  --pb-light-periwinkle: #e8e6fa; /* Light purple for backgrounds */
+  --pb-ultra-light: #f5f4fd; /* Ultra light for subtle backgrounds */
+  --pb-background: #fafaff; /* Main background */
+  --pb-white: #ffffff; /* Pure white */
 
   /* Applied theme colors */
   --ig-primary-background: var(--pb-background);
   --ig-secondary-background: var(--pb-white);
   --ig-primary-text: var(--pb-dark-purple);
-  --ig-secondary-text: var(--pb-medium-purple);
+  --ig-secondary-text: var(--pb-dark-purple);
   --ig-border: var(--pb-light-periwinkle);
-  --ig-primary-button: var(--pb-medium-purple);
-  --ig-primary-button-hover: var(--pb-dark-purple);
+  --ig-primary-button: var(--pb-dark-purple);
+  --ig-primary-button-hover: var(--pb-medium-purple);
   --ig-error: #ed4956;
 
   /* Override any dark backgrounds */
@@ -92,7 +92,8 @@ textarea {
     --ig-primary-text: #f5f4fd;
     --ig-secondary-text: #d4d1f5;
     --ig-border: #4a4560;
-    --pb-dark-purple: #b8b3e9;
-    --pb-medium-purple: #d4d1f5;
+    --pb-dark-purple: #9b8bc4; /* Lighter for dark mode readability */
+    --pb-medium-purple: #7b6ba6; /* Medium purple for dark mode */
+    --pb-light-purple: #6b5b95; /* Darker purple for dark mode hover */
   }
 }

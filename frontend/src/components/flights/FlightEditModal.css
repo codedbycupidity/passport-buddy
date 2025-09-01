@@ -87,7 +87,7 @@
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #8b5cf6;
+  border-color: var(--pb-dark-purple);
   background-color: white;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .save-btn {
-  background-color: #8b5cf6;
+  background-color: var(--pb-dark-purple);
   color: white;
 }
 

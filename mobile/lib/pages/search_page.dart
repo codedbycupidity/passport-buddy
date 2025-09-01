@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../core/theme/app_theme.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -107,7 +108,7 @@ class _SearchPageState extends State<SearchPage> {
                       _buildCategoryCard(Icons.people, 'People', Colors.blue),
                       _buildCategoryCard(Icons.public, 'Destinations', Colors.green),
                       _buildCategoryCard(Icons.flight_takeoff, 'Flights', Colors.orange),
-                      _buildCategoryCard(Icons.bar_chart, 'Statistics', Colors.purple),
+                      _buildCategoryCard(Icons.bar_chart, 'Statistics', AppColors.darkPurple),
                     ],
                   ),
                 ],

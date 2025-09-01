@@ -503,7 +503,7 @@ export function CreatePost() {
                   color: 'white',
                   fontWeight: '600',
                   fontSize: '14px',
-                  backgroundColor: 'var(--pb-medium-purple)',
+                  backgroundColor: 'var(--pb-dark-purple)',
                 }}
               >
                 {(() => {
@@ -523,7 +523,10 @@ export function CreatePost() {
               {user?.username || 'User'}
             </div>
 
+            <label htmlFor='post-content' className='sr-only'>Post content</label>
             <textarea
+              id='post-content'
+              aria-label='Post content'
               value={content}
               onChange={e => setContent(e.target.value)}
               placeholder="What's new?"
@@ -683,9 +686,9 @@ export function CreatePost() {
                       style={{
                         padding: '0.375rem 0.75rem',
                         backgroundColor: 'transparent',
-                        border: '1px solid var(--pb-light-periwinkle)',
+                        border: '2px solid var(--pb-dark-purple)',
                         borderRadius: '16px',
-                        color: 'var(--pb-medium-purple)',
+                        color: '#1f2937',
                         fontSize: '0.75rem',
                         fontWeight: '500',
                         cursor: 'pointer',
@@ -704,12 +707,16 @@ export function CreatePost() {
                         paddingBottom: '0.375rem',
                         backgroundColor:
                           loading || uploading || (!content.trim() && !selectedImage && !selectedVideo)
-                            ? 'var(--pb-ultra-light)'
-                            : 'var(--pb-medium-purple)',
+                            ? '#e5e7eb'
+                            : 'var(--pb-dark-purple)',
                         color:
                           loading || uploading || (!content.trim() && !selectedImage && !selectedVideo)
-                            ? 'var(--pb-medium-purple)'
+                            ? 'var(--pb-dark-purple)'
                             : 'white',
+                        opacity:
+                          loading || uploading || (!content.trim() && !selectedImage && !selectedVideo)
+                            ? '0.7'
+                            : '1',
                         borderRadius: '16px',
                         fontSize: '0.75rem',
                         fontWeight: '500',
@@ -722,12 +729,12 @@ export function CreatePost() {
                       }}
                       onMouseEnter={e => {
                         if (!loading && !uploading && (content.trim() || selectedImage || selectedVideo)) {
-                          e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
+                          e.currentTarget.style.backgroundColor = 'var(--pb-medium-purple)';
                         }
                       }}
                       onMouseLeave={e => {
                         if (!loading && !uploading && (content.trim() || selectedImage || selectedVideo)) {
-                          e.currentTarget.style.backgroundColor = 'var(--pb-medium-purple)';
+                          e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
                         }
                       }}
                     >
@@ -741,6 +748,7 @@ export function CreatePost() {
             <input
               type='file'
               accept='video/*'
+              aria-label='Upload video'
               style={{ display: 'none' }}
               ref={videoInputRef}
               onChange={handleVideoSelect}

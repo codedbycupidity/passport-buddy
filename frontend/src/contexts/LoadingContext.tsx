@@ -40,7 +40,7 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
             left: 0,
             right: 0,
             height: '3px',
-            backgroundColor: 'var(--pb-light-periwinkle)',
+            backgroundColor: 'var(--pb-dark-purple)',
             zIndex: 9999,
             animation: 'loading-progress 1s ease-out',
           }}

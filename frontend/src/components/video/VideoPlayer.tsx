@@ -384,7 +384,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           <div
             style={{
               height: '100%',
-              backgroundColor: '#8b5cf6',
+              backgroundColor: 'var(--pb-medium-purple)',
               width: `${(currentTime / duration) * 100}%`,
               transition: 'width 0.1s ease',
             }}

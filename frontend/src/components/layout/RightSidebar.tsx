@@ -23,12 +23,13 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
         width: '280px',
         padding: '1.25rem',
         backgroundColor: 'var(--pb-white)',
-        borderLeft: '1px solid var(--pb-light-periwinkle)',
+        borderLeft: '1px solid var(--pb-dark-purple)',
         minHeight: '100vh',
         position: 'sticky',
         top: '80px',
         overflowY: 'auto',
         flexShrink: 0,
+        boxShadow: '-4px 0 8px rgba(0, 0, 0, 0.08)',
       }}
     >
       {/* User Profile Section */}
@@ -38,7 +39,7 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
             width: '50px',
             height: '50px',
             borderRadius: '50%',
-            backgroundColor: 'var(--pb-light-periwinkle)',
+            backgroundColor: 'white',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -84,7 +85,7 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
           padding: '0.75rem',
           marginBottom: '1.5rem',
           backgroundColor: 'transparent',
-          border: '1px solid var(--pb-light-periwinkle)',
+          border: '1px solid var(--pb-dark-purple)',
           borderRadius: '8px',
           color: 'var(--pb-medium-purple)',
           fontSize: '0.875rem',
@@ -97,12 +98,12 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
           transition: 'all 0.2s ease',
         }}
         onMouseEnter={e => {
-          e.currentTarget.style.backgroundColor = 'var(--pb-ultra-light)';
+          e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
           e.currentTarget.style.borderColor = 'var(--pb-medium-purple)';
         }}
         onMouseLeave={e => {
           e.currentTarget.style.backgroundColor = 'transparent';
-          e.currentTarget.style.borderColor = 'var(--pb-light-periwinkle)';
+          e.currentTarget.style.borderColor = 'var(--pb-dark-purple)';
         }}
       >
         <LogOut size={16} />
@@ -112,11 +113,11 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
       {/* Quick Stats */}
       <div
         style={{
-          backgroundColor: 'var(--pb-ultra-light)',
+          backgroundColor: 'white',
           borderRadius: '12px',
           padding: '1rem',
           marginBottom: '2rem',
-          border: '1px solid var(--pb-light-periwinkle)',
+          border: '1px solid var(--pb-dark-purple)',
         }}
       >
         <h4
@@ -160,9 +161,9 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
               alignItems: 'center',
               gap: '0.5rem',
               padding: '0.5rem',
-              backgroundColor: 'var(--pb-ultra-light)',
+              backgroundColor: 'white',
               borderRadius: '8px',
-              border: '1px solid var(--pb-light-periwinkle)',
+              border: '1px solid var(--pb-dark-purple)',
             }}
           >
             <svg
@@ -213,9 +214,9 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
               style={{
                 marginBottom: '0.5rem',
                 padding: '0.5rem',
-                backgroundColor: 'var(--pb-ultra-light)',
+                backgroundColor: 'white',
                 borderRadius: '6px',
-                border: '1px solid var(--pb-light-periwinkle)',
+                border: '1px solid var(--pb-dark-purple)',
                 cursor: 'pointer',
                 transition: 'background-color 0.2s ease',
                 fontSize: '0.75rem',
@@ -224,7 +225,7 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
                 e.currentTarget.style.backgroundColor = '#f0f0ff';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = 'var(--pb-ultra-light)';
+                e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -246,10 +247,10 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
       {/* Travel Tips */}
       <div
         style={{
-          backgroundColor: 'var(--pb-ultra-light)',
+          backgroundColor: 'white',
           borderRadius: '12px',
           padding: '1rem',
-          border: '1px solid var(--pb-light-periwinkle)',
+          border: '1px solid var(--pb-dark-purple)',
         }}
       >
         <h4

@@ -77,7 +77,7 @@ export const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onBack, onOTPSen
             <div
               style={{
                 padding: '0.75rem',
-                backgroundColor: 'var(--pb-ultra-light)',
+                backgroundColor: 'var(--pb-dark-purple)',
                 borderRadius: '8px',
                 color: 'var(--pb-dark-purple)',
                 fontSize: '0.875rem',

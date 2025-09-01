@@ -6,7 +6,7 @@
   margin-bottom: 24px;
   max-width: 614px;
   width: 100%;
-  box-shadow: 0 2px 12px rgba(184, 179, 233, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
   transition:
     transform 0.2s,
     box-shadow 0.2s;
@@ -14,7 +14,7 @@
 
 .post-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(184, 179, 233, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 /* Header */
@@ -53,7 +53,7 @@
   color: white;
   font-weight: 600;
   font-size: 14px;
-  background-color: var(--pb-medium-purple);
+  background-color: var(--pb-dark-purple);
 }
 
 .author-info {
@@ -89,7 +89,7 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  color: var(--pb-medium-purple);
+  color: var(--pb-dark-purple);
   transition: all 0.2s;
   border-radius: 8px;
 }
@@ -208,7 +208,7 @@
 }
 
 .post-video:focus {
-  outline: 2px solid var(--pb-medium-purple);
+  outline: 2px solid var(--pb-dark-purple);
   outline-offset: 2px;
 }
 
@@ -309,7 +309,7 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  color: var(--pb-medium-purple);
+  color: var(--pb-dark-purple);
   transition: all 0.2s;
   border-radius: 8px;
 }
@@ -399,7 +399,7 @@
 .comment-post {
   background: none;
   border: none;
-  color: var(--pb-medium-purple);
+  color: var(--pb-dark-purple);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
