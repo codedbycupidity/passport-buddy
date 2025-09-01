@@ -22,7 +22,7 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
       style={{
         width: '280px',
         padding: '1.25rem',
-        backgroundColor: 'var(--pb-white)',
+        backgroundColor: 'white',
         borderLeft: '1px solid var(--pb-dark-purple)',
         minHeight: '100vh',
         position: 'sticky',
@@ -100,10 +100,12 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
         onMouseEnter={e => {
           e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
           e.currentTarget.style.borderColor = 'var(--pb-medium-purple)';
+          e.currentTarget.style.color = 'white';
         }}
         onMouseLeave={e => {
           e.currentTarget.style.backgroundColor = 'transparent';
           e.currentTarget.style.borderColor = 'var(--pb-dark-purple)';
+          e.currentTarget.style.color = 'var(--pb-medium-purple)';
         }}
       >
         <LogOut size={16} />
@@ -222,10 +224,14 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
                 fontSize: '0.75rem',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = '#f0f0ff';
+                e.currentTarget.style.backgroundColor = 'rgba(93, 74, 122, 0.05)';
+                e.currentTarget.style.borderColor = 'var(--pb-medium-purple)';
+                e.currentTarget.style.transform = 'translateX(4px)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = 'var(--pb-dark-purple)';
+                e.currentTarget.style.backgroundColor = 'white';
+                e.currentTarget.style.borderColor = 'var(--pb-dark-purple)';
+                e.currentTarget.style.transform = 'translateX(0)';
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>

@@ -35,7 +35,7 @@ const AppContent: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: 'var(--pb-background)', minHeight: '100vh' }}>
-      <NavigationHeader onToggleSidebar={toggleSidebar} />
+      <NavigationHeader onToggleSidebar={toggleSidebar} isSidebarOpen={showSidebar} />
       <div style={{ display: 'flex' }}>
         <main
           style={{

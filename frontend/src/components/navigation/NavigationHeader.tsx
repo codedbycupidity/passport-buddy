@@ -13,9 +13,10 @@ interface SearchResult {
 
 interface NavigationHeaderProps {
   onToggleSidebar?: () => void;
+  isSidebarOpen?: boolean;
 }
 
-export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSidebar }) => {
+export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSidebar, isSidebarOpen = false }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
@@ -157,11 +158,12 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
         aria-label="Main navigation"
         style={{
           backgroundColor: 'var(--pb-white)',
-          borderBottom: '1px solid var(--pb-border)',
+          borderBottom: '1px solid #e5e7eb',
           padding: '0.5rem 0',
           position: 'sticky',
           top: 0,
-          zIndex: 100,
+          zIndex: 1000,
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.12)',
         }}
       >
         <div
@@ -403,11 +405,42 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({ onToggleSide
 
             {/* Hamburger Menu for Sidebar */}
             {onToggleSidebar && (
-              <button onClick={onToggleSidebar} className='nav-link' style={{ color: 'var(--pb-dark-purple)' }}>
+              <button 
+                onClick={onToggleSidebar}
+                className='nav-link' 
+                style={{ color: 'var(--pb-dark-purple)', position: 'relative' }}
+              >
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
-                  <line x1='3' y1='6' x2='21' y2='6' />
-                  <line x1='3' y1='12' x2='21' y2='12' />
-                  <line x1='3' y1='18' x2='21' y2='18' />
+                  <line 
+                    x1='3' 
+                    y1={isSidebarOpen ? '6' : '6'} 
+                    x2='21' 
+                    y2={isSidebarOpen ? '18' : '6'}
+                    style={{
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      transformOrigin: 'center',
+                    }}
+                  />
+                  <line 
+                    x1='3' 
+                    y1='12' 
+                    x2='21' 
+                    y2='12'
+                    style={{
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      opacity: isSidebarOpen ? 0 : 1,
+                    }}
+                  />
+                  <line 
+                    x1='3' 
+                    y1={isSidebarOpen ? '18' : '18'} 
+                    x2='21' 
+                    y2={isSidebarOpen ? '6' : '18'}
+                    style={{
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      transformOrigin: 'center',
+                    }}
+                  />
                 </svg>
               </button>
             )}
