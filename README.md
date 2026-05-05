@@ -378,7 +378,7 @@ make test-summary  # View test status
 
 ## Team
 
-- [**cupidity**](https://github.com/codedbycupidity)
+- [**codedbycupidity**](https://github.com/codedbycupidity)
 - [**Izaac Plambeck**](https://github.com/Izaacapp)
 - [**Mason Miles**](https://github.com/cdmairu)
 - [**Devonav**](https://github.com/Devonav)
