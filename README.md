@@ -7,7 +7,7 @@
 ![Version](https://img.shields.io/badge/version-2.0.0-orange)
 [![Forked from Izaacapp/flutterrr](https://img.shields.io/badge/forked%20from-Izaacapp%2Fflutterrr-blue?logo=github)](https://github.com/Izaacapp/flutterrr)
 
-> **Continuation of [`Izaacapp/flutterrr`](https://github.com/Izaacapp/flutterrr).** The full upstream commit history (Jul 19–23, 2025) is preserved in this repository's `git log` as the ancestry of this project.
+> **Originally a COP4331 class project** built upstream as [`Izaacapp/flutterrr`](https://github.com/Izaacapp/flutterrr); I've continued building on it after the class ended. The full upstream commit history (Jul 19–23, 2025) is preserved in this repository's `git log` as the ancestry of this project.
 
 ## Overview
 
