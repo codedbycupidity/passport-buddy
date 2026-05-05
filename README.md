@@ -29,7 +29,7 @@ Passport Buddy is a comprehensive travel management platform that combines socia
 | Mobile | Flutter 3.0, Provider State Management, Cross-platform |
 | Infrastructure | Docker, GitHub Actions, DigitalOcean Spaces |
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # Initial setup (first time only)
@@ -45,7 +45,7 @@ make mobile
 make help
 ```
 
-## 🔒 Security Setup
+## Security Setup
 
 1. **Copy environment template**:
    ```bash
@@ -58,7 +58,7 @@ make help
 
 4. See [Security Guidelines](docs/SECURITY_GUIDELINES.md) for detailed security practices
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 passport-buddy/
@@ -75,7 +75,7 @@ passport-buddy/
 └── Makefile            # Development automation
 ```
 
-## 🌐 Development URLs
+## Development URLs
 
 | Service | URL | Description |
 |---------|-----|-------------|
@@ -84,7 +84,7 @@ passport-buddy/
 | **GraphQL Playground** | http://localhost:3000/graphql | GraphQL API explorer |
 | **MongoDB** | mongodb://localhost:27017 | Database |
 
-## 👥 Test Users
+## Test Users
 
 The application comes with 8 pre-seeded test users. **All test users have the password: `Test123`**
 
@@ -101,7 +101,7 @@ You can login using either username or email:
 | **evahocking** | eva@test.com | Luxury travel blogger from NYC | 300,000 |
 | **testuser** | test@test.com | Test account for QA | 0 |
 
-## 📱 Mobile Development
+## Mobile Development
 
 ### Running on Different Platforms
 
@@ -129,7 +129,7 @@ The mobile app automatically configures the API URL based on the platform:
 - **Physical Devices**: `http://YOUR_LOCAL_IP:3000/graphql` (auto-detected)
 - **Web**: `http://localhost:3000/graphql`
 
-## 🛠️ Development Commands
+## Development Commands
 
 ### Core Commands
 ```bash
@@ -182,7 +182,7 @@ make deploy-check  # Pre-deployment checklist
 make env-check     # Verify environment setup
 ```
 
-## ✨ Core Features
+## Core Features
 
 ### Travel Management
 - Automated boarding pass OCR scanning with 98% accuracy
@@ -231,7 +231,7 @@ make env-check     # Verify environment setup
 - **File Upload**: Virus scanning, type validation, size limits
 - **Infrastructure**: HTTPS enforcement, security headers, CORS configuration
 
-## 🔧 Tech Stack
+## Tech Stack
 
 ### Backend
 - **Runtime**: Node.js with Express.js
@@ -280,7 +280,7 @@ make env-check     # Verify environment setup
 - **AWS DocumentDB**: MongoDB-compatible with enhanced security
 - **Self-hosted**: Docker Compose configuration available
 
-## 🔐 Environment Configuration
+## Environment Configuration
 
 ### Development Environment
 
@@ -315,7 +315,7 @@ ALLOWED_FILE_TYPES=image/jpeg,image/png,image/gif,image/webp
 
 For production, create `.env.prod` with appropriate values and secure secrets.
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -352,7 +352,7 @@ make info          # Show project info
 make test-summary  # View test status
 ```
 
-## 📚 Additional Documentation
+## Additional Documentation
 
 - [Environment Setup Guide](docs/ENVIRONMENT_SETUP.md)
 - [Mobile Build Configuration](mobile/BUILD_CONFIGURATION.md)
@@ -361,7 +361,7 @@ make test-summary  # View test status
 - [Mobile App Guide](mobile/README.md)
 - [Testing Guide](docs/TEST_REPORT.md)
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -376,19 +376,12 @@ make test-summary  # View test status
 3. Run `make lint` and `make typecheck` before committing
 4. Ensure all tests pass with `make test`
 
-## Development Team
+## Team
 
-### Lead Developer
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/izaac-plambeck/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-4285F4?style=flat&logo=google-chrome&logoColor=white)](https://izaacapp.github.io/)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:Izaacap@gmail.com)
-
-**Izaac Plambeck** - Full Stack Developer & System Architect
-
-### Contributors
-- [**Mason Miles**](https://github.com/cdmairu) - Backend Development & API Design
-- [**cupidtiy**](https://github.com/cupidtiy) - Frontend Development & UI/UX
-- [**Devonav**](https://github.com/Devonav) - Mobile Development & Flutter Integration
+- [**cupidity**](https://github.com/codedbycupidity)
+- [**Izaac Plambeck**](https://github.com/Izaacapp)
+- [**Mason Miles**](https://github.com/cdmairu)
+- [**Devonav**](https://github.com/Devonav)
 
 ## Project Status
 
@@ -400,13 +393,12 @@ This repository maintains production builds following enterprise software distri
 - **Distribution Model**: Binary distribution only
 - **License**: Proprietary - All Rights Reserved
 
-## Contact Information
+## Contact
 
 For technical inquiries, collaboration opportunities, or source code access:
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/izaac-plambeck/)
-[![Portfolio](https://img.shields.io/badge/Portfolio-4285F4?style=flat&logo=google-chrome&logoColor=white)](https://izaacapp.github.io/)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:Izaacap@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/codedbycupidity)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:info.aeslilly@gmail.com)
 
 ---
 
